@@ -14,7 +14,7 @@ for(const scenario of SCENARIOS)test(`${scenario.number}: ${scenario.title} has 
  // Invalid attempts must preserve all resources and leave the player in place.
  const same=quoteJourney(initial,scenario,network,initial.position,scenario.modes[0]);assert.equal(same.ok,false);assert.equal(same.code,'same-place');
  const expired=advanceClock(initial,scenario,scenario.deadline);assert.equal(expired.phase,'lost');assert.equal(quoteJourney(expired,scenario,network,move.to,move.mode).ok,false);
- const energy=quoteJourney({...initial,energy:0},scenario,network,move.to,move.mode);assert.equal(energy.ok,false);assert.equal(energy.code,'energy');
+ const energyMode=move.mode==='walk'?(scenario.modes.includes('taxi')?'taxi':'cycle'):move.mode;const energy=quoteJourney({...initial,energy:0},scenario,network,move.to,energyMode);assert.equal(energy.ok,false);assert.equal(energy.code,'energy');
  const paid=scenario.modes.includes('taxi')?'taxi':'cycle',poor=quoteJourney({...initial,cash:0},scenario,network,move.to,paid);assert.equal(poor.ok,false);assert.equal(poor.code,'money');
  const phase=quoteJourney({...initial,phase:'arrived'},scenario,network,move.to,move.mode);assert.equal(phase.ok,false);assert.equal(phase.code,'phase');assert.equal(initial.elapsed,scenario.requirePapers?15:0);assert.equal(initial.position,scenario.start);
 });
@@ -45,4 +45,4 @@ test('every scenario rejects a direct start-to-goal journey without charging res
 test('a token waypoint near the start cannot unlock the final journey',()=>{const custom={'waypoint-1':{id:'waypoint-1',kind:'waypoint',coordinates:[23.6805,52.1005]}},s={...newGame(basic),position:'waypoint-1',visited:['central','waypoint-1'],departures:1};assert.equal(quoteJourney(s,basic,network,'terespol','taxi',custom).code,'intermediate');});
 
 
-test('crossing feedback states the remaining time, journey time and lateness',()=>{const c=SCENARIOS[3],s={...newGame(c),elapsed:65,visited:['polski','central']},q=quoteJourney(s,c,network,'terespol','taxi');assert.equal(q.code,'window');assert.match(q.message,/closes in 5 game minutes/);assert.match(q.message,/This leg takes \d+ minutes/);assert.match(q.message,/\d+ minutes too late/);assert.equal(s.elapsed,65);const closed=quoteJourney({...s,elapsed:71},c,network,'terespol','taxi');assert.match(closed.message,/already closed/);assert.match(closed.message,/Restart/);});
+test('crossing feedback states the remaining time, journey time and lateness',()=>{const c=SCENARIOS[3],s={...newGame(c),elapsed:65,visited:['polski','central']},q=quoteJourney(s,c,network,'terespol','taxi');assert.equal(q.code,'window');assert.match(q.message,/closes in 25 game minutes/);assert.match(q.message,/This leg takes \d+ minutes/);assert.match(q.message,/\d+ minutes too late/);assert.equal(s.elapsed,65);const closed=quoteJourney({...s,elapsed:c.closeAt+1},c,network,'terespol','taxi');assert.match(closed.message,/already closed/);assert.match(closed.message,/Restart/);});

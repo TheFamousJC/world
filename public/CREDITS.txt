@@ -30,3 +30,5 @@ No paid APIs, remote AI services or external map-tile servers are used at runtim
 Optional satellite layer: NASA GIBS, USGS / SDSU Landsat WELD Global Annual Corrected Reflectance True Color, mosaic 2000-12-01, 30 m. Archival reference imagery, not live. https://nasa-gibs.github.io/gibs-api-docs/ https://www.earthdata.nasa.gov/engage/open-data-services-software/data-use-policy
 
 Westward road and rail extension: OpenStreetMap API bounding box 23.32,52.015,23.56,52.055 retrieved 20 October 2026. Adapted network distributed under ODbL 1.0; main Brest reference extract retains its 24 July 2026 snapshot. Campaign contact and safe-house locations are fictional.
+
+Biała Podlaska extension: bounded OpenStreetMap API road, rail and area extracts retrieved 20 October 2026, including southern foot-accessible roads. Overall game reference bounds 23.13,52.0,23.77,52.16. Adapted data ODbL 1.0. The evacuation point is fictional.

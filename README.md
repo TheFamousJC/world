@@ -8,7 +8,7 @@ The first playable collection covers the **Brest–Terespol frontier district** 
 
 ## Operation Nightfall
 
-A five-section operation from Brest through Terespol, Koroszczyn, Kobylany and Małaszewicze to Zalesie. Begin with £300 and 12 hours. Complete one marked detour task per section; reach its location and press Complete. Cash, energy and elapsed time persist through checkpoints and reloads. The operation clock keeps running between sections; Pause stops planning time and blocks travel/actions until resumed. Go simulates actual journey time.
+An eight-section operation from Brest through Terespol, Koroszczyn, Kobylany and Małaszewicze to Zalesie, then back through Brest and Koroszczyn before the final evacuation in Biała Podlaska. Begin with £300 and 22 hours. Complete the marked detour tasks per section; the final section requires both package and supply pickups. The passport in section 7 is required at the border. reach its location and press Complete. Cash, energy and elapsed time persist through checkpoints and reloads. The operation clock keeps running between sections; Pause stops planning time and blocks travel/actions until resumed. Go simulates actual journey time.
 
 Satellite mode optionally streams NASA GIBS archival Landsat imagery from 2000. It requires internet; vector maps and all routing remain offline. Borders, missions and transport availability are game rules, not current travel advice.
 
@@ -114,3 +114,5 @@ Development and local play use existing hardware and free software. No paid runt
 The responsive web foundation can later be packaged for Android/iOS. Native projects and store releases are not included yet. See [DEVELOPMENT_PLAN.md](DEVELOPMENT_PLAN.md) for the next milestones.
 
 Code updates are committed and pushed to https://github.com/TheFamousJC/world after validation, as requested.
+
+Border delays: 20 minutes in standalone scenarios, 30 in the early operation, 45 in section 6 and 60 in section 7. Quotes include these waits. Walking drains energy during travel. At 20% energy a mandatory, free 25-minute rest restores 40 points before continuing; all rests are included in quoted time, animations and saved journey accounting.
