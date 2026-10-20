@@ -24,7 +24,7 @@
       <h1 id="mission-title">Last departure</h1><p id="mission-subtitle" class="mission-subtitle"></p><p id="mission-story" class="story"></p>
       <div class="objective"><span class="small muted">YOUR OBJECTIVE</span><strong id="mission-goal"></strong><div id="milestones"></div></div>
       <div class="resources" aria-label="Resources"><div><span class="resource-label">◷ TIME LEFT</span><strong id="time-left"></strong><button id="clock-button" class="clock-button">Start clock</button></div><div><span class="resource-label">£ CASH</span><strong id="cash-left"></strong><span class="resource-foot">Spend carefully</span></div><div><span class="resource-label">♡ ENERGY</span><strong id="energy-left"></strong><span class="resource-foot">Rest to recover</span></div></div>
-      <div class="position"><span class="position-dot"></span><div><span class="small muted">YOU ARE HERE</span><strong id="current-place"></strong></div></div>
+      <div id="crossing-window" class="crossing-window" hidden><span class="eyebrow">CROSSING DEADLINE</span><p id="crossing-countdown"></p></div><div class="position"><span class="position-dot"></span><div><span class="small muted">YOU ARE HERE</span><strong id="current-place"></strong></div></div>
       <button id="knowledge-button" class="button secondary full">Local knowledge <span>↗</span></button><button id="rest-button" class="button text full">Rest & eat <span>£6 · 20 min</span></button>
       <div class="mission-bottom"><button id="restart-button" class="text-button">Restart challenge</button><button id="journal-button" class="text-button">Journey log</button></div>
       <p class="game-disclaimer">Real map. Fictional challenges.<br>Not live border or travel information.</p>
@@ -47,7 +47,7 @@
       </section>
     </section>
   </main>
-  <footer class="app-footer"><span>Escape Atlas · Early access 0.5</span><span id="offline-status">Ready to explore</span><button id="about-button" class="text-button">Map sources & credits</button></footer>
+  <footer class="app-footer"><span>Escape Atlas · Early access 0.5.1</span><span id="offline-status">Ready to explore</span><button id="about-button" class="text-button">Map sources & credits</button></footer>
 </div>
 
 <dialog id="challenge-dialog" class="wide-dialog"><div class="dialog-heading"><div><span class="eyebrow">THE FRONTIER COLLECTION</span><h2>Ten ways to find your way.</h2><p>Different constraints. One detailed district. Your plan.</p></div><button class="close-button" data-close aria-label="Close challenges">×</button></div><div id="challenge-grid" class="challenge-grid"></div></dialog>
