@@ -22,6 +22,15 @@ Build a polished route-survival game around one detailed Brest–Terespol distri
 - Leg-specific transport choices and improved station-to-foot-network anchoring; approximate walking boarding access included in quotes.
 - Existing deterministic engine, offline maps, saves and departure locking retained.
 
+## Map-first route planning (0.4, implemented)
+
+- Click the current position/last planned stop, then any destination in the detailed district. Choose transport and inspect a draft quote before committing.
+- Keep planning or travel immediately; select the next leg, a route prefix through a chosen stop, or the entire plan.
+- Planning clock starts with the first selection; each travelled leg consumes its own time and resources.
+- Exact custom map points, with explicit failures for mapped water and disconnected locations; nearby named objectives remain selectable.
+- Batch travel re-checks each departure, can stop after the current leg, and restores pending travel without repeat charges.
+- No teleporting between selected points; the route stays connected to the scenario position.
+
 ## Milestone 2 — playtesting and deeper simulation
 
 - Observe first-time players: map readability, objective comprehension, clues, route building and feedback.

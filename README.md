@@ -12,7 +12,13 @@ Install Node.js 22 or newer. No package installation, accounts or API keys are r
 npm run dev
 ```
 
-Open http://127.0.0.1:4173. Select the frontier beacon on the globe to fly into the district. Click a map location or select a stop, choose transport for each leg, then press **Go**. Each journey animates, settles its cost once, and requires arrival review before the next departure. Local knowledge provides clues, scenario notices and travel papers. Runs and results save on your device.
+Open http://127.0.0.1:4173. Select the frontier beacon on the globe to fly into the district. Click your current position (or last planned stop), then click any destination within the detailed district. Choose transport to see time, money and energy. Press **Go now** to travel through the selected stop, or **Continue planning** to add another leg. For a saved plan, choose **Next leg only**, **Through stop…**, or **Entire planned route**, then **Go**. Each leg is checked and charged once; batch travel stops if the next leg fails. Local knowledge provides clues, scenario notices and travel papers. Runs and results save on your device.
+
+## Map-first planning update (0.4)
+
+Planning time starts on your first map selection. Free map clicks retain their coordinates, with approximate local road access; mapped water and unconnected points show no route. Points within roughly 50 metres of a named game location select that location so its objective remains usable. Coverage is still one district.
+
+A draft quote appears before a leg is committed. Mixed transport is supported at arbitrary road points; trains and shuttles still require their appropriate station/stop types. Full-route and prefix travel settle one leg at a time, re-check resources and restrictions, and recover after reload without double charging. **Stop after this leg** ends automatic travel at the next stop. Every run starts at its scenario location; selecting future map points never teleports the player.
 
 ## Dashboard update (0.3)
 
@@ -47,6 +53,7 @@ The production build is static `dist/`. Serve it over HTTPS or localhost for off
 
 ## Architecture
 
+- `src/planning.js`: map-selection drafts, route sections and idempotent queue settlement.
 - `src/engine.js`: deterministic state transitions, quotes, resource accounting, save validation.
 - `src/network.js`: local OSM graph and transport-aware routing.
 - `src/scenarios.js`: ten challenges and game locations.

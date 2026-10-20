@@ -38,8 +38,10 @@ export function readSave(raw,scenarios){try{
  const validPoint=p=>Array.isArray(p)&&p.length===2&&p.every(Number.isFinite)&&Math.abs(p[0])<=180&&Math.abs(p[1])<=85;
  for(const [id,p] of Object.entries(s.custom))if(!/^waypoint-\d+$/.test(id)||p.id!==id||p.kind!=='waypoint'||!validPoint(p.coordinates)||typeof p.name!=='string')return null;
  const known=new Set([...['central','polski','north','terespol','east-gate','west-gate','aid','workshop','lodge','pickup'],...Object.keys(s.custom)]);
- if(!known.has(s.game.position)||s.plan.length>7||s.plan.some(l=>!known.has(l.to)||!scenario.modes.includes(l.mode)))return null;
+ if(!known.has(s.game.position)||s.plan.length>20||s.plan.some(l=>!known.has(l.to)||!scenario.modes.includes(l.mode)))return null;
  if(s.game.phase==='travelling'){const p=s.game.pending;if(!p?.ok||!known.has(p.to)||p.from!==s.game.position||!scenario.modes.includes(p.mode)||![p.cash,p.energy,p.minutes].every(Number.isFinite)||p.cash<0||p.cash>s.game.cash||p.energy<0||p.energy>s.game.energy||p.minutes<=0||s.game.elapsed+p.minutes>scenario.deadline||!Array.isArray(p.route?.coordinates)||p.route.coordinates.length<2||!p.route.coordinates.every(validPoint))return null;}
  else if(s.game.pending)return null;
+ if(s.travelRemaining!==undefined&&(!Number.isInteger(s.travelRemaining)||s.travelRemaining<0||s.travelRemaining>20||s.travelRemaining>s.plan.length))return null;
+ if(s.draft&&(!known.has(s.draft.from)||(s.draft.to!==null&&!known.has(s.draft.to))||s.draft.from!==(s.plan.at(-1)?.to||s.game.position)))return null;
  return s;
  }catch{return null;}}
