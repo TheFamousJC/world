@@ -30,10 +30,28 @@ for e in source['elements']:
             if k in tags:props[k]=tags[k]
     features.append({'type':'Feature','properties':props,'geometry':{'type':'LineString','coordinates':[[round(p['lon'],7),round(p['lat'],7)] for p in geometry]}})
 
+# Extend the offline road network west with a bounded OSM API extract.
+west=ROOT/'assets/poland-west.osm'
+if west.exists():
+    tree=ET.parse(west).getroot()
+    nodes={n.attrib['id']:[float(n.attrib['lon']),float(n.attrib['lat'])] for n in tree.findall('node')}
+    seen_ways={f['properties']['id'] for f in features}
+    for way in tree.findall('way'):
+        identity=way.attrib['id']
+        if identity in seen_ways:continue
+        tags={t.attrib['k']:t.attrib['v'] for t in way.findall('tag')}
+        kind='road' if 'highway' in tags else 'rail' if tags.get('railway')=='rail' else None
+        refs=[n.attrib['ref'] for n in way.findall('nd')]
+        if not kind or tags.get('highway') in ['proposed','construction'] or len(refs)<2 or any(r not in nodes for r in refs):continue
+        props={'id':identity,'kind':kind,'class':tags.get('highway',''),'name':tags.get('name:en',tags.get('name',tags.get('ref',''))),'nodes':refs}
+        for k in ['oneway','access','foot','bicycle','motor_vehicle','motorcar','surface','bridge','tunnel']:
+            if k in tags:props[k]=tags[k]
+        features.append({'type':'Feature','properties':props,'geometry':{'type':'LineString','coordinates':[nodes[r] for r in refs]}})
+
 # Include actual buildings, green spaces and water polygons where the local
 # extracts contain them. Unknown heights are represented by a modest default.
 seen=set()
-for filename in ['brest.osm','brest-east.osm']:
+for filename in ['brest.osm','brest-east.osm']+(['poland-west.osm'] if west.exists() else []):
     tree=ET.parse(ROOT/'assets'/filename).getroot()
     nodes={n.attrib['id']:[float(n.attrib['lon']),float(n.attrib['lat'])] for n in tree.findall('node')}
     for way in tree.findall('way'):
@@ -49,7 +67,7 @@ for filename in ['brest.osm','brest-east.osm']:
         except ValueError:height=6
         features.append({'type':'Feature','properties':{'id':'area-'+identity,'kind':kind,'name':tags.get('name:en',tags.get('name','')),'height':min(65,max(3,height)),'heightEstimated':'height' not in tags and 'building:levels' not in tags},'geometry':{'type':'Polygon','coordinates':[[nodes[r] for r in refs]]}})
 
-data={'type':'FeatureCollection','features':features,'metadata':{'name':'Brest–Terespol frontier district','bounds':[23.53,52.04,23.77,52.16],'snapshot':source.get('osm3s',{}).get('timestamp_osm_base'),'retrieved':'2026-10-20','attribution':'© OpenStreetMap contributors','licence':'ODbL 1.0','source':'OpenStreetMap API and Overpass extracts','note':'Real reference geometry. All game services, access conditions and shelters are fictional. Building heights may be estimated.'},'stations':stations}
+data={'type':'FeatureCollection','features':features,'metadata':{'name':'Brest–Terespol frontier district','bounds':[23.32,52.015,23.77,52.16],'snapshot':source.get('osm3s',{}).get('timestamp_osm_base'),'retrieved':'2026-10-20','attribution':'© OpenStreetMap contributors','licence':'ODbL 1.0','source':'OpenStreetMap API and Overpass extracts','note':'Real reference geometry. All game services, access conditions and shelters are fictional. Building heights may be estimated.'},'stations':stations}
 out=ROOT/'public/data/region.geojson'
 out.write_text(json.dumps(data,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 counts={}

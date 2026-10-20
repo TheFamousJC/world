@@ -1,4 +1,10 @@
 export const PLACES=Object.freeze([
+  {id:'koroszczyn',name:'Koroszczyn contact',coordinates:[23.535,52.097],kind:'pickup',fictional:true,note:'Fictional mission contact in the Koroszczyn area.'},
+  {id:'kobylany',name:'Kobylany rendezvous',coordinates:[23.548,52.0415],kind:'pickup',fictional:true,note:'Fictional rendezvous in the Kobylany area.'},
+  {id:'malaszewicze',name:'Małaszewicze handoff',coordinates:[23.526,52.024],kind:'pickup',fictional:true,note:'Fictional mission handoff in the Małaszewicze area.'},
+  {id:'zalesie',name:'Zalesie safe house',coordinates:[23.367,52.038],kind:'shelter',fictional:true,note:'Fictional final safe house in the Zalesie area.'},
+  {id:'dobryn',name:'Dobryń supply contact',coordinates:[23.444,52.048],kind:'supply',fictional:true,note:'Fictional game contact.'},
+  {id:'chotylow',name:'Chotyłów relay',coordinates:[23.415,52.023],kind:'supply',fictional:true,note:'Fictional game relay.'},
   {id:'central',name:'Brest Central',coordinates:[23.6804112,52.1004334],kind:'station',note:'Mapped railway station. Services are fictional game services.'},
   {id:'polski',name:'Brest-Paleski',coordinates:[23.7102435,52.094649],kind:'station',note:'Mapped railway station.'},
   {id:'north',name:'Brest North',coordinates:[23.6540929,52.1113978],kind:'station',note:'Mapped railway station.'},
@@ -23,5 +29,14 @@ export const SCENARIOS=Object.freeze([
  {id:'no-engines',number:9,title:'Quiet streets',subtitle:'Move under your own power',difficulty:'Endurance',story:'Motorised pickups are unavailable in the district. A cycle or a carefully paced walk can reach your shelter. Watch your remaining energy.',...base,budget:16,deadline:150,start:'polski',goal:'aid',modes:['walk','cycle'],hint:'This journey stays on one side of the border. A cycle saves time; a walk saves cash.'},
  {id:'one-more-person',number:10,title:'One more person',subtitle:'The shortest journey is not your mission',difficulty:'Final challenge',story:'Collect a traveller at the riverside aid point and supplies at the cycle workshop before returning to the station pickup. Keep enough resources for the final leg.',...base,budget:48,deadline:210,start:'north',goal:'central',milestones:['aid','workshop'],hint:'Visit both marked stops before the final pickup. Compare the cost of several taxi legs with a mixed journey.'}
 ].map(Object.freeze));
-export const scenarioById=id=>SCENARIOS.find(s=>s.id===id);
+const task=(id,place,title,minutes,reward=0,energy=0)=>({id,place,title,minutes,reward,energy});
+export const CAMPAIGN=Object.freeze([
+ {start:'central',goal:'terespol',title:'Cross the frontier',story:'A courier network can get you to Zalesie. First reach Terespol before the border locks down. Collect a dispatch at the riverside aid point or workshop on the way.',closeAt:120,detours:[task('dispatch','aid','Collect the sealed dispatch',6),task('radio','workshop','Collect the radio codes',8)]},
+ {start:'terespol',goal:'koroszczyn',title:'The northern contact',story:'Your contact has moved to Koroszczyn. Visit the riverside lodge for supplies before heading north. The same cash and operation clock carry on.',detours:[task('supplies','lodge','Collect food and a cash reserve',8,20,35)]},
+ {start:'koroszczyn',goal:'kobylany',title:'Change of direction',story:'The northern pickup is cancelled. Head south to Kobylany. Your lodge contact can arrange the replacement vehicle; return for the new route card.',detours:[task('route-card','lodge','Arrange the replacement pickup',7)]},
+ {start:'kobylany',goal:'malaszewicze',title:'The freight corridor',story:'The next handoff is at Małaszewicze. Reconfirm your contact in Terespol before you enter the freight corridor. Leave enough resources for the final section.',detours:[task('confirm','terespol','Confirm the handoff code',5)]},
+ {start:'malaszewicze',goal:'zalesie',title:'The final relay',story:'Reach the safe house in Zalesie. Choose your last detour: the Chotyłów radio relay or the Dobryń supply contact. The deadline is for the whole operation.',detours:[task('relay','chotylow','Transmit the arrival signal',6),task('reserve','dobryn','Collect the final supply pack',8,10,25)]}
+].map((c,i)=>Object.freeze({...base,budget:300,deadline:720,...c,id:'nightfall-'+(i+1),campaign:'nightfall',stage:i,number:i+1,difficulty:'Section '+(i+1)+' / 5',subtitle:'Operation Nightfall · resources carry forward',hint:'Visit one amber detour marker, complete its task, then reach your checkpoint.'})));
+export const ALL_SCENARIOS=Object.freeze([...SCENARIOS,...CAMPAIGN]);
+export const scenarioById=id=>ALL_SCENARIOS.find(s=>s.id===id);
 export const placeById=id=>PLACES.find(p=>p.id===id);

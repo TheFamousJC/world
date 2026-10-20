@@ -1,8 +1,16 @@
-# Escape Atlas
+# Escape Atlas by 3Sci Labs
+
+**[▶ Play the live game](https://thefamousjc.github.io/world/)**
 
 A route-survival game: plan a journey, manage time, money and energy, and adapt when a crossing or service is unavailable.
 
 The first playable collection covers the **Brest–Terespol frontier district** with ten authored challenges. One unnamed player experience; no military or historical modes.
+
+## Operation Nightfall
+
+A five-section operation from Brest through Terespol, Koroszczyn, Kobylany and Małaszewicze to Zalesie. Begin with £300 and 12 hours. Complete one marked detour task per section; reach its location and press Complete. Cash, energy and elapsed time persist through checkpoints and reloads. The operation clock keeps running between sections; Pause stops planning time and blocks travel/actions until resumed. Go simulates actual journey time.
+
+Satellite mode optionally streams NASA GIBS archival Landsat imagery from 2000. It requires internet; vector maps and all routing remain offline. Borders, missions and transport availability are game rules, not current travel advice.
 
 ## Run locally
 
