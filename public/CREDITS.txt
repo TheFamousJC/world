@@ -1,0 +1,28 @@
+ESCAPE ATLAS 0.2 — MAP AND SOFTWARE CREDITS
+
+Game locations, events, transport services, prices, papers, pickup windows and scenarios are fiction. This is not real-world travel or border guidance.
+
+Map data: © OpenStreetMap contributors, Open Database Licence 1.0 (ODbL).
+https://www.openstreetmap.org/copyright
+https://opendatacommons.org/licenses/odbl/1-0/
+Reference extracts: OpenStreetMap map API and Overpass API, Brest–Terespol district.
+Overpass data timestamp: 2026-07-24T11:04:51Z. Retrieved 2026-10-20.
+Adaptations: filtered features, connected graph preparation, properties retained for routing,
+additional building and land-use features from local extracts. Some building heights are estimated.
+The adapted regional database is provided as data/region.geojson under ODbL.
+
+World reference geography: Natural Earth, public domain, via world-atlas/topojson.
+https://www.naturalearthdata.com/about/terms-of-use/
+https://github.com/topojson/world-atlas
+
+MapLibre GL JS 6.15.0: BSD-3-Clause.
+Copyright MapLibre contributors. Full licence: vendor/MAPLIBRE-LICENSE.txt
+https://github.com/maplibre/maplibre-gl-js
+
+Open Sans font data: SIL Open Font License 1.1.
+Full licence: fonts/FONT-LICENSE.txt
+Map glyphs from MapLibre demonstration font distribution, hosted locally in this release.
+https://github.com/googlefonts/opensans
+
+No historical or military datasets are included in this game build.
+No paid APIs, remote AI services or external map-tile servers are used at runtime.

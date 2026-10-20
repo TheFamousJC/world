@@ -1,0 +1,34 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {Network} from '../src/network.js';
+import {SCENARIOS,placeById} from '../src/scenarios.js';
+import {newGame,quoteJourney,depart,arrive,reviewArrival,advanceClock,action,makeSave,readSave} from '../src/engine.js';
+import {findWinningStrategies} from '../src/validate.js';
+import {segmentsIntersect} from '../src/geo.js';
+const network=new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url))));
+const basic=SCENARIOS[0];
+
+for(const scenario of SCENARIOS)test(`${scenario.number}: ${scenario.title} has two winning strategies and five failure guards`,()=>{
+ const winners=findWinningStrategies(scenario,network);assert.ok(winners.length>=2,'Two distinct transport strategies must work');const witness=winners[0],move=witness.steps.find(s=>s.to);let initial=newGame(scenario,'guards');if(scenario.requirePapers)initial=action(initial,scenario,'prepare').state;
+ // Invalid attempts must preserve all resources and leave the player in place.
+ const same=quoteJourney(initial,scenario,network,initial.position,scenario.modes[0]);assert.equal(same.ok,false);assert.equal(same.code,'same-place');
+ const expired=advanceClock(initial,scenario,scenario.deadline);assert.equal(expired.phase,'lost');assert.equal(quoteJourney(expired,scenario,network,move.to,move.mode).ok,false);
+ const energy=quoteJourney({...initial,energy:0},scenario,network,move.to,move.mode);assert.equal(energy.ok,false);assert.equal(energy.code,'energy');
+ const paid=scenario.modes.includes('taxi')?'taxi':'cycle',poor=quoteJourney({...initial,cash:0},scenario,network,move.to,paid);assert.equal(poor.ok,false);assert.equal(poor.code,'money');
+ const phase=quoteJourney({...initial,phase:'arrived'},scenario,network,move.to,move.mode);assert.equal(phase.ok,false);assert.equal(phase.code,'phase');assert.equal(initial.elapsed,scenario.requirePapers?15:0);assert.equal(initial.position,scenario.start);
+});
+
+test('valid transport follows mapped road geometry and crosses the actual boundary',()=>{const route=network.route(placeById('central'),placeById('terespol'),'taxi');assert.ok(route.coordinates.length>10);assert.ok(route.km>3);assert.equal(route.crossing,true);assert.equal(route.source,'OSM network');});
+test('rail routes use a separate connected rail network',()=>{const route=network.route(placeById('central'),placeById('terespol'),'train');assert.ok(route);assert.equal(route.crossing,true);assert.equal(quoteJourney(newGame(basic),basic,network,'aid','train').code,'station');});
+test('a blocked crossing never deducts time or money, even on repeated attempts',()=>{const scenario=SCENARIOS[2],s=newGame(scenario);for(let i=0;i<8;i++){const q=quoteJourney(s,scenario,network,'terespol','taxi');assert.equal(q.ok,false);assert.equal(q.code,'border');const r=depart(s,q);assert.equal(r.ok,false);assert.deepEqual(r.state,s);}assert.equal(s.cash,scenario.budget);assert.equal(s.elapsed,0);});
+test('departure and arrival are idempotent and require explicit arrival review',()=>{const s=newGame(basic,'atomic'),q=quoteJourney(s,basic,network,'aid','taxi');assert.ok(q.ok);const departed=depart(s,q).state;assert.equal(departed.cash,s.cash);assert.equal(depart(departed,q).ok,false);const arrived=arrive(departed,basic);assert.equal(arrived.cash,s.cash-q.cash);assert.equal(arrived.elapsed,q.minutes);assert.deepEqual(arrive(arrived,basic),arrived);assert.equal(arrived.phase,'arrived');assert.equal(quoteJourney(arrived,basic,network,'central','taxi').code,'phase');assert.equal(reviewArrival(arrived).phase,'planning');});
+test('pending journeys survive save / restore and settle exactly once',()=>{const state=newGame(basic,'resume'),q=quoteJourney(state,basic,network,'aid','taxi'),pending=depart(state,q).state;const saved=makeSave({game:pending,plan:[{to:'aid',mode:'taxi'}],custom:{},clockRunning:false});const restored=readSave(saved,SCENARIOS);assert.ok(restored);const settled=arrive(restored.game,basic);assert.equal(settled.cash,state.cash-q.cash);assert.deepEqual(arrive(settled,basic),settled);});
+test('documents are prepared once and are separate from border permission',()=>{const scenario=SCENARIOS[6],state=newGame(scenario);assert.equal(quoteJourney(state,scenario,network,'terespol','taxi').code,'papers');const prepared=action(state,scenario,'prepare');assert.ok(prepared.ok);assert.equal(action(prepared.state,scenario,'prepare').ok,false);assert.equal(prepared.state.cash,state.cash-4);assert.ok(quoteJourney(prepared.state,scenario,network,'terespol','taxi').ok);});
+test('the crossing opening window is evaluated at projected arrival',()=>{const scenario=SCENARIOS[3],state=newGame(scenario);const q=quoteJourney({...state,elapsed:65},scenario,network,'terespol','taxi');assert.equal(q.code,'window');assert.equal(state.elapsed,0);});
+test('milestones are required before the final pickup',()=>{const scenario=SCENARIOS[9];assert.equal(quoteJourney(newGame(scenario),scenario,network,'central','taxi').code,'objective');});
+test('rest cannot be charged at full energy and repeated contacts cannot be charged twice',()=>{const state=newGame(basic);assert.equal(action(state,basic,'rest').ok,false);const local=action(state,basic,'local');assert.ok(local.ok);assert.equal(action(local.state,basic,'local').ok,false);assert.equal(local.state.cash,state.cash-2);});
+test('planning clock never advances while travelling or after completion',()=>{const s=newGame(basic),q=quoteJourney(s,basic,network,'terespol','taxi'),pending=depart(s,q).state;assert.deepEqual(advanceClock(pending,basic,30),pending);const won=arrive(pending,basic);assert.equal(won.phase,'won');assert.deepEqual(advanceClock(won,basic,30),won);});
+test('save validation rejects malformed, mismatched and negative-resource saves',()=>{assert.equal(readSave('not json',SCENARIOS),null);assert.equal(readSave(JSON.stringify({version:99}),SCENARIOS),null);const data={game:newGame(basic),plan:[],custom:{}};data.game.cash=-1;assert.equal(readSave(makeSave(data),SCENARIOS),null);data.game.cash=10;data.plan=[{to:'unknown-place',mode:'walk'}];assert.equal(readSave(makeSave(data),SCENARIOS),null);});
+test('touching a shared border vertex is still a crossing',()=>{assert.equal(segmentsIntersect([0,0],[1,1],[1,1],[2,0]),true);assert.equal(segmentsIntersect([0,0],[1,0],[2,0],[3,0]),false);});
+test('corrupted pending payments and coordinates are not restored',()=>{const s=newGame(basic),q=quoteJourney(s,basic,network,'aid','taxi'),game=depart(s,q).state;game.pending.cash=-50;assert.equal(readSave(makeSave({game,plan:[],custom:{}}),SCENARIOS),null);game.pending.cash=q.cash;game.pending.route.coordinates[0]=[999,999];assert.equal(readSave(makeSave({game,plan:[],custom:{}}),SCENARIOS),null);});

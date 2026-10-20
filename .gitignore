@@ -1,0 +1,17 @@
+node_modules/
+dist/
+test-results/
+.env
+.env.*
+!.env.example
+*.log
+.DS_Store
+Thumbs.db
+# Retained earlier experiments and source downloads are not part of the game.
+assets/
+prototype/
+build-prototype.cjs
+check-worlds.cjs
+check-interactions.cjs
+prepare_assets.py
+preview-server.cjs
