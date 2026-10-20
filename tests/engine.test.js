@@ -3,9 +3,9 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {Network} from '../src/network.js';
 import {SCENARIOS,placeById} from '../src/scenarios.js';
-import {newGame,quoteJourney,depart,arrive,reviewArrival,advanceClock,action,makeSave,readSave} from '../src/engine.js';
+import {newGame,quoteJourney,depart,arrive,reviewArrival,advanceClock,action,makeSave,readSave,transportOptions,journeyCost} from '../src/engine.js';
 import {findWinningStrategies} from '../src/validate.js';
-import {segmentsIntersect} from '../src/geo.js';
+import {segmentsIntersect,journeyTrack} from '../src/geo.js';
 const network=new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url))));
 const basic=SCENARIOS[0];
 
@@ -32,3 +32,10 @@ test('planning clock never advances while travelling or after completion',()=>{c
 test('save validation rejects malformed, mismatched and negative-resource saves',()=>{assert.equal(readSave('not json',SCENARIOS),null);assert.equal(readSave(JSON.stringify({version:99}),SCENARIOS),null);const data={game:newGame(basic),plan:[],custom:{}};data.game.cash=-1;assert.equal(readSave(makeSave(data),SCENARIOS),null);data.game.cash=10;data.plan=[{to:'unknown-place',mode:'walk'}];assert.equal(readSave(makeSave(data),SCENARIOS),null);});
 test('touching a shared border vertex is still a crossing',()=>{assert.equal(segmentsIntersect([0,0],[1,1],[1,1],[2,0]),true);assert.equal(segmentsIntersect([0,0],[1,0],[2,0],[3,0]),false);});
 test('corrupted pending payments and coordinates are not restored',()=>{const s=newGame(basic),q=quoteJourney(s,basic,network,'aid','taxi'),game=depart(s,q).state;game.pending.cash=-50;assert.equal(readSave(makeSave({game,plan:[],custom:{}}),SCENARIOS),null);game.pending.cash=q.cash;game.pending.route.coordinates[0]=[999,999];assert.equal(readSave(makeSave({game,plan:[],custom:{}}),SCENARIOS),null);});
+
+
+test('transport picker hides cancelled services and trains away from stations',()=>{const from=placeById('central'),to=placeById('aid');assert.ok(transportOptions(basic,network,from,to).includes('walk'));assert.ok(!transportOptions(basic,network,from,to).includes('train'));assert.ok(!transportOptions(SCENARIOS[5],network,from,placeById('terespol')).includes('train'));});
+test('walking connects stations to local roads and supports a later transport change',()=>{for(const id of ['central','polski','north']){const route=network.route(placeById(id),placeById('aid'),'walk');assert.ok(route,id);assert.deepEqual(route.coordinates[0],placeById(id).coordinates);assert.deepEqual(route.coordinates.at(-1),placeById('aid').coordinates);}let state=newGame(basic,'mixed');const walk=quoteJourney(state,basic,network,'workshop','walk');assert.ok(walk.ok);state=reviewArrival(arrive(depart(state,walk).state,basic));assert.ok(quoteJourney(state,basic,network,'terespol','taxi').ok);});
+test('transport choices respect a closed crossing without removing same-side walking',()=>{const scenario=SCENARIOS[2];assert.deepEqual(transportOptions(scenario,network,placeById('aid'),placeById('terespol')),[]);assert.ok(transportOptions(scenario,network,placeById('aid'),placeById('central')).includes('walk'));assert.deepEqual(transportOptions(scenario,network,placeById('central'),placeById('terespol')),['train']);});
+test('motor transport charges walking time and energy for short boarding access',()=>{const route={km:2,access:.5,crossing:false},cost=journeyCost(route,'taxi',basic);assert.equal(cost.minutes,Math.ceil(1.5/28*60+.5/4.5*60+5));assert.equal(cost.energy,Math.ceil(1.5*.3+.5*6));assert.equal(cost.cash,Math.ceil(4+1.5*1.2));});
+test('cinematic trail ends at the traveller and never reveals the route ahead',()=>{const points=[[23,52],[23.001,52],[23.004,52]],track=journeyTrack(points);assert.deepEqual(track(0).point,points[0]);assert.deepEqual(track(1).point,points.at(-1));for(const t of [.1,.3,.6,.9]){const frame=track(t);assert.deepEqual(frame.trail.at(-1),frame.point);assert.ok(frame.trail.every(p=>p[0]<=frame.point[0]));}});

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#183e3a">
+  <meta name="theme-color" content="#07141e">
   <meta name="description" content="Plan your own way out. A route-survival game on a detailed, offline map of the Brest frontier district.">
   <meta name="escape-build" content="development">
   <title>Escape Atlas — Find your way</title>
@@ -16,7 +16,7 @@
 <body>
 <div id="loading" role="status"><div class="loading-mark">EA</div><h1>Your journey starts here.</h1><p>Opening the frontier atlas…</p><p class="small">One region. Ten challenges. Your decisions.</p></div>
 <div id="app" hidden>
-  <header class="app-header"><a class="brand" href="/" aria-label="Escape Atlas home"><span class="brand-mark">↗</span><span>ESCAPE <b>ATLAS</b></span></a><span class="edition">THE FRONTIER COLLECTION <span>01</span></span><div class="header-actions"><span id="save-status" class="saved">Saved on this device</span><button id="challenges-button" class="button secondary">Challenges <span id="completed-count">0/10</span></button><button id="settings-button" class="icon-button" aria-label="Settings">⚙</button></div></header>
+  <header class="app-header"><a class="brand" href="/" aria-label="Escape Atlas home"><span class="brand-mark">↗</span><span>ESCAPE <b>ATLAS</b></span></a><span class="edition">ROUTE SURVIVAL / <span>FRONTIER 01</span></span><div class="header-actions"><button id="focus-button" class="button secondary" aria-pressed="false">Focus map</button><span id="save-status" class="saved">Saved on this device</span><button id="challenges-button" class="button secondary">Challenges <span id="completed-count">0/10</span></button><button id="settings-button" class="icon-button" aria-label="Settings">⚙</button></div></header>
   <main class="game-layout">
     <aside class="mission-panel" aria-label="Current challenge">
       <div class="eyebrow">BREST · TERESPOL <span class="region-dot"></span></div>
@@ -30,24 +30,24 @@
       <p class="game-disclaimer">Real map. Fictional challenges.<br>Not live border or travel information.</p>
     </aside>
     <section class="play-area" aria-label="Map and route planner">
-      <div class="map-stage"><div id="map" aria-label="Interactive map of the Brest frontier district"></div>
-        <div class="map-heading"><span class="map-title">THE FRONTIER DISTRICT</span><span class="map-subtitle" id="map-detail-label">Roads, railways & crossings · offline map pack</span></div>
-        <div class="map-controls"><button id="fit-region" class="map-button" aria-label="Fit region">District</button><button id="fit-route" class="map-button" aria-label="Fit your itinerary">My route</button><button id="globe-button" class="map-button" aria-pressed="false">Globe</button><button id="tilt-button" class="map-button" aria-pressed="true">3D</button><button id="layers-button" class="map-button" aria-expanded="false">Layers</button></div>
+      <div class="map-stage"><div class="map-vignette" aria-hidden="true"></div><div id="map" aria-label="Interactive map of the Brest frontier district"></div>
+        <div class="map-heading"><span class="map-title">WORLD VIEW / FRONTIER 01</span><span class="map-subtitle" id="map-detail-label">Explore the globe · enter the district to plot your route</span></div>
+        <div class="map-controls"><button id="fit-region" class="map-button" aria-label="Fit region">Enter district</button><button id="fit-route" class="map-button" aria-label="Fit your itinerary">My route</button><button id="globe-button" class="map-button" aria-pressed="false">Globe</button><button id="follow-camera" class="map-button" aria-pressed="true">Camera: follow</button><button id="tilt-button" class="map-button" aria-pressed="true">3D</button><button id="layers-button" class="map-button" aria-expanded="false">Layers</button></div>
         <div id="layer-menu" class="layer-menu" hidden><label><input type="checkbox" data-layer="roads" checked> Roads & paths</label><label><input type="checkbox" data-layer="rail" checked> Train lines</label><label><input type="checkbox" data-layer="borders" checked> International border</label><label><input type="checkbox" data-layer="buildings" checked> Buildings</label><label><input type="checkbox" data-layer="places" checked> Places & crossings</label></div>
         <div class="map-legend"><span><i class="legend-route"></i>Your route</span><span><i class="legend-rail"></i>Rail</span><span><i class="legend-border"></i>Border</span><span class="offline-tag">● LOCAL MAP PACK</span></div>
         <div id="place-card" class="place-card" hidden aria-live="polite"><button id="close-place" class="close-button" aria-label="Close place details">×</button><span id="place-type" class="eyebrow"></span><h3 id="place-title"></h3><p id="place-note"></p><button id="add-place" class="button primary">Add to my route <span>+</span></button></div>
-        <div id="travel-banner" class="travel-banner" hidden role="status"><span class="travel-dot"></span><div><strong id="travel-title"></strong><span id="travel-progress-label"></span></div><progress id="travel-progress" max="100" value="0" aria-label="Journey progress"></progress></div>
+        <div id="travel-banner" class="travel-banner" hidden role="status"><span class="travel-dot"></span><span id="travel-stage" class="eyebrow">DEPARTURE</span><div><strong id="travel-title"></strong><span id="travel-progress-label"></span></div><progress id="travel-progress" max="100" value="0" aria-label="Journey progress"></progress></div>
         <div id="map-fallback" class="map-fallback" hidden><h2>The 3D map could not start</h2><p>Your browser may have WebGL disabled. The route planner and scenario rules still work. Try a current browser with graphics acceleration enabled.</p></div>
       </div>
       <section class="route-panel" aria-label="Your route">
-        <div class="route-top"><div><span class="eyebrow">YOUR PLAN</span><h2>Make your next move.</h2></div><div class="route-add"><label class="sr-only" for="destination">Destination</label><select id="destination" aria-label="Destination"></select><label class="sr-only" for="default-mode">Transport</label><select id="default-mode" aria-label="Default transport"></select><button id="add-stop" class="button secondary">Add stop +</button></div></div>
-        <div id="route-legs" class="route-legs"></div>
+        <div class="route-top"><div><span class="eyebrow">YOUR PLAN</span><h2>Plot your escape.</h2></div><div class="route-add"><label class="sr-only" for="destination">Destination</label><select id="destination" aria-label="Destination"></select><label class="sr-only" for="default-mode">Transport</label><select id="default-mode" aria-label="Default transport"></select><button id="add-stop" class="button secondary">Add stop +</button></div></div>
+        <p id="mode-note" class="mode-note"></p><div id="route-legs" class="route-legs"></div>
         <div class="departure-row"><div id="route-estimate" class="route-estimate">Add a destination to begin.</div><button id="review-next" class="button secondary" hidden>Review next leg</button><button id="go-button" class="button primary go-button" disabled>Go <span>→</span></button></div>
         <div id="message" class="message" aria-live="polite"></div>
       </section>
     </section>
   </main>
-  <footer class="app-footer"><span>Escape Atlas · Early access 0.2</span><span id="offline-status">Ready to explore</span><button id="about-button" class="text-button">Map sources & credits</button></footer>
+  <footer class="app-footer"><span>Escape Atlas · Early access 0.3</span><span id="offline-status">Ready to explore</span><button id="about-button" class="text-button">Map sources & credits</button></footer>
 </div>
 
 <dialog id="challenge-dialog" class="wide-dialog"><div class="dialog-heading"><div><span class="eyebrow">THE FRONTIER COLLECTION</span><h2>Ten ways to find your way.</h2><p>Different constraints. One detailed district. Your plan.</p></div><button class="close-button" data-close aria-label="Close challenges">×</button></div><div id="challenge-grid" class="challenge-grid"></div></dialog>

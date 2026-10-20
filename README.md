@@ -12,7 +12,15 @@ Install Node.js 22 or newer. No package installation, accounts or API keys are r
 npm run dev
 ```
 
-Open http://127.0.0.1:4173. Click a map location or select a stop, choose transport for each leg, then press **Go**. Each journey animates, settles its cost once, and requires arrival review before the next departure. Local knowledge provides clues, scenario notices and travel papers. Runs and results save on your device.
+Open http://127.0.0.1:4173. Select the frontier beacon on the globe to fly into the district. Click a map location or select a stop, choose transport for each leg, then press **Go**. Each journey animates, settles its cost once, and requires arrival review before the next departure. Local knowledge provides clues, scenario notices and travel papers. Runs and results save on your device.
+
+## Dashboard update (0.3)
+
+The globe fills the desktop viewport behind floating mission and route panels. Focus map hides those panels; on phones the map appears first, with planning below. Travel uses a departure overview, moving follow camera and arrival overview; switch Camera to overview for a fixed route view or enable reduced motion.
+
+Transport choices reflect each leg’s mapped connections, station requirements, cancellations and hard border closures. Walking remains selectable when a foot connection exists; resources and opening windows are still checked on departure. Motor journeys include short walking access to and from their boarding network. Those connectors are approximate map anchors, not verified entrances. Add intermediate stops to walk out of a station and switch transport.
+
+Dashboard and camera ideas were studied from the supplied gods-eye-view ZIP; the styling and MapLibre camera implementation are original. No restricted imagery, datasets, Cesium application or external services were imported.
 
 ## What is playable
 

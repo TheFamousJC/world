@@ -14,6 +14,14 @@ Build a polished route-survival game around one detailed Brest–Terespol distri
 - Desktop/mobile layouts, reduced motion and production offline caching.
 - Automated rule tests, two simulated winning strategies per scenario, browser journey and mobile checks, static build and CI.
 
+## Dashboard refinement (0.3, implemented)
+
+- Globe-first launch, clickable region beacon, floating mission/route panels and a focus-map control.
+- Dark map palette, high-contrast route trails, status signals and mobile map-first layout.
+- Three-phase travel camera, follow/overview choice, accurate revealed trail and reduced motion.
+- Leg-specific transport choices and improved station-to-foot-network anchoring; approximate walking boarding access included in quotes.
+- Existing deterministic engine, offline maps, saves and departure locking retained.
+
 ## Milestone 2 — playtesting and deeper simulation
 
 - Observe first-time players: map readability, objective comprehension, clues, route building and feedback.
