@@ -10,4 +10,5 @@ const hash=createHash('sha256');for(const file of files)hash.update(fs.readFileS
 const html=path.join(out,'index.html');fs.writeFileSync(html,fs.readFileSync(html,'utf8').replace('content="development"','content="production"'));
 const worker=path.join(out,'sw.js');fs.writeFileSync(worker,fs.readFileSync(worker,'utf8').replace('BUILD_ID',buildId));
 for(const folder of ['data','src','vendor'])for(const f of fs.readdirSync(path.join(out,folder),{recursive:true})){const file=path.join(out,folder,f);if(fs.statSync(file).isFile()&&/\.(json|geojson|js|mjs|css)$/.test(file)){const buffer=fs.readFileSync(file);fs.writeFileSync(file+'.gz',zlib.gzipSync(buffer,{level:9}));}}
+fs.writeFileSync(path.join(out,'.nojekyll'),'');
 console.log('Built static game in dist/ (no package installation or paid services required).');

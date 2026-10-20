@@ -65,7 +65,7 @@ npm run build
 npm run preview
 ```
 
-The production build is static `dist/`. Serve it over HTTPS or localhost for offline caching. Once the footer says “Offline map pack ready”, the game can reload without a connection. Device storage may be cleared by the browser. Root-path hosting is currently required.
+The production build is static `dist/`. Serve it over HTTPS or localhost for offline caching. Once the footer says “Offline map pack ready”, the game can reload without a connection. Device storage may be cleared by the browser. The same build supports root hosting and project paths such as `/world/`. All game assets and offline caches stay inside the site path.
 
 `npm run test:browser` additionally needs an existing Playwright installation and Chromium/Edge. Set `PLAYWRIGHT_NODE_PATH`, `BROWSER_EXECUTABLE` and `GAME_URL` for your machine. `TEST_OFFLINE=1` tests a production build's offline reload. It does not download a browser or install dependencies.
 
@@ -81,6 +81,23 @@ The production build is static `dist/`. Serve it over HTTPS or localhost for off
 - `scripts/prepare-region.py`: optional source-data compilation. Normal development uses the committed map pack and needs no Python.
 
 The OSM-derived database is redistributed under ODbL with attribution. MapLibre and fonts retain their respective licences. Original application source has no open-source licence grant yet.
+
+## GitHub Pages deployment
+
+`.github/workflows/pages.yml` tests, builds and deploys `dist/` after every push to `main`. It also supports manual runs from the Actions tab. Configure the repository under **Settings → Pages → Source → GitHub Actions**. The workflow uses GitHub's Pages artifact and deployment actions; no hosting secret or paid service is required.
+
+Live game: https://thefamousjc.github.io/world/
+
+To test a production build under the same project path in PowerShell:
+
+```powershell
+npm run build
+$env:BASE_PATH='/world/'
+$env:PORT='4178'
+npm run preview
+```
+
+Open http://127.0.0.1:4178/world/. Remove the temporary `BASE_PATH` environment variable when returning to root-path development. The normal development server still defaults to `/`. Browser saves are per device and origin; localhost progress does not transfer automatically to the public site.
 
 ## Budget and mobile
 

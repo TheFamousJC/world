@@ -7,16 +7,16 @@
   <meta name="description" content="Plan your own way out. A route-survival game on a detailed, offline map of the Brest frontier district.">
   <meta name="escape-build" content="development">
   <title>Escape Atlas — Find your way</title>
-  <link rel="icon" href="/icon.svg" type="image/svg+xml">
-  <link rel="manifest" href="/manifest.webmanifest">
-  <link rel="stylesheet" href="/vendor/maplibre-gl.css">
-  <link rel="stylesheet" href="/app.css">
-  <script type="module" src="/src/app.js"></script>
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./vendor/maplibre-gl.css">
+  <link rel="stylesheet" href="./app.css">
+  <script type="module" src="./src/app.js"></script>
 </head>
 <body>
 <div id="loading" role="status"><div class="loading-mark">EA</div><h1>Your journey starts here.</h1><p>Opening the frontier atlas…</p><p class="small">One region. Ten challenges. Your decisions.</p></div>
 <div id="app" hidden>
-  <header class="app-header"><a class="brand" href="/" aria-label="Escape Atlas home"><span class="brand-mark">↗</span><span>ESCAPE <b>ATLAS</b></span></a><span class="edition">ESCAPE OPERATIONS / <span>FRONTIER 01</span></span><div class="header-actions"><button id="focus-button" class="button secondary" aria-pressed="false">Focus map</button><span id="save-status" class="saved">Saved on this device</span><button id="challenges-button" class="button secondary">Challenges <span id="completed-count">0/10</span></button><button id="settings-button" class="icon-button" aria-label="Settings">⚙</button></div></header>
+  <header class="app-header"><a class="brand" href="./" aria-label="Escape Atlas home"><span class="brand-mark">↗</span><span>ESCAPE <b>ATLAS</b></span></a><span class="edition">ESCAPE OPERATIONS / <span>FRONTIER 01</span></span><div class="header-actions"><button id="focus-button" class="button secondary" aria-pressed="false">Focus map</button><span id="save-status" class="saved">Saved on this device</span><button id="challenges-button" class="button secondary">Challenges <span id="completed-count">0/10</span></button><button id="settings-button" class="icon-button" aria-label="Settings">⚙</button></div></header>
   <main class="game-layout">
     <aside class="mission-panel" aria-label="Current challenge">
       <div class="eyebrow">BREST · TERESPOL <span class="region-dot"></span></div>
@@ -60,6 +60,6 @@
 <dialog id="settings-dialog"><div class="dialog-heading"><h2>Make yourself comfortable.</h2><button class="close-button" data-close aria-label="Close settings">×</button></div><label class="setting"><span><strong>Reduce motion</strong><small>Shorten travel and camera animations.</small></span><input id="reduce-motion" type="checkbox"></label><p class="muted">While planning, one real second uses one second on your countdown. Go travels your route and simulates each leg’s journey time. Hidden tabs do not consume planning time.</p><p class="muted">Runs and results stay on this device. No account, paid APIs or AI calls are needed.</p></dialog>
 <dialog id="journal-dialog"><div class="dialog-heading"><h2>Your journey, step by step.</h2><button class="close-button" data-close aria-label="Close journey log">×</button></div><div id="journal-list"></div></dialog>
 <dialog id="result-dialog"><div id="result-icon" class="result-icon">↗</div><span class="eyebrow" id="result-eyebrow">JOURNEY COMPLETE</span><h2 id="result-title">You made it.</h2><p id="result-summary"></p><div class="dialog-actions"><button id="result-next" class="button primary">Next challenge →</button><button id="result-retry" class="button secondary">Try another strategy</button><button class="button text" data-close>Review my journey</button></div></dialog>
-<dialog id="about-dialog"><div class="dialog-heading"><h2>A real map. A fictional journey.</h2><button class="close-button" data-close aria-label="Close credits">×</button></div><p>Detailed map coverage: the Brest–Terespol frontier district. Roads, railways, waterways and some buildings come from OpenStreetMap; the surrounding globe uses Natural Earth reference geography.</p><p>All scenarios, pickup points, transport services, opening windows, prices and travel documents are game fiction. Shelter and supply locations are invented. This game does not establish real-world access, services or safety.</p><p>OSM data snapshot: 24 July 2026; retrieved 20 October 2026. Building heights are approximate where the source has no height.</p><p><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors · ODbL</a> · <a href="/CREDITS.txt" target="_blank">Full licences and attribution</a></p><p>MapLibre GL JS 6.15.0 · Open Sans · Natural Earth. No remote map service is required.</p></dialog>
+<dialog id="about-dialog"><div class="dialog-heading"><h2>A real map. A fictional journey.</h2><button class="close-button" data-close aria-label="Close credits">×</button></div><p>Detailed map coverage: the Brest–Terespol frontier district. Roads, railways, waterways and some buildings come from OpenStreetMap; the surrounding globe uses Natural Earth reference geography.</p><p>All scenarios, pickup points, transport services, opening windows, prices and travel documents are game fiction. Shelter and supply locations are invented. This game does not establish real-world access, services or safety.</p><p>OSM data snapshot: 24 July 2026; retrieved 20 October 2026. Building heights are approximate where the source has no height.</p><p><a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">© OpenStreetMap contributors · ODbL</a> · <a href="./CREDITS.txt" target="_blank">Full licences and attribution</a></p><p>MapLibre GL JS 6.15.0 · Open Sans · Natural Earth. No remote map service is required.</p></dialog>
 <noscript>This game needs JavaScript. Its maps and game rules run in your browser.</noscript>
 </body></html>
