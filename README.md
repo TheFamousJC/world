@@ -14,6 +14,10 @@ npm run dev
 
 Open http://127.0.0.1:4173. Enter the district from the globe, click a destination and choose one of the available transport cards. The leg appears immediately under **Plot your escape**. Repeat for more stops, then press **Go** to travel the plan. Click an existing planned stop again to remove it and every leg after it. Planning consumes real seconds; travel simulates the quoted journey time. Local knowledge, saving and reduced motion remain available.
 
+## Deadline clarity (0.6.1)
+
+Equal-size mission clocks are labelled **Time to reach safety** and **Border closes in**. The border clock appears only in scenarios with a scheduled closure. Closing window now uses a plain-language extraction briefing that explains both deadlines. The styling has a spy-thriller tone without changing the civilian game rules.
+
 ## Simplified planning (0.6)
 
 Click a map destination. A transport chooser shows available modes with time and fare; selecting a mode immediately adds the leg under **Plot your escape**. Click another destination to continue, or press the single **Go** button to travel the entire current plan. Clicking an existing planned stop (or its remove button) truncates the route at that stop, preserving earlier legs. The player stays in their actual location.

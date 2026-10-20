@@ -1,6 +1,6 @@
 {
   "name": "escape-atlas",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "private": true,
   "type": "module",
   "description": "Offline-first route-survival game in the Brest frontier district",

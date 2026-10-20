@@ -16,15 +16,19 @@
 <body>
 <div id="loading" role="status"><div class="loading-mark">EA</div><h1>Your journey starts here.</h1><p>Opening the frontier atlas…</p><p class="small">One region. Ten challenges. Your decisions.</p></div>
 <div id="app" hidden>
-  <header class="app-header"><a class="brand" href="/" aria-label="Escape Atlas home"><span class="brand-mark">↗</span><span>ESCAPE <b>ATLAS</b></span></a><span class="edition">ROUTE SURVIVAL / <span>FRONTIER 01</span></span><div class="header-actions"><button id="focus-button" class="button secondary" aria-pressed="false">Focus map</button><span id="save-status" class="saved">Saved on this device</span><button id="challenges-button" class="button secondary">Challenges <span id="completed-count">0/10</span></button><button id="settings-button" class="icon-button" aria-label="Settings">⚙</button></div></header>
+  <header class="app-header"><a class="brand" href="/" aria-label="Escape Atlas home"><span class="brand-mark">↗</span><span>ESCAPE <b>ATLAS</b></span></a><span class="edition">ESCAPE OPERATIONS / <span>FRONTIER 01</span></span><div class="header-actions"><button id="focus-button" class="button secondary" aria-pressed="false">Focus map</button><span id="save-status" class="saved">Saved on this device</span><button id="challenges-button" class="button secondary">Challenges <span id="completed-count">0/10</span></button><button id="settings-button" class="icon-button" aria-label="Settings">⚙</button></div></header>
   <main class="game-layout">
     <aside class="mission-panel" aria-label="Current challenge">
       <div class="eyebrow">BREST · TERESPOL <span class="region-dot"></span></div>
       <div class="mission-kicker"><span id="mission-number">01</span><span id="mission-difficulty" class="pill">First steps</span></div>
       <h1 id="mission-title">Last departure</h1><p id="mission-subtitle" class="mission-subtitle"></p><p id="mission-story" class="story"></p>
       <div class="objective"><span class="small muted">YOUR OBJECTIVE</span><strong id="mission-goal"></strong><div id="milestones"></div></div>
-      <div class="resources" aria-label="Resources"><div><span class="resource-label">◷ TIME LEFT</span><strong id="time-left"></strong><button id="clock-button" class="clock-button">Start clock</button></div><div><span class="resource-label">£ CASH</span><strong id="cash-left"></strong><span class="resource-foot">Spend carefully</span></div><div><span class="resource-label">♡ ENERGY</span><strong id="energy-left"></strong><span class="resource-foot">Rest to recover</span></div></div>
-      <div id="crossing-window" class="crossing-window" hidden><span class="eyebrow">CROSSING DEADLINE</span><p id="crossing-countdown"></p></div><div class="position"><span class="position-dot"></span><div><span class="small muted">YOU ARE HERE</span><strong id="current-place"></strong></div></div>
+      <div class="deadline-timers" aria-label="Mission deadlines">
+        <div class="deadline-card safety-deadline"><span class="resource-label">Time to reach safety</span><strong id="time-left"></strong><span class="deadline-note">Reach your contact before this runs out.</span><button id="clock-button" class="clock-button">Pause</button></div>
+        <div id="crossing-window" class="deadline-card border-deadline" hidden><span class="resource-label">Border closes in</span><strong id="crossing-countdown"></strong><span id="crossing-note" class="deadline-note">Finish your border-crossing leg before this runs out.</span></div>
+      </div>
+      <div class="resources" aria-label="Supplies"><div><span class="resource-label">£ CASH</span><strong id="cash-left"></strong><span class="resource-foot">Spend carefully</span></div><div><span class="resource-label">♡ ENERGY</span><strong id="energy-left"></strong><span class="resource-foot">Rest to recover</span></div></div>
+      <div class="position"><span class="position-dot"></span><div><span class="small muted">YOU ARE HERE</span><strong id="current-place"></strong></div></div>
       <button id="knowledge-button" class="button secondary full">Local knowledge <span>↗</span></button><button id="rest-button" class="button text full">Rest & eat <span>£6 · 20 min</span></button>
       <div class="mission-bottom"><button id="restart-button" class="text-button">Restart challenge</button><button id="journal-button" class="text-button">Journey log</button></div>
       <p class="game-disclaimer">Real map. Fictional challenges.<br>Not live border or travel information.</p>
@@ -47,7 +51,7 @@
       </section>
     </section>
   </main>
-  <footer class="app-footer"><span>Escape Atlas · Early access 0.6</span><span id="offline-status">Ready to explore</span><button id="about-button" class="text-button">Map sources & credits</button></footer>
+  <footer class="app-footer"><span>Escape Atlas · Early access 0.6.1</span><span id="offline-status">Ready to explore</span><button id="about-button" class="text-button">Map sources & credits</button></footer>
 </div>
 
 <dialog id="transport-dialog" aria-labelledby="transport-title"><div class="dialog-heading"><div><span class="eyebrow">CHOOSE TRANSPORT</span><h2 id="transport-title"></h2><p id="transport-from"></p></div><button id="cancel-draft" class="close-button" aria-label="Cancel destination">×</button></div><div id="transport-options"></div><p id="transport-note" class="muted"></p></dialog>
