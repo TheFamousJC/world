@@ -31,6 +31,13 @@ Build a polished route-survival game around one detailed Brest–Terespol distri
 - Batch travel re-checks each departure, can stop after the current leg, and restores pending travel without repeat charges.
 - No teleporting between selected points; the route stays connected to the scenario position.
 
+## Indirect journeys (0.5, implemented)
+
+- Every scenario requires a meaningful intermediate stop, including custom points, at least 250 m from both endpoints.
+- Direct departures to the goal are blocked, without charging travel resources.
+- Guided walking-plus-taxi run lets the player choose the transfer point.
+- Costs use each leg’s mapped geometry and service waits; no arbitrary detour multiplier.
+
 ## Milestone 2 — playtesting and deeper simulation
 
 - Observe first-time players: map readability, objective comprehension, clues, route building and feedback.

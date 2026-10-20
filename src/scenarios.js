@@ -10,7 +10,7 @@ export const PLACES=Object.freeze([
   {id:'lodge',name:'Riverside lodge',coordinates:[23.615,52.0805],kind:'shelter',fictional:true,note:'Fictional game location.'},
   {id:'pickup',name:'Northern pickup',coordinates:[23.677,52.127],kind:'pickup',fictional:true,note:'Fictional pickup point.'}
 ]);
-const base={budget:60,deadline:180,energy:100,border:'open',modes:['walk','cycle','taxi','bus','train'],closedModes:[],requirePapers:false,milestones:[],crossingDelay:8,closeAt:null};
+const base={minIntermediateKm:.25,budget:60,deadline:180,energy:100,border:'open',modes:['walk','cycle','taxi','bus','train'],closedModes:[],requirePapers:false,milestones:[],crossingDelay:8,closeAt:null};
 export const SCENARIOS=Object.freeze([
  {id:'last-departure',number:1,title:'Last departure',subtitle:'The clock is your opponent',difficulty:'First steps',story:'Your onward pickup leaves Terespol in three hours. Start at Brest Central, compare your options and reach the other station with time to spare.',...base,start:'central',goal:'terespol',hint:'A taxi trades money for time. A shuttle has a boarding wait. Check the railway before relying on it.'},
  {id:'small-change',number:2,title:'Small change',subtitle:'Every pound has a purpose',difficulty:'Resourceful',story:'You have £18 and one afternoon. A costly detour could strand you, but the cheapest option may drain your energy.',...base,budget:18,deadline:210,start:'central',goal:'terespol',hint:'Cycling and the shuttle preserve cash. Walking is free but costs stamina and time.'},

@@ -14,6 +14,10 @@ npm run dev
 
 Open http://127.0.0.1:4173. Select the frontier beacon on the globe to fly into the district. Click your current position (or last planned stop), then click any destination within the detailed district. Choose transport to see time, money and energy. Press **Go now** to travel through the selected stop, or **Continue planning** to add another leg. For a saved plan, choose **Next leg only**, **Through stop…**, or **Entire planned route**, then **Go**. Each leg is checked and charged once; batch travel stops if the next leg fails. Local knowledge provides clues, scenario notices and travel papers. Runs and results save on your device.
 
+## Indirect journeys (0.5)
+
+Every challenge requires a completed intermediate stop at least 250 metres from both the start and goal. Direct start-to-goal departures are unavailable. The stop may be a custom map point; a token waypoint beside the start does not count. Costs remain derived from actual mapped legs, boarding waits, walking access and crossing delays. Choose **New walking + taxi walkthrough** to start a guided Brest–Terespol run while choosing the intermediate point yourself.
+
 ## Map-first planning update (0.4)
 
 Planning time starts on your first map selection. Free map clicks retain their coordinates, with approximate local road access; mapped water and unconnected points show no route. Points within roughly 50 metres of a named game location select that location so its objective remains usable. Coverage is still one district.
