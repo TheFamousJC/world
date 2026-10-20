@@ -12,7 +12,13 @@ Install Node.js 22 or newer. No package installation, accounts or API keys are r
 npm run dev
 ```
 
-Open http://127.0.0.1:4173. Select the frontier beacon on the globe to fly into the district. Click your current position (or last planned stop), then click any destination within the detailed district. Choose transport to see time, money and energy. Press **Go now** to travel through the selected stop, or **Continue planning** to add another leg. For a saved plan, choose **Next leg only**, **Through stop…**, or **Entire planned route**, then **Go**. Each leg is checked and charged once; batch travel stops if the next leg fails. Local knowledge provides clues, scenario notices and travel papers. Runs and results save on your device.
+Open http://127.0.0.1:4173. Enter the district from the globe, click a destination and choose one of the available transport cards. The leg appears immediately under **Plot your escape**. Repeat for more stops, then press **Go** to travel the plan. Click an existing planned stop again to remove it and every leg after it. Planning consumes real seconds; travel simulates the quoted journey time. Local knowledge, saving and reduced motion remain available.
+
+## Simplified planning (0.6)
+
+Click a map destination. A transport chooser shows available modes with time and fare; selecting a mode immediately adds the leg under **Plot your escape**. Click another destination to continue, or press the single **Go** button to travel the entire current plan. Clicking an existing planned stop (or its remove button) truncates the route at that stop, preserving earlier legs. The player stays in their actual location.
+
+The countdown now includes seconds: one real planning second consumes one game second. While travelling, the countdown animates the quoted simulated journey time; settlement still charges that duration only once. Default animations take 18–28 seconds per leg; reduced motion remains available. Hidden tabs pause planning time.
 
 ## Clarity update (0.5.1)
 

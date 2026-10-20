@@ -38,6 +38,14 @@ Build a polished route-survival game around one detailed Brest–Terespol distri
 - Guided walking-plus-taxi run lets the player choose the transfer point.
 - Costs use each leg’s mapped geometry and service waits; no arbitrary detour multiplier.
 
+## Simplified interaction (0.6, implemented)
+
+- Click destination, choose a priced transport card, and automatically append the leg.
+- One Go button travels the current plan; stop-after-this-leg is available in transit.
+- Click a planned stop again to remove that leg and its downstream route.
+- Real-second planning countdown; simulated quoted time shown during travel and charged once at arrival.
+- Slower 18–28 second animations with reduced-motion support.
+
 ## Milestone 2 — playtesting and deeper simulation
 
 - Observe first-time players: map readability, objective comprehension, clues, route building and feedback.

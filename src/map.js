@@ -1,4 +1,5 @@
 import * as maplibregl from '../vendor/maplibre-gl.mjs';
+import {animationDuration} from './planning.js';
 import {PLACES} from './scenarios.js';
 import {journeyTrack} from './geo.js';
 
@@ -39,16 +40,17 @@ export class AtlasMap{
 
  updateView(){const world=this.map.getZoom()<9;document.body.classList.toggle('world-view',world);document.getElementById('globe-button').setAttribute('aria-pressed',String(world));document.getElementById('map-detail-label').textContent=world?'Choose the frontier beacon to begin':'LOCAL MAP PACK / ROADS · RAIL · BORDER CROSSINGS';if(this.beacon)this.beacon.getElement().style.display=world?'':'none';for(const {button} of this.markers.values())button.style.display=!world&&this.layers.places?'':'none';}
  padding(){return innerWidth>900&&!document.body.classList.contains('focus-map')?{top:110,bottom:90,left:310,right:370}:{top:100,bottom:80,left:35,right:35};}
- fitRegion(reduced=false){this.map.resize();this.map.setProjection({type:'globe'});this.map.fitBounds([[23.59,52.065],[23.725,52.13]],{padding:this.padding(),pitch:35,bearing:-12,duration:reduced?0:1700,essential:false});}
- fitRoute(plan,position,reduced=false){this.map.resize();const coordinates=[this.find(position)?.coordinates,...plan.map(l=>this.find(l.to)?.coordinates)].filter(Boolean);if(!coordinates.length)return;const bounds=new maplibregl.LngLatBounds(coordinates[0],coordinates[0]);coordinates.forEach(p=>bounds.extend(p));this.map.setProjection({type:'globe'});this.map.fitBounds(bounds,{padding:this.padding(),maxZoom:15.4,duration:reduced?0:1100});}
+ frame(points,{duration=0,maxZoom=15.5,pitch=35,bearing=-12}={}){this.map.resize();this.map.setProjection({type:'mercator'});const xs=points.map(p=>p[0]),ys=points.map(p=>p[1]),west=Math.min(...xs),east=Math.max(...xs),south=Math.min(...ys),north=Math.max(...ys),padding=this.padding(),canvas=this.map.getCanvas(),merc=lat=>Math.log(Math.tan(Math.PI/4+lat*Math.PI/360))/(2*Math.PI),dx=Math.max(.000001,(east-west)/360),dy=Math.max(.000001,merc(north)-merc(south)),width=Math.max(120,canvas.clientWidth-padding.left-padding.right),height=Math.max(120,canvas.clientHeight-padding.top-padding.bottom),zoom=Math.min(maxZoom,Math.log2(Math.min(width/(512*dx),height/(512*dy)))-.2);this.map.easeTo({center:[(west+east)/2,(south+north)/2],zoom,padding,pitch,bearing,duration});}
+ fitRegion(reduced=false){this.frame([[23.59,52.065],[23.725,52.13]],{duration:reduced?0:1700});}
+ fitRoute(plan,position,reduced=false){const points=[this.find(position)?.coordinates,...plan.map(l=>this.find(l.to)?.coordinates)].filter(Boolean);if(points.length)this.frame(points,{duration:reduced?0:1100,maxZoom:15.4});}
  globe(reduced=false){this.map.resize();this.map.setProjection({type:'globe'});this.map.easeTo({center:[23.65,36],zoom:innerWidth>900?1.65:1.3,pitch:0,bearing:0,padding:this.padding(),duration:reduced?0:1800});}
  tilt(on,reduced=false){this.map.easeTo({pitch:on?52:0,bearing:on?-12:0,duration:reduced?0:650});}
- async animate(pending,reduced,onProgress){if(!this.ready){onProgress(1,'ARRIVAL');return;}this.map.stop();this.map.setProjection({type:'globe'});const coords=pending.route.coordinates,track=journeyTrack(coords),duration=reduced?220:8200;
- const bounds=new maplibregl.LngLatBounds(coords[0],coords[0]);coords.forEach(p=>bounds.extend(p));this.map.fitBounds(bounds,{padding:this.padding(),maxZoom:15.5,pitch:reduced?0:48,duration:reduced?0:1100});
- let lastCamera=0;await new Promise(resolve=>{const start=performance.now();const frame=now=>{const progress=Math.min(1,(now-start)/duration),t=reduced?progress:progress<.16?0:(progress-.16)/.84,{point:p,trail}=track(t);this.map.getSource('traveller').setData(point(p));this.map.getSource('travel').setData(line(trail));const access=(pending.route.accessStart||0)/pending.route.km,exit=(pending.route.accessEnd||0)/pending.route.km;const stage=progress<.16?'DEPARTURE':t<access&&pending.mode!=='walk'?'WALK TO BOARDING':t>1-exit&&pending.mode!=='walk'?'FINAL WALK':t>.88?'APPROACHING DESTINATION':'EN ROUTE';onProgress(t,stage);
+ async animate(pending,reduced,onProgress){if(!this.ready){onProgress(1,'ARRIVAL');return;}this.map.stop();this.map.setProjection({type:'mercator'});const coords=pending.route.coordinates,track=journeyTrack(coords),duration=animationDuration(pending.route.km,reduced);
+ this.frame(coords,{maxZoom:15.5,pitch:reduced?0:48,duration:reduced?0:1100});
+ let lastCamera=0;await new Promise(resolve=>{const start=performance.now();const frame=now=>{const progress=Math.min(1,(now-start)/duration),t=reduced?progress:progress<.16?0:(progress-.16)/.84,{point:p,trail}=track(t);this.map.getSource('traveller').setData(point(p));this.map.getSource('travel').setData(line(trail));const access=(pending.route.accessStart||0)/pending.route.km,exit=(pending.route.accessEnd||0)/pending.route.km;const stage=progress<.16?'DEPARTURE':t<access&&pending.mode!=='walk'?'WALK TO BOARDING':t>1-exit&&pending.mode!=='walk'?'FINAL WALK':t>.88?'APPROACHING DESTINATION':'EN ROUTE';onProgress(t,stage,progress);
  if(!reduced&&this.follow&&progress>.16&&now-lastCamera>45){lastCamera=now;this.map.jumpTo({center:track(Math.min(1,t+.018)).point,zoom:14.7+Math.sin(t*Math.PI)*.6,pitch:48+Math.sin(t*Math.PI)*7,bearing:-18+t*30,padding:this.padding()});}
  if(progress<1)requestAnimationFrame(frame);else resolve();};requestAnimationFrame(frame);});
- this.map.getSource('traveller').setData(empty());onProgress(1,'ARRIVED');this.map.fitBounds(bounds,{padding:this.padding(),maxZoom:15.3,pitch:35,bearing:-12,duration:reduced?0:900});
+ this.map.getSource('traveller').setData(empty());onProgress(1,'ARRIVED');this.frame(coords,{maxZoom:15.3,pitch:35,bearing:-12,duration:reduced?0:900});
  }
  reframe(reduced=false){this.map.resize();this.map.easeTo({padding:this.padding(),duration:reduced?0:500});}
  resize(){this.map.resize();}
