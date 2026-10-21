@@ -2,6 +2,10 @@
 
 Updated 21 October 2026 against version 0.12.2.
 
+## Current priority Browser gameplay
+
+Prioritise the online browser experience before installation work: dependable route decisions, readable map and journey graphics, clear mission feedback and a consistent desktop/mobile interface. Version 0.13.0 addresses selected travel sections, matching estimates and visible mobile feedback. Continue with full-story playtesting and observed UX problems before adding content. The home-screen phases below remain the subsequent release checklist.
+
 ## Release goal
 
 Make Escape Atlas dependable and enjoyable as a game launched from an Android or iPhone home screen. A player should be able to install it, understand the rules, download a story, finish all five operations offline and return later without losing progress.

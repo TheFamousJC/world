@@ -82,3 +82,59 @@
 
 @media(max-width:760px){.mobile-missions .mission-task>span{color:#e3f0f2}.mobile-missions .mission-task small{color:#abc6cf}}
 @media(max-width:760px){.header-actions #tutorial-button{display:inline-flex;align-items:center;justify-content:center}}
+/* Gameplay clarity: a calm control surface with one clear departure decision. */
+:root{--atlas-mint:#8ce8ce;--atlas-ink:#081b26;--atlas-muted:#a9c7cf}
+.play-context{padding:0 0 10px;margin:0 0 10px;border-bottom:1px solid #355462}
+.play-status{display:inline-flex;align-items:center;gap:6px;color:var(--atlas-mint);font:600 9px/1.4 ui-monospace,monospace;letter-spacing:1.2px}
+.play-status:before{content:'';width:6px;height:6px;border-radius:50%;background:currentColor;box-shadow:0 0 10px #8ce8c955}
+#active-objective{font-size:12px;color:#e2f0f2;line-height:1.5;margin:5px 0 0}
+.game-paused .play-status{color:#ffd095}.game-paused .play-status:before{box-shadow:none}
+.travelling .play-status{color:#92cfff}
+.route-estimate .estimate-label{display:block;font:9px/1.4 ui-monospace,monospace;letter-spacing:.7px;color:#a9c7cf}
+.route-estimate b{display:block;font-size:19px;font-weight:600;line-height:1.5;font-variant-numeric:tabular-nums;color:#e0fff2!important}
+.route-estimate b span{color:#6e939f;padding:0 4px}
+.route-estimate small{display:block;color:#a9c7cf;line-height:1.5;font-size:10px}
+.go-button{box-shadow:0 3px 14px #65d8b71b;transition:background .15s,box-shadow .15s}
+.go-button:hover:enabled{box-shadow:0 3px 22px #65d8b73d}
+.go-button:disabled{box-shadow:none}
+.settings-links{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0}
+.milestone,.milestone.done{color:#e0eded}
+.route-leg{border-radius:8px;background:linear-gradient(120deg,#17333f,#102732)}
+.route-leg .leg-number{background:#0b202b;font-variant-numeric:tabular-nums}
+.route-leg .leg-mode{font-size:10px;font-weight:650;letter-spacing:.5px;text-transform:uppercase}
+.map-controls{box-shadow:0 5px 22px #0003;backdrop-filter:blur(12px)}
+.map-button[aria-pressed=true]{box-shadow:inset 0 -2px #8ce8ce}
+.map-legend .route-legend-modes{gap:7px}.map-legend{flex-wrap:wrap;max-width:calc(100% - 680px)}
+@media(min-width:761px){.route-panel .route-top h2{font-size:20px;margin-bottom:7px}.route-panel .play-context{padding-bottom:7px;margin-bottom:8px}.route-panel #active-objective{font-size:11px}.route-panel .route-estimate{padding:9px 10px;background:#08202b;border:1px solid #31535d;border-radius:7px}}
+@media(max-width:760px){
+ .mobile-actions #route-estimate{grid-column:1/-1;order:-1;min-width:0;font-size:11px;padding:5px 8px;background:#102d39;border:1px solid #31515c;border-radius:5px;line-height:1.4}
+ .mobile-actions .route-estimate b{display:inline;font-size:16px;margin-right:6px}
+ .mobile-actions .route-estimate .estimate-label{display:inline;margin-right:8px;font-size:8px}
+ .mobile-actions .route-estimate small{font-size:9px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+ .mobile-actions #message{grid-column:1/-1;margin:0;font-size:10px;line-height:1.4;color:#c0d7de;max-height:55px;overflow:auto}
+ .mobile-actions #message:empty{display:none}
+ .mobile-missions .play-context{margin:0;padding:6px 0 3px;border-bottom:0}
+ .mobile-missions .play-status{font-size:8px}
+ .mobile-missions #active-objective{font-size:10px;margin:2px 0;line-height:1.3}
+ .mobile-missions .mission-task .button{min-height:38px}
+ .mobile-missions .task-done{opacity:.7}
+ .map-heading{top:12px;left:12px}.map-heading .map-subtitle{max-width:250px}
+ .map-controls{top:58px;gap:2px;padding:4px}
+ .map-legend{left:8px;right:48px;bottom:27px;max-width:none;padding:6px 8px;gap:6px;font-size:8px;line-height:1.3}
+ .map-legend .route-legend-modes{font-size:8px;gap:6px}
+ .map-telemetry{display:none}
+ .mobile-command-bar{padding-top:max(6px,env(safe-area-inset-top));padding-left:max(10px,env(safe-area-inset-left));padding-right:max(10px,env(safe-area-inset-right))}
+ .map-button{min-height:34px}
+}
+@media(prefers-reduced-motion:reduce){.go-button{transition:none}.play-status:before{box-shadow:none}}
+#travel-scope{display:block!important;margin:5px 0;min-height:34px;font-size:11px}
+#travel-scope:disabled{display:none!important}
+@media(min-width:761px){
+ .route-panel .route-scroll{flex:1 1 auto;min-height:70px;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding-right:3px}
+ .route-panel .route-scroll .route-legs{overflow:visible;margin-bottom:8px}
+ .route-panel .departure-row{flex-shrink:0}
+ .route-panel .route-estimate{padding:7px 9px}
+ .route-panel .message{max-height:65px;flex-shrink:0}
+}
+@media(max-width:760px){.route-scroll{display:contents}}
+.route-rejected .play-status{color:#ffc88b}.route-rejected .play-status:before{box-shadow:0 0 10px #ffc88b44}

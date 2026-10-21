@@ -15,6 +15,10 @@ Later operations raise journey duration, effort, mission collection time and con
 Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
 
 
+## Browser gameplay polish (0.13.0)
+
+Go honours the selected next leg, route prefix or entire plan. Its estimate shows the same selected section. Mobile keeps the estimate, failure feedback and next objective beside the departure controls; paused games disable Go. Settings provides phone-accessible Help, FAQ and Practice.
+
 ## Home screen release plan
 
 See [the development plan](DEVELOPMENT_PLAN.md) for prioritised installation, offline reliability, progress protection, mobile usability and release checks. Native app packaging follows this milestone.

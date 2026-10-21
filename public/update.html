@@ -5,7 +5,7 @@
  try{
   if('serviceWorker'in navigator){const registrations=await navigator.serviceWorker.getRegistrations();await Promise.all(registrations.filter(r=>r.scope===root.href).map(r=>r.unregister()));}
   if('caches'in window){const keys=await caches.keys();await Promise.all(keys.filter(k=>k.startsWith(prefix)).map(k=>caches.delete(k)));}
-  location.replace(new URL('./?v=0.12.2',root).href);
+  location.replace(new URL('./?v=0.13.0',root).href);
  }catch{document.getElementById('status').textContent='The refresh could not finish. Check your connection, then reload this page. Your saved mission has not been changed.';}
 })();
 </script></body></html>

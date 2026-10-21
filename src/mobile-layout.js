@@ -9,7 +9,8 @@ export function setupMobileLayout() {
   const targets = [
     ['.deadline-timers', '.mobile-status'], ['.resources', '.mobile-status'],
     ['#go-button', '.mobile-actions'], ['#clock-button', '.mobile-actions'],
-    ['#travel-scope', '.mobile-actions'],
+    ['#travel-scope', '.mobile-actions'], ['#route-estimate', '.mobile-actions'],
+    ['#message', '.mobile-actions'], ['.play-context', '.mobile-missions'],
     ['#operation-progress', '.mobile-missions'], ['#detour-panel', '.mobile-missions'],
     ['#continue-operation', '.mobile-missions']
   ].map(([selector, slot]) => {
