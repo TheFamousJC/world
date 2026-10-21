@@ -6,13 +6,26 @@ A route-survival game: plan a journey, manage time, money and energy, and adapt 
 
 The collection contains **50 civilian stories, 250 operation routes and 500 compulsory missions**. Each story has five increasingly demanding operations over one shared 24-hour clock. Each route has two ordered required missions, one optional cash contact and one optional recovery contact. The ten original practice challenges and original eight-section Nightfall saves remain available. No military or historical modes.
 
-Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. Those maps use **explicitly labelled fictional schematic ground links**, not surveyed street networks; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
+Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. Five Japan stories now use detailed offline OpenStreetMap road packs, including actual Itami and Haneda landside airport locations. The other 35 world stories use **explicitly labelled fictional schematic ground links**; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
 
 First-time players see a six-step introductory wizard. **Stories** opens the searchable illustrated library and five-operation briefing. The clock starts on launch. **Help** opens the gameplay page, with a linked FAQ; both are cached offline. Each story can be resumed separately on this device. `?` replays the introduction.
 
 Later operations raise journey duration, effort, mission collection time and control delays; some later stages cancel cycling. The world uses game credits shown as £, not real local prices. All services and restrictions remain fiction.
 
 Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
+
+
+## Detailed Osaka–Tokyo maps (0.10.0)
+
+Japan now uses two self-hosted OpenStreetMap vector packs: Osaka centre–Itami Airport and Tokyo Shinagawa–Haneda Airport. Ground travel follows connected road edges, respects mode access and one-way direction, and uses exact public-road anchor nodes for named contacts. Arbitrary points have an 80 m maximum road-access link. There is no schematic fallback for a declared detailed region. The game does not model every turn restriction, signal or live traffic condition.
+
+The globe and Brest remain the core download. Choosing a Japan story downloads its regional packs (about 45 MB Osaka + 24 MB Tokyo uncompressed), builds the road graphs and caches the files for later offline use. A content-versioned regional cache survives application-only updates; map changes receive a new cache revision. Loading holds the planning clock. Rendering switches between the two packs by the player's current city. This registry/loader is reusable for future world regions. Maps are bounded mission/airport corridors, not complete metropolitan extracts.
+
+Old Japan saves preserve cash, elapsed time, energy, items and completed missions. Old pending/untravelled schematic plans are cleared without charging fares, and the run pauses to let the player replan using the new locations. Current real-road pending journeys still resume normally.
+
+Prepare from cached raw OSM vectors with `python scripts/prepare-japan.py`; add `--download` only to fetch missing raw extracts. Run `node scripts/place-japan-contacts.js` to choose public-road anchors in strongly connected walking/driving components. Raw responses stay in ignored `assets/`. All distributed map data retains ODbL attribution and provenance. No tile scraping, paid services, keys or runtime map APIs.
+
+`tests/japan-routing.test.js` verifies map provenance, airport positions, directed road-edge geometry, bidirectional contact access, arbitrary points, water, mode restrictions and save migration. The whole catalogue validator runs both full-story witnesses on the new Japan graphs. Browser checks also cover a complete Itami–Haneda escape and offline regional reload. `npm run test:japan-cache-browser` checks a first-visit download, application-only worker activation, dataset-cache retention and offline save restoration.
 
 ## Original Nightfall (legacy saves)
 

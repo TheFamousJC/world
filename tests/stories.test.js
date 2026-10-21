@@ -7,6 +7,7 @@ import {WorldNetwork} from '../src/world-network.js';
 import {simulateStory} from '../src/story-validation.js';
 import {newGame,quoteJourney,completeDetour,collectBonus,depart,arrive,reviewArrival,advanceClock,makeSave,readSave} from '../src/engine.js';
 const n=new WorldNetwork(new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url)))));
+for(const [hub,city] of [['world-0-0','osaka'],['world-0-1','tokyo']])n.installRegion(hub,JSON.parse(fs.readFileSync(new URL('../public/data/'+city+'.geojson',import.meta.url))));
 test('catalogue has exactly 50 coherent stories, 250 operations and 500 ordered missions',()=>{
  assert.equal(STORIES.length,50);const ids=[];
  for(const s of STORIES){assert.equal(s.operations.length,5);assert.equal(s.chapters.length,5);assert.equal(s.items.length,10);assert.ok(s.intro.length>100&&s.ending.length>40);
