@@ -81,3 +81,4 @@
 }
 
 @media(max-width:760px){.mobile-missions .mission-task>span{color:#e3f0f2}.mobile-missions .mission-task small{color:#abc6cf}}
+@media(max-width:760px){.header-actions #tutorial-button{display:inline-flex;align-items:center;justify-content:center}}

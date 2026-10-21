@@ -7,8 +7,8 @@ fs.mkdirSync('test-results',{recursive:true});
  const base=process.env.GAME_URL||'http://127.0.0.1:4179';await p.goto(base+'/?test=1');await p.waitForFunction(()=>window.escapeTest?.atlas.ready,null,{timeout:60000});
  const state=()=>p.evaluate(()=>window.escapeTest.getSession());
  await p.waitForSelector('#tutorial-dialog[open]');assert.equal((await state()).clockRunning,false);
- for(let i=0;i<5;i++){assert.match(await p.locator('#tutorial-step').innerText(),new RegExp((i+1)+' OF 6'));await p.click('#tutorial-next');}
- await p.click('#tutorial-back');assert.match(await p.locator('#tutorial-step').innerText(),/5 OF 6/);await p.click('#tutorial-next');await p.click('#tutorial-next');
+ const tutorialSteps=await p.locator('#tutorial-progress i').count();assert.equal(tutorialSteps,12);for(let i=0;i<tutorialSteps-1;i++){assert.match(await p.locator('#tutorial-step').innerText(),new RegExp((i+1)+' OF '+tutorialSteps));await p.click('#tutorial-next');}
+ await p.click('#tutorial-back');assert.match(await p.locator('#tutorial-step').innerText(),/11 OF 12/);await p.click('#tutorial-next');await p.click('#tutorial-next');
  assert.equal(await p.locator('.story-card').count(),50);await p.screenshot({path:'test-results/story-library.png'});
  await p.selectOption('#story-region','world');assert.equal(await p.locator('.story-card').count(),40);await p.fill('#story-search','Osaka');assert.equal(await p.locator('.story-card').count(),5);await p.fill('#story-search','');await p.selectOption('#story-region','');
  // Every illustrated dossier renders its full five-operation / ten-mission plan.
