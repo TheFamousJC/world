@@ -15,6 +15,10 @@ Later operations raise journey duration, effort, mission collection time and con
 Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
 
 
+## Reliable update link (0.13.2)
+
+Update game is a real link to the recovery page, independent of a waiting service worker or its activation event. Tapping it saves and pauses progress, shows feedback and refreshes the app while retaining downloaded region maps. Offline taps explain how to reconnect and retry.
+
 ## Start and update behaviour (0.13.1)
 
 Opening or reloading the game always restores it paused, including an unfinished journey. Press Resume game to continue; committed travel settles once. Time and supplies are at the top of the desktop mission panel and the sticky mobile deck. A version label identifies the loaded release. New offline builds wait for Update game instead of automatically reloading active play. Settings → Refresh to latest version repairs older caches while preserving saves and regional map caches.
