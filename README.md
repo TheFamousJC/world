@@ -8,12 +8,16 @@ The collection contains **50 civilian stories, 250 operation routes and 500 comp
 
 Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. All forty world stories now use detailed offline OpenStreetMap city-to-airport packs, including actual landside airport locations; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
 
-First-time players see a six-step introductory wizard. **Stories** opens the searchable illustrated library and five-operation briefing. The clock starts on launch. **Help** opens the gameplay page, with a linked FAQ; both are cached offline. Each story can be resumed separately on this device. `?` replays the introduction.
+First-time players see a 12-page introductory wizard. **Stories** opens the searchable illustrated library and five-operation briefing. The clock starts on launch. **Help** opens the gameplay page, with a linked FAQ; both are cached offline. Each story can be resumed separately on this device. `?` replays the introduction.
 
 Later operations raise journey duration, effort, mission collection time and control delays; some later stages cancel cycling. The world uses game credits shown as £, not real local prices. All services and restrictions remain fiction.
 
 Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
 
+
+## Home screen release plan
+
+See [the development plan](DEVELOPMENT_PLAN.md) for prioritised installation, offline reliability, progress protection, mobile usability and release checks. Native app packaging follows this milestone.
 
 ## Detailed worldwide maps (0.11.0)
 
