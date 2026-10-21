@@ -5,7 +5,7 @@ try{
  const context=await browser.newContext({viewport:{width:1526,height:866}}),p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto((process.env.GAME_URL||'http://127.0.0.1:4177')+'/?test=1');
  const ready=()=>p.waitForFunction(()=>window.escapeTest?.atlas.ready,null,{timeout:60000}),state=()=>p.evaluate(()=>window.escapeTest.getSession());
- await ready();await p.click('.region-beacon');await p.waitForTimeout(1900);assert.equal((await state()).game.scenarioId,'nightfall-1');
+ await ready();await p.click('#tutorial-skip');await p.click('#legacy-story');await p.click('#fit-region');await p.waitForTimeout(1900);assert.equal((await state()).game.scenarioId,'nightfall-1');
  const motion=async reduce=>{await p.click('#settings-button');await p.locator('#reduce-motion').setChecked(reduce);await p.click('#settings-dialog [data-close]');};await motion(true);
  const goVisible=()=>p.locator('#go-button').evaluate(e=>{const r=e.getBoundingClientRect(),p=e.closest('.route-panel').getBoundingClientRect();return r.top>=p.top&&r.bottom<=p.bottom;});
  const layout=await p.evaluate(()=>['knowledge-button','rest-button','journal-button','restart-button','cash-left','energy-left'].map(id=>{const r=document.getElementById(id).getBoundingClientRect();return {id,y:r.y,bottom:r.bottom};}));assert.ok(layout.every(r=>r.y>=0&&r.bottom<=866),JSON.stringify(layout));
@@ -28,7 +28,7 @@ try{
  };
  const stages=[{tasks:[['aid','dispatch']],goal:'terespol'},{tasks:[['lodge','supplies']],goal:'koroszczyn'},{tasks:[['lodge','route-card']],goal:'kobylany'},{tasks:[['terespol','confirm']],goal:'malaszewicze'},{tasks:[['chotylow','relay']],goal:'zalesie'},{tasks:[['malaszewicze','emergency-cash']],goal:'central',watch:'BORDER CONTROL'},{tasks:[['workshop','passport-pickup']],goal:'koroszczyn'},{tasks:[['kobylany','sealed-package'],['zalesie','evac-supplies']],goal:'biala',mode:'walk',watch:'MANDATORY REST'}];
  for(let i=0;i<stages.length;i++){
-  const c=stages[i];assert.equal(await p.locator('#operation-progress').innerText(),'OPERATION NIGHTFALL / SECTION '+(i+1)+' OF 8');
+  const c=stages[i];assert.equal(await p.locator('#operation-progress').innerText(),'ORIGINAL NIGHTFALL / OPERATION '+(i+1)+' OF 8');
   for(const [place,task] of c.tasks){await leg(place);await p.click('[data-detour="'+task+'"]');assert.ok((await state()).game.completedTasks.includes(task));}
   await leg(c.goal,c.mode||'taxi',c.watch);
   if(i<stages.length-1){const before=await state();await p.locator('#result-dialog [data-close]').click();await p.waitForTimeout(1100);assert.ok((await state()).game.elapsed>before.game.elapsed);await p.click('#clock-button');const paused=await state();await p.click('#continue-operation');await p.waitForTimeout(500);const after=await state();assert.equal(after.clockRunning,false);assert.equal(after.game.elapsed,paused.game.elapsed);assert.equal(after.game.cash,paused.game.cash);await p.click('#clock-button');}

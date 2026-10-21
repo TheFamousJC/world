@@ -1,22 +1,6 @@
-export const PLACES=Object.freeze([
-  {id:'biala',name:'Biała Podlaska evacuation point',coordinates:[23.139,52.026],kind:'pickup',fictional:true,note:'Fictional final evacuation point near Biała Podlaska. Not a real service.'},
-  {id:'koroszczyn',name:'Koroszczyn contact',coordinates:[23.535,52.097],kind:'pickup',fictional:true,note:'Fictional mission contact in the Koroszczyn area.'},
-  {id:'kobylany',name:'Kobylany rendezvous',coordinates:[23.548,52.0415],kind:'pickup',fictional:true,note:'Fictional rendezvous in the Kobylany area.'},
-  {id:'malaszewicze',name:'Małaszewicze handoff',coordinates:[23.526,52.024],kind:'pickup',fictional:true,note:'Fictional mission handoff in the Małaszewicze area.'},
-  {id:'zalesie',name:'Zalesie safe house',coordinates:[23.367,52.038],kind:'shelter',fictional:true,note:'Fictional final safe house in the Zalesie area.'},
-  {id:'dobryn',name:'Dobryń supply contact',coordinates:[23.444,52.048],kind:'supply',fictional:true,note:'Fictional game contact.'},
-  {id:'chotylow',name:'Chotyłów relay',coordinates:[23.415,52.023],kind:'supply',fictional:true,note:'Fictional game relay.'},
-  {id:'central',name:'Brest Central',coordinates:[23.6804112,52.1004334],kind:'station',note:'Mapped railway station. Services are fictional game services.'},
-  {id:'polski',name:'Brest-Paleski',coordinates:[23.7102435,52.094649],kind:'station',note:'Mapped railway station.'},
-  {id:'north',name:'Brest North',coordinates:[23.6540929,52.1113978],kind:'station',note:'Mapped railway station.'},
-  {id:'terespol',name:'Terespol station',coordinates:[23.601254,52.0743321],kind:'station',note:'Mapped railway station. This game does not report current services.'},
-  {id:'east-gate',name:'Brest terminal',coordinates:[23.6595,52.0734],kind:'crossing',note:'Mapped crossing area. Access conditions belong to the scenario.'},
-  {id:'west-gate',name:'Terespol terminal',coordinates:[23.64354,52.07054],kind:'crossing',note:'Mapped crossing area. Access conditions belong to the scenario.'},
-  {id:'aid',name:'Riverside aid point',coordinates:[23.6688,52.0878],kind:'shelter',fictional:true,note:'Fictional game location anchored to the mapped road network.'},
-  {id:'workshop',name:'Cycle workshop',coordinates:[23.698,52.103],kind:'supply',fictional:true,note:'Fictional game location; not a real business listing.'},
-  {id:'lodge',name:'Riverside lodge',coordinates:[23.615,52.0805],kind:'shelter',fictional:true,note:'Fictional game location.'},
-  {id:'pickup',name:'Northern pickup',coordinates:[23.677,52.127],kind:'pickup',fictional:true,note:'Fictional pickup point.'}
-]);
+import {PLACES,placeById} from './places.js';
+import {buildStories} from './stories.js';
+export {PLACES,placeById};
 const base={minIntermediateKm:.25,budget:60,deadline:180,energy:100,border:'open',modes:['walk','cycle','taxi','bus','train'],closedModes:[],requirePapers:false,milestones:[],crossingDelay:20,closeAt:null};
 export const SCENARIOS=Object.freeze([
  {id:'last-departure',number:1,title:'Last departure',subtitle:'The clock is your opponent',difficulty:'First steps',story:'Your onward pickup leaves Terespol in three hours. Start at Brest Central, compare your options and reach the other station with time to spare.',...base,start:'central',goal:'terespol',hint:'A taxi trades money for time. A shuttle has a boarding wait. Check the railway before relying on it.'},
@@ -31,7 +15,7 @@ export const SCENARIOS=Object.freeze([
  {id:'one-more-person',number:10,title:'One more person',subtitle:'The shortest journey is not your mission',difficulty:'Final challenge',story:'Collect a traveller at the riverside aid point and supplies at the cycle workshop before returning to the station pickup. Keep enough resources for the final leg.',...base,budget:48,deadline:210,start:'north',goal:'central',milestones:['aid','workshop'],hint:'Visit both marked stops before the final pickup. Compare the cost of several taxi legs with a mixed journey.'}
 ].map(Object.freeze));
 const task=(id,place,title,minutes,reward=0,energy=0,items=[])=>({id,place,title,minutes,reward,energy,items});
-export const CAMPAIGN=Object.freeze([
+export const LEGACY_CAMPAIGN=Object.freeze([
  {start:'central',goal:'terespol',title:'Cross the frontier',story:'A courier network can get you to Zalesie. First reach Terespol before the border locks down. Collect a dispatch at the riverside aid point or workshop on the way.',closeAt:120,detours:[task('dispatch','aid','Collect the sealed dispatch',6),task('radio','workshop','Collect the radio codes',8)]},
  {start:'terespol',goal:'koroszczyn',title:'The northern contact',story:'Your contact has moved to Koroszczyn. Visit the riverside lodge for supplies before heading north. The same cash and operation clock carry on.',detours:[task('supplies','lodge','Collect food and a cash reserve',8,20,35)]},
  {start:'koroszczyn',goal:'kobylany',title:'Change of direction',story:'The northern pickup is cancelled. Head south to Kobylany. Your lodge contact can arrange the replacement vehicle; return for the new route card.',detours:[task('route-card','lodge','Arrange the replacement pickup',7)]},
@@ -41,6 +25,9 @@ export const CAMPAIGN=Object.freeze([
  {start:'central',goal:'koroszczyn',title:'Passport under pressure',story:'The trains are cancelled. Collect your passport from the cycle workshop, then reach the Koroszczyn contact. This crossing requires your collected passport and has a 60-minute control delay.',crossingDelay:60,closedModes:['train'],requireItems:['passport'],detours:[task('passport-pickup','workshop','Collect your passport',12,0,0,['passport'])],hint:'Buying generic travel papers will not replace the passport pickup. Collect it at the workshop before attempting the crossing.'},
  {start:'koroszczyn',goal:'biala',title:'The last mile',story:'Collect the sealed package at Kobylany and supplies at Zalesie. Both are compulsory. The evacuation vehicle can only meet you at Biała Podlaska; the final approach must be on foot. Low energy forces a 25-minute recovery stop.',allDetours:true,goalModes:['walk'],detours:[task('sealed-package','kobylany','Collect the sealed package',12,0,0,['sealed package']),task('evac-supplies','zalesie','Collect evacuation supplies',10,0,15,['evacuation supplies'])],hint:'Visit both amber pickup points. Use transport between them, then walk the final stretch. Mandatory recovery stops are included in the time quote.'}
 ].map((c,i)=>Object.freeze({...base,budget:300,deadline:1320,crossingDelay:30,...c,id:'nightfall-'+(i+1),campaign:'nightfall',stage:i,number:i+1,stageCount:8,difficulty:'Section '+(i+1)+' / 8',subtitle:'Operation Nightfall · resources carry forward',hint:c.hint||'Visit one amber detour marker, complete its task, then reach your checkpoint.'})));
-export const ALL_SCENARIOS=Object.freeze([...SCENARIOS,...CAMPAIGN]);
+export const STORIES=buildStories(base);
+export const CAMPAIGN=STORIES[0].operations;
+export const ALL_SCENARIOS=Object.freeze([...SCENARIOS,...LEGACY_CAMPAIGN,...STORIES.flatMap(s=>s.operations)]);
+export const storyById=id=>STORIES.find(s=>s.id===id);
+export const campaignRoutes=scenario=>scenario.storyId?storyById(scenario.storyId).operations:LEGACY_CAMPAIGN;
 export const scenarioById=id=>ALL_SCENARIOS.find(s=>s.id===id);
-export const placeById=id=>PLACES.find(p=>p.id===id);

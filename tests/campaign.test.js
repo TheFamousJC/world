@@ -2,7 +2,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {Network} from '../src/network.js';
-import {CAMPAIGN,ALL_SCENARIOS} from '../src/scenarios.js';
+import {LEGACY_CAMPAIGN as CAMPAIGN,ALL_SCENARIOS} from '../src/scenarios.js';
 import {newGame,quoteJourney,depart,arrive,reviewArrival,completeDetour,advanceStage,advanceClock,readSave,makeSave} from '../src/engine.js';
 const network=new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url))));
 function travel(s,c,to,preferred='taxi'){s=reviewArrival(s);const mode=to===c.goal&&c.goalModes?c.goalModes[0]:preferred,q=quoteJourney(s,c,network,to,mode);assert.ok(q.ok,`${c.id}: ${s.position} → ${to}: ${q.message}`);return arrive(depart(s,q).state,c);}

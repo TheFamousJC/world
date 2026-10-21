@@ -4,9 +4,17 @@
 
 A route-survival game: plan a journey, manage time, money and energy, and adapt when a crossing or service is unavailable.
 
-The first playable collection covers the **Brest–Terespol frontier district** with ten authored challenges. One unnamed player experience; no military or historical modes.
+The collection contains **50 civilian stories, 250 operation routes and 500 compulsory missions**. Each story has five increasingly demanding operations over one shared 24-hour clock. Each route has two ordered required missions, one optional cash contact and one optional recovery contact. The ten original practice challenges and original eight-section Nightfall saves remain available. No military or historical modes.
 
-## Operation Nightfall
+Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. Those maps use **explicitly labelled fictional schematic ground links**, not surveyed street networks; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
+
+First-time players see a six-step introductory wizard. **Stories** opens the searchable illustrated library and five-operation briefing. The clock starts on launch. **Help** opens the gameplay page, with a linked FAQ; both are cached offline. Each story can be resumed separately on this device. `?` replays the introduction.
+
+Later operations raise journey duration, effort, mission collection time and control delays; some later stages cancel cycling. The world uses game credits shown as £, not real local prices. All services and restrictions remain fiction.
+
+Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
+
+## Original Nightfall (legacy saves)
 
 An eight-section operation from Brest through Terespol, Koroszczyn, Kobylany and Małaszewicze to Zalesie, then back through Brest and Koroszczyn before the final evacuation in Biała Podlaska. Begin with £300 and 22 hours. Complete the marked detour tasks per section; the final section requires both package and supply pickups. The passport in section 7 is required at the border. reach its location and press Complete. Cash, energy and elapsed time persist through checkpoints and reloads. The operation clock keeps running between sections; Pause stops planning time and blocks travel/actions until resumed. Go simulates actual journey time.
 

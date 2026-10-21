@@ -1,6 +1,6 @@
 import {distance,lineLength,crossesLines,pointInArea} from './geo.js';
 
-export const MODES=Object.freeze({walk:{name:'Walk',bit:1,speed:4.5,base:0,perKm:0,energy:6,wait:0},cycle:{name:'Cycle',bit:2,speed:14,base:2,perKm:.12,energy:2.5,wait:3},taxi:{name:'Taxi',bit:4,speed:28,base:4,perKm:1.2,energy:.3,wait:5},bus:{name:'Shuttle',bit:4,speed:22,base:2,perKm:.3,energy:.3,wait:12},train:{name:'Train',bit:8,speed:40,base:6,perKm:.1,energy:.1,wait:20}});
+export const MODES=Object.freeze({flight:{name:'Flight',bit:16,speed:650,base:55,perKm:.035,energy:.002,wait:45},walk:{name:'Walk',bit:1,speed:4.5,base:0,perKm:0,energy:6,wait:0},cycle:{name:'Cycle',bit:2,speed:14,base:2,perKm:.12,energy:2.5,wait:3},taxi:{name:'Taxi',bit:4,speed:28,base:4,perKm:1.2,energy:.3,wait:5},bus:{name:'Shuttle',bit:4,speed:22,base:2,perKm:.3,energy:.3,wait:12},train:{name:'Train',bit:8,speed:40,base:6,perKm:.1,energy:.1,wait:20}});
 
 class Heap{constructor(){this.items=[];}push(item){const a=this.items;a.push(item);let i=a.length-1;while(i){const p=(i-1)>>1;if(a[p][0]<=item[0])break;a[i]=a[p];i=p;}a[i]=item;}pop(){const a=this.items,first=a[0],last=a.pop();if(a.length){let i=0;while(i*2+1<a.length){let j=i*2+1;if(j+1<a.length&&a[j+1][0]<a[j][0])j++;if(a[j][0]>=last[0])break;a[i]=a[j];i=j;}a[i]=last;}return first;}get size(){return this.items.length;}}
 
