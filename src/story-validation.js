@@ -1,3 +1,4 @@
+import {pilotAction,documentCleared} from './pilot.js';
 import {STORIES,ALL_SCENARIOS,placeById,PLACES} from './scenarios.js';
 import {newGame,quoteJourney,depart,arrive,reviewArrival,completeDetour,collectBonus,advanceStage,makeSave,readSave} from './engine.js';
 export function simulateStory(story,network,mode='bus',optional=false){
@@ -12,8 +13,8 @@ export function simulateStory(story,network,mode='bus',optional=false){
   }
   if(state.position!==to)leg(c,to,c.closedModes.includes(mode)?'taxi':mode);
  }
- function leg(c,to,m){state=reviewArrival(state);const q=quoteJourney(state,c,network,to,m);if(!q.ok)fail(m+' → '+to+' '+q.code+' '+q.message);state=arrive(depart(state,q).state,c);legs.push({to,mode:m});}
- for(const c of story.operations){
+ function leg(c,to,m){state=reviewArrival(state);if(c.pilot&&(to===c.goal||m==='flight')&&!documentCleared(state,c)){const result=pilotAction(state,c,'document',Object.fromEntries(c.pilot.document.fields.map(f=>[f.id,f.answer])));if(!result.ok)fail(result.message);state=result.state;}let q=quoteJourney(state,c,network,to,m);if(!q.ok&&q.code==='timetable'&&m==='bus'){m='taxi';q=quoteJourney(state,c,network,to,m);}if(!q.ok)fail(m+' → '+to+' '+q.code+' '+q.message);state=arrive(depart(state,q).state,c);legs.push({to,mode:m});}
+ for(const c of story.operations){if(c.pilot){const r=pilotAction(state,c,'verify');if(!r.ok)fail(r.message);state=r.state;}
   for(const task of c.detours){travel(c,task.place);const r=completeDetour(state,c,task.id);if(!r.ok)fail(r.message);state=r.state;
    if(optional)for(const bonus of c.bonuses){if(state.completedTasks.includes(bonus.id)||placeById(bonus.place).hub!==placeById(state.position).hub)continue;travel(c,bonus.place);const r=collectBonus(state,c,bonus.id);if(r.ok)state=r.state;else if(bonus.kind!=='energy'||state.energy<100)fail(r.message);}
   }

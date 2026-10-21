@@ -141,3 +141,11 @@ Border delays: 20 minutes in standalone scenarios, 30 in the early operation, 45
 Worldwide preparation: `python scripts/prepare-world.py --download` fetches bounded public OSM vector extracts sequentially; subsequent runs use ignored cached raw responses. `node scripts/place-world-contacts.js` anchors the fictional contacts to connected walking and driving road nodes. The configuration is `scripts/world-regions.json`. Airport coordinates are reference targets; the distributed contact file records the actual selected OSM road node.
 
 Operation 3 starts with an airport desk handoff, followed by the destination-city pickup. It never requires a return to the departure city. Arrival and saved-run camera framing focus on the current location, and Mission area filters to the current city rather than spanning both flight endpoints.
+
+## Field-desk pilot (0.12.0)
+
+The Shelter Keys (`escape-12`) is the only story with the new mechanics. `src/pilot.js` contains authored reports, per-operation timetables, document checks and validation. `src/pilot-ui.js` renders the field desk. Every operation has an unverified report and two document fields. Verify/refresh dispatch (£2, 5m), wait (15m, £0), or compare evidence from collected mission items. Correct document submissions cost 3m; mismatches cost 4m and do not grant clearance. Clearances gate operation goals and the operation-3 flight. Airport evidence is collected on site.
+
+Schedules anchor to each operation’s actual start on the shared clock; old reports, clearances and start times persist between operations and reloads. Failed transport checks take no fare. Unknown motor delays are shown as unverified estimates and disclosed at departure. Scheduled waiting is included in quotes, animation and final accounting. Pre-pilot saves keep resources and items, clear untravelled plans and pause for review.
+
+`node scripts/pilot-browser-check.cjs` exercises the entire pilot through the UI, including a document mismatch, flight, waiting, offline restoration, all five clearances, and the ending. `tests/pilot.test.js` covers accounting, deadlines, report age, exact boarding cutoffs, independent stage permissions, stale quotes and invalid saves. Route colours/patterns and per-leg arrival estimates apply across the game. Map labels use local system fonts and require no remote glyph service.
