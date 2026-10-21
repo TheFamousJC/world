@@ -1,0 +1,24 @@
+import {distance} from './geo.js';
+
+export const STOP_SYMBOLS={airport:'✈',station:'▥',crossing:'⇄',shelter:'+',supply:'⚙',pickup:'⚑',waypoint:'·'};
+
+export function pickupState(state,task,find){
+ const done=!!state.completedTasks?.includes(task.id);
+ const locked=!!task.requires?.some(id=>!state.completedTasks?.includes(id));
+ const from=find(state.position),to=find(task.place);
+ return {done,locked,at:!!from&&!!to&&distance(from.coordinates,to.coordinates)<=.15};
+}
+
+export function stopInfo(place,state,scenario){
+ const tasks=scenario.detours||[],index=tasks.findIndex(t=>t.place===place.id),task=tasks[index];
+ const bonus=scenario.bonuses?.find(t=>t.place===place.id);
+ const done=!!(task||bonus)&&!!state.completedTasks?.includes((task||bonus).id);
+ return {
+  symbol:bonus?(bonus.kind==='cash'?'£':'♡'):place.id===scenario.goal?'◎':STOP_SYMBOLS[place.kind]||'·',
+  badge:task?(done?'✓':String(index+1)):'',
+  label:task?(done?'COLLECTED':`MISSION ${index+1}`):bonus?(done?'COLLECTED':bonus.kind==='cash'?'OPTIONAL CASH':'OPTIONAL ENERGY'):place.id===scenario.goal?'DESTINATION':'',
+  done,
+  task,
+  bonus
+ };
+}

@@ -15,6 +15,10 @@ Later operations raise journey duration, effort, mission collection time and con
 Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
 
 
+## Mission pickup flow (0.14.0)
+
+Mission map badges show 1 and 2 separately from station, airport and contact symbols, and become ticks after collection. The map key explains required missions, optional supplies and each place symbol. Arrivals open a pickup card with an explicit Collect action and ordered-mission feedback. A mission already in the plan offers Go here without deleting its route; map click-again removal remains available. Blocked mission/item routes offer a collection or replanning action, and document/papers failures link to their relevant desk.
+
 ## Reliable update link (0.13.2)
 
 Update game is a real link to the recovery page, independent of a waiting service worker or its activation event. Tapping it saves and pauses progress, shows feedback and refreshes the app while retaining downloaded region maps. Offline taps explain how to reconnect and retry.
