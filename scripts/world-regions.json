@@ -1,0 +1,198 @@
+[
+ {
+  "id": "johannesburg",
+  "hub": "world-1-0",
+  "city": "Johannesburg",
+  "centre": [
+   28.04,
+   -26.2
+  ],
+  "airport": [
+   28.231,
+   -26.134
+  ],
+  "airportName": "O. R. Tambo Airport (JNB) · landside terminal"
+ },
+ {
+  "id": "cape-town",
+  "hub": "world-1-1",
+  "city": "Cape Town",
+  "centre": [
+   18.42,
+   -33.92
+  ],
+  "airport": [
+   18.597,
+   -33.969
+  ],
+  "airportName": "Cape Town Airport (CPT) · landside terminal"
+ },
+ {
+  "id": "los-angeles",
+  "hub": "world-2-0",
+  "city": "Los Angeles",
+  "centre": [
+   -118.24,
+   34.05
+  ],
+  "airport": [
+   -118.403,
+   33.944
+  ],
+  "airportName": "Los Angeles Airport (LAX) · landside terminal"
+ },
+ {
+  "id": "san-francisco",
+  "hub": "world-2-1",
+  "city": "San Francisco",
+  "centre": [
+   -122.42,
+   37.77
+  ],
+  "airport": [
+   -122.389,
+   37.615
+  ],
+  "airportName": "San Francisco Airport (SFO) · landside terminal"
+ },
+ {
+  "id": "buenos-aires",
+  "hub": "world-3-0",
+  "city": "Buenos Aires",
+  "centre": [
+   -58.38,
+   -34.6
+  ],
+  "airport": [
+   -58.535,
+   -34.815
+  ],
+  "airportName": "Ezeiza Airport (EZE) · landside terminal"
+ },
+ {
+  "id": "santiago",
+  "hub": "world-3-1",
+  "city": "Santiago",
+  "centre": [
+   -70.67,
+   -33.45
+  ],
+  "airport": [
+   -70.794,
+   -33.397
+  ],
+  "airportName": "Santiago Airport (SCL) · landside terminal"
+ },
+ {
+  "id": "sydney",
+  "hub": "world-4-0",
+  "city": "Sydney",
+  "centre": [
+   151.21,
+   -33.87
+  ],
+  "airport": [
+   151.177,
+   -33.937
+  ],
+  "airportName": "Sydney Airport (SYD) · landside terminal"
+ },
+ {
+  "id": "melbourne",
+  "hub": "world-4-1",
+  "city": "Melbourne",
+  "centre": [
+   144.96,
+   -37.81
+  ],
+  "airport": [
+   144.85,
+   -37.671
+  ],
+  "airportName": "Melbourne Airport (MEL) · landside terminal"
+ },
+ {
+  "id": "delhi",
+  "hub": "world-5-0",
+  "city": "Delhi",
+  "centre": [
+   77.21,
+   28.61
+  ],
+  "airport": [
+   77.085,
+   28.556
+  ],
+  "airportName": "Indira Gandhi Airport (DEL) · landside terminal"
+ },
+ {
+  "id": "jaipur",
+  "hub": "world-5-1",
+  "city": "Jaipur",
+  "centre": [
+   75.79,
+   26.91
+  ],
+  "airport": [
+   75.811,
+   26.827
+  ],
+  "airportName": "Jaipur Airport (JAI) · landside terminal"
+ },
+ {
+  "id": "kuala-lumpur",
+  "hub": "world-6-0",
+  "city": "Kuala Lumpur",
+  "centre": [
+   101.69,
+   3.14
+  ],
+  "airport": [
+   101.708,
+   2.754
+  ],
+  "airportName": "Kuala Lumpur Airport (KUL) · landside terminal"
+ },
+ {
+  "id": "singapore",
+  "hub": "world-6-1",
+  "city": "Singapore",
+  "centre": [
+   103.845,
+   1.304
+  ],
+  "airport": [
+   103.99,
+   1.357
+  ],
+  "airportName": "Changi Airport (SIN) · landside terminal"
+ },
+ {
+  "id": "casablanca",
+  "hub": "world-7-0",
+  "city": "Casablanca",
+  "centre": [
+   -7.59,
+   33.57
+  ],
+  "airport": [
+   -7.586,
+   33.369
+  ],
+  "airportName": "Mohammed V Airport (CMN) · landside terminal"
+ },
+ {
+  "id": "marrakesh",
+  "hub": "world-7-1",
+  "city": "Marrakesh",
+  "centre": [
+   -7.98,
+   31.63
+  ],
+  "airport": [
+   -8.028,
+   31.607
+  ],
+  "airportName": "Marrakesh Menara Airport (RAK) · landside terminal"
+ }
+]

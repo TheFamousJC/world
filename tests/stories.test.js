@@ -1,3 +1,4 @@
+import {OfflineValidationNetwork} from '../scripts/offline-network.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -6,12 +7,12 @@ import {Network} from '../src/network.js';
 import {WorldNetwork} from '../src/world-network.js';
 import {simulateStory} from '../src/story-validation.js';
 import {newGame,quoteJourney,completeDetour,collectBonus,depart,arrive,reviewArrival,advanceClock,makeSave,readSave} from '../src/engine.js';
-const n=new WorldNetwork(new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url)))));
-for(const [hub,city] of [['world-0-0','osaka'],['world-0-1','tokyo']])n.installRegion(hub,JSON.parse(fs.readFileSync(new URL('../public/data/'+city+'.geojson',import.meta.url))));
+const n=new OfflineValidationNetwork(new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url)))));
+
 test('catalogue has exactly 50 coherent stories, 250 operations and 500 ordered missions',()=>{
  assert.equal(STORIES.length,50);const ids=[];
  for(const s of STORIES){assert.equal(s.operations.length,5);assert.equal(s.chapters.length,5);assert.equal(s.items.length,10);assert.ok(s.intro.length>100&&s.ending.length>40);
-  for(const [i,c] of s.operations.entries()){ids.push(c.id);assert.equal(c.stage,i);assert.equal(c.stageCount,5);assert.equal(c.deadline,1440);assert.equal(c.detours.length,2);assert.equal(c.bonuses.length,2);assert.deepEqual(c.bonuses.map(b=>b.kind),['cash','energy']);assert.equal(new Set([c.start,c.goal,...c.detours.map(t=>t.place),...c.bonuses.map(t=>t.place)]).size,6);assert.equal(c.detours[1].requires[0],c.detours[0].id);if(i){assert.equal(c.start,s.operations[i-1].goal);assert.ok(c.travelFactor>s.operations[i-1].travelFactor);assert.ok(c.effortFactor>s.operations[i-1].effortFactor);assert.ok(c.detours[0].minutes>s.operations[i-1].detours[0].minutes);}for(const t of [...c.detours,...c.bonuses]){assert.ok(placeById(t.place));ids.push(t.id);}}
+  for(const [i,c] of s.operations.entries()){ids.push(c.id);assert.equal(c.stage,i);assert.equal(c.stageCount,5);assert.equal(c.deadline,1440);assert.equal(c.detours.length,2);assert.equal(c.bonuses.length,2);assert.deepEqual(c.bonuses.map(b=>b.kind),['cash','energy']);assert.equal(new Set([c.start,c.goal,...c.detours.map(t=>t.place),...c.bonuses.map(t=>t.place)]).size,c.global&&c.stage===2?5:6);assert.equal(c.detours[1].requires[0],c.detours[0].id);if(i){assert.equal(c.start,s.operations[i-1].goal);assert.ok(c.travelFactor>s.operations[i-1].travelFactor);assert.ok(c.effortFactor>s.operations[i-1].effortFactor);assert.ok(c.detours[0].minutes>s.operations[i-1].detours[0].minutes);}for(const t of [...c.detours,...c.bonuses]){assert.ok(placeById(t.place));ids.push(t.id);}}
  }
  assert.equal(new Set(ids).size,1250);assert.equal(new Set(STORIES.flatMap(s=>s.operations).map(c=>[c.start,c.goal,...c.detours.map(t=>t.place)].join('|'))).size,250,'Every operation has a distinct ordered pickup route');
 });
@@ -23,7 +24,7 @@ for(const story of STORIES)test(`${story.id}: two complete 24-hour strategies wi
 });
 for(const story of STORIES)for(const c of story.operations)test(`${c.id}: mission, resource, deadline, location and replay failure guards`,()=>{
  let s=newGame(c);const [a,b]=c.detours;
- assert.equal(completeDetour(s,c,a.id).ok,false);
+ assert.equal(completeDetour({...s,position:b.place},c,a.id).ok,false);
  assert.equal(completeDetour({...s,position:b.place},c,b.id).ok,false,'Cannot collect mission 2 first');
  assert.equal(quoteJourney({...s,position:b.place,stageVisited:[c.start,b.place]},c,n,c.goal,'taxi').code,'detour');
  s={...s,position:a.place};s=completeDetour(s,c,a.id).state;const replay=completeDetour(s,c,a.id);assert.equal(replay.ok,false);assert.equal(replay.state,s);

@@ -15,3 +15,5 @@ check-worlds.cjs
 check-interactions.cjs
 prepare_assets.py
 preview-server.cjs
+
+__pycache__/

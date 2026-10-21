@@ -83,7 +83,7 @@ export function readSave(raw,scenarios){try{
    if(candidates.length)s.game.position=candidates[0].id;
   }
   s.plan=[];s.draft=null;s.travelRemaining=0;s.rejection=null;
-  record(s.game,'map update','Japan upgraded to real OSM roads and airport landside locations. Resources and items kept; old untravelled plans cleared.');
+  record(s.game,'map update','Regional maps upgraded to real OSM roads and airport landside locations. Resources and items kept; old untravelled plans cleared.');
  }
  return s;
  }catch{return null;}}

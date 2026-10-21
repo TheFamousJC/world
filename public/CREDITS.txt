@@ -33,7 +33,7 @@ Westward road and rail extension: OpenStreetMap API bounding box 23.32,52.015,23
 
 Biała Podlaska extension: bounded OpenStreetMap API road, rail and area extracts retrieved 20 October 2026, including southern foot-accessible roads. Overall game reference bounds 23.13,52.0,23.77,52.16. Adapted data ODbL 1.0. The evacuation point is fictional.
 
-World expedition contacts, schematic hub links, fictional flights and dossier SVG graphics: original Escape Atlas by 3Sci Labs game content. City centres are approximate reference coordinates, not airport surveys. These authored game links are distinct from the OpenStreetMap regional dataset. No third-party game text, artwork or rules assets are included.
+World expedition contacts, fictional flights and dossier SVG graphics: original Escape Atlas by 3Sci Labs game content. City contacts are fictional and anchored to mapped public-road nodes; airport locations use landside terminal areas. Fictional flight services are distinct from the OpenStreetMap regional dataset. No third-party game text, artwork or rules assets are included.
 
 Detailed Japan map packs: © OpenStreetMap contributors, ODbL 1.0.
 Adapted databases supplied as data/osaka.geojson and data/tokyo.geojson under ODbL 1.0.
@@ -46,3 +46,8 @@ Itami Airport landside terminal and Haneda Terminal 1 landside are actual airpor
 Reproducible preparation: scripts/prepare-japan.py and scripts/place-japan-contacts.js. Raw source downloads are not shipped.
 
 Additional offline Open Sans Semibold glyph range 512–767: MapLibre demonstration font distribution, https://demotiles.maplibre.org/font/ ; SIL Open Font License 1.1 (same licence as existing glyphs).
+
+Worldwide city/airport packs (0.11): © OpenStreetMap contributors, ODbL 1.0.
+All data/*.geojson adapted databases are distributed under ODbL 1.0; see https://opendatacommons.org/licenses/odbl/1-0/ and https://www.openstreetmap.org/copyright .
+Additional packs: Johannesburg / O. R. Tambo; Cape Town; Los Angeles; San Francisco; Buenos Aires / Ezeiza; Santiago; Sydney; Melbourne; Delhi / Indira Gandhi; Jaipur; Kuala Lumpur; Singapore / Changi; Casablanca / Mohammed V; Marrakesh / Menara.
+Source: bounded Overpass OSM vector extracts, retrieved 21 October 2026. Each pack records its source snapshot, bounds, attribution and licence in metadata. Preparation: scripts/prepare-world.py and scripts/place-world-contacts.js; raw responses excluded. Anchors: src/region-places.js.

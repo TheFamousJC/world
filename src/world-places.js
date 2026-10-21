@@ -1,3 +1,4 @@
+import {REGION_PLACES} from './region-places.js';
 import {JAPAN_PLACES} from './japan-places.js';
 // Approximate reference hubs outside Japan. Japan overrides below use attributed
 // OSM road nodes and actual landside airport positions. Contacts remain fiction.
@@ -14,4 +15,7 @@ export const CORRIDORS=[
 ].map((a,i)=>({id:'world-'+i,region:a[0],cities:[{name:a[1],coordinates:a[2]},{name:a[3],coordinates:a[4]}]}));
 const offsets=[[0,0],[.018,.014],[-.018,.024],[.028,-.012],[-.025,-.018],[.008,.038],[-.037,.008],[.038,.025],[-.01,-.038]];
 const labels=['reception','records contact','dispatch desk','shelter','supply exchange','air terminal','cash contact','rest garden','final pickup'];
-export const WORLD_PLACES=CORRIDORS.flatMap(c=>c.cities.flatMap((city,h)=>offsets.map((o,j)=>({id:`${c.id}-${h}-${j}`,name:city.name+' · '+labels[j],coordinates:[city.coordinates[0]+o[0],city.coordinates[1]+o[1]],kind:j===5?'airport':j===7?'shelter':'supply',hub:`${c.id}-${h}`,corridor:c.id,fictional:true,note:'Fictional contact. Ground links are schematic, not surveyed roads.',...(c.id==='world-0'?{...JAPAN_PLACES[`${c.id}-${h}-${j}`],note:j===5?'Actual airport landside location on the offline OSM road network. Flight schedules and prices are game fiction.':'Fictional mission contact anchored to a mapped public road. Not a real shelter or service.'}:{})}))));
+export const WORLD_PLACES=CORRIDORS.flatMap(c=>c.cities.flatMap((city,h)=>labels.map((label,j)=>{
+ const id=`${c.id}-${h}-${j}`,anchor=JAPAN_PLACES[id]||REGION_PLACES[id];
+ return {id,name:city.name+' · '+label,kind:j===5?'airport':j===7?'shelter':'supply',hub:`${c.id}-${h}`,corridor:c.id,fictional:true,...anchor,note:j===5?'Actual airport landside location on the offline OSM road network. Flight schedules and prices are game fiction.':'Fictional mission contact anchored to a mapped public road. Not a real shelter or service.'};
+})));

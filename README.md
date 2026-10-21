@@ -6,7 +6,7 @@ A route-survival game: plan a journey, manage time, money and energy, and adapt 
 
 The collection contains **50 civilian stories, 250 operation routes and 500 compulsory missions**. Each story has five increasingly demanding operations over one shared 24-hour clock. Each route has two ordered required missions, one optional cash contact and one optional recovery contact. The ten original practice challenges and original eight-section Nightfall saves remain available. No military or historical modes.
 
-Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. Five Japan stories now use detailed offline OpenStreetMap road packs, including actual Itami and Haneda landside airport locations. The other 35 world stories use **explicitly labelled fictional schematic ground links**; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
+Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. All forty world stories now use detailed offline OpenStreetMap city-to-airport packs, including actual landside airport locations; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
 
 First-time players see a six-step introductory wizard. **Stories** opens the searchable illustrated library and five-operation briefing. The clock starts on launch. **Help** opens the gameplay page, with a linked FAQ; both are cached offline. Each story can be resumed separately on this device. `?` replays the introduction.
 
@@ -15,13 +15,13 @@ Later operations raise journey duration, effort, mission collection time and con
 Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
 
 
-## Detailed Osaka–Tokyo maps (0.10.0)
+## Detailed worldwide maps (0.11.0)
 
-Japan now uses two self-hosted OpenStreetMap vector packs: Osaka centre–Itami Airport and Tokyo Shinagawa–Haneda Airport. Ground travel follows connected road edges, respects mode access and one-way direction, and uses exact public-road anchor nodes for named contacts. Arbitrary points have an 80 m maximum road-access link. There is no schematic fallback for a declared detailed region. The game does not model every turn restriction, signal or live traffic condition.
+Every mission corridor uses self-hosted OpenStreetMap vector packs: 16 cities, each including its real airport. Ground travel follows connected road edges, respects mode access and one-way direction, and uses exact public-road anchor nodes for named contacts. Arbitrary points have an 80 m maximum road-access link. There is no schematic fallback for a declared detailed region. The game does not model every turn restriction, signal or live traffic condition.
 
-The globe and Brest remain the core download. Choosing a Japan story downloads its regional packs (about 45 MB Osaka + 24 MB Tokyo uncompressed), builds the road graphs and caches the files for later offline use. A content-versioned regional cache survives application-only updates; map changes receive a new cache revision. Loading holds the planning clock. Rendering switches between the two packs by the player's current city. This registry/loader is reusable for future world regions. Maps are bounded mission/airport corridors, not complete metropolitan extracts.
+The globe and Brest remain the core download. Choosing any world story downloads its two regional packs, builds the road graphs and caches the files for later offline use. A content-versioned regional cache survives application-only updates; map changes receive a new cache revision. Loading holds the planning clock. Rendering switches between the two packs by the player's current city. This registry/loader is reusable for future world regions. Maps are bounded mission/airport corridors, not complete metropolitan extracts.
 
-Old Japan saves preserve cash, elapsed time, energy, items and completed missions. Old pending/untravelled schematic plans are cleared without charging fares, and the run pauses to let the player replan using the new locations. Current real-road pending journeys still resume normally.
+Older worldwide saves preserve cash, elapsed time, energy, items and completed missions. Old pending/untravelled schematic plans are cleared without charging fares, and the run pauses to let the player replan using the new locations. Current real-road pending journeys still resume normally.
 
 Prepare from cached raw OSM vectors with `python scripts/prepare-japan.py`; add `--download` only to fetch missing raw extracts. Run `node scripts/place-japan-contacts.js` to choose public-road anchors in strongly connected walking/driving components. Raw responses stay in ignored `assets/`. All distributed map data retains ODbL attribution and provenance. No tile scraping, paid services, keys or runtime map APIs.
 
@@ -83,7 +83,7 @@ Dashboard and camera ideas were studied from the supplied gods-eye-view ZIP; the
 - A pausable planning clock, energy recovery, journey journal, per-challenge saves and recovery after reloading during travel.
 - Responsive desktop/mobile interface, reduced motion, local fonts and map assets, and a production offline service worker.
 
-Detailed coverage is one district, not a worldwide street map or satellite imagery. All prices, services, border states and scenarios are fictional game rules. It is not a real-time travel service. Source snapshots and licences are in [public/CREDITS.txt](public/CREDITS.txt).
+Detailed coverage consists of bounded mission districts and airport corridors across 16 cities plus Brest, rather than every street on Earth. All prices, services, border states and scenarios are fictional game rules. It is not a real-time travel service. Source snapshots and licences are in [public/CREDITS.txt](public/CREDITS.txt).
 
 ## Build and verify
 
@@ -137,3 +137,7 @@ The responsive web foundation can later be packaged for Android/iOS. Native proj
 Code updates are committed and pushed to https://github.com/TheFamousJC/world after validation, as requested.
 
 Border delays: 20 minutes in standalone scenarios, 30 in the early operation, 45 in section 6 and 60 in section 7. Quotes include these waits. Walking drains energy during travel. At 20% energy a mandatory, free 25-minute rest restores 40 points before continuing; all rests are included in quoted time, animations and saved journey accounting.
+
+Worldwide preparation: `python scripts/prepare-world.py --download` fetches bounded public OSM vector extracts sequentially; subsequent runs use ignored cached raw responses. `node scripts/place-world-contacts.js` anchors the fictional contacts to connected walking and driving road nodes. The configuration is `scripts/world-regions.json`. Airport coordinates are reference targets; the distributed contact file records the actual selected OSM road node.
+
+Operation 3 starts with an airport desk handoff, followed by the destination-city pickup. It never requires a return to the departure city. Arrival and saved-run camera framing focus on the current location, and Mission area filters to the current city rather than spanning both flight endpoints.
