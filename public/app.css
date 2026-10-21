@@ -37,3 +37,47 @@
 .pilot-panel{display:grid;gap:6px;margin:8px 0;padding:10px;border:1px solid #578d9c;border-radius:8px;background:#15313d;font-size:11px;color:#dff5ef}.pilot-panel[hidden]{display:none}.pilot-badge{color:#9cefe3;font:10px monospace;letter-spacing:1px}.pilot-library-link{margin:0 0 18px}.pilot-brief{padding:16px;border:1px solid #629a9e;background:#163440;border-radius:8px}.field-desk-dialog{width:min(780px,94vw);max-height:90vh}.field-desk-dialog section{padding:16px;border:1px solid #3a5f6c;border-radius:10px;margin:12px 0;background:#102b36}.field-desk-dialog section.confirmed{border-color:#69cbb4}.field-desk-dialog h3{margin:8px 0}.field-desk-dialog small{display:block;color:#aecbd1;line-height:1.6}.field-desk-dialog .button{margin-top:12px}.field-desk-dialog form{display:grid;grid-template-columns:1fr 1fr;gap:14px}.field-desk-dialog form label{font-size:12px;color:#c9e4e9}.field-desk-dialog select{display:block;width:100%;margin-top:6px}.field-desk-dialog form button{grid-column:1/-1}.pilot-explainer{line-height:1.6;color:#bcd8df}#field-result{color:#ffce8b;line-height:1.6}.route-leg.mode-walk{border-left:3px solid #9cefe3}.route-leg.mode-cycle{border-left:3px solid #c9a5ff}.route-leg.mode-taxi{border-left:3px solid #ffad72}.route-leg.mode-bus{border-left:3px solid #7dbaff}.route-leg.mode-flight{border-left:3px solid #f6d57d}.route-legend-modes{font-size:10px;color:#d5e8eb;display:flex;gap:10px;flex-wrap:wrap}.route-legend-modes span:before{content:'━';margin-right:4px}.route-legend-modes .walk:before{content:'┄';color:#9cefe3}.route-legend-modes .taxi:before{color:#ffad72}.route-legend-modes .bus:before{color:#7dbaff}.route-legend-modes .flight:before{content:'╌';color:#f6d57d}@media(max-width:600px){.field-desk-dialog form{grid-template-columns:1fr}}
 
 .field-desk-dialog{width:min(920px,96vw);max-width:min(920px,96vw)}.field-desk-dialog>.dialog-heading{position:sticky;top:0;z-index:2;background:#102b36;padding:12px 0}#field-desk-content{display:grid;grid-template-columns:1fr 1fr;gap:12px}#field-desk-content>.pilot-explainer,#field-desk-content>.document-card,#field-result{grid-column:1/-1}#field-desk-content section{margin:0}.document-copy{padding:10px 12px;margin-bottom:12px;border-left:3px solid #daa56f;background:#23343e;font-size:12px}.document-copy p{margin:4px 0;color:#f3cfab}@media(max-width:700px){#field-desk-content{grid-template-columns:1fr}}
+/* Phone command deck: live resources, travel and both missions stay in reach. */
+.mobile-command-bar{display:none}
+@media(max-width:760px){
+ .mobile-command-bar{display:block;position:sticky;top:0;z-index:10;padding:8px 10px;background:#091f2bf5;border-bottom:1px solid #49717c;box-shadow:0 6px 20px #0005}
+ .mobile-status{display:grid;grid-template-columns:minmax(0,1fr) 98px;gap:8px}
+ .mobile-status .deadline-timers{grid-column:auto;display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:0}
+ .mobile-status .deadline-card{padding:5px 7px;min-width:0;box-shadow:none}
+ .mobile-status .deadline-card>.resource-label{font-size:8px;letter-spacing:0;line-height:1.3}
+ .mobile-status .deadline-card>strong{font-size:18px;letter-spacing:-.5px;margin:3px 0 0;line-height:1.3}
+ .mobile-status .deadline-note,.mobile-status .resource-foot{display:none}
+ .mobile-status .resources{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:4px 0;margin:0;border:0;grid-column:auto}
+ .mobile-status .resources>div{min-width:0}
+ .mobile-status .resources span{font-size:8px;letter-spacing:0;white-space:nowrap}
+ .mobile-status .resources strong,.mobile-status .resources>div:first-child strong{font-size:18px;margin-top:3px}
+ .mobile-actions{display:grid;grid-template-columns:minmax(80px,1fr) auto;gap:6px;margin-top:7px}
+ .mobile-actions #go-button{min-height:44px;font-size:17px;width:100%}
+ .mobile-actions #clock-button{position:static;margin:0;min-height:44px;padding:6px 12px;font-size:12px}
+ .mobile-actions #travel-scope{grid-column:1/-1;min-height:30px;width:100%;font-size:11px;background:#102c38;color:#d4edee;border:1px solid #35545f;border-radius:4px}
+ .mobile-actions #travel-scope:disabled{display:none}
+ .mobile-missions .operation-progress{font-size:9px;padding:6px 0 2px;line-height:1.3;margin:0;white-space:normal}
+ .mobile-missions .detour-panel{padding:0;margin:0;border:0;background:none;max-height:none}
+ .mobile-missions .detour-panel>strong{display:none}
+ .mobile-missions .mission-task{padding:3px 0;gap:8px;line-height:1.25;font-size:11px}
+ .mobile-missions .mission-task>span{min-width:0;flex:1}
+ .mobile-missions .mission-task small{font-size:9px;line-height:1.3;margin-top:2px}
+ .mobile-missions .mission-task .button{min-height:34px;padding:4px 8px;font-size:10px}
+ .mobile-missions #continue-operation{width:100%;margin-top:5px;white-space:normal}
+ .mission-panel{display:none!important}
+ .play-area{display:flex;flex-direction:column;min-width:0}
+ .map-stage{height:55dvh;min-height:330px}
+ .route-panel .scope-label{display:none}
+ .route-panel{margin-top:10px}
+ .app-header{height:54px;padding:0 8px}
+ .header-actions #challenges-button{display:none}
+ .field-desk-dialog .button{white-space:normal}
+}
+@media(max-width:350px){
+ .mobile-status{grid-template-columns:minmax(0,1fr) 85px;gap:5px}
+ .mobile-status .deadline-card{padding:5px}
+ .mobile-status .deadline-card>strong{font-size:16px}
+ .mobile-status .resources strong,.mobile-status .resources>div:first-child strong{font-size:16px}
+}
+
+@media(max-width:760px){.mobile-missions .mission-task>span{color:#e3f0f2}.mobile-missions .mission-task small{color:#abc6cf}}
