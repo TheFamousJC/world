@@ -51,7 +51,7 @@ const tutorial=[
   ],
   [
     "Play anywhere.",
-    "On phones, Go, deadlines, cash, energy and missions stay visible while scrolling. Progress saves in this browser on this device. Open a story online once to download its city packs for offline play. Optional archived satellite imagery needs internet. Use Settings for reduced motion, Help and FAQ for detail, or replay this guide with ?. All events, schedules and border rules are game fiction."
+    "On phones and portrait tablets, Go, deadlines, cash, energy and missions stay visible while scrolling. The next-step control helps you plan, collect and continue; you still choose the route and transport. Progress saves in this browser on this device. Open a story online once to download its city packs for offline play. Optional archived satellite imagery needs internet. Use Settings for reduced motion, Help and FAQ for detail, or replay this guide with ?. All events, schedules and border rules are game fiction."
   ]
 ];
 export function installStoryUI({readStory,startStory,chooseLegacy,pause,readTutorial,writeTutorial}){

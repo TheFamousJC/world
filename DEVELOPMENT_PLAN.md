@@ -1,10 +1,10 @@
 # Escape Atlas home screen development plan
 
-Updated 21 October 2026 against version 0.12.2.
+Updated 22 October 2026 against version 0.15.0.
 
 ## Current priority Browser gameplay
 
-Prioritise the online browser experience before installation work: dependable route decisions, readable map and journey graphics, clear mission feedback and a consistent desktop/mobile interface. Version 0.13.0 addresses selected travel sections, matching estimates and visible mobile feedback. Continue with full-story playtesting and observed UX problems before adding content. The home-screen phases below remain the subsequent release checklist.
+Prioritise the online browser experience before installation work: dependable route decisions, readable map and journey graphics, clear mission feedback and a consistent desktop/mobile interface. Version 0.13.0 addresses selected travel sections, matching estimates and visible mobile feedback. Nightfall is now the reference story: its five operations have a tested next-step flow, ten pickups, explicit destination actions, progress indicators, responsive iPad layouts and resource carry-over. Automated production playthroughs include a paused reload and offline finish. Physical-iPad touch and performance testing remains outstanding. Continue with observed UX problems before adding content. The home-screen phases below remain the subsequent release checklist.
 
 ## Release goal
 

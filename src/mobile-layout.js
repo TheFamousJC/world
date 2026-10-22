@@ -11,14 +11,14 @@ export function setupMobileLayout() {
     ['#go-button', '.mobile-actions'], ['#clock-button', '.mobile-actions'],
     ['#travel-scope', '.mobile-actions'], ['#route-estimate', '.mobile-actions'],
     ['#message', '.mobile-actions'], ['#recovery-action', '.mobile-actions'], ['.play-context', '.mobile-missions'],
-    ['#operation-progress', '.mobile-missions'], ['#detour-panel', '.mobile-missions'],
+    ['#next-action', '.mobile-missions'], ['#operation-progress', '.mobile-missions'], ['#detour-panel', '.mobile-missions'],
     ['#continue-operation', '.mobile-missions']
   ].map(([selector, slot]) => {
     const element = document.querySelector(selector), anchor = document.createComment('desktop ' + selector);
     element.before(anchor);
     return {element, anchor, slot: bar.querySelector(slot)};
   });
-  const mobile = matchMedia('(max-width: 760px)');
+  const mobile = matchMedia('(max-width: 1024px)');
   const update = () => {
     for (const {element, anchor, slot} of targets) {
       if (mobile.matches) slot.append(element);

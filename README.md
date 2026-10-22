@@ -15,6 +15,12 @@ Later operations raise journey duration, effort, mission collection time and con
 Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
 
 
+## Nightfall reference experience (0.15.0)
+
+A next-step control follows each run through planning, route review, collection, paused recovery and operation handoffs; it never chooses transport or departs automatically. Completed pickups lead explicitly to the destination, and a five-step progress rail shows the current operation. Portrait tablets through 1024 px use the full-width map and sticky controls; larger landscape screens retain the desktop panels. Map framing updates when orientation changes. The guidance also handles world airport connections and pilot document gates.
+
+`npm run test:nightfall-browser` completes all five Nightfall operations using those actions, optional cash, ten items, a paused reload, offline completion in production and resource carry-over at iPad portrait/landscape and phone sizes. Physical-device touch/performance validation remains a separate release check.
+
 ## Mission pickup flow (0.14.0)
 
 Mission map badges show 1 and 2 separately from station, airport and contact symbols, and become ticks after collection. The map key explains required missions, optional supplies and each place symbol. Arrivals open a pickup card with an explicit Collect action and ordered-mission feedback. A mission already in the plan offers Go here without deleting its route; map click-again removal remains available. Blocked mission/item routes offer a collection or replanning action, and document/papers failures link to their relevant desk.
