@@ -341,3 +341,12 @@
 .map-view-menu .stop-key[open]{flex-basis:100%}
 @media(max-width:1024px){.left-console-stack{width:210px;top:64px;bottom:auto;max-height:calc(100dvh - 80px)}.left-console-stack .deadline-card>strong{font-size:25px}.map-view-menu{top:62px;right:8px;width:calc(100vw - 16px)}.map-stage{bottom:0}.header-actions .button{padding:6px 9px;font-size:11px}.brand small{display:none}}
 @media(min-width:1025px){.map-stage{bottom:0}}
+
+/* Supplies stay visible directly below the clock. */
+.left-console-stack>.resources{order:1;display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:9px 12px;margin:0;background:#0b202cef;border:1px solid #365664;border-radius:8px}
+.left-console-stack>.resources>div:first-child{grid-column:auto}
+.left-console-stack>.resources strong,.left-console-stack>.resources>div:first-child strong{font-size:23px;line-height:1.2;margin-top:4px}
+.left-console-stack>.resources .resource-foot{display:none}
+.left-console-stack>.resources .resource-label{font-size:9px;letter-spacing:.7px}
+.left-console-stack>.missions-menu{order:2}
+.left-console-stack>.route-panel{order:3}

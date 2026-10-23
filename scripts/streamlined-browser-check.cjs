@@ -6,7 +6,7 @@ const {chromium}=require('C:/Users/jdcar/.cache/codex-runtimes/codex-primary-run
  for(const [width,height] of [[1366,768],[820,1180],[390,844],[320,700]]){
   await p.setViewportSize({width,height});await p.waitForTimeout(150);
   assert.equal(await p.locator('#go-button').isVisible(),false);
-  assert.equal(await p.locator('#cash-left').isVisible(),false);
+  assert.ok(await p.locator('#cash-left').isVisible());assert.ok(await p.locator('#energy-left').isVisible());assert.ok(await p.locator('.left-console-stack').evaluate(e=>{const t=e.querySelector('.mission-panel').getBoundingClientRect(),r=e.querySelector('.resources').getBoundingClientRect(),m=e.querySelector('.missions-menu').getBoundingClientRect();return r.top>=t.bottom&&m.top>=r.bottom;}),'Money and energy sit between timer and missions');
   assert.equal(await p.locator('#crossing-window').isVisible(),false);
   assert.equal(await p.locator('.missions-menu').getAttribute('open'),null);
   assert.equal(await p.locator('#detour-panel').isVisible(),false);

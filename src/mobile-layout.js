@@ -8,7 +8,7 @@ export function setupMobileLayout() {
  missions.innerHTML='<summary>Missions</summary><div class="missions-content"></div>';
  const content=missions.querySelector('div');
  content.append(document.querySelector('#detour-panel'),document.querySelector('#continue-operation'),document.querySelector('#knowledge-button'));
- stack.append(document.querySelector('.mission-panel'),missions,document.querySelector('.route-panel'));
+ stack.append(document.querySelector('.mission-panel'),document.querySelector('.resources'),missions,document.querySelector('.route-panel'));
  const view=document.createElement('button');
  view.id='map-view-button';view.className='button secondary';view.textContent='Map view';
  view.setAttribute('aria-expanded','false');view.setAttribute('aria-controls','map-view-menu');
