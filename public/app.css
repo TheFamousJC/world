@@ -350,3 +350,10 @@
 .left-console-stack>.resources .resource-label{font-size:9px;letter-spacing:.7px}
 .left-console-stack>.missions-menu{order:2}
 .left-console-stack>.route-panel{order:3}
+
+/* The key stays on screen; its measured height reserves room for map credits. */
+.map-stage>.map-legend,body:has(.route-panel .route-leg) .map-stage>.map-legend{display:flex;position:fixed;left:0;right:0;bottom:0;width:100%;max-width:100%;padding-bottom:max(10px,env(safe-area-inset-bottom));gap:8px 14px;z-index:6}
+.map-stage .maplibregl-ctrl-bottom-left,.map-stage .maplibregl-ctrl-bottom-right{bottom:var(--map-key-height,120px)}
+.left-console-stack{max-height:calc(100dvh - var(--map-key-height,120px) - 100px)}
+.missions-content{max-height:calc(100dvh - var(--map-key-height,120px) - 280px)}
+@media(max-width:1024px){.left-console-stack{max-height:calc(100dvh - var(--map-key-height,120px) - 80px)}}

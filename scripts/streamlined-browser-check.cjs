@@ -11,7 +11,7 @@ const {chromium}=require('C:/Users/jdcar/.cache/codex-runtimes/codex-primary-run
   assert.equal(await p.locator('.missions-menu').getAttribute('open'),null);
   assert.equal(await p.locator('#detour-panel').isVisible(),false);
   assert.equal(await p.locator('.map-controls').isVisible(),false);
-  assert.equal(await p.locator('.map-legend').isVisible(),false);
+  assert.ok(await p.locator('.map-legend').isVisible());assert.ok(await p.locator('.map-legend').evaluate(e=>{const r=e.getBoundingClientRect();return Math.abs(r.left)<1&&Math.abs(r.width-innerWidth)<2&&r.bottom<=innerHeight;}),'Key fits the full screen width');
   const timer=p.locator('#clock-button');assert.ok(await timer.isVisible());assert.equal(await timer.getAttribute('aria-label'),'Pause game');
   await p.click('#map-view-button');assert.equal(await p.locator('#map-view-button').getAttribute('aria-expanded'),'true');assert.ok(await p.locator('.map-controls').isVisible());assert.ok(await p.locator('.map-legend').isVisible());
   await p.click('#layers-button');assert.ok(await p.locator('#layer-menu').isVisible());await p.click('#layers-button');
@@ -21,7 +21,7 @@ const {chromium}=require('C:/Users/jdcar/.cache/codex-runtimes/codex-primary-run
   await p.screenshot({path:`test-results/minimal-${width}.png`});
  }
  await p.locator('.missions-menu summary').click();await p.locator('#detour-panel [data-detour-travel]').first().click();assert.equal(await p.locator('.missions-menu').getAttribute('open'),null);assert.equal(await p.locator('#go-button').isVisible(),false);
- await p.click('[data-transport="taxi"]');assert.ok(await p.locator('#go-button').isVisible());await p.click('#go-button');await p.waitForFunction(()=>window.escapeTest.getSession().game.phase!=='travelling');
+ await p.click('[data-transport="taxi"]');assert.ok(await p.locator('.map-legend').isVisible());assert.ok(await p.locator('#go-button').isVisible());await p.click('#go-button');await p.waitForFunction(()=>window.escapeTest.getSession().game.phase!=='travelling');
  assert.equal(await p.locator('#go-button').isVisible(),false);await p.locator('.missions-menu summary').click();await p.locator('#detour-panel [data-detour]').first().click();assert.equal((await p.evaluate(()=>window.escapeTest.getSession())).game.inventory.length,1);assert.equal(await p.locator('#place-actions [data-contact-plan],#place-actions [data-contact-go],#place-actions [data-repair-contact]').count(),0,'Collection does not suggest or launch the next route');assert.match(await p.locator('#place-note').innerText(),/Collected/);assert.equal((await p.evaluate(()=>window.escapeTest.getSession())).plan.length,0,'Collection leaves the next destination to the player');
  await p.click('#clock-button');assert.equal(await p.locator('#clock-button').getAttribute('aria-label'),'Resume game');const before=await p.evaluate(()=>window.escapeTest.getSession().game.elapsed);await p.waitForTimeout(500);assert.equal(await p.evaluate(()=>window.escapeTest.getSession().game.elapsed),before);assert.deepEqual(errors,[]);
  console.log('PASS minimal UI at four sizes; timer icons, collapsed missions, contextual Go, map options/layers/key, mission travel/collection and pause.');

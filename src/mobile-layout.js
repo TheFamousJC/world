@@ -16,7 +16,11 @@ export function setupMobileLayout() {
  const menu=document.createElement('section');
  menu.id='map-view-menu';menu.className='map-view-menu';menu.hidden=true;
  menu.setAttribute('aria-label','Map view options');
- menu.append(document.querySelector('.map-controls'),document.querySelector('#layer-menu'),document.querySelector('.map-legend'));
+ menu.append(document.querySelector('.map-controls'),document.querySelector('#layer-menu'));
+ const key=document.querySelector('.map-legend');
+ const sizeKey=()=>document.documentElement.style.setProperty('--map-key-height',key.getBoundingClientRect().height+'px');
+ new ResizeObserver(sizeKey).observe(key);
+ sizeKey();
  document.querySelector('#app').append(menu);
  const close=()=>{menu.hidden=true;view.setAttribute('aria-expanded','false');};
  view.addEventListener('click',()=>{menu.hidden=!menu.hidden;view.setAttribute('aria-expanded',String(!menu.hidden));});
