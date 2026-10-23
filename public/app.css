@@ -209,3 +209,68 @@
  .route-panel .next-action{flex:1 1 45%;width:auto;font-size:11px}
  .route-panel .go-button{flex:1 1 40%;width:auto}
 }
+
+/* Map-first console: two small status panels, contextual departure controls. */
+.mission-panel>*:not(.deadline-timers),#crossing-window,.operations-dock,#pilot-panel,.map-telemetry{display:none!important}
+.mission-panel .deadline-timers{display:block;margin:0}
+.mission-panel .safety-deadline{padding:12px;min-width:0}
+.mission-panel .deadline-note{display:none}
+.mission-panel #clock-button{position:static;margin-top:7px;width:100%;min-height:36px;white-space:nowrap}
+.mission-panel .deadline-card>strong{font-size:28px;white-space:nowrap;letter-spacing:-1px}
+.mission-console{position:fixed;z-index:4;top:84px;right:18px;width:280px;padding:12px;background:#0b202ceF;border:1px solid #365664;border-radius:10px;max-height:calc(100dvh - 140px);overflow:auto}
+.mission-console .resources{display:grid;grid-template-columns:1fr 1fr;margin:0 0 10px;padding:0 0 10px;gap:10px;border-top:0}
+.mission-console .resources>div:first-child{grid-column:auto}
+.mission-console .resources strong,.mission-console .resources>div:first-child strong{font-size:25px}
+.mission-console .resource-foot{display:none}
+.mission-console .detour-panel{margin:0 0 10px;padding:0;border:0;background:none;max-height:none;font-size:12px}
+.mission-console .mission-task{padding:8px 0;border-bottom:1px solid #294652}
+.mission-console .mission-task>span{min-width:0;flex:1}
+.mission-console .mission-task small{font-size:10px;line-height:1.5}
+.mission-console .mission-task button{font-size:11px;padding:6px;white-space:normal;min-height:36px}
+.mission-console #knowledge-button,.mission-console #continue-operation{width:100%;min-height:40px}
+.route-panel .route-scroll>*:not(#route-legs),.route-panel .scope-label,.route-panel #next-action{display:none!important}
+.route-panel .route-scroll{flex:none;max-height:105px;overflow:auto;min-height:0}
+.route-panel #route-legs{margin:0}
+.route-panel .empty-plan{display:none}
+.route-panel:not(:has(.route-leg)):not(:has(.message.error)){display:none!important}
+.route-panel .message:empty{display:none}
+.route-panel .departure-row{margin-top:5px}
+.route-panel .route-estimate{padding:5px 8px}
+.map-legend{font-size:12px;gap:10px;max-width:calc(100% - 340px);padding:10px 12px}
+.map-legend .route-legend-modes,.stop-key-quick,.stop-key{font-size:12px;gap:8px}
+.stop-key-quick b{font-size:14px}.stop-key summary{min-height:36px}
+.stop-key>div{font-size:13px;width:320px}.stop-key small{font-size:12px}
+@media(min-width:1025px){
+ .mission-panel{top:84px;bottom:auto;max-height:none;width:220px;padding:0;border:0;background:transparent;overflow:visible}
+ .route-panel{position:fixed;top:auto;right:318px;left:250px;bottom:46px;width:auto;max-height:260px;min-height:0;border-radius:10px;border-bottom:1px solid #355462;padding:10px}
+ .route-panel .route-legs{display:flex;flex-wrap:nowrap}.route-panel .route-leg{min-width:210px}
+ .route-panel .departure-row{flex-wrap:nowrap;align-items:center}.route-panel .route-estimate{flex:1;min-width:0}.route-panel .go-button{flex:0 0 100px}
+ .route-panel #travel-scope{width:100%;margin:3px 0;min-height:30px}
+ .map-legend{left:250px;bottom:35px;max-width:calc(100% - 570px)}
+ body:has(.route-panel .route-leg) .map-legend{bottom:290px}
+}
+@media(max-width:1024px){
+ .mobile-command-bar{display:none!important}
+ .game-layout{display:block;min-height:calc(100dvh - 80px)}
+ .play-area{padding:0;display:block}
+ .map-stage{position:fixed;inset:54px 0 25px;height:auto;min-height:0;border-radius:0}
+ .mission-panel{display:block!important;position:fixed;top:64px;left:8px;width:158px;padding:0;background:transparent;border:0;z-index:5;max-height:none;overflow:visible}
+ .mission-panel .deadline-card{padding:8px}.mission-panel .deadline-card>strong{font-size:23px}
+ .mission-panel .resource-label{font-size:8px;letter-spacing:0}
+ .mission-console{top:64px;right:8px;width:210px;padding:9px;max-height:55dvh}
+ .mission-console .resources strong,.mission-console .resources>div:first-child strong{font-size:21px}
+ .mission-console .detour-panel{font-size:11px}.mission-console .mission-task{gap:5px;padding:5px 0}
+ .mission-console .mission-task small{font-size:9px}.mission-console .mission-task button{font-size:10px;padding:4px}
+ .route-panel{position:fixed;left:8px;right:8px;bottom:32px;max-height:240px;padding:9px;margin:0;z-index:6;border-radius:10px;overflow:auto}
+ .route-panel .route-scroll{display:block;max-height:75px}
+ .route-panel .route-legs{flex-wrap:nowrap}.route-panel .route-leg{min-width:200px}
+ .route-panel .departure-row{display:flex;flex-wrap:nowrap}.route-panel .route-estimate{flex:1;min-width:0}.route-panel .go-button{flex:0 0 80px}
+ .map-controls{top:auto;bottom:140px;left:8px;right:auto;max-width:calc(100% - 55px);flex-wrap:wrap}
+ .map-heading{display:none}.map-legend{left:8px;right:45px;bottom:28px;max-width:none;font-size:11px;padding:8px}
+ .map-legend .route-legend-modes,.stop-key-quick,.stop-key{font-size:11px}
+ body:has(.route-panel .route-leg) .map-legend{display:none}
+ .app-footer{position:fixed;bottom:0;left:0;right:0}
+}
+@media(max-width:400px){.mission-panel{width:140px}.mission-console{width:calc(100% - 164px)}.mission-console .mission-task{flex-wrap:wrap}.mission-console .mission-task button{width:100%}}
+.map-legend{width:fit-content;right:auto}
+@media(max-width:1024px){.map-legend{max-width:calc(100% - 55px)}}
