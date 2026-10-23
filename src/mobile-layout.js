@@ -5,6 +5,10 @@ export function setupMobileLayout() {
  right.className='mission-console';
  right.setAttribute('aria-label','Supplies and missions');
  document.querySelector('.play-area').append(right);
+ const stack=document.createElement('div');
+ stack.className='left-console-stack';
+ document.querySelector('.play-area').append(stack);
+ stack.append(left,document.querySelector('.route-panel'),right);
  right.append(document.querySelector('.resources'),document.querySelector('#detour-panel'),document.querySelector('#continue-operation'),document.querySelector('#knowledge-button'));
  // Keep the pause control beside its timer at every screen size.
  left.querySelector('.safety-deadline').append(document.querySelector('#clock-button'));
