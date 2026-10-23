@@ -1,6 +1,12 @@
 // Move the real controls, preserving their state, IDs and delegated actions.
 // Anchors restore the desktop layout when the viewport grows again.
 export function setupMobileLayout() {
+  // One shared column prevents field controls covering the departure button.
+  const column = document.createElement('div');
+  column.className = 'control-column';
+  const route = document.querySelector('.route-panel');
+  route.before(column);
+  column.append(route, document.querySelector('.operations-dock'));
   const bar = document.createElement('section');
   bar.className = 'mobile-command-bar';
   bar.setAttribute('aria-label', 'Mission status and travel controls');
