@@ -119,12 +119,7 @@ function showContactCard(p){
  const hint=status.done?'Collected and carried in your inventory.':status.locked?'Collect mission 1 first, then return here.':status.at?'Ready here · '+t.minutes+' game minutes.':'Travel here to collect.';
  return '<div class="contact-task"><strong>'+(required?'Mission '+n+': ':'Optional: ')+esc(t.title)+'</strong><small>'+esc(hint)+'</small>'+(!status.done&&!status.locked?'<button class="button primary" '+attr+'="'+t.id+'" '+(!session.clockRunning||!status.at?'disabled':'')+'>Collect</button>':'')+'</div>';
  }).join('');
- const step=nextStep(s,c,place,{running:session.clockRunning,plan:session.plan,airports:PLACES.filter(p=>p.kind==='airport'),blocked:session.rejection?.signature===signature()});
- if(step.kind==='document')$('place-actions').innerHTML+='<button class="button secondary" data-open-desk="true">Check travel documents</button>';
- else if(step.target&&!tasks.some(t=>t.place===step.target)){
-  const attr=step.kind==='replace'?'data-repair-contact':step.kind==='review'?'data-contact-go':'data-contact-plan';
-  $('place-actions').innerHTML+='<button class="button secondary" '+attr+'="'+step.target+'">'+esc(step.kind==='review'?'Go to '+name(step.target):step.label)+'</button>';
- }
+ if(tasks.every(t=>pickupState(s,t,place).done))$('place-note').textContent='Collected. Choose your next destination on the map.';
  $('place-card').hidden=false;return true;
 }
 function renderRecovery(){
