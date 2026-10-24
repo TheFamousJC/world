@@ -357,3 +357,24 @@
 .left-console-stack{max-height:calc(100dvh - var(--map-key-height,120px) - 100px)}
 .missions-content{max-height:calc(100dvh - var(--map-key-height,120px) - 280px)}
 @media(max-width:1024px){.left-console-stack{max-height:calc(100dvh - var(--map-key-height,120px) - 80px)}}
+
+/* Mission tools remain available inside the one collapsed dropdown. */
+#mission-menu-count{margin-left:auto;padding:0 10px;color:#9ce4cf;font:12px ui-monospace,monospace}
+.missions-content .objective{margin:5px 0 12px;padding-left:9px}
+.missions-content .objective strong{font-size:14px}
+.missions-content .operation-progress{font-size:10px;line-height:1.5;padding:7px 0}
+.mission-tools{border-top:1px solid #35515e;margin-top:9px;padding-top:3px}
+.mission-tools>summary{cursor:pointer;padding:8px 0;font-size:12px;color:#a9d6df;min-height:38px}
+.mission-tools .button,.mission-tools .text-button,.mission-tools .icon-button{display:flex!important;min-height:38px;width:100%;margin:5px 0;justify-content:flex-start;text-align:left;white-space:normal}
+.mission-tools .icon-button{font-size:14px;padding:7px 10px}
+.mission-tools #tutorial-button{font-size:0}.mission-tools #tutorial-button:after{content:'How to play';font-size:12px}
+.mission-tools #settings-button{font-size:0}.mission-tools #settings-button:after{content:'Settings';font-size:12px}
+.mission-tools h1{font-size:19px;margin:8px 0}.mission-tools .mission-subtitle{font-size:12px}
+.mission-tools .inventory{max-height:none;white-space:normal}
+.mission-tools .bonus-panel{padding:7px;margin:5px 0}.mission-tools .bonus-panel #bonus-list{max-height:none}
+.left-console-stack .route-panel:not(:has(#go-button[hidden])){display:block!important}
+.mission-tools #route-legs{display:flex;flex-direction:column;gap:6px;margin:5px 0}
+.mission-tools .route-leg{min-width:0;max-width:100%;flex:none;width:100%;font-size:11px}
+.mission-tools #travel-scope{width:100%;min-width:0;white-space:normal}
+.mission-tools #route-estimate{font-size:11px;line-height:1.5;padding:7px 0}
+.mission-tools #route-estimate small{white-space:normal}

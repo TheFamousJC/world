@@ -5,9 +5,17 @@ export function setupMobileLayout() {
  document.querySelector('.play-area').append(stack);
  const missions=document.createElement('details');
  missions.className='missions-menu';
- missions.innerHTML='<summary>Missions</summary><div class="missions-content"></div>';
+ missions.innerHTML='<summary>Missions <span id="mission-menu-count"></span></summary><div class="missions-content"></div>';
  const content=missions.querySelector('div');
- content.append(document.querySelector('#detour-panel'),document.querySelector('#continue-operation'),document.querySelector('#knowledge-button'));
+  content.append(document.querySelector('#operation-progress'),document.querySelector('.objective'),document.querySelector('#detour-panel'),document.querySelector('#continue-operation'),document.querySelector('#knowledge-button'));
+ const section=(title,elements)=>{
+  const details=document.createElement('details');details.className='mission-tools';
+  const label=document.createElement('summary');label.textContent=title;details.append(label,...elements);content.append(details);
+ };
+ section('Planned route',[document.querySelector('#route-legs'),document.querySelector('#travel-scope'),document.querySelector('#route-estimate')]);
+ section('Supplies & recovery',[document.querySelector('#bonus-panel'),document.querySelector('#rest-button'),document.querySelector('#inventory')]);
+ section('Briefing & journey',[document.querySelector('#mission-title'),document.querySelector('#mission-subtitle'),document.querySelector('#briefing-button'),document.querySelector('#restart-button'),document.querySelector('#journal-button')]);
+ section('Help & settings',[document.querySelector('.help-link'),document.querySelector('#tutorial-button'),document.querySelector('#settings-button'),document.querySelector('#challenges-button')]);
  stack.append(document.querySelector('.mission-panel'),document.querySelector('.resources'),missions,document.querySelector('.route-panel'));
  const view=document.createElement('button');
  view.id='map-view-button';view.className='button secondary';view.textContent='Map view';
