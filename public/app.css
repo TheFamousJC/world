@@ -378,3 +378,10 @@
 .mission-tools #travel-scope{width:100%;min-width:0;white-space:normal}
 .mission-tools #route-estimate{font-size:11px;line-height:1.5;padding:7px 0}
 .mission-tools #route-estimate small{white-space:normal}
+
+/* Mission numbers remain legible above other place markers at every zoom. */
+.poi-marker.mission-stop{z-index:6}
+.poi-marker.current{z-index:7}
+.mission-stop .mission-badge{min-width:24px;height:24px;right:-12px;top:-13px;background:#a76416;border:2px solid #ffd58b;color:#fff;font:700 14px/1 system-ui;box-shadow:0 2px 8px #000b}
+.poi-marker.pickup-collected .mission-badge{background:#184f40;border-color:#8de1bd;color:#c9ffe6}
+.mission-stop .mission-badge{z-index:2}

@@ -3,6 +3,18 @@ const {chromium}=require('C:/Users/jdcar/.cache/codex-runtimes/codex-primary-run
 (async()=>{const b=await chromium.launch({headless:true,executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',args:['--use-gl=angle','--use-angle=swiftshader-webgl','--enable-unsafe-swiftshader']});try{
  const c=await b.newContext();await c.addInitScript(()=>{localStorage.setItem('escape-atlas:v1:tutorial','1');localStorage.setItem('escape-atlas:v1:settings',JSON.stringify({reduce:true}));});const p=await c.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto((process.env.GAME_URL||'http://127.0.0.1:4187/world/')+'?test=1');await p.waitForFunction(()=>window.escapeTest?.atlas.ready,null,{timeout:60000});await p.click('#launch-story');
+ await p.setViewportSize({width:1366,height:768});
+ const centre=await p.evaluate(()=>{const x=window.escapeTest,c=x.scenarios.find(c=>c.id===x.getSession().game.scenarioId);return x.atlas.markers.get(c.detours[0].place).marker.getLngLat().toArray();});
+ for(const zoom of [8,9,13]){
+  await p.evaluate(({centre,zoom})=>window.escapeTest.atlas.map.jumpTo({center:centre,zoom}),{centre,zoom});
+  await p.waitForTimeout(100);
+  assert.deepEqual((await p.locator('.mission-stop .mission-badge').allTextContents()).sort(),['1','2']);
+  for(const badge of await p.locator('.mission-stop .mission-badge').all())assert.ok(await badge.isVisible(),'Amber badge stays visible at zoom '+zoom);
+  await p.evaluate(()=>window.escapeTest.atlas.setLayer('places',false));assert.equal(await p.locator('.mission-stop:visible').count(),0);
+  await p.evaluate(()=>window.escapeTest.atlas.setLayer('places',true));assert.equal(await p.locator('.mission-stop:visible').count(),2);
+ }
+ await p.screenshot({path:'test-results/desktop-mission-badges.png'});
+
  for(const [width,height] of [[1366,768],[820,1180],[390,844],[320,700]]){
   await p.setViewportSize({width,height});await p.waitForTimeout(150);
   assert.equal(await p.locator('#go-button').isVisible(),false);
@@ -33,7 +45,7 @@ const {chromium}=require('C:/Users/jdcar/.cache/codex-runtimes/codex-primary-run
  }
  await p.locator('.missions-menu > summary').click();await p.locator('#detour-panel [data-detour-travel]').first().click();assert.equal(await p.locator('.missions-menu').getAttribute('open'),null);assert.equal(await p.locator('#go-button').isVisible(),false);
  await p.click('[data-transport="taxi"]');await p.locator('.missions-menu > summary').click();await p.locator('.mission-tools > summary').filter({hasText:'Planned route'}).click();assert.ok(await p.locator('#route-estimate').isVisible());assert.ok(await p.locator('#travel-scope').isVisible());assert.equal(await p.locator('#route-legs .route-leg').count(),1);await p.locator('.missions-menu > summary').click();assert.ok(await p.locator('.map-legend').isVisible());assert.ok(await p.locator('#go-button').isVisible());await p.click('#go-button');await p.waitForFunction(()=>window.escapeTest.getSession().game.phase!=='travelling');
- assert.equal(await p.locator('#go-button').isVisible(),false);await p.locator('.missions-menu > summary').click();await p.locator('#detour-panel [data-detour]').first().click();assert.equal((await p.evaluate(()=>window.escapeTest.getSession())).game.inventory.length,1);assert.equal(await p.locator('#place-actions [data-contact-plan],#place-actions [data-contact-go],#place-actions [data-repair-contact]').count(),0,'Collection does not suggest or launch the next route');assert.match(await p.locator('#place-note').innerText(),/Collected/);assert.equal(await p.locator('#mission-menu-count').innerText(),'1/2');assert.equal((await p.evaluate(()=>window.escapeTest.getSession())).plan.length,0,'Collection leaves the next destination to the player');
+ assert.equal(await p.locator('#go-button').isVisible(),false);await p.locator('.missions-menu > summary').click();await p.locator('#detour-panel [data-detour]').first().click();assert.equal((await p.evaluate(()=>window.escapeTest.getSession())).game.inventory.length,1);assert.equal(await p.locator('#place-actions [data-contact-plan],#place-actions [data-contact-go],#place-actions [data-repair-contact]').count(),0,'Collection does not suggest or launch the next route');assert.match(await p.locator('#place-note').innerText(),/Collected/);assert.equal(await p.locator('#mission-menu-count').innerText(),'1/2');assert.equal(await p.locator('.mission-stop.pickup-collected .mission-badge').innerText(),'✓');assert.equal((await p.evaluate(()=>window.escapeTest.getSession())).plan.length,0,'Collection leaves the next destination to the player');
  await p.click('#clock-button');assert.equal(await p.locator('#clock-button').getAttribute('aria-label'),'Resume game');const before=await p.evaluate(()=>window.escapeTest.getSession().game.elapsed);await p.waitForTimeout(500);assert.equal(await p.evaluate(()=>window.escapeTest.getSession().game.elapsed),before);assert.deepEqual(errors,[]);
  console.log('PASS minimal UI at four sizes; timer icons, collapsed missions, contextual Go, map options/layers/key, mission travel/collection and pause.');
  }finally{await b.close();}})().catch(e=>{console.error(e);process.exitCode=1;});
