@@ -13,7 +13,7 @@ export function nextStep(state,scenario,find,{running=true,plan=[],blocked=false
  const task=complete?null:tasks.find(t=>!state.completedTasks?.includes(t.id));
  if(task){
   const number=tasks.indexOf(task)+1,where=pickupState(state,task,find);
-  if(where.at&&!where.locked)return {kind:'collect',task:task.id,label:task.title,detail:'You are at '+find(task.place).name+'. Collection takes '+task.minutes+' game minutes.'};
+  if(where.at&&!where.locked)return {kind:'collect',task:task.id,label:task.title,detail:'You are at '+find(task.place).name+'. This action takes '+task.minutes+' game minutes.'};
  }
  let target=task?.place||scenario.goal,label=task?'mission '+(tasks.indexOf(task)+1):'destination',travelDetail='';
  const from=find(state.position),destination=find(target);

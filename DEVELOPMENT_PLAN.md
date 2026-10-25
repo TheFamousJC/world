@@ -1,6 +1,6 @@
 # Escape Atlas home screen development plan
 
-Updated 25 October 2026 against version 0.21.1.
+Updated 25 October 2026 against version 0.22.0.
 
 ## Current priority Browser gameplay
 
@@ -42,7 +42,9 @@ Keep the browser game as the priority. The current interface has a timer with pl
 
 **Acceptance tests:** two distinct winning strategies and at least five authored losing/recovery cases; no teleporting; response only to known traces; consistent results for a shared seed; pause/reload/offline and operation carry-over retain pursuit state; every interception has a preceding understandable warning and a feasible response.
 
-### Pilot requirements agreed before development (proposed rules)
+### Pilot requirements and implementation status
+
+Shipped in 0.22.0: a measured ten-story difficulty audit and one standalone courier operation with fixed-stop shuttle routes/timetables, explicit document deposit and a retained receipt. Two mixed-mode wins and failure guards are tested. See DIFFICULTY_AUDIT.md. Existing stories keep their current balance. Pursuit, safe houses and dynamic obstacles/dispatches remain future work.
 
 **Transport must create decisions.** The current shuttle is too broadly useful. Build a fixed-stop shuttle network with real game departure windows, boarding/access time and walking at either end. Set its fares against the total five-operation budget, and make public service routes vulnerable to authored inspections and predictable pursuit. Taxis buy flexibility at a substantial cost; walking buys discretion at an energy/time cost; trains/flights require preparation and timetables. Show known waits, costs, document rules and exposure in quotes. Avoid flat fare inflation or arbitrary demands to use every mode. At least two mixed-mode approaches must win; shuttle-only play must encounter a meaningful published constraint in the pilot rather than dominate every operation.
 
@@ -63,10 +65,10 @@ Keep the browser game as the priority. The current interface has a timer with pl
 
 ### Delivery order for excitement and replayability
 
-These are the next implementation stages; the new pursuit, delivery, hiding, obstacle and dynamic-HQ systems are not active yet.
+The single-operation delivery/transport prototype is active. Pursuit, hiding, obstacles and dynamic HQ remain the next stages.
 
 1. **Foundation and difficulty audit.** Protect saves with export/import and recoverable restarts. Measure current shuttle-only outcomes, full trip time, fares and energy in representative stories. Define fixed-stop transport constraints and two winning strategies plus at least five losing/recovery cases for one five-operation pilot. Preserve the existing introductory stories until the new model is proven.
-2. **Action-based objectives and transport trade-offs.** Build collect → deliver/deposit → receipt validation, with clear action buttons and atomic inventory/resource accounting. Add the pilot's shuttle stops/timetables and meaningful alternatives. Prove that varied routes win and repeated shuttle use has real trade-offs.
+2. **Action-based objectives and transport trade-offs.** The courier operation now implements collect → deposit → receipt validation, action buttons, atomic inventory/resource accounting and fixed shuttle stops/timetables. Next: playtest and tune this operation, then extend the proven mechanics into the five-operation pilot.
 3. **Pursuit, hiding and authored obstacles.** Start with one playable operation, then extend to five. Add trace-based pursuit, last-known search areas, hiding places, safe-house access and police/secret-police events. Test warning lead time, recovery and escalation, with no hidden teleporting or unavoidable soft locks.
 4. **Dynamic Ask HQ and narrative consequences.** Add the dispatch inbox, contextual hints, pursuit warnings, one-hour radio-silence orders and feasible mission changes. Branch outcomes for helping contacts, losing trust or changing the handoff plan. All triggers use the seeded game clock and survive pause, save/reload and offline play.
 5. **Playtest and replayability.** Observe real desktop/phone players, tune difficulty, then add shared-seed daily challenges, optional route ghosts and consequence-focused debriefs. Expand the strongest mechanics to selected stories after the pilot succeeds. Human multiplayer and live-world integrations remain later work.

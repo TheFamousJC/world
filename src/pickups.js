@@ -16,7 +16,7 @@ export function stopInfo(place,state,scenario){
  return {
   symbol:bonus?(bonus.kind==='cash'?'£':'♡'):place.id===scenario.goal?'◎':STOP_SYMBOLS[place.kind]||'·',
   badge:task?(String(index+1)+(done?'✓':'')):'',
-  label:task?(done?'COLLECTED':`MISSION ${index+1}`):bonus?(done?'COLLECTED':bonus.kind==='cash'?'OPTIONAL CASH':'OPTIONAL ENERGY'):place.id===scenario.goal?'DESTINATION':'',
+  label:task?(done?(task.kind==='deposit'?'DEPOSITED':'COLLECTED'):`MISSION ${index+1}`):bonus?(done?'COLLECTED':bonus.kind==='cash'?'OPTIONAL CASH':'OPTIONAL ENERGY'):place.id===scenario.goal?'DESTINATION':'',
   done,
   task,
   bonus
