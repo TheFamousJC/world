@@ -394,3 +394,5 @@
 
 .audio-toggle{min-width:42px;gap:6px!important}.audio-toggle>span:first-child{font-size:20px}.audio-muted>span:first-child{text-decoration:line-through;opacity:.7}.audio-settings{border:1px solid #365664;border-radius:8px;padding:12px;margin:16px 0}.audio-settings legend{color:#9ce4cf;font-size:13px}.audio-settings .setting{margin:6px 0}.audio-settings input[type=range]{width:130px;accent-color:#8ce8ce}
 @media(max-width:560px){.audio-label{display:none}.header-actions .audio-toggle{padding:5px 8px;min-width:34px}.header-actions{gap:4px}}
+.hq-brief{background:#102f3b;border:1px solid #426775;border-radius:8px;padding:12px;margin:10px 0 16px}.hq-brief ul{padding-left:18px;margin:8px 0 0}.hq-brief li{font-size:13px;line-height:1.6;margin:7px 0;color:#d8ecef}
+.hq-brief{grid-column:1/-1}

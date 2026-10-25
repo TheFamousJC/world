@@ -67,7 +67,7 @@ Install Node.js 22 or newer. No package installation, accounts or API keys are r
 npm run dev
 ```
 
-Open http://127.0.0.1:4173. Enter the district from the globe, click a destination and choose one of the available transport cards. The leg appears immediately under **Plot your escape**. Repeat for more stops, then press **Go** to travel the plan. Click an existing planned stop again to remove it and every leg after it. Planning consumes real seconds; travel simulates the quoted journey time. Local knowledge, saving and reduced motion remain available.
+Open http://127.0.0.1:4173. Enter the district from the globe, click a destination and choose one of the available transport cards. The leg appears immediately under **Plot your escape**. Repeat for more stops, then press **Go** to travel the plan. Click an existing planned stop again to remove it and every leg after it. Planning consumes real seconds; travel simulates the quoted journey time. Ask HQ, saving and reduced motion remain available.
 
 ## Deadline clarity (0.6.1)
 

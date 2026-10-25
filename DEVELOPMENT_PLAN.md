@@ -1,6 +1,6 @@
 # Escape Atlas home screen development plan
 
-Updated 25 October 2026 against version 0.21.0.
+Updated 25 October 2026 against version 0.21.1.
 
 ## Current priority Browser gameplay
 
@@ -38,17 +38,40 @@ Keep the browser game as the priority. The current interface has a timer with pl
 4. A useful ally has a competing need; helping them may unlock a later alternative.
 5. Combine the established rules in a final handoff with several endings based on choices and survival.
 
-**Interface:** put exposure details and intelligence inside Missions / Local knowledge. Use temporary map alerts and an approximate search area. Keep the timer, resources, Go, audio and key as the permanent controls. Do not add a permanent pursuit dashboard.
+**Interface:** put exposure details and intelligence inside Missions / Ask HQ. Use temporary map alerts and an approximate search area. Keep the timer, resources, Go, audio and key as the permanent controls. Do not add a permanent pursuit dashboard.
 
 **Acceptance tests:** two distinct winning strategies and at least five authored losing/recovery cases; no teleporting; response only to known traces; consistent results for a shared seed; pause/reload/offline and operation carry-over retain pursuit state; every interception has a preceding understandable warning and a feasible response.
 
+### Pilot requirements agreed before development (proposed rules)
+
+**Transport must create decisions.** The current shuttle is too broadly useful. Build a fixed-stop shuttle network with real game departure windows, boarding/access time and walking at either end. Set its fares against the total five-operation budget, and make public service routes vulnerable to authored inspections and predictable pursuit. Taxis buy flexibility at a substantial cost; walking buys discretion at an energy/time cost; trains/flights require preparation and timetables. Show known waits, costs, document rules and exposure in quotes. Avoid flat fare inflation or arbitrary demands to use every mode. At least two mixed-mode approaches must win; shuttle-only play must encounter a meaningful published constraint in the pilot rather than dominate every operation.
+
+**Missions must require actions and outcomes.** Keep two headline objectives per operation, but change their verbs. Example: collect a sealed dossier from the records contact, then deposit that dossier in an authorised locker and retain the receipt. Later objectives can require verifying a code, handing a package to the right contact, obtaining clearance, or helping another traveller. Arrival does not complete an action. Required items are validated and consumed/transferred only on a successful handoff; receipt/evidence remains in inventory. Make the next objective and required action clear in Missions, without choosing the player's route. Failed or repeated interactions must not lose items, double-charge or advance progress.
+
+**Hiding must be a decision.** Add authored hiding places and trusted safe houses with explicit entry requirements, capacity where relevant, time, fee and recovery effects. A short hide can reduce exposure while the pursuer searches the last-known area, but uses the shared deadline and may allow nearby searches to advance. A safe house offers more reliable recovery once access is earned. Pause freezes the simulation; hiding advances it. Neither is magical permanent invisibility. Keep at least one feasible recovery option in each tested branch.
+
+**Spy-thriller obstacles.** Use fictional police roadblocks, document inspections, station searches and plain-clothes/secret-police surveillance as authored scenario events. They should affect actual graph edges, stops or departures. Reports can be stale, but the player needs clues, a verification option or a warning before severe consequences. The pursuer follows evidence, travels with a response delay and cannot teleport or infer unobserved actions. Keep the release focused on civilian travel and choices rather than combat.
+
+**Ask HQ replaces Local knowledge.** The rebrand and a free contextual brief ship in 0.21.1; the dynamic dispatch system below is future pilot work. HQ is a compact inbox of authored orders, essential clues and escalating hints, not an open-ended AI chat. Current objectives and received messages remain readable even when money is exhausted or the game is paused. Additional verification may consume quoted time/money, but basic rescue guidance must remain available.
+
+**Future HQ dispatches:**
+- Stuck/low-resource advice: point out an unmet objective, recovery contact, missed connection or required document without plotting the route automatically.
+- Pursuit warnings: identify an approximate search area, source, timestamp and confidence; suggest a category of response such as hide, verify or reroute.
+- Radio silence for one game hour: state when communication resumes. New requests are unavailable during silence, but cached orders, objectives and route planning remain usable. The pause control freezes this period too.
+- A changed mission: explain what changed and why, preserve completed work and valid evidence, and validate that the new destination and deadline are still feasible. Use a few authored twists rather than constant random changes.
+- Quiet notifications: show a brief map banner or optional radio cue with Read / Acknowledge, queue non-urgent messages, and deduplicate warnings by event ID. No new permanent dashboard and no repeated popups every timer tick.
+
 ### Delivery order for excitement and replayability
 
-1. Protect saves, add recoverable restarts and finish physical-device UX testing before adding more simultaneous systems.
-2. Build the pursuit model in one authored five-operation story, starting with the first operation as a playable test. Observe whether players understand the consequences before adding the remaining operations.
-3. Add trusted/unreliable contacts and optional companion or rescue objectives to that pilot. Choices should change later routes and the ending, not just add text.
-4. Add seeded daily challenges, shareable challenge codes and an optional replay/ghost of a previous route. These can work without accounts or a paid backend.
-5. Expand the strongest mechanics to selected stories after playtesting; retain simpler stories for new players. Human multiplayer is a later project, with separate hosting and fairness requirements.
+These are the next implementation stages; the new pursuit, delivery, hiding, obstacle and dynamic-HQ systems are not active yet.
+
+1. **Foundation and difficulty audit.** Protect saves with export/import and recoverable restarts. Measure current shuttle-only outcomes, full trip time, fares and energy in representative stories. Define fixed-stop transport constraints and two winning strategies plus at least five losing/recovery cases for one five-operation pilot. Preserve the existing introductory stories until the new model is proven.
+2. **Action-based objectives and transport trade-offs.** Build collect → deliver/deposit → receipt validation, with clear action buttons and atomic inventory/resource accounting. Add the pilot's shuttle stops/timetables and meaningful alternatives. Prove that varied routes win and repeated shuttle use has real trade-offs.
+3. **Pursuit, hiding and authored obstacles.** Start with one playable operation, then extend to five. Add trace-based pursuit, last-known search areas, hiding places, safe-house access and police/secret-police events. Test warning lead time, recovery and escalation, with no hidden teleporting or unavoidable soft locks.
+4. **Dynamic Ask HQ and narrative consequences.** Add the dispatch inbox, contextual hints, pursuit warnings, one-hour radio-silence orders and feasible mission changes. Branch outcomes for helping contacts, losing trust or changing the handoff plan. All triggers use the seeded game clock and survive pause, save/reload and offline play.
+5. **Playtest and replayability.** Observe real desktop/phone players, tune difficulty, then add shared-seed daily challenges, optional route ghosts and consequence-focused debriefs. Expand the strongest mechanics to selected stories after the pilot succeeds. Human multiplayer and live-world integrations remain later work.
+
+**Release gate:** complete the pilot in at least two distinct ways; verify five failure/recovery cases per operation, truthful quotes for known constraints, meaningful transport choices, visible action requirements, preserved items/receipts, affordable recovery paths, saved pursuit/HQ state, no duplicate charges and unchanged pause/offline/update safety.
 
 ### Other promising ideas
 
