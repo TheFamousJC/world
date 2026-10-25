@@ -11,7 +11,7 @@ const hash=createHash('sha256');for(const file of files)hash.update(fs.readFileS
 const html=path.join(out,'index.html');fs.writeFileSync(html,fs.readFileSync(html,'utf8').replace('content="development"','content="production"'));
 const regionalHash=createHash('sha256');for(const file of MAP_PACKS.map(p=>p.file))regionalHash.update(fs.readFileSync(path.join(out,'data',file)));const regionRevision=regionalHash.digest('hex').slice(0,16);
 const packLoader=path.join(out,'src','map-packs.js');fs.writeFileSync(packLoader,fs.readFileSync(packLoader,'utf8').replace('REGION_REVISION',regionRevision));
-const worker=path.join(out,'sw.js');fs.writeFileSync(worker,fs.readFileSync(worker,'utf8').replace('BUILD_ID',buildId).replace('REGION_REVISION',regionRevision));
+const worker=path.join(out,'sw.js');fs.writeFileSync(worker,fs.readFileSync(worker,'utf8').replace('APP_VERSION',JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8')).version).replace('BUILD_ID',buildId).replace('REGION_REVISION',regionRevision));
 for(const folder of ['data','src','vendor'])for(const f of fs.readdirSync(path.join(out,folder),{recursive:true})){const file=path.join(out,folder,f);if(fs.statSync(file).isFile()&&/\.(json|geojson|js|mjs|css)$/.test(file)){const buffer=fs.readFileSync(file);fs.writeFileSync(file+'.gz',zlib.gzipSync(buffer,{level:9}));}}
 fs.writeFileSync(path.join(out,'.nojekyll'),'');
 console.log('Built static game in dist/ (no package installation or paid services required).');

@@ -14,9 +14,9 @@ const server=http.createServer((req,res)=>{
  let rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/world\//,'')||'index.html';
  const file=path.resolve('dist',rel);if(!file.startsWith(path.resolve('dist')+path.sep)||!fs.existsSync(file)){res.writeHead(404);return res.end();}
  let data=version==='legacy'&&old.has(rel)?old.get(rel):fs.readFileSync(file);
- if(rel==='update.html')data=data.toString().replace('./?v=0.18.1','./?v=0.18.1&test=1');
- if(version==='next'&&rel==='sw.js')data=data.toString().replace("const CACHE=PREFIX+'","const CACHE=PREFIX+'next-");
- if(version==='next'&&rel==='index.html')data=data.toString().replace('v0.18.1','v-test-next');
+ if(rel==='update.html')data=data.toString().replace('./?v=0.19.0','./?v=0.19.0&test=1');
+ if(['same','next'].includes(version)&&rel==='sw.js'){data=data.toString().replace("const CACHE=PREFIX+'","const CACHE=PREFIX+'"+version+"-");if(version==='next')data=data.replace("const RELEASE='0.19.0'","const RELEASE='0.19.1'");}
+ if(version==='next'&&rel==='index.html')data=data.toString().replace('v0.19.0','v-test-next');
  res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','Cache-Control':'no-cache'});res.end(data);
 });
 (async()=>{
@@ -28,15 +28,16 @@ const server=http.createServer((req,res)=>{
   const base='http://127.0.0.1:4188/world/';
   const ready=()=>p.waitForFunction(()=>window.escapeTest?.atlas.ready,null,{timeout:60000});
   const state=()=>p.evaluate(()=>window.escapeTest.getSession());
+  const settings=async()=>{await p.locator('.missions-menu').evaluate(e=>e.open=true);await p.locator('.mission-tools').filter({has:p.locator('summary').filter({hasText:'Help & settings'})}).evaluate(e=>e.open=true);await p.click('#settings-button');};
   await p.goto(base+'?test=1');await ready();assert.equal((await state()).clockRunning,false);
   await p.click('#story-back');await p.locator('#story-library [data-close]').click();
-  await p.click('#settings-button');await p.click('#settings-practice');await p.click('[data-scenario="last-departure"]');
-  await p.locator('.named-stop-picker').evaluate(e=>e.open=true);await p.selectOption('#destination','workshop');await p.click('[data-transport="taxi"]');await p.click('#go-button');
+  await settings();await p.click('#settings-practice');await p.click('[data-scenario="last-departure"]');
+  await p.locator('.missions-menu').evaluate(e=>e.open=false);await p.evaluate(()=>{const x=window.escapeTest,g=x.atlas.markers.get('workshop').marker.getLngLat();x.atlas.frame([[g.lng,g.lat]],{maxZoom:15,pitch:0,bearing:0});});await p.locator('button.poi-marker').filter({hasText:'Cycle workshop'}).click();await p.click('[data-transport="taxi"]');await p.click('#go-button');
   await p.waitForFunction(()=>window.escapeTest.getSession().game.phase==='travelling');
   await p.reload();await ready();assert.equal((await state()).clockRunning,false);assert.equal((await state()).game.phase,'travelling');
   const pending=await state();await p.waitForTimeout(2200);assert.deepEqual((await state()).game,pending.game,'Reload does not settle or run a pending leg');
   assert.equal(await p.locator('#clock-button').isDisabled(),false);
-  await p.click('#settings-button');await p.check('#reduce-motion');await p.locator('#settings-dialog [data-close]').click();await p.click('#clock-button');
+  await settings();await p.check('#reduce-motion');await p.locator('#settings-dialog [data-close]').click();await p.click('#clock-button');
   await p.waitForFunction(()=>window.escapeTest.getSession().game.phase==='arrived');assert.equal((await state()).game.departures,1);
   await p.reload();await ready();const paused=await state();assert.equal(paused.clockRunning,false);await p.waitForTimeout(2200);assert.equal((await state()).game.elapsed,paused.game.elapsed);
   for(const width of [320,390,1526]){
@@ -44,9 +45,10 @@ const server=http.createServer((req,res)=>{
    for(const id of ['time-left','cash-left'])assert.ok(await p.locator('#'+id).evaluate(e=>{const r=e.getBoundingClientRect();return r.top>=0&&r.bottom<380;}),id+' is at the top at '+width);
   }
   await p.waitForFunction(()=>navigator.serviceWorker.controller,null,{timeout:60000});
+  version='same';await p.evaluate(()=>navigator.serviceWorker.getRegistration().then(r=>r.update()));await p.waitForFunction(()=>navigator.serviceWorker.getRegistration().then(r=>!!r.waiting),null,{timeout:60000});await p.waitForTimeout(1800);assert.equal(await p.locator('#update-notice').isVisible(),false,'A waiting worker for the loaded release is not an update');
   version='next';await p.evaluate(()=>navigator.serviceWorker.getRegistration().then(r=>r.update()));
   await p.waitForSelector('#update-notice:not([hidden])',{timeout:60000});
-  assert.equal(await p.locator('.version-label').innerText(),'v0.18.1','Installing an update does not silently reload');
+  assert.equal(await p.locator('.version-label').innerText(),'v0.19.0','Installing an update does not silently reload');
   await p.click('#apply-update');await p.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v-test-next',null,{timeout:60000});await ready();
   assert.equal((await state()).clockRunning,false);assert.equal((await state()).game.cash,paused.game.cash);assert.equal((await state()).game.departures,1);
   await p.waitForFunction(()=>navigator.serviceWorker.controller,null,{timeout:60000});
@@ -57,7 +59,7 @@ const server=http.createServer((req,res)=>{
   assert.equal(p.url(),offlineUrl);assert.match(await p.locator('#update-copy').innerText(),/Connect to the internet/);
   assert.equal((await state()).game.cash,paused.game.cash);
   await context.setOffline(false);version='current';await p.click('#apply-update');
-  await p.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.18.1',null,{timeout:60000});await ready();
+  await p.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.19.0',null,{timeout:60000});await ready();
   assert.equal((await state()).clockRunning,false);assert.equal((await state()).game.cash,paused.game.cash);
   await context.close();
   version='legacy';const legacy=await browser.newContext({viewport:{width:390,height:844}}),q=await legacy.newPage();
@@ -65,8 +67,8 @@ const server=http.createServer((req,res)=>{
   await q.goto(base+'?test=1');await q.waitForFunction(()=>window.escapeTest?.atlas.ready,null,{timeout:60000});await q.click('#launch-story');
   await q.waitForFunction(()=>navigator.serviceWorker.controller);const before=await q.evaluate(()=>window.escapeTest.getSession().game);
   const regionalKey='escape-atlas:/world/:'+fs.readFileSync('dist/sw.js','utf8').match(/regions-[a-f0-9]+/)[0];await q.evaluate(async key=>{const c=await caches.open(key);await c.put('/world/preserved-map',new Response('saved map'));},regionalKey);
-  version='current';await q.goto(base+'update.html');await q.waitForURL(/v=0.18.1/,{timeout:60000});
-  await q.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.18.1'&&document.querySelector('#clock-button')?.textContent.includes('Resume'),null,{timeout:60000});
+  version='current';await q.goto(base+'update.html');await q.waitForURL(/v=0.19.0/,{timeout:60000});
+  await q.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.19.0'&&document.querySelector('#clock-button')?.textContent.includes('Resume'),null,{timeout:60000});
   assert.equal(await q.evaluate(()=>JSON.parse(localStorage.getItem('escape-atlas:v1:last')).game.cash),before.cash);
   assert.equal(await q.evaluate(async()=>!!await caches.match('/world/preserved-map')),true,'Recovery preserves downloaded map caches');
   await q.screenshot({path:'test-results/start-paused-mobile.png'});assert.deepEqual(errors,[]);

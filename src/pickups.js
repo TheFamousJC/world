@@ -15,7 +15,7 @@ export function stopInfo(place,state,scenario){
  const done=!!(task||bonus)&&!!state.completedTasks?.includes((task||bonus).id);
  return {
   symbol:bonus?(bonus.kind==='cash'?'£':'♡'):place.id===scenario.goal?'◎':STOP_SYMBOLS[place.kind]||'·',
-  badge:task?(done?'✓':String(index+1)):'',
+  badge:task?(String(index+1)+(done?'✓':'')):'',
   label:task?(done?'COLLECTED':`MISSION ${index+1}`):bonus?(done?'COLLECTED':bonus.kind==='cash'?'OPTIONAL CASH':'OPTIONAL ENERGY'):place.id===scenario.goal?'DESTINATION':'',
   done,
   task,

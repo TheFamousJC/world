@@ -51,3 +51,6 @@ Worldwide city/airport packs (0.11): © OpenStreetMap contributors, ODbL 1.0.
 All data/*.geojson adapted databases are distributed under ODbL 1.0; see https://opendatacommons.org/licenses/odbl/1-0/ and https://www.openstreetmap.org/copyright .
 Additional packs: Johannesburg / O. R. Tambo; Cape Town; Los Angeles; San Francisco; Buenos Aires / Ezeiza; Santiago; Sydney; Melbourne; Delhi / Indira Gandhi; Jaipur; Kuala Lumpur; Singapore / Changi; Casablanca / Mohammed V; Marrakesh / Menara.
 Source: bounded Overpass OSM vector extracts, retrieved 21 October 2026. Each pack records its source snapshot, bounds, attribution and licence in metadata. Preparation: scripts/prepare-world.py and scripts/place-world-contacts.js; raw responses excluded. Anchors: src/region-places.js.
+
+Optional worldwide street-map view (0.19): © OpenStreetMap contributors, ODbL. https://www.openstreetmap.org/copyright
+Standard raster tiles from https://tile.openstreetmap.org/ are loaded only when World streets is explicitly enabled, for the visible viewport. Internet required; no prefetch, download feature, service-worker caching or offline tile archive. Browser HTTP cache honours server headers. Tile policy: https://operations.osmfoundation.org/policies/tiles/

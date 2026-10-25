@@ -24,7 +24,7 @@ export function setupMobileLayout() {
  const menu=document.createElement('section');
  menu.id='map-view-menu';menu.className='map-view-menu';menu.hidden=true;
  menu.setAttribute('aria-label','Map view options');
- menu.append(document.querySelector('.map-controls'),document.querySelector('#layer-menu'));
+ menu.append(document.querySelector('.map-controls'),document.querySelector('#world-map-note'),document.querySelector('#layer-menu'));
  const key=document.querySelector('.map-legend');
  const sizeKey=()=>document.documentElement.style.setProperty('--map-key-height',key.getBoundingClientRect().height+'px');
  new ResizeObserver(sizeKey).observe(key);
@@ -34,7 +34,7 @@ export function setupMobileLayout() {
  view.addEventListener('click',()=>{menu.hidden=!menu.hidden;view.setAttribute('aria-expanded',String(!menu.hidden));});
  document.addEventListener('click',e=>{
   if(!view.contains(e.target)&&!menu.contains(e.target))close();
-  if(e.target.closest('[data-detour-travel],[data-go-contact],[data-detour]'))missions.open=false;
+  if(e.target.closest('[data-detour-travel],[data-go-contact],[data-detour],[data-locate-mission]'))missions.open=false;
  });
  document.addEventListener('keydown',e=>{if(e.key==='Escape'&&!menu.hidden){close();view.focus();}});
 }

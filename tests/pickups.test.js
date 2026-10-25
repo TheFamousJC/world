@@ -21,7 +21,7 @@ test('mission badges are distinct from place types, optional supplies and final 
  assert.equal(stopInfo(places.b,state,scenario).badge,'2');
  assert.equal(stopInfo(places.cash,state,scenario).symbol,'£');
  assert.equal(stopInfo(places.goal,state,scenario).symbol,'◎');
- assert.equal(stopInfo(places.a,{completedTasks:['first']},scenario).badge,'✓');
+ assert.equal(stopInfo(places.a,{completedTasks:['first']},scenario).badge,'1✓');
  assert.equal(stopInfo(places.cash,{completedTasks:['bonus']},scenario).label,'COLLECTED');
 });
 
