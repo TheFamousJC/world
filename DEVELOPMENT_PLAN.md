@@ -1,10 +1,27 @@
 # Escape Atlas home screen development plan
 
-Updated 22 October 2026 against version 0.15.0.
+Updated 25 October 2026 against version 0.20.1.
 
 ## Current priority Browser gameplay
 
-Prioritise the online browser experience before installation work: dependable route decisions, readable map and journey graphics, clear mission feedback and a consistent desktop/mobile interface. Version 0.13.0 addresses selected travel sections, matching estimates and visible mobile feedback. Nightfall is now the reference story: its five operations have a tested next-step flow, ten pickups, explicit destination actions, progress indicators, responsive iPad layouts and resource carry-over. Automated production playthroughs include a paused reload and offline finish. Physical-iPad touch and performance testing remains outstanding. Continue with observed UX problems before adding content. The home-screen phases below remain the subsequent release checklist.
+Keep the browser game as the priority. The current interface has a timer with play/pause, money and energy, a collapsed Missions menu, contextual Go and a full-width key. OpenFreeMap dark vectors load online with automatic offline fallback. The five-slide introduction covers the core loop; mission collection leaves onward route choices to the player. Two full five-operation stories have browser playthrough coverage, including flights, document checks, resource carry-over and offline continuation. Physical-device testing remains necessary.
+
+### Recommended next cycle
+
+1. **Protect progress:** add save export/import and a recoverable restart, then test interrupted travel, refreshes and updates without duplicate charges.
+2. **Polish the core loop on real devices:** observe new players on desktop, iPhone, Android and iPad; fix unclear collection, route editing, map labels and blocked-route recovery before adding panels.
+3. **Improve story quality:** review the 50 stories for variety, travel budgets and progressively harder operations; add distinct consequences and endings to the strongest stories first.
+4. **Finish offline/PWA delivery:** show download status and pack sizes, offer storage controls, and check installed launches, background/resume and performance on lower-powered phones.
+5. **Optional atmosphere, after approval:** prototype music and sound effects as separate preferences. Audio is a proposal only; no audio code or assets are part of this update.
+
+### Proposed audio design (not implemented)
+
+- Separate Music and Sound effects toggles and volume controls, remembered on the device; start muted and enable only after player interaction.
+- Quiet original or properly licensed tension/ambient loops, with gentle intensity changes as deadlines approach.
+- Short cues for route confirmation, transport departure, collection, blocked travel and completion. Avoid continuous alarms or cues that conceal important visual feedback.
+- Pause audio when the game is paused or the app is hidden. Keep every audio message available visually and respect reduced-motion/accessibility preferences.
+- Use an optional small download so the core game remains free, light and playable offline. No runtime AI, streaming subscription or paid audio service.
+
 
 ## Release goal
 
@@ -17,11 +34,11 @@ Keep the existing civilian game, free hosting and offline map routing. Finish th
 - 50 stories with five operations and two ordered missions per operation, plus optional cash and energy contacts. The original ten practice challenges and legacy Nightfall campaign remain available.
 - Detailed offline OpenStreetMap coverage for the Brest corridor and 16 worldwide mission cities with actual airport locations. Flights connect designated terminals.
 - Custom map stops, transport quotes, route editing, animated travel, border checks, energy recovery, shared resources and local saves.
-- A 12-page introduction, Help and FAQ, reduced motion, optional online NASA satellite imagery and a mobile panel that keeps Go, resources and missions visible.
+- A five-slide introduction, Help and FAQ, reduced motion, an online OpenFreeMap dark basemap with offline fallback, optional NASA satellite imagery and a compact responsive HUD.
 - The Shelter Keys pilots uncertain intelligence, transport timetables and document checks. Those systems are not enabled across the whole catalogue.
 - Automated rules, story validation and browser checks exist. Desktop Edge checks at phone widths do not replace testing installed Safari and Chrome on physical phones.
 
-The installation manifest currently has one SVG icon, with no dedicated Apple touch icon or installation guide. Map caching exists, but there is no player-facing pack manager or save export/import. App updates currently activate immediately and reload the page; replacing that with a safe update flow is a release priority.
+The installation manifest currently has one SVG icon, with no dedicated Apple touch icon or installation guide. Map caching exists, but there is no player-facing pack manager or save export/import. Release-aware update prompts now preserve saves and suppress same-version notices; pack management, export/import and physical-device lifecycle tests remain priorities.
 
 ## Priority and delivery order
 
