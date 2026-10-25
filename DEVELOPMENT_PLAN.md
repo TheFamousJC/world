@@ -1,10 +1,18 @@
 # Escape Atlas home screen development plan
 
-Updated 25 October 2026 against version 0.24.0.
+Updated 25 October 2026 against version 0.25.0.
 
 ## Current priority Browser gameplay
 
 Keep the browser game as the priority. The current interface has a timer with play/pause, money and energy, a collapsed Missions menu, contextual Go and a full-width key. OpenFreeMap dark vectors load online with automatic offline fallback. The five-slide introduction covers the core loop; mission collection leaves onward route choices to the player. Two full five-operation stories have browser playthrough coverage, including flights, document checks, resource carry-over and offline continuation. Physical-device testing remains necessary.
+
+### Five-operation story shipped in 0.25.0
+
+**The watched route** is a featured 24-hour Osaka–Tokyo story, separate from the original 50-story catalogue and standalone pilots. It has five connected operations and ten explicit mission actions: watched briefing deposit; passport and manifest preparation; original document check plus scheduled Itami–Haneda flight; an HQ delivery redirect; and a final extraction on foot. Optional cash and energy contacts exist in every operation. Money, energy, elapsed time, evidence, pursuit traces, read orders and shelter use carry forward.
+
+Police checkpoints apply quoted delays to motor routes through their authored map areas during published operation windows. The flight uses shared-clock departures at T+420, +540, +660 and +780, requires passport and boarding clearance, and has a two-field manifest puzzle. HQ redirects operation 4’s actual mission location after the contact action, keeping completed evidence and existing player-plotted legs. The player edits the route. Pursuit follows offline roads and delayed airport transfers; each trace retains the response rules in force when it was reported, so later difficulty changes do not rewrite old movement.
+
+Two complete strategies and six failure/recovery guards per operation are checked. Browser playthrough covers optional resources, all ten actions, document mismatch/correction, changed-route editing, final extraction, next-story selection and offline pending-flight recovery. Native device testing, wider roadblock variety and catalogue-wide balancing remain open.
 
 ### Recommended next cycle
 
@@ -53,7 +61,7 @@ Shipped in 0.24.0 as **The watched handoff**, separate from the original courier
 
 ### Pilot requirements and implementation status
 
-Shipped in 0.22.0: a measured ten-story difficulty audit and one standalone courier operation with fixed-stop shuttle routes/timetables, explicit document deposit and a retained receipt. Two mixed-mode wins and failure guards are tested. See DIFFICULTY_AUDIT.md. Existing stories keep their current balance. Version 0.24.0 adds a separate watched-handoff operation with trace-based searches, authored shelters and a source-stamped HQ inbox. Broader roadblocks, radio silence, mission changes and the five-operation pursuit arc remain future work.
+Shipped in 0.22.0: a measured ten-story difficulty audit and one standalone courier operation with fixed-stop shuttle routes/timetables, explicit document deposit and a retained receipt. Two mixed-mode wins and failure guards are tested. See DIFFICULTY_AUDIT.md. Existing stories keep their current balance. Version 0.24.0 adds a separate watched-handoff operation with trace-based searches, authored shelters and a source-stamped HQ inbox. Version 0.25.0 adds the five-operation pursuit arc, reported police checkpoints and an authored delivery redirect. Broader roadblocks and radio silence remain future work.
 
 **Transport must create decisions.** The current shuttle is too broadly useful. Build a fixed-stop shuttle network with real game departure windows, boarding/access time and walking at either end. Set its fares against the total five-operation budget, and make public service routes vulnerable to authored inspections and predictable pursuit. Taxis buy flexibility at a substantial cost; walking buys discretion at an energy/time cost; trains/flights require preparation and timetables. Show known waits, costs, document rules and exposure in quotes. Avoid flat fare inflation or arbitrary demands to use every mode. At least two mixed-mode approaches must win; shuttle-only play must encounter a meaningful published constraint in the pilot rather than dominate every operation.
 
@@ -74,11 +82,11 @@ Shipped in 0.22.0: a measured ten-story difficulty audit and one standalone cour
 
 ### Delivery order for excitement and replayability
 
-Single-operation delivery/transport and pursuit/hiding pilots are active. Five-operation expansion, broader obstacles and narrative HQ dispatches remain the next stages.
+Single-operation delivery/transport and pursuit/hiding pilots are active. The watched route now extends these mechanics to five operations with flight clearance, police checkpoints and one HQ redirect. Broader obstacles and narrative dispatch variety remain future work.
 
 1. **Foundation and difficulty audit.** Save export/import and recoverable restarts now ship. Measure current shuttle-only outcomes, full trip time, fares and energy in representative stories. Define fixed-stop transport constraints and two winning strategies plus at least five losing/recovery cases for one five-operation pilot. Preserve the existing introductory stories until the new model is proven.
 2. **Action-based objectives and transport trade-offs.** The courier operation now implements collect → deposit → receipt validation, action buttons, atomic inventory/resource accounting and fixed shuttle stops/timetables. Next: playtest and tune this operation, then extend the proven mechanics into the five-operation pilot.
-3. **Pursuit, hiding and authored obstacles.** One playable watched-handoff operation now ships. Next extend the proven rules to five operations. Add trace-based pursuit, last-known search areas, hiding places, safe-house access and police/secret-police events. Test warning lead time, recovery and escalation, with no hidden teleporting or unavoidable soft locks.
+3. **Pursuit, hiding and authored obstacles.** One playable watched-handoff operation now ships. The featured five-operation Osaka–Tokyo story now ships; next playtest pacing on actual devices before extending the catalogue. Add trace-based pursuit, last-known search areas, hiding places, safe-house access and police/secret-police events. Test warning lead time, recovery and escalation, with no hidden teleporting or unavoidable soft locks.
 4. **Dynamic Ask HQ and narrative consequences.** Add the dispatch inbox, contextual hints, pursuit warnings, one-hour radio-silence orders and feasible mission changes. Branch outcomes for helping contacts, losing trust or changing the handoff plan. All triggers use the seeded game clock and survive pause, save/reload and offline play.
 5. **Playtest and replayability.** Observe real desktop/phone players, tune difficulty, then add shared-seed daily challenges, optional route ghosts and consequence-focused debriefs. Expand the strongest mechanics to selected stories after the pilot succeeds. Human multiplayer and live-world integrations remain later work.
 

@@ -1,3 +1,4 @@
+import {applyPursuit} from './pursuit.js';
 // Authored, deterministic fiction for The Shelter Keys. No live feeds or AI.
 export const PILOT_STORY='escape-12';
 const rows=[
@@ -15,7 +16,7 @@ export const documentCleared=(state,c)=>!!c.pilot&&c.pilot.document.fields.every
 export function reportView(state,c){const stamp=verifiedReport(state,c),start=operationStart(state,c);return stamp?{source:stamp.source||'Dispatch confirmation',at:stamp.at,age:Math.floor(state.elapsed-stamp.at),confidence:state.elapsed-stamp.at>=45?'Aging confirmation':'Confirmed at check',text:c.pilot.truth}:{source:c.pilot.source,at:start-20,age:Math.floor(state.elapsed-start+20),confidence:'Unverified · may be wrong',text:c.pilot.claim};}
 export function observeReport(state,c){if(!c.pilot)return state;const next=structuredClone(state);next.pilot.reports[c.id]={at:state.elapsed,source:'Departure check'};return next;}
 export function timetable(c,mode,elapsed,start){
- if(!c.pilot||!['bus','flight'].includes(mode))return null;
+ if(!c.pilot||!['bus','flight'].includes(mode))return null;if(mode==='flight'&&c.pilot.flightDepartures){const boarding=45+c.crossingDelay,departure=c.pilot.flightDepartures.find(t=>t>=elapsed+boarding-1e-9)??c.deadline+1;return {departure,boarding,wait:Math.max(0,departure-elapsed-boarding),available:c.pilot.flightDepartures.includes(departure),first:c.pilot.flightDepartures[0],last:c.pilot.flightDepartures.at(-1),interval:120};}
  const first=mode==='flight'?180:20,interval=mode==='flight'?120:30,last=mode==='flight'?540:c.stage===4?240:720,boarding=mode==='flight'?45+c.crossingDelay:12;
  const departure=start+first+Math.max(0,Math.ceil((elapsed+boarding-start-first-1e-9)/interval))*interval,lastDeparture=start+first+Math.floor((Math.min(start+last,c.deadline)-start-first)/interval)*interval;
  return {departure,boarding,wait:Math.max(0,departure-elapsed-boarding),available:departure<=lastDeparture,first:start+first,last:lastDeparture,interval};
@@ -43,13 +44,13 @@ export function pilotAction(state,c,kind,answers={}){
  if(correct)next.pilot.documents[c.id]=Object.fromEntries(c.pilot.document.fields.map(f=>[f.id,answers[f.id]]));
  const message=kind==='wait'?'Waited 15 game minutes. Timetables and report ages have advanced; no money spent.':kind==='verify'?'Dispatch confirmed. '+c.pilot.truth:correct?'Clearance checked against the evidence. 3 minutes spent.':'The document does not match the collected evidence. Review both fields and try again. 4 minutes spent; clearance was not issued.';
  next.history.unshift({type:kind==='verify'?'verified intelligence':'document check',message,at:next.elapsed});next.history=next.history.slice(0,50);
- return {ok:kind==='wait'||kind==='verify'||correct,state:next,message};
+ applyPursuit(next,c,state.elapsed);return {ok:kind==='wait'||kind==='verify'||correct,state:next,message:next.pursuit?.caught?'Intercepted during the check. Use the HQ search warning to leave earlier or hide.':message};
 }
 export function validPilot(state,scenarios){
  const p=state.pilot;if(!p||p.version!==1||!p.starts||!p.reports||!p.documents||[p.starts,p.reports,p.documents].some(x=>typeof x!=='object'||Array.isArray(x)))return false;
- const current=scenarios.find(c=>c.id===state.scenarioId),allowed=scenarios.filter(c=>c.storyId===PILOT_STORY&&c.stage<=current.stage);
+ const current=scenarios.find(c=>c.id===state.scenarioId),allowed=scenarios.filter(c=>c.storyId===current.storyId&&c.pilot&&c.stage<=current.stage);
  for(const [id,at] of Object.entries(p.starts))if(!allowed.some(c=>c.id===id)||!Number.isFinite(at)||at<0||at>state.elapsed)return false;
- if(!Number.isFinite(p.starts[state.scenarioId]))return false;
+ if(current.pilot&&!Number.isFinite(p.starts[state.scenarioId]))return false;
  for(const [id,r] of Object.entries(p.reports))if(!allowed.some(c=>c.id===id)||!Number.isFinite(r?.at)||r.at<(p.starts[id]??Infinity)||r.at>state.elapsed)return false;
  for(const [id,answers] of Object.entries(p.documents)){const c=allowed.find(c=>c.id===id);if(!c||!answers||Object.keys(answers).length!==c.pilot.document.fields.length||!c.pilot.document.fields.every(f=>answers[f.id]===f.answer))return false;}
  return true;

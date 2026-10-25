@@ -18,6 +18,7 @@ jobs:
           node-version: 22
       - run: npm test
       - run: npm run validate
+      - run: npm run validate:thriller
       - run: npm run build
       - uses: actions/upload-pages-artifact@v3
         with:

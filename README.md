@@ -193,3 +193,19 @@ Stories → New pursuit pilot → The watched handoff. This separate operation h
 ◈ marks the workshop back room (documents required), riverside safe house (receipt required) and free station alcove. Each can be used once. Hiding quotes the full time needed to wait out known local searches, plus its fee and energy recovery; it advances the shared deadline. Pause freezes the world clock. Hiding never prevents a future trace. Rules and HQ acknowledgements survive saves and JSON backups.
 
 Tests: `node --test tests/pursuit.test.js`, `npm run test:pursuit-browser`. Rebuild the authored OSM corridors after changing the Brest graph with `node scripts/build-pursuit-roads.js`; tests compare every corridor to the current road graph. Existing courier and 50 stories keep their original balance. Broader roadblocks, radio silence and five-operation pursuit remain planned.
+
+## The watched route — full five-operation story (0.25.0)
+
+Open Stories → The watched route · Full five-operation story. One 24-hour clock, £180 and 85% starting energy cover Osaka and Tokyo, using the detailed offline OSM packs and real Itami/Haneda terminal locations. All services, contacts, documents, searches and events remain game fiction. Existing 50 stories and standalone pilots are retained.
+
+1. A watched envelope: collect and deposit the briefing, then reach shelter.
+2. The compromised contact: recover the original passport, submit the manifest, then reach Itami. No required city return follows airport arrival.
+3. The departure window: check the manifest at the airport, solve both document fields through Ask HQ, fly to Haneda and receive the arrival bag. Flight departures use the shared clock: T+420, +540, +660, +780 (7, 9, 11 and 13 hours after story start).
+4. Orders have changed: collect the relay packet, read HQ’s redirect and deliver to the new authorised desk. Completed evidence and existing plotted stops are preserved; edit your own route.
+5. The final extraction: obtain a token, deposit the ledger and approach Osaki extraction on foot.
+
+Each operation offers optional £35 contingency cash and energy recovery. Pursuit traces, shelter use, documents, time, money and energy carry forward. Checkpoints add published motor-route delays while active; walking is unaffected. Later operations shorten the response delay for new pursuit traces without changing old search schedules. Outcome text reflects remaining reserves and shelter use.
+
+Validation: `npm run validate:thriller`, `node --test tests/thriller.test.js`, `npm run test:thriller-browser` (port 4187, or GAME_URL). Tested strategies use 748 minutes/£38 left/67% energy remaining (taxi-heavy with extra cash/energy) and 1019 minutes/£104 left/41% energy (walking, shuttle and flight). Planning time is additional. Each operation has six tested failure/recovery guards. The release browser check continues offline and reloads a pending flight, preserving the quote and settling once.
+
+Japan pursuit corridors can be rebuilt with `node scripts/build-pursuit-japan.js`; ground paths derive from the attributed bundled OSM packs, and the pursuer’s airport transfers include an authored 90-minute preparation allowance. The route-generation and validation scripts are development tools, not remote runtime services.

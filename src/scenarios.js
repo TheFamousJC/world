@@ -1,3 +1,4 @@
+import {buildThriller} from './thriller.js';
 import {PLACES,placeById} from './places.js';
 import {buildStories} from './stories.js';
 export {PLACES,placeById};
@@ -29,7 +30,8 @@ export const STORIES=buildStories(base);
 export const CAMPAIGN=STORIES[0].operations;
 export const DELIVERY_PILOT=Object.freeze({...base,id:'courier-deposit',number:1,title:'The sealed handoff',subtitle:'Single-operation pickup-to-delivery pilot',story:'Collect the sealed documents at the cycle workshop, deposit them at the riverside counter before it closes, then bring the receipt to Northern pickup. The shuttle serves a fixed line, not the contacts.',hint:'The counter action takes six minutes and must finish by T+75. Compare complete journeys, including walks to shuttle stops, departures and fares.',region:'BREST / COURIER PILOT',deliveryPilot:true,campaign:'courier-lab',stage:0,stageCount:1,difficulty:'Transport trade-offs',start:'central',goal:'pickup',budget:18,energy:60,deadline:115,allDetours:true,modes:['walk','taxi','bus'],goalItems:['deposit receipt'],shuttle:{stops:['central','north','pickup'],forward:[0,8,15],reverse:[15,7,0],first:0,last:90,interval:30,boarding:8,fare:4,inspection:15},detours:[{id:'courier-pickup',place:'workshop',title:'Collect sealed courier documents',kind:'pickup',minutes:4,reward:0,energy:0,items:['sealed courier documents']},{id:'courier-deposit',place:'aid',title:'Deposit the courier documents',kind:'deposit',minutes:6,reward:0,energy:0,requires:['courier-pickup'],requiredItems:['sealed courier documents'],consumeItems:['sealed courier documents'],items:['deposit receipt'],closesAt:75}],bonuses:[]});
 export const PURSUIT_PILOT=Object.freeze({...DELIVERY_PILOT,id:'watched-handoff',title:'The watched handoff',subtitle:'Pursuit and hiding pilot',pursuit:true,budget:24,deadline:150,shuttle:{...DELIVERY_PILOT.shuttle,last:120},detours:DELIVERY_PILOT.detours.map(t=>({...t,trace:true,...(t.closesAt!==undefined?{closesAt:95}:{})})),story:'A contact has been watched. Collect and deposit the documents, then escape with the receipt. Handoffs and named shuttle tickets reveal reported areas. HQ warns before a search; hide or keep moving.'});
-export const ALL_SCENARIOS=Object.freeze([...SCENARIOS,...LEGACY_CAMPAIGN,...STORIES.flatMap(s=>s.operations),DELIVERY_PILOT,PURSUIT_PILOT]);
-export const storyById=id=>STORIES.find(s=>s.id===id);
+export const THRILLER_STORY=buildThriller(base);
+export const ALL_SCENARIOS=Object.freeze([...SCENARIOS,...LEGACY_CAMPAIGN,...STORIES.flatMap(s=>s.operations),DELIVERY_PILOT,PURSUIT_PILOT,...THRILLER_STORY.operations]);
+export const storyById=id=>id===THRILLER_STORY.id?THRILLER_STORY:STORIES.find(s=>s.id===id);
 export const campaignRoutes=scenario=>scenario.storyId?storyById(scenario.storyId).operations:LEGACY_CAMPAIGN;
 export const scenarioById=id=>ALL_SCENARIOS.find(s=>s.id===id);

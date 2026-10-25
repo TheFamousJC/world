@@ -59,3 +59,5 @@ Remote style https://tiles.openfreemap.org/styles/dark is adapted at runtime wit
 Original procedural audio (0.21): ambient score and sound-effect synthesis authored for Escape Atlas by 3Sci Labs in src/audio.js. No third-party recordings, samples, streamed tracks or audio assets are included.
 
 Authored pursuit corridors (src/pursuit-roads.js) are derived from the same bundled OpenStreetMap road graph; © OpenStreetMap contributors, ODbL 1.0. Pursuer, services, searches, reports and hiding places are game fiction.
+
+Japan pursuit corridors (src/pursuit-japan-roads.js) derive from the bundled Osaka/Tokyo OpenStreetMap packs; © OpenStreetMap contributors, ODbL 1.0. Airport transfers and their preparation time are authored game fiction.
