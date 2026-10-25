@@ -1,6 +1,6 @@
 {
   "name": "escape-atlas",
-  "version": "0.20.1",
+  "version": "0.21.0",
   "private": true,
   "type": "module",
   "description": "Offline-first worldwide civilian route-survival stories",
@@ -29,6 +29,7 @@
     "test:layout-browser": "node scripts/layout-browser-check.cjs",
     "test:streamlined-browser": "node scripts/streamlined-browser-check.cjs",
     "test:desktop-missions-browser": "node scripts/desktop-missions-browser-check.cjs",
-    "test:global-map-browser": "node scripts/global-map-browser-check.cjs"
+    "test:global-map-browser": "node scripts/global-map-browser-check.cjs",
+    "test:audio-browser": "node scripts/audio-browser-check.cjs"
   }
 }

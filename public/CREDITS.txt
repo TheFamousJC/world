@@ -55,3 +55,5 @@ Source: bounded Overpass OSM vector extracts, retrieved 21 October 2026. Each pa
 Online dark vector basemap (0.20): OpenFreeMap, © OpenMapTiles, data © OpenStreetMap contributors (ODbL).
 https://openfreemap.org/quick_start/ ; https://www.openmaptiles.org/ ; https://www.openstreetmap.org/copyright
 Remote style https://tiles.openfreemap.org/styles/dark is adapted at runtime with Escape Atlas colours. Provider sources, vector tiles, Noto glyphs and sprite images are served by OpenFreeMap; no raw provider downloads are bundled. Online map resources use ordinary browser HTTP caching, and are not part of the game's required offline cache. Existing bundled offline fonts and map licences remain unchanged.
+
+Original procedural audio (0.21): ambient score and sound-effect synthesis authored for Escape Atlas by 3Sci Labs in src/audio.js. No third-party recordings, samples, streamed tracks or audio assets are included.

@@ -306,7 +306,7 @@
 .map-legend{height:auto;max-height:none;overflow:visible}
 
 /* Minimal play surface: clock, missions menu, and contextual Go. */
-.app-header .edition,.header-actions>*:not(#operation-button):not(#map-view-button),.map-heading,.app-footer,.maplibregl-ctrl-group{display:none!important}
+.app-header .edition,.header-actions>*:not(#operation-button):not(#map-view-button):not(#audio-toggle),.map-heading,.app-footer,.maplibregl-ctrl-group{display:none!important}
 .app-header{gap:10px}.header-actions{gap:6px}
 .left-console-stack{width:230px;bottom:auto;max-height:calc(100dvh - 105px);overflow:visible;gap:8px}
 .left-console-stack>.mission-panel{order:0}
@@ -391,3 +391,6 @@
 .mission-stop[data-mission-number="2"] .mission-badge{top:auto;bottom:-13px}
 .poi-marker.mission-stop{z-index:8}
 .world-view .mission-stop .poi-name{display:none}
+
+.audio-toggle{min-width:42px;gap:6px!important}.audio-toggle>span:first-child{font-size:20px}.audio-muted>span:first-child{text-decoration:line-through;opacity:.7}.audio-settings{border:1px solid #365664;border-radius:8px;padding:12px;margin:16px 0}.audio-settings legend{color:#9ce4cf;font-size:13px}.audio-settings .setting{margin:6px 0}.audio-settings input[type=range]{width:130px;accent-color:#8ce8ce}
+@media(max-width:560px){.audio-label{display:none}.header-actions .audio-toggle{padding:5px 8px;min-width:34px}.header-actions{gap:4px}}

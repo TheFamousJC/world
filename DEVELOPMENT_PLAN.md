@@ -1,6 +1,6 @@
 # Escape Atlas home screen development plan
 
-Updated 25 October 2026 against version 0.20.1.
+Updated 25 October 2026 against version 0.21.0.
 
 ## Current priority Browser gameplay
 
@@ -12,15 +12,51 @@ Keep the browser game as the priority. The current interface has a timer with pl
 2. **Polish the core loop on real devices:** observe new players on desktop, iPhone, Android and iPad; fix unclear collection, route editing, map labels and blocked-route recovery before adding panels.
 3. **Improve story quality:** review the 50 stories for variety, travel budgets and progressively harder operations; add distinct consequences and endings to the strongest stories first.
 4. **Finish offline/PWA delivery:** show download status and pack sizes, offer storage controls, and check installed launches, background/resume and performance on lower-powered phones.
-5. **Optional atmosphere, after approval:** prototype music and sound effects as separate preferences. Audio is a proposal only; no audio code or assets are part of this update.
+5. **Pilot pursuit and intrigue:** validate the design below in one story before extending the catalogue. Music and effects now ship as an optional presentation layer.
 
-### Proposed audio design (not implemented)
+### Audio shipped in 0.21.0
 
-- Separate Music and Sound effects toggles and volume controls, remembered on the device; start muted and enable only after player interaction.
-- Quiet original or properly licensed tension/ambient loops, with gentle intensity changes as deadlines approach.
-- Short cues for route confirmation, transport departure, collection, blocked travel and completion. Avoid continuous alarms or cues that conceal important visual feedback.
-- Pause audio when the game is paused or the app is hidden. Keep every audio message available visually and respect reduced-motion/accessibility preferences.
-- Use an optional small download so the core game remains free, light and playable offline. No runtime AI, streaming subscription or paid audio service.
+- Original procedural ambient score and cues for routing, travel, collection, rejection and endings. No recordings, streams, paid services, keys or runtime AI.
+- Visible master mute, separate Music and Sound effects controls and a volume slider. Preferences are stored on the device; first use starts muted and audio unlocks only after player interaction.
+- Music and ordinary effects stop when paused, when a dialog is open or when the tab is hidden. End-of-run cues may finish once; mute and hiding always silence them.
+- Audio remains independent of deterministic game rules. Browser checks cover audible waveform generation, pause, mute, effects-only play, persistence, offline use and small-screen controls.
+
+### Pursuit pilot: a fictional third party (proposal only)
+
+**Premise:** a rival organisation wants to intercept your package. It follows traces of your journey rather than knowing your location automatically. The player remains a civilian traveller; no real-world location tracking or runtime AI is needed.
+
+**State:** exposure, last-known area, confidence and age of intelligence, pursuer position, and response delay. Seeded rules keep the simulation reproducible and offline. Planning time and simulated travel advance the same world clock; pause freezes both player and pursuer. Save all pursuit state with the story.
+
+**Fairness:** only authored in-game events create traces, such as a named ticket purchase, a document check or a compromised contact. The pursuer needs time and a valid graph route to respond. Show warnings and uncertain search areas before interception becomes possible. Avoid instantaneous closures, omniscient enemies and failures the player had no chance to anticipate.
+
+**Counterplay:** choose a lower-exposure route, change transport, spend resources on a diversion, ask a trusted contact to verify a report, or accept extra travel time to reduce exposure. Each choice should trade time, money or energy for a clear potential advantage.
+
+**Five-operation arc:**
+1. Introduce one trace and a report with its source/time; allow a generous recovery window.
+2. Add a compromised contact and a choice between speed and discretion.
+3. A flight or rail connection creates a stronger trace; offer at least two viable onward options.
+4. A useful ally has a competing need; helping them may unlock a later alternative.
+5. Combine the established rules in a final handoff with several endings based on choices and survival.
+
+**Interface:** put exposure details and intelligence inside Missions / Local knowledge. Use temporary map alerts and an approximate search area. Keep the timer, resources, Go, audio and key as the permanent controls. Do not add a permanent pursuit dashboard.
+
+**Acceptance tests:** two distinct winning strategies and at least five authored losing/recovery cases; no teleporting; response only to known traces; consistent results for a shared seed; pause/reload/offline and operation carry-over retain pursuit state; every interception has a preceding understandable warning and a feasible response.
+
+### Delivery order for excitement and replayability
+
+1. Protect saves, add recoverable restarts and finish physical-device UX testing before adding more simultaneous systems.
+2. Build the pursuit model in one authored five-operation story, starting with the first operation as a playable test. Observe whether players understand the consequences before adding the remaining operations.
+3. Add trusted/unreliable contacts and optional companion or rescue objectives to that pilot. Choices should change later routes and the ending, not just add text.
+4. Add seeded daily challenges, shareable challenge codes and an optional replay/ghost of a previous route. These can work without accounts or a paid backend.
+5. Expand the strongest mechanics to selected stories after playtesting; retain simpler stories for new players. Human multiplayer is a later project, with separate hosting and fairness requirements.
+
+### Other promising ideas
+
+- A rival traveller competing for a limited departure, with forecasts rather than surprise seat loss.
+- Packages with different needs (a delivery deadline, fragile contents, or evidence that can be checked at a contact) that create route trade-offs.
+- Rumours with a source and age, conflicting accounts and verification choices using the existing intelligence system.
+- A debrief explaining the consequences of key choices, plus survival, time, budget and help-given scores rather than shortest-route scoring alone.
+- Optional personal ghost routes so players can improve on their own earlier attempt without making the main map busier.
 
 
 ## Release goal

@@ -9,7 +9,7 @@ const tutorial=[
  ['Choose your own route.','Click a stop or your own point on the map, choose available transport, then press Go. Add more stops to plan ahead; click a planned stop again to remove it.'],
  ['Collect, then decide.','Amber 1 and 2 mark your missions. Reach each stop and press Collect, in order. Arrival alone does not collect an item. You choose where to go next.'],
  ['Watch time, money and energy.','Planning and travel use time. Fares cost money; walking uses energy. Pause with the icon beside the timer. Open Missions for optional cash, recovery and Local knowledge.'],
- ['Your controls stay simple.','Missions holds your objectives and route review. Map view switches between the online dark map and offline maps. Continue carries your remaining time, money and items into the next operation.']
+ ['Your controls stay simple.','Missions holds your objectives and route review. Map view switches between the online dark map and offline maps. Continue carries time, money and items forward. Use ♪ for optional music and effects.']
 ];
 export function installStoryUI({readStory,startStory,chooseLegacy,pause,readTutorial,writeTutorial}){
  let selected=STORIES[0],step=0;
