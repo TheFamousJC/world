@@ -1,3 +1,4 @@
+import {safePursuitLeg} from '../src/pursuit-validation.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
@@ -5,16 +6,16 @@ import {Network} from '../src/network.js';
 import {LEGACY_CAMPAIGN as CAMPAIGN,ALL_SCENARIOS} from '../src/scenarios.js';
 import {newGame,quoteJourney,depart,arrive,reviewArrival,completeDetour,advanceStage,advanceClock,readSave,makeSave} from '../src/engine.js';
 const network=new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url))));
-function travel(s,c,to,preferred='taxi'){s=reviewArrival(s);const mode=to===c.goal&&c.goalModes?c.goalModes[0]:preferred,q=quoteJourney(s,c,network,to,mode);assert.ok(q.ok,`${c.id}: ${s.position} → ${to}: ${q.message}`);return arrive(depart(s,q).state,c);}
+function travel(s,c,to,preferred='taxi'){s=reviewArrival(s);const mode=to===c.goal&&c.goalModes?c.goalModes[0]:preferred,safe=safePursuitLeg(s,c,network,to,mode);s=safe.state;const q=safe.quote;assert.ok(q.ok,`${c.id}: ${s.position} → ${to}: ${q.message}`);return arrive(depart(s,q).state,c);}
 function tasks(c,first=0,last=0){return c.allDetours?c.detours:[c.detours[c.stage===0?first:c.stage===4?last:0]];}
 test('eight sections carry one budget and clock through pickups, saves and checkpoints',()=>{
  let s=newGame(CAMPAIGN[0],'operation');
  for(const c of CAMPAIGN){
   const before=s.elapsed;
   for(const task of tasks(c)){
-   assert.equal(completeDetour(s,c,task.id).ok,false,'Tasks require reaching their location');
-   s=travel(s,c,task.place);const r=completeDetour(s,c,task.id);assert.ok(r.ok,r.message);s=r.state;
-   assert.equal(completeDetour(s,c,task.id).ok,false,'No repeated rewards');
+   assert.equal(completeDetour(s,c,task.id,{},network).ok,false,'Tasks require reaching their location');
+   s=travel(s,c,task.place);const r=completeDetour(s,c,task.id,{},network);assert.ok(r.ok,r.message);s=r.state;
+   assert.equal(completeDetour(s,c,task.id,{},network).ok,false,'No repeated rewards');
   }
   s=travel(s,c,c.goal);assert.ok(s.elapsed>before);
   const session={game:s,plan:[],custom:{},travelRemaining:0,clockRunning:false};const restored=readSave(makeSave(session),ALL_SCENARIOS);assert.ok(restored);assert.deepEqual(restored.game,s);
@@ -27,15 +28,15 @@ test('uncompleted detours block the checkpoint and invalid stage changes preserv
 });
 for(const mode of ['taxi','bus'])for(const first of [0,1])for(const last of [0,1])test(`Nightfall alternative: ${mode}, detours ${first}/${last}`,()=>{
  let s=newGame(CAMPAIGN[0],'alternative');
- for(const c of CAMPAIGN){for(const task of tasks(c,first,last)){s=travel(s,c,task.place,mode);const r=completeDetour(s,c,task.id);assert.ok(r.ok,r.message);s=r.state;}s=travel(s,c,c.goal,mode);if(c.stage<CAMPAIGN.length-1)s=advanceStage(s,c,CAMPAIGN[c.stage+1]);}
+ for(const c of CAMPAIGN){for(const task of tasks(c,first,last)){s=travel(s,c,task.place,mode);const r=completeDetour(s,c,task.id,{},network);assert.ok(r.ok,r.message);s=r.state;}s=travel(s,c,c.goal,mode);if(c.stage<CAMPAIGN.length-1)s=advanceStage(s,c,CAMPAIGN[c.stage+1]);}
  assert.equal(s.phase,'won');assert.ok(s.cash>=0);assert.ok(s.elapsed<CAMPAIGN[0].deadline);
 });
 test('passport is an actual required pickup, not a generic papers purchase',()=>{
  const c=CAMPAIGN[6],s=newGame(c);assert.equal(quoteJourney({...s,papers:true},c,network,'terespol','taxi').code,'inventory');
 });
 test('both final pickups are required and the last approach must be on foot',()=>{
- const c=CAMPAIGN[7];let s=travel(newGame(c),c,'kobylany');s=completeDetour(s,c,'sealed-package').state;
- assert.equal(quoteJourney(reviewArrival(s),c,network,c.goal,'walk').code,'detour');s=travel(s,c,'zalesie');s=completeDetour(s,c,'evac-supplies').state;
+ const c=CAMPAIGN[7];let s=travel(newGame(c),c,'kobylany');s=completeDetour(s,c,'sealed-package',{},network).state;
+ assert.equal(quoteJourney(reviewArrival(s),c,network,c.goal,'walk').code,'detour');s=travel(s,c,'zalesie');s=completeDetour(s,c,'evac-supplies',{},network).state;
  assert.equal(quoteJourney(reviewArrival(s),c,network,c.goal,'taxi').code,'approach');const q=quoteJourney(reviewArrival(s),c,network,c.goal,'walk');assert.ok(q.ok,q.message);assert.ok(q.rests.length>0,'Final long walk must include recovery');
 });
 test('a completed older five-section save can continue without resetting resources',()=>{

@@ -306,7 +306,7 @@
 .map-legend{height:auto;max-height:none;overflow:visible}
 
 /* Minimal play surface: clock, missions menu, and contextual Go. */
-.app-header .edition,.header-actions>*:not(#operation-button):not(#map-view-button):not(#audio-toggle),.map-heading,.app-footer,.maplibregl-ctrl-group{display:none!important}
+.app-header .edition,.header-actions>*:not(#operation-button):not(#map-view-button):not(#audio-toggle):not(#hq-inbox-button),.map-heading,.app-footer,.maplibregl-ctrl-group{display:none!important}
 .app-header{gap:10px}.header-actions{gap:6px}
 .left-console-stack{width:230px;bottom:auto;max-height:calc(100dvh - 105px);overflow:visible;gap:8px}
 .left-console-stack>.mission-panel{order:0}
@@ -400,3 +400,15 @@
 .progress-actions{display:flex;flex-wrap:wrap;gap:10px}.progress-actions>*{flex:1 1 180px}.backup-file{position:relative;cursor:pointer;overflow:hidden}.backup-file input{position:absolute;inset:0;opacity:0;width:100%;cursor:pointer}.backup-file:focus-within{outline:2px solid #a1f3dc;outline-offset:3px}#backup-preview{border:1px solid #52707c;border-radius:10px;padding:14px;margin:14px 0}#backup-description,#backup-items{overflow-wrap:anywhere}#progress-status{min-height:1.5em;color:#a1f3dc}#progress-status.error{color:#ffc4b4}
 .hq-dispatch{position:absolute;z-index:2;top:72px;left:250px;right:16px;max-width:640px;display:flex;align-items:center;gap:8px;background:#30291b;border:1px solid #d6a352;border-radius:9px;padding:10px;color:#ffe3b0}.hq-dispatch>span{font-size:12px;line-height:1.5;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.hq-dispatch .button{white-space:nowrap}.hiding-action{padding:12px;margin-top:10px;border:1px solid #8db4d8;border-radius:8px;background:#122c3c}.hiding-action strong{color:#bedffc}.hiding-action p{font-size:12px;line-height:1.5}.poi-marker.hide-stop:after{content:'◈';position:absolute;left:-10px;bottom:-9px;color:#bbdcff;background:#102638;border:1px solid #91bade;border-radius:4px;font-size:13px;padding:0 3px}#pursuit-key{color:#edc383}
 @media(max-width:1024px){.hq-dispatch{left:12px;right:12px;top:285px;padding:8px}.hq-dispatch .button{padding:6px 8px}}
+.hq-inbox-button{position:relative;gap:6px!important;min-width:64px}.hq-unread-badge{display:inline-grid;place-items:center;min-width:20px;height:20px;border-radius:20px;background:#314851;color:#d9e6eb;font-size:11px}.has-unread .hq-unread-badge{background:#edb15c;color:#15222b}.hq-inbox-button.has-unread{border-color:#d9aa60!important}.enemy-report-marker{border:0;background:transparent;color:#ffe0a3;cursor:pointer;padding:0;z-index:9}.enemy-target{display:grid;place-items:center;width:34px;height:34px;border:2px solid #f0ae58;background:#4e281f;border-radius:5px;font-size:25px;box-shadow:0 0 0 6px #edb15c25}.enemy-map-label{position:absolute;bottom:44px;left:50%;transform:translateX(-50%);width:220px;padding:6px 8px;background:#34251eee;border:1px solid #dca450;border-radius:5px;font-size:11px;line-height:1.45;text-align:left;white-space:normal}.stale-report .enemy-target{border-style:dashed;opacity:.7}.stale-report .enemy-map-label{color:#d4b992}.pursuer-report-locate{border:0;background:transparent;text-align:left;color:#f3c17a;font-size:11px;min-height:32px;padding:4px 6px;white-space:normal}.enemy-intel{padding:10px;border:1px solid #c5934b;border-radius:8px;margin-bottom:12px;color:#ffe0ad}.enemy-intel small{display:block;font-size:12px;line-height:1.5;margin:6px 0}.enemy-intel .button{white-space:normal}
+@media(max-width:560px){.hq-inbox-button{min-width:44px;padding:5px 6px!important}.hq-label{font-size:0}.hq-label:after{content:'HQ';font-size:11px}.hq-unread-badge{min-width:17px;height:17px;font-size:10px}.enemy-map-label{width:170px;font-size:10px}}
+
+.enemy-map-label{pointer-events:none}
+.hq-inbox-button{min-height:44px}.hide-duration-options{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}.hide-duration-options .button{font-size:11px;padding:6px 9px;white-space:normal}
+
+.header-actions #hq-inbox-button{min-height:44px;min-width:44px;flex-shrink:0}
+
+/* Contact actions must stay above the planning stack on narrow screens. */
+#place-card{z-index:7}
+
+#place-card{position:fixed;bottom:calc(var(--map-key-height,120px) + 14px);max-height:calc(100dvh - var(--map-key-height,120px) - 86px)}

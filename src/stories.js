@@ -1,3 +1,4 @@
+import {withCataloguePursuit} from './catalogue-pursuit.js';
 import {pilotConfig} from './pilot.js';
 import {STORY_DATA} from './story-data.js';
 import {CORRIDORS} from './world-places.js';
@@ -20,5 +21,5 @@ export function buildStories(base){return Object.freeze(STORY_DATA.map((d,i)=>{
   const bonuses=[{id:id+'-cash',place:cash,title:'Collect contingency cash',kind:'cash',minutes:10+stage,reward:global?70:30,energy:0},{id:id+'-energy',place:energy,title:'Food and recovery',kind:'energy',minutes:12+stage,reward:0,energy:45}];
   return Object.freeze({...base,pilot:pilotConfig(d.id,stage),id,storyId:d.id,campaign:d.id,number:stage+1,stage,stageCount:5,start,goal,deadline:1440,budget:global?280-(d.level-1)*15:350-d.level*10,energy:100,allDetours:true,detours,bonuses,modes:global?['walk','cycle','taxi','bus','flight']:base.modes,closedModes:stage>=3&&d.layout%2?['cycle']:[],crossingDelay:25+stage*10,travelFactor:effort,effortFactor:effort,global,detailed:global,mapRevision:global?3:1,corridor:corridor?.id,region:global?corridor.region:'Brest–Biała Podlaska',title:d.chapters[stage],subtitle:d.title+' · Operation '+(stage+1)+' / 5',difficulty:['Orientation','Resource pressure','Connection pressure','Fatigue','Final handoff'][stage],story:d.chapters[stage]+'. Complete both numbered missions in order, then reach the operation destination. '+(global&&stage===2?'Reach the departure air terminal, fly to the other city’s terminal, then continue on the ground. ':'')+'Cash, energy and the same 24-hour clock carry into the next operation.',hint:'Collect both numbered items in order. Optional cash and food contacts are marked separately. '+(global&&stage===2?'Flights only run between this corridor’s air terminals. Allow 45 minutes for boarding.':'Each later operation increases journey time and mission work. Recover before your energy runs low.')});
  });
- return Object.freeze({...d,global,detailed:global,region:global?corridor.region:'Brest–Biała Podlaska',routeLabel:global?corridor.cities.map(c=>c.name).join(' → '):'Brest → Biała Podlaska',operations:Object.freeze(operations)});
+ return Object.freeze({...d,global,detailed:global,region:global?corridor.region:'Brest–Biała Podlaska',routeLabel:global?corridor.cities.map(c=>c.name).join(' → '):'Brest → Biała Podlaska',operations:withCataloguePursuit(operations)});
 }));}

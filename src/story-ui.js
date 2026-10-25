@@ -8,7 +8,7 @@ const tutorial=[
  ['One escape. Five operations.','Choose a story and complete five operations within one shared 24-hour deadline. Each operation has two mission actions to complete before you reach its destination.'],
  ['Choose your own route.','Click a stop or your own point on the map, choose available transport, then press Go. Add more stops to plan ahead; click a planned stop again to remove it.'],
  ['Collect, then decide.','Amber 1 and 2 mark your missions. Reach each stop and press Collect, Deposit or Check as requested, in order. Airport clearance may also need matching document fields in Ask HQ. Arrival alone does not finish an action. You choose where to go next.'],
- ['Watch time, money and energy.','Planning and travel use time. Fares cost money; walking uses energy. Pause with the icon beside the timer. Open Missions for optional cash, recovery and Ask HQ. In pursuit stories, read search warnings; hiding spends game time.'],
+ ['Watch time, money and energy.','Planning and travel use time. Fares cost money; walking uses energy. Pause with the icon beside the timer. Open Missions for optional cash and recovery. Read the HQ inbox for warnings: its badge counts unread messages. Enemy reports show the last sighting and its age, not live GPS. Hiding spends game time.'],
  ['Your controls stay simple.','Missions holds your objectives and route review. Map view switches between the online dark map and offline maps. Continue carries time, money and items forward. Use ♪ for optional music and effects.']
 ];
 export function installStoryUI({readStory,startStory,chooseLegacy,pause,readTutorial,writeTutorial}){

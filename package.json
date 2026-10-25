@@ -1,6 +1,6 @@
 {
   "name": "escape-atlas",
-  "version": "0.25.0",
+  "version": "0.26.0",
   "private": true,
   "type": "module",
   "description": "Offline-first worldwide civilian route-survival stories",
@@ -37,6 +37,7 @@
     "test:backups-browser": "node scripts/backups-browser-check.cjs",
     "test:pursuit-browser": "node scripts/pursuit-browser-check.cjs",
     "validate:thriller": "node scripts/validate-thriller.js",
-    "test:thriller-browser": "node scripts/thriller-browser-check.cjs"
+    "test:thriller-browser": "node scripts/thriller-browser-check.cjs",
+    "test:hq-inbox-browser": "node scripts/hq-inbox-browser-check.cjs"
   }
 }

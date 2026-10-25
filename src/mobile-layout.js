@@ -3,6 +3,8 @@ export function setupMobileLayout() {
  const stack=document.createElement('div');
  stack.className='left-console-stack';
  document.querySelector('.play-area').append(stack);
+ // Keep contact actions outside the map's stacking context, above the console.
+ document.querySelector('.play-area').append(document.querySelector('#place-card'));
  const missions=document.createElement('details');
  missions.className='missions-menu';
  missions.innerHTML='<summary>Missions <span id="mission-menu-count"></span></summary><div class="missions-content"></div>';

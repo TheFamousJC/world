@@ -25,12 +25,12 @@ for(const story of STORIES)test(`${story.id}: two complete 24-hour strategies wi
 });
 for(const story of STORIES)for(const c of story.operations)test(`${c.id}: mission, resource, deadline, location and replay failure guards`,()=>{
  let s=newGame(c);const [a,b]=c.detours;
- assert.equal(completeDetour({...s,position:b.place},c,a.id).ok,false);
- assert.equal(completeDetour({...s,position:b.place},c,b.id).ok,false,'Cannot collect mission 2 first');
+ assert.equal(completeDetour({...s,position:b.place},c,a.id,{},n).ok,false);
+ assert.equal(completeDetour({...s,position:b.place},c,b.id,{},n).ok,false,'Cannot collect mission 2 first');
  assert.equal(quoteJourney({...s,position:b.place,stageVisited:[c.start,b.place]},c,n,c.goal,'taxi').code,'detour');
- s={...s,position:a.place};s=completeDetour(s,c,a.id).state;const replay=completeDetour(s,c,a.id);assert.equal(replay.ok,false);assert.equal(replay.state,s);
+ s={...s,position:a.place};s=completeDetour(s,c,a.id,{},n).state;const replay=completeDetour(s,c,a.id,{},n);assert.equal(replay.ok,false);assert.equal(replay.state,s);
  assert.equal(quoteJourney({...s,position:b.place,phase:'planning'},c,n,c.goal,'taxi').code,'detour','Both tasks required');
- s=completeDetour({...s,position:b.place},c,b.id).state;s={...s,phase:'planning',stageVisited:[c.start,a.place,b.place],energy:100};
+ s=completeDetour({...s,position:b.place},c,b.id,{},n).state;s={...s,phase:'planning',stageVisited:[c.start,a.place,b.place],energy:100};
  if(c.pilot)s=pilotAction(s,c,'document',Object.fromEntries(c.pilot.document.fields.map(f=>[f.id,f.answer]))).state;
  const q=quoteJourney(s,c,n,c.goal,'taxi');assert.ok(q.ok,q.message);
  assert.equal(quoteJourney({...s,cash:0},c,n,c.goal,'taxi').code,'money');assert.equal(quoteJourney({...s,elapsed:1439},c,n,c.goal,'taxi').code,'deadline');

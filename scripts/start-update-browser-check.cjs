@@ -14,9 +14,9 @@ const server=http.createServer((req,res)=>{
  let rel=decodeURIComponent(new URL(req.url,'http://localhost').pathname).replace(/^\/world\//,'')||'index.html';
  const file=path.resolve('dist',rel);if(!file.startsWith(path.resolve('dist')+path.sep)||!fs.existsSync(file)){res.writeHead(404);return res.end();}
  let data=version==='legacy'&&old.has(rel)?old.get(rel):fs.readFileSync(file);
- if(rel==='update.html')data=data.toString().replace('./?v=0.25.0','./?v=0.25.0&test=1');
- if(['same','next'].includes(version)&&rel==='sw.js'){data=data.toString().replace("const CACHE=PREFIX+'","const CACHE=PREFIX+'"+version+"-");if(version==='next')data=data.replace("const RELEASE='0.25.0'","const RELEASE='0.25.1'");}
- if(version==='next'&&rel==='index.html')data=data.toString().replace('v0.25.0','v-test-next');
+ if(rel==='update.html')data=data.toString().replace('./?v=0.26.0','./?v=0.26.0&test=1');
+ if(['same','next'].includes(version)&&rel==='sw.js'){data=data.toString().replace("const CACHE=PREFIX+'","const CACHE=PREFIX+'"+version+"-");if(version==='next')data=data.replace("const RELEASE='0.26.0'","const RELEASE='0.26.1'");}
+ if(version==='next'&&rel==='index.html')data=data.toString().replace('v0.26.0','v-test-next');
  res.writeHead(200,{'Content-Type':types[path.extname(file)]||'application/octet-stream','Cache-Control':'no-cache'});res.end(data);
 });
 (async()=>{
@@ -48,7 +48,7 @@ const server=http.createServer((req,res)=>{
   version='same';await p.evaluate(()=>navigator.serviceWorker.getRegistration().then(r=>r.update()));await p.waitForFunction(()=>navigator.serviceWorker.getRegistration().then(r=>!!r.waiting),null,{timeout:60000});await p.waitForTimeout(1800);assert.equal(await p.locator('#update-notice').isVisible(),false,'A waiting worker for the loaded release is not an update');
   version='next';await p.evaluate(()=>navigator.serviceWorker.getRegistration().then(r=>r.update()));
   await p.waitForSelector('#update-notice:not([hidden])',{timeout:60000});
-  assert.equal(await p.locator('.version-label').innerText(),'v0.25.0','Installing an update does not silently reload');
+  assert.equal(await p.locator('.version-label').innerText(),'v0.26.0','Installing an update does not silently reload');
   await p.click('#apply-update');await p.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v-test-next',null,{timeout:60000});await ready();
   assert.equal((await state()).clockRunning,false);assert.equal((await state()).game.cash,paused.game.cash);assert.equal((await state()).game.departures,1);
   await p.waitForFunction(()=>navigator.serviceWorker.controller,null,{timeout:60000});
@@ -59,7 +59,7 @@ const server=http.createServer((req,res)=>{
   assert.equal(p.url(),offlineUrl);assert.match(await p.locator('#update-copy').innerText(),/Connect to the internet/);
   assert.equal((await state()).game.cash,paused.game.cash);
   await context.setOffline(false);version='current';await p.click('#apply-update');
-  await p.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.25.0',null,{timeout:60000});await ready();
+  await p.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.26.0',null,{timeout:60000});await ready();
   assert.equal((await state()).clockRunning,false);assert.equal((await state()).game.cash,paused.game.cash);
   await context.close();
   version='legacy';const legacy=await browser.newContext({viewport:{width:390,height:844}}),q=await legacy.newPage();
@@ -67,8 +67,8 @@ const server=http.createServer((req,res)=>{
   await q.goto(base+'?test=1');await q.waitForFunction(()=>window.escapeTest?.atlas.ready,null,{timeout:60000});await q.click('#launch-story');
   await q.waitForFunction(()=>navigator.serviceWorker.controller);const before=await q.evaluate(()=>window.escapeTest.getSession().game);
   const regionalKey='escape-atlas:/world/:'+fs.readFileSync('dist/sw.js','utf8').match(/regions-[a-f0-9]+/)[0];await q.evaluate(async key=>{const c=await caches.open(key);await c.put('/world/preserved-map',new Response('saved map'));},regionalKey);
-  version='current';await q.goto(base+'update.html');await q.waitForURL(/v=0.25.0/,{timeout:60000});
-  await q.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.25.0'&&document.querySelector('#clock-button')?.textContent.includes('Resume'),null,{timeout:60000});
+  version='current';await q.goto(base+'update.html');await q.waitForURL(/v=0.26.0/,{timeout:60000});
+  await q.waitForFunction(()=>document.querySelector('.version-label')?.textContent==='v0.26.0'&&document.querySelector('#clock-button')?.textContent.includes('Resume'),null,{timeout:60000});
   assert.equal(await q.evaluate(()=>JSON.parse(localStorage.getItem('escape-atlas:v1:last')).game.cash),before.cash);
   assert.equal(await q.evaluate(async()=>!!await caches.match('/world/preserved-map')),true,'Recovery preserves downloaded map caches');
   await q.screenshot({path:'test-results/start-paused-mobile.png'});assert.deepEqual(errors,[]);
