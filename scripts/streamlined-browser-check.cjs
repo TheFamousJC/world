@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict');
 const {chromium}=require('C:/Users/jdcar/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 (async()=>{const b=await chromium.launch({headless:true,executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',args:['--use-gl=angle','--use-angle=swiftshader-webgl','--enable-unsafe-swiftshader']});try{
- const c=await b.newContext();await c.addInitScript(()=>{localStorage.setItem('escape-atlas:v1:tutorial','1');localStorage.setItem('escape-atlas:v1:settings',JSON.stringify({reduce:true}));});const p=await c.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
+ const c=await b.newContext();await c.addInitScript(()=>{localStorage.setItem('escape-atlas:v1:tutorial','1');localStorage.setItem('escape-atlas:v1:settings',JSON.stringify({reduce:true,mapStyle:'offline'}));});const p=await c.newPage();const errors=[];p.on('pageerror',e=>errors.push(e.message));
  await p.goto((process.env.GAME_URL||'http://127.0.0.1:4187/world/')+'?test=1');await p.waitForFunction(()=>window.escapeTest?.atlas.ready,null,{timeout:60000});await p.click('#launch-story');
  await p.setViewportSize({width:1366,height:768});
  const centre=await p.evaluate(()=>{const x=window.escapeTest,c=x.scenarios.find(c=>c.id===x.getSession().game.scenarioId);return x.atlas.markers.get(c.detours[0].place).marker.getLngLat().toArray();});

@@ -1,17 +1,17 @@
 const {chromium}=require(process.env.PLAYWRIGHT_NODE_PATH||'C:/Users/jdcar/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules/playwright');
 const assert=require('node:assert/strict'),fs=require('node:fs');
 (async()=>{const b=await chromium.launch({headless:true,executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe',args:['--use-gl=angle','--use-angle=swiftshader-webgl','--enable-unsafe-swiftshader']});try{
- const context=await b.newContext({viewport:{width:1526,height:866}});await context.addInitScript(()=>{localStorage.setItem('escape-atlas:v1:tutorial','1');localStorage.setItem('escape-atlas:v1:settings',JSON.stringify({reduce:true}));});
+ const context=await b.newContext({viewport:{width:1526,height:866}});await require('./fixtures/openfreemap.cjs')(context);await context.addInitScript(()=>{localStorage.setItem('escape-atlas:v1:tutorial','1');localStorage.setItem('escape-atlas:v1:settings',JSON.stringify({reduce:true,mapStyle:'dark'}));});
  const p=await context.newPage(),errors=[];p.on('pageerror',e=>errors.push(e.message));p.on('response',r=>{if(r.status()>=400)errors.push(r.status()+' '+r.url());});
  const base=process.env.GAME_URL||'http://127.0.0.1:4186/world';await p.goto(base+'/?test=1');await p.waitForFunction(()=>window.escapeTest?.atlas.ready);await p.click('#story-back');await p.click('.pilot-library-link');assert.match(await p.locator('#story-splash').innerText(),/NEW FIELD-DESK PILOT/);await p.click('#launch-story');
  await p.waitForFunction(()=>window.escapeTest.getSession().game.scenarioId==='escape-12-op-1',null,{timeout:90000});
  const state=()=>p.evaluate(()=>window.escapeTest.getSession());const config=()=>p.evaluate(()=>window.escapeTest.scenarios.find(c=>c.id===window.escapeTest.getSession().game.scenarioId));
  const close=()=>p.click('#field-desk-dialog [data-close]');
- async function desk(){await p.click('#field-desk');await p.waitForSelector('#field-desk-dialog[open]');}
+ async function desk(){await p.locator('.missions-menu').evaluate(e=>e.open=true);await p.click('#knowledge-button');await p.waitForSelector('#field-desk-dialog[open]');}
  async function leg(to,mode='taxi'){
   if((await state()).game.position===to)return;
-  await p.locator('.named-stop-picker').evaluate(e=>e.open=true);await p.selectOption('#destination',to);await p.click('[data-transport="'+mode+'"]');
-  assert.ok(await p.locator('.route-leg.mode-'+mode).count());assert.match(await p.locator('#route-legs').innerText(),/ETA T\+/);
+  await p.locator('.missions-menu').evaluate(e=>e.open=false);if(await p.locator('#close-place').isVisible())await p.click('#close-place');await p.evaluate(id=>{const x=window.escapeTest,g=x.atlas.markers.get(id).marker.getLngLat();x.atlas.frame([[g.lng,g.lat]],{maxZoom:15,pitch:0,bearing:0});},to);await p.locator('button.poi-marker').filter({has:p.locator('.poi-name')}).filter({hasText:await p.evaluate(id=>window.escapeTest.atlas.find(id).name,to)}).click();await p.click('[data-transport="'+mode+'"]');
+  assert.ok(await p.locator('.route-leg.mode-'+mode).count());await p.locator('.missions-menu > summary').click();const review=p.locator('.mission-tools').filter({has:p.locator('summary').filter({hasText:'Planned route'})});if(!await review.evaluate(e=>e.open))await review.locator(':scope > summary').click();assert.match(await p.locator('#route-legs').innerText(),/ETA T\+/);await p.locator('.missions-menu > summary').click();
   const inView=await p.locator('#go-button').evaluate(e=>{const r=e.getBoundingClientRect();return r.top>=0&&r.bottom<=innerHeight;});assert.ok(inView,'Go remains visible with the pilot panel');
   await p.click('#go-button');await p.waitForFunction(()=>window.escapeTest.getSession().game.phase!=='travelling',null,{timeout:15000});assert.equal((await state()).game.position,to,await p.locator('#message').innerText());
  }
@@ -28,7 +28,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs');
   for(const [i,task] of c.detours.entries()){
    const current=(await state()).game.position,fromHub=current.split('-').slice(0,3).join('-'),toHub=task.place.split('-').slice(0,3).join('-');
    if(fromHub!==toHub){await leg(fromHub+'-5');await leg(toHub+'-5','flight');flight=true;}
-   await leg(task.place);await p.click('[data-detour="'+task.id+'"]');
+   await leg(task.place);if(!await p.locator('.missions-menu').evaluate(e=>e.open))await p.locator('.missions-menu > summary').click();await p.click('#detour-panel [data-detour="'+task.id+'"]');
    if(stage===2&&i===0)await clearDocument(stage);
   }
   if(stage!==2)await clearDocument(stage);

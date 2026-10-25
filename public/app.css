@@ -389,3 +389,5 @@
 .mission-stop.pickup-collected .mission-badge{min-width:32px}
 .missions-content .locate-mission{display:block;min-height:30px;padding:3px 0;font-size:11px;color:#a7e9d7}
 .mission-stop[data-mission-number="2"] .mission-badge{top:auto;bottom:-13px}
+.poi-marker.mission-stop{z-index:8}
+.world-view .mission-stop .poi-name{display:none}
