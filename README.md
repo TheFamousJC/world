@@ -179,3 +179,9 @@ Schedules anchor to each operation’s actual start on the shared clock; old rep
 ## Courier difficulty pilot (0.22)
 
 Open **Stories → New courier pilot** for The sealed handoff: one standalone offline operation with a collect → deposit → receipt chain, fixed-stop timetabled shuttles and a limited budget. Existing stories and practice rules are unchanged. The counter window and complete transport quotes are shown before commitment. See [DIFFICULTY_AUDIT.md](DIFFICULTY_AUDIT.md) for the measured ten-story baseline and two verified mixed-mode wins. Reproduce with `npm run audit:difficulty`; use `npm run test:courier-browser` against a local server for the UI/offline playthrough.
+
+## Save backup and recovery
+
+Open Missions → Help & settings → Settings → Save backup & recovery. Download a JSON backup of the current run, or choose a backup to preview and confirm restoration. The game pauses; imported and restarted games wait for Resume, including unfinished travel. A single local recovery copy can undo the latest restart or restore. It is replaced by the next such action. Backups contain progress, not maps, audio preferences or completion records. Download a world region once before restoring it offline. No files are uploaded.
+
+Run `node --test tests/backups.test.js` and `npm run test:backups-browser` (local server at port 4187, or set GAME_URL). The release-build browser check also repeats restoration offline.

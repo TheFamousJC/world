@@ -1,6 +1,6 @@
 # Escape Atlas home screen development plan
 
-Updated 25 October 2026 against version 0.22.0.
+Updated 25 October 2026 against version 0.23.0.
 
 ## Current priority Browser gameplay
 
@@ -8,11 +8,18 @@ Keep the browser game as the priority. The current interface has a timer with pl
 
 ### Recommended next cycle
 
-1. **Protect progress:** add save export/import and a recoverable restart, then test interrupted travel, refreshes and updates without duplicate charges.
+1. **Protect progress:** save export/import and a recoverable restart ship in 0.23.0, with paused restoration and pending-leg regression coverage. Next verify physical phone file handling and cross-tab ownership.
 2. **Polish the core loop on real devices:** observe new players on desktop, iPhone, Android and iPad; fix unclear collection, route editing, map labels and blocked-route recovery before adding panels.
 3. **Improve story quality:** review the 50 stories for variety, travel budgets and progressively harder operations; add distinct consequences and endings to the strongest stories first.
 4. **Finish offline/PWA delivery:** show download status and pack sizes, offer storage controls, and check installed launches, background/resume and performance on lower-powered phones.
 5. **Pilot pursuit and intrigue:** validate the design below in one story before extending the catalogue. Music and effects now ship as an optional presentation layer.
+
+### Progress protection shipped in 0.23.0
+
+- Missions → Help & settings → Settings → Save backup & recovery pauses play and offers local JSON export, validated import with a preview and confirmation, and restart from the beginning.
+- A single local recovery copy is kept before restart/restore; recovery can be reviewed before replacing the current run. New restored/restarted runs stay paused, including unfinished travel. No accounts, uploads or remote services.
+- Backups preserve one run, including mission inventory, field-desk state, route and pending quote. Maps, preferences and completion records are not included. World maps must already be cached for offline restoration. Invalid files and failed recovery writes do not replace the game.
+- Unit and browser checks cover cargo, pending settlement exactly once, cancel, invalid files, restart/recovery, phone layout and offline restoration. Physical-device file picker/download testing and multi-tab ownership remain open.
 
 ### Audio shipped in 0.21.0
 
@@ -67,7 +74,7 @@ Shipped in 0.22.0: a measured ten-story difficulty audit and one standalone cour
 
 The single-operation delivery/transport prototype is active. Pursuit, hiding, obstacles and dynamic HQ remain the next stages.
 
-1. **Foundation and difficulty audit.** Protect saves with export/import and recoverable restarts. Measure current shuttle-only outcomes, full trip time, fares and energy in representative stories. Define fixed-stop transport constraints and two winning strategies plus at least five losing/recovery cases for one five-operation pilot. Preserve the existing introductory stories until the new model is proven.
+1. **Foundation and difficulty audit.** Save export/import and recoverable restarts now ship. Measure current shuttle-only outcomes, full trip time, fares and energy in representative stories. Define fixed-stop transport constraints and two winning strategies plus at least five losing/recovery cases for one five-operation pilot. Preserve the existing introductory stories until the new model is proven.
 2. **Action-based objectives and transport trade-offs.** The courier operation now implements collect → deposit → receipt validation, action buttons, atomic inventory/resource accounting and fixed shuttle stops/timetables. Next: playtest and tune this operation, then extend the proven mechanics into the five-operation pilot.
 3. **Pursuit, hiding and authored obstacles.** Start with one playable operation, then extend to five. Add trace-based pursuit, last-known search areas, hiding places, safe-house access and police/secret-police events. Test warning lead time, recovery and escalation, with no hidden teleporting or unavoidable soft locks.
 4. **Dynamic Ask HQ and narrative consequences.** Add the dispatch inbox, contextual hints, pursuit warnings, one-hour radio-silence orders and feasible mission changes. Branch outcomes for helping contacts, losing trust or changing the handoff plan. All triggers use the seeded game clock and survive pause, save/reload and offline play.
