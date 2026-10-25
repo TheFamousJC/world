@@ -23,7 +23,7 @@ export function selectMapPoint(session,point){
 export function settleLeg(session,scenario){
  if(session.game.phase!=='travelling'||!session.game.pending)return session;
  const next=structuredClone(session),to=next.game.pending.to;
- next.game=arrive(next.game,scenario);
+ next.game=arrive(next.game,scenario,next.custom);
  if(next.plan[0]?.to===to)next.plan.shift();
  next.travelRemaining=Math.max(0,(next.travelRemaining||1)-1);
  if(['checkpoint','won','lost'].includes(next.game.phase)){next.travelRemaining=0;if(next.game.phase==='checkpoint')next.plan=[];}

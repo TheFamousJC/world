@@ -1,7 +1,8 @@
+import {pursuitReports,HIDES,hideQuote} from './pursuit.js';
 // Contextual HQ guidance is presentation only: no fares, routing or state changes.
 import {pickupState} from './pickups.js';
 export function hqBrief(state,scenario,find){
- const notes=[],tasks=scenario.detours||[],next=tasks.find(t=>!state.completedTasks?.includes(t.id)),left=Math.max(0,Math.ceil(scenario.deadline-state.elapsed));
+ const notes=scenario.pursuit?['A fictional pursuer searches reported areas, not your moving position. Walking and taxis leave no new ticket trace.',...pursuitReports(state).slice(0,5).map(r=>'T+'+Math.floor(r.at)+' · '+r.text),'Trusted hiding places: '+HIDES.map(h=>(find(h.place)?.name||h.place)+' ('+h.title+')').join('; ')+'. Each is usable once. Access and full waiting costs are shown before hiding.']:[],tasks=scenario.detours||[],next=tasks.find(t=>!state.completedTasks?.includes(t.id)),left=Math.max(0,Math.ceil(scenario.deadline-state.elapsed));
  const counter=tasks.find(t=>t.closesAt!==undefined&&!state.completedTasks.includes(t.id));if(counter&&state.elapsed+counter.minutes>counter.closesAt)notes.push('The deposit can no longer finish before the counter closes. Restart the courier pilot to try a different plan.');
  if(scenario.shuttle)notes.push('Shuttle stops: '+scenario.shuttle.stops.map(id=>find(id)?.name||id).join(' → ')+'. £'+scenario.shuttle.fare+', every '+scenario.shuttle.interval+' minutes; '+scenario.shuttle.boarding+'-minute boarding. Only these stops accept boarding and alighting.');
  if(counter)notes.push('Deposit takes '+counter.minutes+' minutes and must finish by T+'+counter.closesAt+'. The sealed documents are exchanged for a receipt.');

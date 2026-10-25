@@ -185,3 +185,11 @@ Open **Stories → New courier pilot** for The sealed handoff: one standalone of
 Open Missions → Help & settings → Settings → Save backup & recovery. Download a JSON backup of the current run, or choose a backup to preview and confirm restoration. The game pauses; imported and restarted games wait for Resume, including unfinished travel. A single local recovery copy can undo the latest restart or restore. It is replaced by the next such action. Backups contain progress, not maps, audio preferences or completion records. Download a world region once before restoring it offline. No files are uploaded.
 
 Run `node --test tests/backups.test.js` and `npm run test:backups-browser` (local server at port 4187, or set GAME_URL). The release-build browser check also repeats restoration offline.
+
+## Watched handoff pursuit pilot (0.24.0)
+
+Stories → New pursuit pilot → The watched handoff. This separate operation has 150 minutes, £24 and two explicit courier objectives; the deposit finishes by T+95. Contact actions and named shuttle tickets create reports. A pursuer follows offline OSM corridors, completing each finite search before responding to the next trace. HQ shows source/time, expected search windows and approximate amber areas, with warning grace before interception. Walking and taxis do not create ticket traces; the pursuer does not track the unseen moving traveller. Known unsafe shuttle waits are rejected before a fare is charged.
+
+◈ marks the workshop back room (documents required), riverside safe house (receipt required) and free station alcove. Each can be used once. Hiding quotes the full time needed to wait out known local searches, plus its fee and energy recovery; it advances the shared deadline. Pause freezes the world clock. Hiding never prevents a future trace. Rules and HQ acknowledgements survive saves and JSON backups.
+
+Tests: `node --test tests/pursuit.test.js`, `npm run test:pursuit-browser`. Rebuild the authored OSM corridors after changing the Brest graph with `node scripts/build-pursuit-roads.js`; tests compare every corridor to the current road graph. Existing courier and 50 stories keep their original balance. Broader roadblocks, radio silence and five-operation pursuit remain planned.
