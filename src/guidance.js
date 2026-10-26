@@ -1,3 +1,4 @@
+import {cipherEntry} from './ciphers.js';
 import {detoursComplete} from './engine.js';
 import {documentCleared} from './pilot.js';
 import {pickupState} from './pickups.js';
@@ -11,6 +12,7 @@ export function nextStep(state,scenario,find,{running=true,plan=[],blocked=false
  const complete=detoursComplete(state,scenario),tasks=scenario.detours||[];
  if(scenario.pilot&&!documentCleared(state,scenario)&&(complete||scenario.stage===2&&state.completedTasks?.includes(tasks[0]?.id)))return {kind:'document',label:'Check travel documents',detail:'Open the Field desk and match the evidence from your collected items.'};
  const task=complete?null:tasks.find(t=>!state.completedTasks?.includes(t.id));
+ if(task?.cipher&&cipherEntry(state,task.id)?.solvedAt===null)return {kind:'decode',task:task.id,label:'Decode collected packet',detail:'Use the OSINT workbench to extract its code. The next mission stays concealed.'};
  if(task){
   const number=tasks.indexOf(task)+1,where=pickupState(state,task,find);
   if(where.at&&!where.locked)return {kind:'collect',task:task.id,label:task.title,detail:'You are at '+find(task.place).name+'. This action takes '+task.minutes+' game minutes.'};
@@ -24,5 +26,5 @@ export function nextStep(state,scenario,find,{running=true,plan=[],blocked=false
  const queued=plan.findIndex(leg=>leg.to===target),name=find(target)?.name||target;
  if(queued>=0)return {kind:'review',target,label:'Review route to '+label,detail:name+' is already stop '+(queued+1)+'. Review its estimate, then press Go.'};
  if(blocked)return {kind:'replace',target,label:'Replace blocked plan via '+label,detail:'Replan from your actual position to '+name+'. Completed travel is kept.'};
- return {kind:'plan',target,label:'Plan route to '+label,detail:travelDetail||(task?task.title+' at ':'Both missions complete. Continue to ')+name+'.'};
+ return {kind:'plan',target,label:'Plan route to '+label,detail:travelDetail||(task?task.title+' at ':'All mission codes verified. Continue to ')+name+'.'};
 }

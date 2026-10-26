@@ -13,5 +13,5 @@ export function shuttleCost(c,route,elapsed,state){
  const inspectionDelay=state?.inventory?.includes('sealed courier documents')?s.inspection:0;
  return {wait:departure-elapsed,cash:s.fare,inspectionDelay,schedule:{departure,wait:departure-elapsed,boarding:s.boarding,interval:s.interval,last:s.last+offset}};
 }
-export function courierExpired(state,c){return !!(c.deliveryPilot||c.thriller)&&c.detours.some(t=>t.closesAt!==undefined&&!state.completedTasks?.includes(t.id)&&state.elapsed+t.minutes>t.closesAt);}
+export function courierExpired(state,c){return !!(c.deliveryPilot||c.thriller)&&c.detours.some(t=>t.closesAt!==undefined&&!state.completedTasks?.includes(t.id)&&state.elapsed+(t.cipher&&state.cipher?.cases[t.id]?0:t.minutes)>t.closesAt);}
 export function validCourierSave(state,c){if(!c.deliveryPilot)return true;const a=state.completedTasks.includes('courier-pickup'),b=state.completedTasks.includes('courier-deposit');return (!b||a)&&state.inventory.includes('sealed courier documents')===(a&&!b)&&state.inventory.includes('deposit receipt')===b&&(state.phase!=='won'||b);}

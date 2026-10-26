@@ -1,3 +1,4 @@
+import {missionRevealed,cipherEntry} from './ciphers.js';
 import {distance} from './geo.js';
 
 export const STOP_SYMBOLS={airport:'✈',station:'▥',crossing:'⇄',shelter:'+',supply:'⚙',pickup:'⚑',waypoint:'·'};
@@ -10,13 +11,13 @@ export function pickupState(state,task,find){
 }
 
 export function stopInfo(place,state,scenario){
- const tasks=scenario.detours||[],index=tasks.findIndex(t=>t.place===place.id),task=tasks[index];
+ const tasks=scenario.detours||[],index=tasks.findIndex(t=>t.place===place.id&&missionRevealed(state,t)&&!state.completedTasks.includes(t.id)),fallback=tasks.findIndex(t=>t.place===place.id&&missionRevealed(state,t)),n=index>=0?index:fallback,task=tasks[n];
  const bonus=scenario.bonuses?.find(t=>t.place===place.id);
  const done=!!(task||bonus)&&!!state.completedTasks?.includes((task||bonus).id);
  return {
   symbol:bonus?(bonus.kind==='cash'?'£':'♡'):place.id===scenario.goal?'◎':STOP_SYMBOLS[place.kind]||'·',
-  badge:task?(String(index+1)+(done?'✓':'')):'',
-  label:task?(done?(task.kind==='deposit'?'DEPOSITED':'COLLECTED'):`MISSION ${index+1}`):bonus?(done?'COLLECTED':bonus.kind==='cash'?'OPTIONAL CASH':'OPTIONAL ENERGY'):place.id===scenario.goal?'DESTINATION':'',
+  badge:task?(String(n+1)+(done?'✓':'')):'',
+  label:task?(cipherEntry(state,task.id)?.solvedAt===null?'ENCRYPTED · DECODE':done?(task.cipher?'DECODED':task.kind==='deposit'?'DEPOSITED':'COLLECTED'):`MISSION ${n+1}`):bonus?(done?'COLLECTED':bonus.kind==='cash'?'OPTIONAL CASH':'OPTIONAL ENERGY'):place.id===scenario.goal?'DESTINATION':'',
   done,
   task,
   bonus

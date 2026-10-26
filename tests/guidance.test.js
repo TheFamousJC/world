@@ -19,7 +19,7 @@ test('planned contacts are reviewed, never silently removed or travelled',()=>{
 test('both missions lead to the destination and checkpoints lead to the next operation',()=>{
  const complete={...s,completedTasks:c.detours.map(t=>t.id)};
  assert.equal(nextStep(complete,c,placeById).target,c.goal);
- assert.match(nextStep(complete,c,placeById).detail,/Both missions complete/);
+ assert.match(nextStep(complete,c,placeById).detail,/All mission codes verified/);
  assert.equal(nextStep({...complete,phase:'checkpoint'},c,placeById).kind,'continue');
 });
 test('paused, travelling and finished states take precedence over route suggestions',()=>{

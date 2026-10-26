@@ -6,7 +6,7 @@ import {pilotAction,reportView,documentCleared,timetable,pilotCost,observeReport
 import {journeyFrame} from '../src/journey.js';
 const story=STORIES.find(s=>s.id==='escape-12'),answers=c=>Object.fromEntries(c.pilot.document.fields.map(f=>[f.id,f.answer]));
 const network={route:(a,b)=>({coordinates:[a.coordinates,b.coordinates],km:2,access:0,crossing:a.hub!==b.hub}),borders:[]};
-const ready=c=>({...newGame(c),position:c.detours[1].place,completedTasks:c.detours.map(t=>t.id),stageVisited:[c.start,...c.detours.map(t=>t.place)]});
+const ready=c=>({...newGame(c),position:c.detours[1].place,completedTasks:c.detours.map(t=>t.id),cipher:{version:1,cases:Object.fromEntries(c.detours.map(t=>[t.id,{at:0,hints:0,attempts:0,solvedAt:0}]))},stageVisited:[c.start,...c.detours.map(t=>t.place)]});
 
 test('only one complete five-operation story opts into the pilot',()=>{
  assert.equal(STORIES.filter(s=>s.operations.some(c=>c.pilot)).length,1);assert.equal(story.operations.length,5);
@@ -69,7 +69,7 @@ test('confirmed reports can be refreshed once stale, with the advertised charge'
  const c=story.operations[0],s=pilotAction(newGame(c),c,'verify').state,aged=advanceClock(s,c,45),r=pilotAction(aged,c,'verify');assert.ok(r.ok);assert.equal(r.state.cash,aged.cash-2);assert.equal(r.state.elapsed,aged.elapsed+5);assert.equal(reportView(r.state,c).age,0);
 });
 test('in-flight saves resume once; pre-pilot pending journeys migrate without a fare',()=>{
- const c=story.operations[2],s=pilotAction({...newGame(c),completedTasks:[c.detours[0].id]},c,'document',answers(c)).state,q=quoteJourney(s,c,network,'world-0-1-5','flight'),pending=depart(s,q).state;
+ const c=story.operations[2],s=pilotAction({...newGame(c),completedTasks:[c.detours[0].id],cipher:{version:1,cases:{[c.detours[0].id]:{at:0,hints:0,attempts:0,solvedAt:0}}}},c,'document',answers(c)).state,q=quoteJourney(s,c,network,'world-0-1-5','flight'),pending=depart(s,q).state;
  const session={game:pending,custom:{},plan:[{to:q.to,mode:'flight'}],clockRunning:true,travelRemaining:1},loaded=readSave(makeSave(session),ALL_SCENARIOS);assert.ok(loaded);assert.deepEqual(loaded.game.pending,pending.pending);const end=arrive(loaded.game,c);assert.equal(end.cash,s.cash-q.cash);assert.equal(arrive(end,c),end);
  delete session.game.pilot;const migrated=readSave(makeSave(session),ALL_SCENARIOS);assert.ok(migrated);assert.equal(migrated.game.phase,'planning');assert.equal(migrated.game.pending,null);assert.equal(migrated.game.cash,s.cash);assert.equal(migrated.game.elapsed,s.elapsed);assert.equal(migrated.travelRemaining,0);
 });

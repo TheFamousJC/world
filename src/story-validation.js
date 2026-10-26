@@ -1,7 +1,8 @@
+import {completeDecodedDetour as completeDetour} from './cipher-validation.js';
 import {safePursuitLeg,safePursuitAction} from './pursuit-validation.js';
 import {pilotAction,documentCleared} from './pilot.js';
 import {STORIES,ALL_SCENARIOS,placeById,PLACES} from './scenarios.js';
-import {newGame,quoteJourney,depart,arrive,reviewArrival,completeDetour,collectBonus,advanceStage,makeSave,readSave} from './engine.js';
+import {newGame,quoteJourney,depart,arrive,reviewArrival,collectBonus,advanceStage,makeSave,readSave} from './engine.js';
 export function simulateStory(story,network,mode='bus',optional=false){
  let state=newGame(story.operations[0],story.id+'-'+mode),legs=[];
  const fail=message=>{throw Error(story.id+' '+state.scenarioId+' '+state.position+': '+message);};

@@ -4,7 +4,7 @@
 
 A route-survival game: plan a journey, manage time, money and energy, and adapt when a crossing or service is unavailable.
 
-The collection contains **50 civilian stories, 250 operation routes and 500 compulsory missions**. Each story has five increasingly demanding operations over one shared 24-hour clock. Each route has two ordered required missions, one optional cash contact and one optional recovery contact. The ten original practice challenges and original eight-section Nightfall saves remain available. No military or historical modes.
+The collection contains **50 civilian stories, 250 operation routes and 750 compulsory code missions**. Each story has five increasingly demanding operations over one shared 24-hour clock. Each route has two ordered required missions, one optional cash contact and one optional recovery contact. The ten original practice challenges and original eight-section Nightfall saves remain available. No military or historical modes.
 
 Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. All forty world stories now use detailed offline OpenStreetMap city-to-airport packs, including actual landside airport locations; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
 
@@ -219,3 +219,15 @@ Every one of the 50 catalogue stories, the legacy campaign and The watched route
 Existing catalogue saves pause when pursuit is introduced, preserving resources, objectives and pending travel. No old contact or ticket traces are created retroactively. Save backups validate and retain pursuit geometry, report history and read status. No new map data, services, API keys or runtime AI are required.
 
 Validation: all 489 deterministic tests pass, including two adaptive winning strategies for each catalogue story and legacy campaign alternatives. Run npm run test:hq-inbox-browser for isolated desktop, 360/390-pixel mobile, confirmed/stale sightings, unread persistence, safe-save migration and a South African contact playthrough. Against a release build it also checks offline reloads and saved routes.
+
+## OSINT code missions (0.27.0)
+
+All 50 catalogue stories and The watched route now have three coded missions per operation: 15 per story, 765 packets including the featured story. Only the current mission is revealed. Collecting its packet spends the published handoff time and leaves any authored pursuit trace, but withholds task completion, items, deliveries, rewards and changed orders until the code is verified. Mission 3 is a separately collected extraction packet at the second contact, keeping airport handoffs in the arrival city and avoiding extra travel that would break existing budgets. The ten practice challenges, standalone labs and legacy campaign retain their training rules.
+
+The offline OSINT workbench provides six functioning methods: numeric Morse decoding, synthetic photo metadata inspection, dispatch-registry search, fixed-offset time conversion, coordinate matching and Caesar substitution with a letter-to-digit key. Each packet has deterministic case-specific evidence and a four-digit solution. These are six reusable puzzle families, not bespoke narrative puzzles for every packet. Devices accept player input and produce analysis; they never submit the code automatically. All people, files, registries and intelligence are fictional; no live lookups or personal data are needed.
+
+The world clock and pursuit continue while the workbench is open. The existing Pause control remains available. Correct submissions have no extra time fee; wrong four-digit submissions spend two game minutes and advance pursuit. Malformed inputs reject without charge. Three optional HQ clues cost £4, £8 and £12, ending with a worked solution. Each clue can be purchased once; no cash overdraft, repeat collection or duplicate mission rewards are allowed. Devices are free. Codes can be analysed after leaving a watched contact.
+
+Collected evidence, hints, attempts and solved cases survive saves and backups. Existing progress migrates paused, crediting completed work and past-operation extraction packets without taking resources or replaying traces. The workbench is available again under Missions once a packet has been collected.
+
+Validation: tests/ciphers.test.js checks all 765 packets, six analysis tools, sequential reveals, accounting, wrong answers, pursuit/deadlines, migration, invalid saves and backups. Development validation solves packets explicitly via src/cipher-validation.js; this harness is not imported or cached by the application. npm run test:cipher-browser exercises six devices, two consecutive operations, desktop/mobile layouts, live time, hints, incorrect/correct submissions and release-build offline reloads.
