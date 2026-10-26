@@ -1,0 +1,3343 @@
+[
+  {
+    "id": "atlas-01",
+    "number": 1,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Munich",
+        "country": "Germany",
+        "countryCode": "DE",
+        "geonamesId": 2867714,
+        "coordinates": [
+          11.57549,
+          48.13743
+        ],
+        "key": "city-de-45cf966448",
+        "source": "https://www.geonames.org/2867714/"
+      },
+      {
+        "name": "Innsbruck",
+        "country": "Austria",
+        "countryCode": "AT",
+        "geonamesId": 2775220,
+        "coordinates": [
+          11.39454,
+          47.26266
+        ],
+        "key": "city-at-89e3910dd6",
+        "source": "https://www.geonames.org/2775220/"
+      },
+      {
+        "name": "Brenner Pass",
+        "country": "Austria",
+        "countryCode": "AT",
+        "coordinates": [
+          11.5067,
+          47.0074
+        ],
+        "geonamesId": 2781423,
+        "source": "https://www.geonames.org/2781423/",
+        "key": "city-at-3560faf52c"
+      },
+      {
+        "name": "Bolzano",
+        "country": "Italy",
+        "countryCode": "IT",
+        "geonamesId": 3181913,
+        "coordinates": [
+          11.33982,
+          46.49067
+        ],
+        "key": "city-it-a698eb0dc0",
+        "source": "https://www.geonames.org/3181913/"
+      },
+      {
+        "name": "Verona",
+        "country": "Italy",
+        "countryCode": "IT",
+        "geonamesId": 3164527,
+        "coordinates": [
+          10.9938,
+          45.43854
+        ],
+        "key": "city-it-33eea7315e",
+        "source": "https://www.geonames.org/3164527/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-02",
+    "number": 2,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Frankfurt",
+        "country": "Germany",
+        "countryCode": "DE",
+        "geonamesId": 2925533,
+        "coordinates": [
+          8.68417,
+          50.11552
+        ],
+        "key": "city-de-a3fb8a4dff",
+        "source": "https://www.geonames.org/2925533/"
+      },
+      {
+        "name": "Saarbrücken",
+        "country": "Germany",
+        "countryCode": "DE",
+        "geonamesId": 2842647,
+        "coordinates": [
+          7.00982,
+          49.23262
+        ],
+        "key": "city-de-c8c9918ae2",
+        "source": "https://www.geonames.org/2842647/"
+      },
+      {
+        "name": "Luxembourg City",
+        "country": "Luxembourg",
+        "countryCode": "LU",
+        "geonamesId": 2960316,
+        "coordinates": [
+          6.13268,
+          49.60982
+        ],
+        "key": "city-lu-0d132a1d89",
+        "source": "https://www.geonames.org/2960316/"
+      },
+      {
+        "name": "Metz",
+        "country": "France",
+        "countryCode": "FR",
+        "geonamesId": 2994160,
+        "coordinates": [
+          6.17269,
+          49.11911
+        ],
+        "key": "city-fr-d26a89c809",
+        "source": "https://www.geonames.org/2994160/"
+      },
+      {
+        "name": "Strasbourg",
+        "country": "France",
+        "countryCode": "FR",
+        "geonamesId": 2973783,
+        "coordinates": [
+          7.74553,
+          48.58392
+        ],
+        "key": "city-fr-a89f8fc724",
+        "source": "https://www.geonames.org/2973783/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-03",
+    "number": 3,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Amsterdam",
+        "country": "Netherlands",
+        "countryCode": "NL",
+        "geonamesId": 2759794,
+        "coordinates": [
+          4.88969,
+          52.37403
+        ],
+        "key": "city-nl-0013c01fe0",
+        "source": "https://www.geonames.org/2759794/"
+      },
+      {
+        "name": "Eindhoven",
+        "country": "Netherlands",
+        "countryCode": "NL",
+        "geonamesId": 2756253,
+        "coordinates": [
+          5.47778,
+          51.44083
+        ],
+        "key": "city-nl-10f43b3730",
+        "source": "https://www.geonames.org/2756253/"
+      },
+      {
+        "name": "Antwerp",
+        "country": "Belgium",
+        "countryCode": "BE",
+        "geonamesId": 2803138,
+        "coordinates": [
+          4.40026,
+          51.22047
+        ],
+        "key": "city-be-ca3aa21a5b",
+        "source": "https://www.geonames.org/2803138/"
+      },
+      {
+        "name": "Lille",
+        "country": "France",
+        "countryCode": "FR",
+        "geonamesId": 2998324,
+        "coordinates": [
+          3.05512,
+          50.63391
+        ],
+        "key": "city-fr-3389a5bf03",
+        "source": "https://www.geonames.org/2998324/"
+      },
+      {
+        "name": "Calais",
+        "country": "France",
+        "countryCode": "FR",
+        "geonamesId": 3029162,
+        "coordinates": [
+          1.85635,
+          50.95194
+        ],
+        "key": "city-fr-19214c2fea",
+        "source": "https://www.geonames.org/3029162/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-04",
+    "number": 4,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Prague",
+        "country": "Czechia",
+        "countryCode": "CZ",
+        "geonamesId": 3067696,
+        "coordinates": [
+          14.42076,
+          50.08804
+        ],
+        "key": "city-cz-22331ccb80",
+        "source": "https://www.geonames.org/3067696/"
+      },
+      {
+        "name": "Brno",
+        "country": "Czechia",
+        "countryCode": "CZ",
+        "geonamesId": 3078610,
+        "coordinates": [
+          16.60796,
+          49.19522
+        ],
+        "key": "city-cz-e59f88c546",
+        "source": "https://www.geonames.org/3078610/"
+      },
+      {
+        "name": "Bratislava",
+        "country": "Slovakia",
+        "countryCode": "SK",
+        "geonamesId": 3060972,
+        "coordinates": [
+          17.10674,
+          48.14816
+        ],
+        "key": "city-sk-19593ce79f",
+        "source": "https://www.geonames.org/3060972/"
+      },
+      {
+        "name": "Győr",
+        "country": "Hungary",
+        "countryCode": "HU",
+        "geonamesId": 3052009,
+        "coordinates": [
+          17.63512,
+          47.68333
+        ],
+        "key": "city-hu-fa6ee8f4ec",
+        "source": "https://www.geonames.org/3052009/"
+      },
+      {
+        "name": "Budapest",
+        "country": "Hungary",
+        "countryCode": "HU",
+        "geonamesId": 3054643,
+        "coordinates": [
+          19.04045,
+          47.49835
+        ],
+        "key": "city-hu-142f41284e",
+        "source": "https://www.geonames.org/3054643/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-05",
+    "number": 5,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Geneva",
+        "country": "Switzerland",
+        "countryCode": "CH",
+        "geonamesId": 2660646,
+        "coordinates": [
+          6.14569,
+          46.20222
+        ],
+        "key": "city-ch-806b1459b4",
+        "source": "https://www.geonames.org/2660646/"
+      },
+      {
+        "name": "Lausanne",
+        "country": "Switzerland",
+        "countryCode": "CH",
+        "geonamesId": 2659994,
+        "coordinates": [
+          6.63282,
+          46.516
+        ],
+        "key": "city-ch-0ec127ab5c",
+        "source": "https://www.geonames.org/2659994/"
+      },
+      {
+        "name": "Chamonix",
+        "country": "France",
+        "countryCode": "FR",
+        "geonamesId": 3027301,
+        "coordinates": [
+          6.86933,
+          45.92375
+        ],
+        "key": "city-fr-176d215f64",
+        "source": "https://www.geonames.org/3027301/"
+      },
+      {
+        "name": "Aosta",
+        "country": "Italy",
+        "countryCode": "IT",
+        "geonamesId": 3182997,
+        "coordinates": [
+          7.31722,
+          45.73764
+        ],
+        "key": "city-it-11f3083482",
+        "source": "https://www.geonames.org/3182997/"
+      },
+      {
+        "name": "Turin",
+        "country": "Italy",
+        "countryCode": "IT",
+        "geonamesId": 3165524,
+        "coordinates": [
+          7.68682,
+          45.07049
+        ],
+        "key": "city-it-7844f38cb4",
+        "source": "https://www.geonames.org/3165524/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-06",
+    "number": 6,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Kraków",
+        "country": "Poland",
+        "countryCode": "PL",
+        "geonamesId": 3094802,
+        "coordinates": [
+          19.93658,
+          50.06143
+        ],
+        "key": "city-pl-e9a2167b94",
+        "source": "https://www.geonames.org/3094802/"
+      },
+      {
+        "name": "Katowice",
+        "country": "Poland",
+        "countryCode": "PL",
+        "geonamesId": 3096472,
+        "coordinates": [
+          19.02173,
+          50.2597
+        ],
+        "key": "city-pl-c552cdbf55",
+        "source": "https://www.geonames.org/3096472/"
+      },
+      {
+        "name": "Ostrava",
+        "country": "Czechia",
+        "countryCode": "CZ",
+        "geonamesId": 3068799,
+        "coordinates": [
+          18.28204,
+          49.83465
+        ],
+        "key": "city-cz-b9ccd34e00",
+        "source": "https://www.geonames.org/3068799/"
+      },
+      {
+        "name": "Brno",
+        "country": "Czechia",
+        "countryCode": "CZ",
+        "geonamesId": 3078610,
+        "coordinates": [
+          16.60796,
+          49.19522
+        ],
+        "key": "city-cz-e59f88c546",
+        "source": "https://www.geonames.org/3078610/"
+      },
+      {
+        "name": "Vienna",
+        "country": "Austria",
+        "countryCode": "AT",
+        "geonamesId": 2761369,
+        "coordinates": [
+          16.37208,
+          48.20849
+        ],
+        "key": "city-at-db7ee413d6",
+        "source": "https://www.geonames.org/2761369/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-07",
+    "number": 7,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Bordeaux",
+        "country": "France",
+        "countryCode": "FR",
+        "geonamesId": 3031582,
+        "coordinates": [
+          -0.58046,
+          44.84124
+        ],
+        "key": "city-fr-faa8cc9aeb",
+        "source": "https://www.geonames.org/3031582/"
+      },
+      {
+        "name": "Bayonne",
+        "country": "France",
+        "countryCode": "FR",
+        "geonamesId": 3034475,
+        "coordinates": [
+          -1.473,
+          43.49316
+        ],
+        "key": "city-fr-f07634aa9d",
+        "source": "https://www.geonames.org/3034475/"
+      },
+      {
+        "name": "San Sebastián",
+        "country": "Spain",
+        "countryCode": "ES",
+        "geonamesId": 3110044,
+        "coordinates": [
+          -1.97499,
+          43.31283
+        ],
+        "key": "city-es-050213992d",
+        "source": "https://www.geonames.org/3110044/"
+      },
+      {
+        "name": "La Seu d’Urgell",
+        "country": "Spain",
+        "countryCode": "ES",
+        "geonamesId": 3109143,
+        "coordinates": [
+          1.46144,
+          42.35877
+        ],
+        "key": "city-es-b5ea4ca54d",
+        "source": "https://www.geonames.org/3109143/"
+      },
+      {
+        "name": "Andorra la Vella",
+        "country": "Andorra",
+        "countryCode": "AD",
+        "geonamesId": 3041563,
+        "coordinates": [
+          1.52109,
+          42.50779
+        ],
+        "key": "city-ad-17dde28e11",
+        "source": "https://www.geonames.org/3041563/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-08",
+    "number": 8,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Zagreb",
+        "country": "Croatia",
+        "countryCode": "HR",
+        "geonamesId": 3186886,
+        "coordinates": [
+          15.97798,
+          45.81444
+        ],
+        "key": "city-hr-ec0cf9e82c",
+        "source": "https://www.geonames.org/3186886/"
+      },
+      {
+        "name": "Rijeka",
+        "country": "Croatia",
+        "countryCode": "HR",
+        "geonamesId": 3191648,
+        "coordinates": [
+          14.44241,
+          45.32673
+        ],
+        "key": "city-hr-b8734fb05c",
+        "source": "https://www.geonames.org/3191648/"
+      },
+      {
+        "name": "Koper",
+        "country": "Slovenia",
+        "countryCode": "SI",
+        "geonamesId": 3197753,
+        "coordinates": [
+          13.72963,
+          45.5482
+        ],
+        "key": "city-si-2f98eeee4a",
+        "source": "https://www.geonames.org/3197753/"
+      },
+      {
+        "name": "Ljubljana",
+        "country": "Slovenia",
+        "countryCode": "SI",
+        "geonamesId": 3196359,
+        "coordinates": [
+          14.50513,
+          46.05108
+        ],
+        "key": "city-si-b7f147d8b4",
+        "source": "https://www.geonames.org/3196359/"
+      },
+      {
+        "name": "Trieste",
+        "country": "Italy",
+        "countryCode": "IT",
+        "geonamesId": 3165185,
+        "coordinates": [
+          13.77678,
+          45.64953
+        ],
+        "key": "city-it-0e2ba3c9d8",
+        "source": "https://www.geonames.org/3165185/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-09",
+    "number": 9,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Tallinn",
+        "country": "Estonia",
+        "countryCode": "EE",
+        "geonamesId": 588409,
+        "coordinates": [
+          24.75353,
+          59.43696
+        ],
+        "key": "city-ee-bdbc7f4753",
+        "source": "https://www.geonames.org/588409/"
+      },
+      {
+        "name": "Pärnu",
+        "country": "Estonia",
+        "countryCode": "EE",
+        "geonamesId": 589580,
+        "coordinates": [
+          24.49711,
+          58.38588
+        ],
+        "key": "city-ee-789ec432bd",
+        "source": "https://www.geonames.org/589580/"
+      },
+      {
+        "name": "Riga",
+        "country": "Latvia",
+        "countryCode": "LV",
+        "geonamesId": 456172,
+        "coordinates": [
+          24.10589,
+          56.946
+        ],
+        "key": "city-lv-d1199df7c6",
+        "source": "https://www.geonames.org/456172/"
+      },
+      {
+        "name": "Šiauliai",
+        "country": "Lithuania",
+        "countryCode": "LT",
+        "geonamesId": 594739,
+        "coordinates": [
+          23.31667,
+          55.93333
+        ],
+        "key": "city-lt-52428fbb12",
+        "source": "https://www.geonames.org/594739/"
+      },
+      {
+        "name": "Vilnius",
+        "country": "Lithuania",
+        "countryCode": "LT",
+        "geonamesId": 593116,
+        "coordinates": [
+          25.2798,
+          54.68916
+        ],
+        "key": "city-lt-c283e0869a",
+        "source": "https://www.geonames.org/593116/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-10",
+    "number": 10,
+    "region": "Europe",
+    "cities": [
+      {
+        "name": "Bucharest",
+        "country": "Romania",
+        "countryCode": "RO",
+        "geonamesId": 683506,
+        "coordinates": [
+          26.10626,
+          44.43225
+        ],
+        "key": "city-ro-f52938fbc4",
+        "source": "https://www.geonames.org/683506/"
+      },
+      {
+        "name": "Giurgiu",
+        "country": "Romania",
+        "countryCode": "RO",
+        "geonamesId": 677106,
+        "coordinates": [
+          25.9627,
+          43.88664
+        ],
+        "key": "city-ro-3bc1e1a3c7",
+        "source": "https://www.geonames.org/677106/"
+      },
+      {
+        "name": "Ruse",
+        "country": "Bulgaria",
+        "countryCode": "BG",
+        "geonamesId": 727523,
+        "coordinates": [
+          25.9534,
+          43.84872
+        ],
+        "key": "city-bg-27a5e8a5ca",
+        "source": "https://www.geonames.org/727523/"
+      },
+      {
+        "name": "Stara Zagora",
+        "country": "Bulgaria",
+        "countryCode": "BG",
+        "geonamesId": 726848,
+        "coordinates": [
+          25.64262,
+          42.43205
+        ],
+        "key": "city-bg-f3e8e3356c",
+        "source": "https://www.geonames.org/726848/"
+      },
+      {
+        "name": "Alexandroupoli",
+        "country": "Greece",
+        "countryCode": "GR",
+        "geonamesId": 736928,
+        "coordinates": [
+          25.87644,
+          40.84995
+        ],
+        "key": "city-gr-7c5855143c",
+        "source": "https://www.geonames.org/736928/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-11",
+    "number": 11,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Tashkent",
+        "country": "Uzbekistan",
+        "countryCode": "UZ",
+        "geonamesId": 1512569,
+        "coordinates": [
+          69.21627,
+          41.26465
+        ],
+        "key": "city-uz-8de56ea436",
+        "source": "https://www.geonames.org/1512569/"
+      },
+      {
+        "name": "Samarkand",
+        "country": "Uzbekistan",
+        "countryCode": "UZ",
+        "geonamesId": 1216265,
+        "coordinates": [
+          66.96445,
+          39.65456
+        ],
+        "key": "city-uz-4df7073905",
+        "source": "https://www.geonames.org/1216265/"
+      },
+      {
+        "name": "Panjakent",
+        "country": "Tajikistan",
+        "countryCode": "TJ",
+        "geonamesId": 1220798,
+        "coordinates": [
+          67.60931,
+          39.49524
+        ],
+        "key": "city-tj-33b2cff6df",
+        "source": "https://www.geonames.org/1220798/"
+      },
+      {
+        "name": "Khujand",
+        "country": "Tajikistan",
+        "countryCode": "TJ",
+        "geonamesId": 1514879,
+        "coordinates": [
+          69.62216,
+          40.28256
+        ],
+        "key": "city-tj-2aec5672e5",
+        "source": "https://www.geonames.org/1514879/"
+      },
+      {
+        "name": "Osh",
+        "country": "Kyrgyzstan",
+        "countryCode": "KG",
+        "geonamesId": 1527534,
+        "coordinates": [
+          72.7985,
+          40.52828
+        ],
+        "key": "city-kg-dd4a73e215",
+        "source": "https://www.geonames.org/1527534/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-12",
+    "number": 12,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Bishkek",
+        "country": "Kyrgyzstan",
+        "countryCode": "KG",
+        "geonamesId": 1528675,
+        "coordinates": [
+          74.59,
+          42.87
+        ],
+        "key": "city-kg-5cc8fd6cf9",
+        "source": "https://www.geonames.org/1528675/"
+      },
+      {
+        "name": "Tokmok",
+        "country": "Kyrgyzstan",
+        "countryCode": "KG",
+        "geonamesId": 1527199,
+        "coordinates": [
+          75.30149,
+          42.84194
+        ],
+        "key": "city-kg-da8f9a0113",
+        "source": "https://www.geonames.org/1527199/"
+      },
+      {
+        "name": "Korday",
+        "country": "Kazakhstan",
+        "countryCode": "KZ",
+        "geonamesId": 1524243,
+        "coordinates": [
+          74.71287,
+          43.03882
+        ],
+        "key": "city-kz-2947cf5e80",
+        "source": "https://www.geonames.org/1524243/"
+      },
+      {
+        "name": "Almaty",
+        "country": "Kazakhstan",
+        "countryCode": "KZ",
+        "geonamesId": 1526384,
+        "coordinates": [
+          76.9115,
+          43.25249
+        ],
+        "key": "city-kz-869b5619f7",
+        "source": "https://www.geonames.org/1526384/"
+      },
+      {
+        "name": "Khorgos",
+        "country": "China",
+        "countryCode": "CN",
+        "geonamesId": 1529377,
+        "coordinates": [
+          80.41639,
+          44.20276
+        ],
+        "key": "city-cn-e38650486e",
+        "source": "https://www.geonames.org/1529377/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-13",
+    "number": 13,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Nong Khai",
+        "country": "Thailand",
+        "countryCode": "TH",
+        "geonamesId": 1608232,
+        "coordinates": [
+          102.742,
+          17.87847
+        ],
+        "key": "city-th-91d2f0a5cd",
+        "source": "https://www.geonames.org/1608232/"
+      },
+      {
+        "name": "Vientiane",
+        "country": "Laos",
+        "countryCode": "LA",
+        "geonamesId": 1651944,
+        "coordinates": [
+          102.6,
+          17.96667
+        ],
+        "key": "city-la-2061dc747a",
+        "source": "https://www.geonames.org/1651944/"
+      },
+      {
+        "name": "Vang Vieng",
+        "country": "Laos",
+        "countryCode": "LA",
+        "geonamesId": 1655087,
+        "coordinates": [
+          102.44784,
+          18.9235
+        ],
+        "key": "city-la-500255b95b",
+        "source": "https://www.geonames.org/1655087/"
+      },
+      {
+        "name": "Vinh",
+        "country": "Vietnam",
+        "countryCode": "VN",
+        "geonamesId": 1562798,
+        "coordinates": [
+          105.69232,
+          18.67337
+        ],
+        "key": "city-vn-ce11f54852",
+        "source": "https://www.geonames.org/1562798/"
+      },
+      {
+        "name": "Hanoi",
+        "country": "Vietnam",
+        "countryCode": "VN",
+        "geonamesId": 1581130,
+        "coordinates": [
+          105.84117,
+          21.0245
+        ],
+        "key": "city-vn-381ec4b840",
+        "source": "https://www.geonames.org/1581130/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-14",
+    "number": 14,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Trat",
+        "country": "Thailand",
+        "countryCode": "TH",
+        "geonamesId": 1605279,
+        "coordinates": [
+          102.51514,
+          12.24364
+        ],
+        "key": "city-th-4258cab9c7",
+        "source": "https://www.geonames.org/1605279/"
+      },
+      {
+        "name": "Koh Kong",
+        "country": "Cambodia",
+        "countryCode": "KH",
+        "geonamesId": 1830468,
+        "coordinates": [
+          102.9838,
+          11.61531
+        ],
+        "key": "city-kh-9728a86240",
+        "source": "https://www.geonames.org/1830468/"
+      },
+      {
+        "name": "Phnom Penh",
+        "country": "Cambodia",
+        "countryCode": "KH",
+        "geonamesId": 1821306,
+        "coordinates": [
+          104.91601,
+          11.56245
+        ],
+        "key": "city-kh-8e05827300",
+        "source": "https://www.geonames.org/1821306/"
+      },
+      {
+        "name": "Moc Bai",
+        "country": "Vietnam",
+        "countryCode": "VN",
+        "coordinates": [
+          106.17509,
+          11.07669
+        ],
+        "source": "https://www.openstreetmap.org/node/5038930791",
+        "key": "city-vn-d1f456781d"
+      },
+      {
+        "name": "Ho Chi Minh City",
+        "country": "Vietnam",
+        "countryCode": "VN",
+        "geonamesId": 1566083,
+        "coordinates": [
+          106.62965,
+          10.82302
+        ],
+        "key": "city-vn-ca0623f59e",
+        "source": "https://www.geonames.org/1566083/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-15",
+    "number": 15,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Hat Yai",
+        "country": "Thailand",
+        "countryCode": "TH",
+        "geonamesId": 1610780,
+        "coordinates": [
+          100.47668,
+          7.00836
+        ],
+        "key": "city-th-5c45fdaaa1",
+        "source": "https://www.geonames.org/1610780/"
+      },
+      {
+        "name": "Sadao",
+        "country": "Thailand",
+        "countryCode": "TH",
+        "geonamesId": 1606939,
+        "coordinates": [
+          100.42342,
+          6.63883
+        ],
+        "key": "city-th-b0aabf1e07",
+        "source": "https://www.geonames.org/1606939/"
+      },
+      {
+        "name": "George Town",
+        "country": "Malaysia",
+        "countryCode": "MY",
+        "geonamesId": 1735106,
+        "coordinates": [
+          100.33543,
+          5.41123
+        ],
+        "key": "city-my-8ef053bdee",
+        "source": "https://www.geonames.org/1735106/"
+      },
+      {
+        "name": "Kuala Lumpur",
+        "country": "Malaysia",
+        "countryCode": "MY",
+        "geonamesId": 1735161,
+        "coordinates": [
+          101.68653,
+          3.1412
+        ],
+        "key": "city-my-11c3146beb",
+        "source": "https://www.geonames.org/1735161/"
+      },
+      {
+        "name": "Singapore",
+        "country": "Singapore",
+        "countryCode": "SG",
+        "geonamesId": 1880252,
+        "coordinates": [
+          103.85007,
+          1.28967
+        ],
+        "key": "city-sg-c96dd81db1",
+        "source": "https://www.geonames.org/1880252/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-16",
+    "number": 16,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Kathmandu",
+        "country": "Nepal",
+        "countryCode": "NP",
+        "geonamesId": 1283240,
+        "coordinates": [
+          85.3206,
+          27.70169
+        ],
+        "key": "city-np-7fdd0b6d8a",
+        "source": "https://www.geonames.org/1283240/"
+      },
+      {
+        "name": "Birgunj",
+        "country": "Nepal",
+        "countryCode": "NP",
+        "geonamesId": 1283581,
+        "coordinates": [
+          84.88047,
+          27.01736
+        ],
+        "key": "city-np-a02bca4cd3",
+        "source": "https://www.geonames.org/1283581/"
+      },
+      {
+        "name": "Raxaul",
+        "country": "India",
+        "countryCode": "IN",
+        "geonamesId": 1258294,
+        "coordinates": [
+          84.85065,
+          26.97982
+        ],
+        "key": "city-in-36f1855743",
+        "source": "https://www.geonames.org/1258294/"
+      },
+      {
+        "name": "Siliguri",
+        "country": "India",
+        "countryCode": "IN",
+        "geonamesId": 1256525,
+        "coordinates": [
+          88.42851,
+          26.71004
+        ],
+        "key": "city-in-d13366a54a",
+        "source": "https://www.geonames.org/1256525/"
+      },
+      {
+        "name": "Phuntsholing",
+        "country": "Bhutan",
+        "countryCode": "BT",
+        "geonamesId": 1252484,
+        "coordinates": [
+          89.38837,
+          26.85164
+        ],
+        "key": "city-bt-72992c0c7c",
+        "source": "https://www.geonames.org/1252484/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-17",
+    "number": 17,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Siliguri",
+        "country": "India",
+        "countryCode": "IN",
+        "geonamesId": 1256525,
+        "coordinates": [
+          88.42851,
+          26.71004
+        ],
+        "key": "city-in-d13366a54a",
+        "source": "https://www.geonames.org/1256525/"
+      },
+      {
+        "name": "Changrabandha",
+        "country": "India",
+        "countryCode": "IN",
+        "coordinates": [
+          88.9193,
+          26.4131
+        ],
+        "source": "https://en.wikipedia.org/wiki/Changrabandha",
+        "key": "city-in-70d4ed8ca3"
+      },
+      {
+        "name": "Rangpur",
+        "country": "Bangladesh",
+        "countryCode": "BD",
+        "geonamesId": 1185188,
+        "coordinates": [
+          89.25166,
+          25.74664
+        ],
+        "key": "city-bd-98b0300546",
+        "source": "https://www.geonames.org/1185188/"
+      },
+      {
+        "name": "Dhaka",
+        "country": "Bangladesh",
+        "countryCode": "BD",
+        "geonamesId": 1185241,
+        "coordinates": [
+          90.40744,
+          23.7104
+        ],
+        "key": "city-bd-50fd531c42",
+        "source": "https://www.geonames.org/1185241/"
+      },
+      {
+        "name": "Agartala",
+        "country": "India",
+        "countryCode": "IN",
+        "geonamesId": 1279290,
+        "coordinates": [
+          91.27939,
+          23.83605
+        ],
+        "key": "city-in-c924be925a",
+        "source": "https://www.geonames.org/1279290/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-18",
+    "number": 18,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Ashgabat",
+        "country": "Turkmenistan",
+        "countryCode": "TM",
+        "geonamesId": 162183,
+        "coordinates": [
+          58.38333,
+          37.95
+        ],
+        "key": "city-tm-eb4b6381aa",
+        "source": "https://www.geonames.org/162183/"
+      },
+      {
+        "name": "Türkmenabat",
+        "country": "Turkmenistan",
+        "countryCode": "TM",
+        "geonamesId": 1219649,
+        "coordinates": [
+          63.57861,
+          39.07328
+        ],
+        "key": "city-tm-0a8fe2f8e6",
+        "source": "https://www.geonames.org/1219649/"
+      },
+      {
+        "name": "Bukhara",
+        "country": "Uzbekistan",
+        "countryCode": "UZ",
+        "geonamesId": 1217662,
+        "coordinates": [
+          64.43069,
+          39.77026
+        ],
+        "key": "city-uz-86ffc6b941",
+        "source": "https://www.geonames.org/1217662/"
+      },
+      {
+        "name": "Termez",
+        "country": "Uzbekistan",
+        "countryCode": "UZ",
+        "geonamesId": 1215957,
+        "coordinates": [
+          67.27833,
+          37.22417
+        ],
+        "key": "city-uz-86afe8335e",
+        "source": "https://www.geonames.org/1215957/"
+      },
+      {
+        "name": "Mazar-i-Sharif",
+        "country": "Afghanistan",
+        "countryCode": "AF",
+        "geonamesId": 1133616,
+        "coordinates": [
+          67.11087,
+          36.70904
+        ],
+        "key": "city-af-cab7c395de",
+        "source": "https://www.geonames.org/1133616/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-19",
+    "number": 19,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Dandong",
+        "country": "China",
+        "countryCode": "CN",
+        "geonamesId": 2037886,
+        "coordinates": [
+          124.39472,
+          40.12917
+        ],
+        "key": "city-cn-165586cf1f",
+        "source": "https://www.geonames.org/2037886/"
+      },
+      {
+        "name": "Sinuiju",
+        "country": "North Korea",
+        "countryCode": "KP",
+        "geonamesId": 2040893,
+        "coordinates": [
+          124.39806,
+          40.10056
+        ],
+        "key": "city-kp-682c56a213",
+        "source": "https://www.geonames.org/2040893/"
+      },
+      {
+        "name": "Pyongyang",
+        "country": "North Korea",
+        "countryCode": "KP",
+        "geonamesId": 1871859,
+        "coordinates": [
+          125.75432,
+          39.03385
+        ],
+        "key": "city-kp-65af1c6cd5",
+        "source": "https://www.geonames.org/1871859/"
+      },
+      {
+        "name": "Rason",
+        "country": "North Korea",
+        "countryCode": "KP",
+        "geonamesId": 2042645,
+        "coordinates": [
+          130.28308,
+          42.25559
+        ],
+        "key": "city-kp-ff7040a231",
+        "source": "https://www.geonames.org/2042645/"
+      },
+      {
+        "name": "Khasan",
+        "country": "Russia",
+        "countryCode": "RU",
+        "coordinates": [
+          130.6516,
+          42.4239
+        ],
+        "key": "city-ru-ad1e009d70",
+        "source": "https://www.getty.edu/vow/TGNFullDisplay?english=Y&subjectid=8784141"
+      }
+    ]
+  },
+  {
+    "id": "atlas-20",
+    "number": 20,
+    "region": "Asia",
+    "cities": [
+      {
+        "name": "Luang Prabang",
+        "country": "Laos",
+        "countryCode": "LA",
+        "geonamesId": 1655559,
+        "coordinates": [
+          102.1525,
+          19.8933
+        ],
+        "key": "city-la-502554fb69",
+        "source": "https://www.geonames.org/1655559/"
+      },
+      {
+        "name": "Boten",
+        "country": "Laos",
+        "countryCode": "LA",
+        "geonamesId": 1664870,
+        "coordinates": [
+          101.66563,
+          21.17642
+        ],
+        "key": "city-la-0a54555884",
+        "source": "https://www.geonames.org/1664870/"
+      },
+      {
+        "name": "Mohan",
+        "country": "China",
+        "countryCode": "CN",
+        "coordinates": [
+          101.68247,
+          21.18558
+        ],
+        "key": "city-cn-6d040ef7ff",
+        "source": "https://commons.wikimedia.org/wiki/Category:Mohan_checkpoint"
+      },
+      {
+        "name": "Jinghong",
+        "country": "China",
+        "countryCode": "CN",
+        "geonamesId": 1785710,
+        "coordinates": [
+          100.79843,
+          22.01479
+        ],
+        "key": "city-cn-6d20a12fbb",
+        "source": "https://www.geonames.org/1785710/"
+      },
+      {
+        "name": "Kengtung",
+        "country": "Myanmar",
+        "countryCode": "MM",
+        "geonamesId": 1319364,
+        "coordinates": [
+          99.92676,
+          21.63093
+        ],
+        "key": "city-mm-609f1cc8a4",
+        "source": "https://www.geonames.org/1319364/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-21",
+    "number": 21,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Aqaba",
+        "country": "Jordan",
+        "countryCode": "JO",
+        "geonamesId": 250774,
+        "coordinates": [
+          35.00778,
+          29.52667
+        ],
+        "key": "city-jo-65adb075eb",
+        "source": "https://www.geonames.org/250774/"
+      },
+      {
+        "name": "Wadi Rum",
+        "country": "Jordan",
+        "countryCode": "JO",
+        "coordinates": [
+          35.42177,
+          29.57595
+        ],
+        "source": "https://www.openstreetmap.org/way/133897691",
+        "key": "city-jo-f273769c85"
+      },
+      {
+        "name": "Haql",
+        "country": "Saudi Arabia",
+        "countryCode": "SA",
+        "geonamesId": 106102,
+        "coordinates": [
+          34.94687,
+          29.28627
+        ],
+        "key": "city-sa-ba88d471de",
+        "source": "https://www.geonames.org/106102/"
+      },
+      {
+        "name": "Tabuk",
+        "country": "Saudi Arabia",
+        "countryCode": "SA",
+        "geonamesId": 101628,
+        "coordinates": [
+          36.57151,
+          28.3998
+        ],
+        "key": "city-sa-b9433484d1",
+        "source": "https://www.geonames.org/101628/"
+      },
+      {
+        "name": "Taba",
+        "country": "Egypt",
+        "countryCode": "EG",
+        "geonamesId": 347702,
+        "coordinates": [
+          34.89572,
+          29.49199
+        ],
+        "key": "city-eg-49d2777b29",
+        "source": "https://www.geonames.org/347702/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-22",
+    "number": 22,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Amman",
+        "country": "Jordan",
+        "countryCode": "JO",
+        "geonamesId": 250441,
+        "coordinates": [
+          35.94503,
+          31.95522
+        ],
+        "key": "city-jo-3fc732073e",
+        "source": "https://www.geonames.org/250441/"
+      },
+      {
+        "name": "Irbid",
+        "country": "Jordan",
+        "countryCode": "JO",
+        "geonamesId": 248946,
+        "coordinates": [
+          35.85,
+          32.55556
+        ],
+        "key": "city-jo-3e6c2f4ad8",
+        "source": "https://www.geonames.org/248946/"
+      },
+      {
+        "name": "Daraa",
+        "country": "Syria",
+        "countryCode": "SY",
+        "geonamesId": 170905,
+        "coordinates": [
+          36.10213,
+          32.61889
+        ],
+        "key": "city-sy-107ba22703",
+        "source": "https://www.geonames.org/170905/"
+      },
+      {
+        "name": "Damascus",
+        "country": "Syria",
+        "countryCode": "SY",
+        "geonamesId": 170654,
+        "coordinates": [
+          36.29128,
+          33.5102
+        ],
+        "key": "city-sy-7a4fa32300",
+        "source": "https://www.geonames.org/170654/"
+      },
+      {
+        "name": "Beirut",
+        "country": "Lebanon",
+        "countryCode": "LB",
+        "geonamesId": 276781,
+        "coordinates": [
+          35.50157,
+          33.89332
+        ],
+        "key": "city-lb-0b663fd45f",
+        "source": "https://www.geonames.org/276781/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-23",
+    "number": 23,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Gaziantep",
+        "country": "Turkey",
+        "countryCode": "TR",
+        "geonamesId": 314830,
+        "coordinates": [
+          37.3825,
+          37.05944
+        ],
+        "key": "city-tr-9a26b4550e",
+        "source": "https://www.geonames.org/314830/"
+      },
+      {
+        "name": "Kilis",
+        "country": "Turkey",
+        "countryCode": "TR",
+        "geonamesId": 307864,
+        "coordinates": [
+          37.115,
+          36.71611
+        ],
+        "key": "city-tr-34319e6a79",
+        "source": "https://www.geonames.org/307864/"
+      },
+      {
+        "name": "Azaz",
+        "country": "Syria",
+        "countryCode": "SY",
+        "geonamesId": 172082,
+        "coordinates": [
+          37.04661,
+          36.58742
+        ],
+        "key": "city-sy-18abff1e8a",
+        "source": "https://www.geonames.org/172082/"
+      },
+      {
+        "name": "Aleppo",
+        "country": "Syria",
+        "countryCode": "SY",
+        "geonamesId": 170063,
+        "coordinates": [
+          37.16117,
+          36.20124
+        ],
+        "key": "city-sy-4a753c0109",
+        "source": "https://www.geonames.org/170063/"
+      },
+      {
+        "name": "Tripoli",
+        "country": "Lebanon",
+        "countryCode": "LB",
+        "geonamesId": 266826,
+        "coordinates": [
+          35.84415,
+          34.43352
+        ],
+        "key": "city-lb-11dcc938d9",
+        "source": "https://www.geonames.org/266826/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-24",
+    "number": 24,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Van",
+        "country": "Turkey",
+        "countryCode": "TR",
+        "geonamesId": 298117,
+        "coordinates": [
+          43.38323,
+          38.49457
+        ],
+        "key": "city-tr-1d319b8341",
+        "source": "https://www.geonames.org/298117/"
+      },
+      {
+        "name": "Yüksekova",
+        "country": "Turkey",
+        "countryCode": "TR",
+        "geonamesId": 296173,
+        "coordinates": [
+          44.28716,
+          37.57362
+        ],
+        "key": "city-tr-a34e1acfa1",
+        "source": "https://www.geonames.org/296173/"
+      },
+      {
+        "name": "Urmia",
+        "country": "Iran",
+        "countryCode": "IR",
+        "geonamesId": 121801,
+        "coordinates": [
+          45.07605,
+          37.55274
+        ],
+        "key": "city-ir-d07a722307",
+        "source": "https://www.geonames.org/121801/"
+      },
+      {
+        "name": "Tabriz",
+        "country": "Iran",
+        "countryCode": "IR",
+        "geonamesId": 113646,
+        "coordinates": [
+          46.2919,
+          38.08
+        ],
+        "key": "city-ir-c879bf6aca",
+        "source": "https://www.geonames.org/113646/"
+      },
+      {
+        "name": "Nakhchivan",
+        "country": "Azerbaijan",
+        "countryCode": "AZ",
+        "geonamesId": 147429,
+        "coordinates": [
+          45.41222,
+          39.20889
+        ],
+        "key": "city-az-44014c664a",
+        "source": "https://www.geonames.org/147429/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-25",
+    "number": 25,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Yerevan",
+        "country": "Armenia",
+        "countryCode": "AM",
+        "geonamesId": 616052,
+        "coordinates": [
+          44.5126,
+          40.17765
+        ],
+        "key": "city-am-5f1096bf02",
+        "source": "https://www.geonames.org/616052/"
+      },
+      {
+        "name": "Meghri",
+        "country": "Armenia",
+        "countryCode": "AM",
+        "geonamesId": 174823,
+        "coordinates": [
+          46.24308,
+          38.90123
+        ],
+        "key": "city-am-3d10cb4d98",
+        "source": "https://www.geonames.org/174823/"
+      },
+      {
+        "name": "Norduz",
+        "country": "Iran",
+        "countryCode": "IR",
+        "coordinates": [
+          46.20371,
+          38.84874
+        ],
+        "source": "https://www.openstreetmap.org/way/338005814",
+        "key": "city-ir-3a395b4f81"
+      },
+      {
+        "name": "Jolfa",
+        "country": "Iran",
+        "countryCode": "IR",
+        "geonamesId": 130081,
+        "coordinates": [
+          45.63329,
+          38.93788
+        ],
+        "key": "city-ir-d1163c2a26",
+        "source": "https://www.geonames.org/130081/"
+      },
+      {
+        "name": "Nakhchivan",
+        "country": "Azerbaijan",
+        "countryCode": "AZ",
+        "geonamesId": 147429,
+        "coordinates": [
+          45.41222,
+          39.20889
+        ],
+        "key": "city-az-44014c664a",
+        "source": "https://www.geonames.org/147429/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-26",
+    "number": 26,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Muscat",
+        "country": "Oman",
+        "countryCode": "OM",
+        "geonamesId": 287286,
+        "coordinates": [
+          58.40778,
+          23.58413
+        ],
+        "key": "city-om-39da779e7a",
+        "source": "https://www.geonames.org/287286/"
+      },
+      {
+        "name": "Sohar",
+        "country": "Oman",
+        "countryCode": "OM",
+        "geonamesId": 286282,
+        "coordinates": [
+          56.70937,
+          24.34745
+        ],
+        "key": "city-om-5b25c276d8",
+        "source": "https://www.geonames.org/286282/"
+      },
+      {
+        "name": "Al Ain",
+        "country": "UAE",
+        "countryCode": "AE",
+        "geonamesId": 292913,
+        "coordinates": [
+          55.76056,
+          24.19167
+        ],
+        "key": "city-ae-8a4be9bd8a",
+        "source": "https://www.geonames.org/292913/"
+      },
+      {
+        "name": "Abu Dhabi",
+        "country": "UAE",
+        "countryCode": "AE",
+        "geonamesId": 292968,
+        "coordinates": [
+          54.39696,
+          24.45118
+        ],
+        "key": "city-ae-5c7dfd7a7d",
+        "source": "https://www.geonames.org/292968/"
+      },
+      {
+        "name": "Doha",
+        "country": "Qatar",
+        "countryCode": "QA",
+        "geonamesId": 290030,
+        "coordinates": [
+          51.53096,
+          25.28545
+        ],
+        "key": "city-qa-ea5448a554",
+        "source": "https://www.geonames.org/290030/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-27",
+    "number": 27,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Kuwait City",
+        "country": "Kuwait",
+        "countryCode": "KW",
+        "geonamesId": 285787,
+        "coordinates": [
+          47.97429,
+          29.367
+        ],
+        "key": "city-kw-d91ab90c3d",
+        "source": "https://www.geonames.org/285787/"
+      },
+      {
+        "name": "Al Ahmadi",
+        "country": "Kuwait",
+        "countryCode": "KW",
+        "geonamesId": 285839,
+        "coordinates": [
+          48.08389,
+          29.07694
+        ],
+        "key": "city-kw-025462b3d2",
+        "source": "https://www.geonames.org/285839/"
+      },
+      {
+        "name": "Khafji",
+        "country": "Saudi Arabia",
+        "countryCode": "SA",
+        "coordinates": [
+          48.49132,
+          28.43905
+        ],
+        "geonamesId": 109380,
+        "source": "https://www.geonames.org/109380/",
+        "key": "city-sa-466bed003b"
+      },
+      {
+        "name": "Dammam",
+        "country": "Saudi Arabia",
+        "countryCode": "SA",
+        "geonamesId": 110336,
+        "coordinates": [
+          50.10326,
+          26.43442
+        ],
+        "key": "city-sa-529b78f5ae",
+        "source": "https://www.geonames.org/110336/"
+      },
+      {
+        "name": "Manama",
+        "country": "Bahrain",
+        "countryCode": "BH",
+        "geonamesId": 290340,
+        "coordinates": [
+          50.58565,
+          26.22787
+        ],
+        "key": "city-bh-0e2ce9b477",
+        "source": "https://www.geonames.org/290340/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-28",
+    "number": 28,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Basra",
+        "country": "Iraq",
+        "countryCode": "IQ",
+        "geonamesId": 99532,
+        "coordinates": [
+          47.7804,
+          30.50852
+        ],
+        "key": "city-iq-e47da1dc60",
+        "source": "https://www.geonames.org/99532/"
+      },
+      {
+        "name": "Khorramshahr",
+        "country": "Iran",
+        "countryCode": "IR",
+        "geonamesId": 127319,
+        "coordinates": [
+          48.18428,
+          30.44079
+        ],
+        "key": "city-ir-c23100cc9e",
+        "source": "https://www.geonames.org/127319/"
+      },
+      {
+        "name": "Ahvaz",
+        "country": "Iran",
+        "countryCode": "IR",
+        "geonamesId": 144448,
+        "coordinates": [
+          48.6842,
+          31.31901
+        ],
+        "key": "city-ir-845dc4b208",
+        "source": "https://www.geonames.org/144448/"
+      },
+      {
+        "name": "Kuwait City",
+        "country": "Kuwait",
+        "countryCode": "KW",
+        "geonamesId": 285787,
+        "coordinates": [
+          47.97429,
+          29.367
+        ],
+        "key": "city-kw-d91ab90c3d",
+        "source": "https://www.geonames.org/285787/"
+      },
+      {
+        "name": "Salmiya",
+        "country": "Kuwait",
+        "countryCode": "KW",
+        "geonamesId": 285704,
+        "coordinates": [
+          48.07611,
+          29.33389
+        ],
+        "key": "city-kw-cfa309801b",
+        "source": "https://www.geonames.org/285704/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-29",
+    "number": 29,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Sulaymaniyah",
+        "country": "Iraq",
+        "countryCode": "IQ",
+        "geonamesId": 98463,
+        "coordinates": [
+          45.4329,
+          35.56496
+        ],
+        "key": "city-iq-c1b7a962e7",
+        "source": "https://www.geonames.org/98463/"
+      },
+      {
+        "name": "Penjwen",
+        "country": "Iraq",
+        "countryCode": "IQ",
+        "geonamesId": 98012,
+        "coordinates": [
+          45.94908,
+          35.62054
+        ],
+        "key": "city-iq-dd0195b65d",
+        "source": "https://www.geonames.org/98012/"
+      },
+      {
+        "name": "Marivan",
+        "country": "Iran",
+        "countryCode": "IR",
+        "geonamesId": 124778,
+        "coordinates": [
+          46.18298,
+          35.51829
+        ],
+        "key": "city-ir-a24efd6823",
+        "source": "https://www.geonames.org/124778/"
+      },
+      {
+        "name": "Sanandaj",
+        "country": "Iran",
+        "countryCode": "IR",
+        "geonamesId": 117574,
+        "coordinates": [
+          46.99883,
+          35.31495
+        ],
+        "key": "city-ir-99577872c4",
+        "source": "https://www.geonames.org/117574/"
+      },
+      {
+        "name": "Van",
+        "country": "Turkey",
+        "countryCode": "TR",
+        "geonamesId": 298117,
+        "coordinates": [
+          43.38323,
+          38.49457
+        ],
+        "key": "city-tr-1d319b8341",
+        "source": "https://www.geonames.org/298117/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-30",
+    "number": 30,
+    "region": "Middle East",
+    "cities": [
+      {
+        "name": "Eilat",
+        "country": "Israel",
+        "countryCode": "IL",
+        "geonamesId": 295277,
+        "coordinates": [
+          34.94821,
+          29.55805
+        ],
+        "key": "city-il-9fa0e1286c",
+        "source": "https://www.geonames.org/295277/"
+      },
+      {
+        "name": "Taba",
+        "country": "Egypt",
+        "countryCode": "EG",
+        "geonamesId": 347702,
+        "coordinates": [
+          34.89572,
+          29.49199
+        ],
+        "key": "city-eg-49d2777b29",
+        "source": "https://www.geonames.org/347702/"
+      },
+      {
+        "name": "Nuweiba",
+        "country": "Egypt",
+        "countryCode": "EG",
+        "geonamesId": 350893,
+        "coordinates": [
+          34.6634,
+          29.04681
+        ],
+        "key": "city-eg-a2ff27fc00",
+        "source": "https://www.geonames.org/350893/"
+      },
+      {
+        "name": "Aqaba",
+        "country": "Jordan",
+        "countryCode": "JO",
+        "geonamesId": 250774,
+        "coordinates": [
+          35.00778,
+          29.52667
+        ],
+        "key": "city-jo-65adb075eb",
+        "source": "https://www.geonames.org/250774/"
+      },
+      {
+        "name": "Ma'an",
+        "country": "Jordan",
+        "countryCode": "JO",
+        "geonamesId": 248382,
+        "coordinates": [
+          35.73405,
+          30.19624
+        ],
+        "key": "city-jo-df82c180b7",
+        "source": "https://www.geonames.org/248382/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-31",
+    "number": 31,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Posadas",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3429886,
+        "coordinates": [
+          -55.92379,
+          -27.39184
+        ],
+        "key": "city-ar-617bdd9a9c",
+        "source": "https://www.geonames.org/3429886/"
+      },
+      {
+        "name": "Encarnación",
+        "country": "Paraguay",
+        "countryCode": "PY",
+        "geonamesId": 3438735,
+        "coordinates": [
+          -55.86662,
+          -27.33176
+        ],
+        "key": "city-py-d4fb75cb6c",
+        "source": "https://www.geonames.org/3438735/"
+      },
+      {
+        "name": "Ciudad del Este",
+        "country": "Paraguay",
+        "countryCode": "PY",
+        "geonamesId": 3439101,
+        "coordinates": [
+          -54.65067,
+          -25.5036
+        ],
+        "key": "city-py-30aa8b427f",
+        "source": "https://www.geonames.org/3439101/"
+      },
+      {
+        "name": "Foz do Iguaçu",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 3463030,
+        "coordinates": [
+          -54.58806,
+          -25.54778
+        ],
+        "key": "city-br-6f99cc7eac",
+        "source": "https://www.geonames.org/3463030/"
+      },
+      {
+        "name": "Puerto Iguazú",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3429777,
+        "coordinates": [
+          -54.57355,
+          -25.59912
+        ],
+        "key": "city-ar-2e20689ae9",
+        "source": "https://www.geonames.org/3429777/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-32",
+    "number": 32,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Salta",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3838233,
+        "coordinates": [
+          -65.41999,
+          -24.80645
+        ],
+        "key": "city-ar-fb397a4295",
+        "source": "https://www.geonames.org/3838233/"
+      },
+      {
+        "name": "San Salvador de Jujuy",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3836564,
+        "coordinates": [
+          -65.29342,
+          -24.1928
+        ],
+        "key": "city-ar-95e95125c9",
+        "source": "https://www.geonames.org/3836564/"
+      },
+      {
+        "name": "San Pedro de Atacama",
+        "country": "Chile",
+        "countryCode": "CL",
+        "geonamesId": 3871781,
+        "coordinates": [
+          -68.20113,
+          -22.9111
+        ],
+        "key": "city-cl-0576442ccb",
+        "source": "https://www.geonames.org/3871781/"
+      },
+      {
+        "name": "Calama",
+        "country": "Chile",
+        "countryCode": "CL",
+        "geonamesId": 3897347,
+        "coordinates": [
+          -68.92371,
+          -22.45667
+        ],
+        "key": "city-cl-d18edad464",
+        "source": "https://www.geonames.org/3897347/"
+      },
+      {
+        "name": "Uyuni",
+        "country": "Bolivia",
+        "countryCode": "BO",
+        "geonamesId": 3901903,
+        "coordinates": [
+          -66.82503,
+          -20.45967
+        ],
+        "key": "city-bo-62362f6935",
+        "source": "https://www.geonames.org/3901903/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-33",
+    "number": 33,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Arica",
+        "country": "Chile",
+        "countryCode": "CL",
+        "geonamesId": 3899361,
+        "coordinates": [
+          -70.30058,
+          -18.47552
+        ],
+        "key": "city-cl-45353cdab9",
+        "source": "https://www.geonames.org/3899361/"
+      },
+      {
+        "name": "Tacna",
+        "country": "Peru",
+        "countryCode": "PE",
+        "geonamesId": 3928128,
+        "coordinates": [
+          -70.25362,
+          -18.01465
+        ],
+        "key": "city-pe-3c9ea4112c",
+        "source": "https://www.geonames.org/3928128/"
+      },
+      {
+        "name": "Puno",
+        "country": "Peru",
+        "countryCode": "PE",
+        "geonamesId": 3931276,
+        "coordinates": [
+          -70.02198,
+          -15.84003
+        ],
+        "key": "city-pe-eaa2b06926",
+        "source": "https://www.geonames.org/3931276/"
+      },
+      {
+        "name": "Copacabana",
+        "country": "Bolivia",
+        "countryCode": "BO",
+        "geonamesId": 3919189,
+        "coordinates": [
+          -69.07919,
+          -16.1699
+        ],
+        "key": "city-bo-3f52d8d192",
+        "source": "https://www.geonames.org/3919189/"
+      },
+      {
+        "name": "La Paz",
+        "country": "Bolivia",
+        "countryCode": "BO",
+        "geonamesId": 3911925,
+        "coordinates": [
+          -68.15,
+          -16.5
+        ],
+        "key": "city-bo-cb6a0d8131",
+        "source": "https://www.geonames.org/3911925/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-34",
+    "number": 34,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Cúcuta",
+        "country": "Colombia",
+        "countryCode": "CO",
+        "geonamesId": 3685533,
+        "coordinates": [
+          -72.5049,
+          7.90745
+        ],
+        "key": "city-co-066c251876",
+        "source": "https://www.geonames.org/3685533/"
+      },
+      {
+        "name": "San Cristóbal",
+        "country": "Venezuela",
+        "countryCode": "VE",
+        "geonamesId": 3628473,
+        "coordinates": [
+          -72.23576,
+          7.76593
+        ],
+        "key": "city-ve-8d57616626",
+        "source": "https://www.geonames.org/3628473/"
+      },
+      {
+        "name": "Bucaramanga",
+        "country": "Colombia",
+        "countryCode": "CO",
+        "geonamesId": 3688465,
+        "coordinates": [
+          -73.11895,
+          7.125
+        ],
+        "key": "city-co-4416bcde60",
+        "source": "https://www.geonames.org/3688465/"
+      },
+      {
+        "name": "Ipiales",
+        "country": "Colombia",
+        "countryCode": "CO",
+        "geonamesId": 3680539,
+        "coordinates": [
+          -77.63966,
+          0.82501
+        ],
+        "key": "city-co-98c09fdc42",
+        "source": "https://www.geonames.org/3680539/"
+      },
+      {
+        "name": "Tulcán",
+        "country": "Ecuador",
+        "countryCode": "EC",
+        "geonamesId": 3650472,
+        "coordinates": [
+          -77.71709,
+          0.8124
+        ],
+        "key": "city-ec-7c73f385d5",
+        "source": "https://www.geonames.org/3650472/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-35",
+    "number": 35,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Pasto",
+        "country": "Colombia",
+        "countryCode": "CO",
+        "geonamesId": 3672778,
+        "coordinates": [
+          -77.27846,
+          1.21456
+        ],
+        "key": "city-co-62c0f3eec3",
+        "source": "https://www.geonames.org/3672778/"
+      },
+      {
+        "name": "Ipiales",
+        "country": "Colombia",
+        "countryCode": "CO",
+        "geonamesId": 3680539,
+        "coordinates": [
+          -77.63966,
+          0.82501
+        ],
+        "key": "city-co-98c09fdc42",
+        "source": "https://www.geonames.org/3680539/"
+      },
+      {
+        "name": "Tulcán",
+        "country": "Ecuador",
+        "countryCode": "EC",
+        "geonamesId": 3650472,
+        "coordinates": [
+          -77.71709,
+          0.8124
+        ],
+        "key": "city-ec-7c73f385d5",
+        "source": "https://www.geonames.org/3650472/"
+      },
+      {
+        "name": "Quito",
+        "country": "Ecuador",
+        "countryCode": "EC",
+        "geonamesId": 3652462,
+        "coordinates": [
+          -78.52495,
+          -0.22985
+        ],
+        "key": "city-ec-ef859221bb",
+        "source": "https://www.geonames.org/3652462/"
+      },
+      {
+        "name": "Tumbes",
+        "country": "Peru",
+        "countryCode": "PE",
+        "geonamesId": 3691148,
+        "coordinates": [
+          -80.44258,
+          -3.55592
+        ],
+        "key": "city-pe-8eb2e7db27",
+        "source": "https://www.geonames.org/3691148/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-36",
+    "number": 36,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Leticia",
+        "country": "Colombia",
+        "countryCode": "CO",
+        "geonamesId": 3676623,
+        "coordinates": [
+          -69.93944,
+          -4.21079
+        ],
+        "key": "city-co-83880ad414",
+        "source": "https://www.geonames.org/3676623/"
+      },
+      {
+        "name": "Tabatinga",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 3662075,
+        "coordinates": [
+          -69.93858,
+          -4.23116
+        ],
+        "key": "city-br-3b7081f3ee",
+        "source": "https://www.geonames.org/3662075/"
+      },
+      {
+        "name": "Santa Rosa de Yavarí",
+        "country": "Peru",
+        "countryCode": "PE",
+        "coordinates": [
+          -69.96043,
+          -4.22257
+        ],
+        "geonamesId": 3827653,
+        "source": "https://www.geonames.org/3827653/santa-rosa-de-yaravi.html",
+        "key": "city-pe-b099fe1f27"
+      },
+      {
+        "name": "Iquitos",
+        "country": "Peru",
+        "countryCode": "PE",
+        "geonamesId": 3696183,
+        "coordinates": [
+          -73.2529,
+          -3.74814
+        ],
+        "key": "city-pe-1bc1e0b3f5",
+        "source": "https://www.geonames.org/3696183/"
+      },
+      {
+        "name": "Manaus",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 3663517,
+        "coordinates": [
+          -60.025,
+          -3.10194
+        ],
+        "key": "city-br-d6c2e8f878",
+        "source": "https://www.geonames.org/3663517/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-37",
+    "number": 37,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Montevideo",
+        "country": "Uruguay",
+        "countryCode": "UY",
+        "geonamesId": 3441575,
+        "coordinates": [
+          -56.18816,
+          -34.90328
+        ],
+        "key": "city-uy-8e50cacf56",
+        "source": "https://www.geonames.org/3441575/"
+      },
+      {
+        "name": "Salto",
+        "country": "Uruguay",
+        "countryCode": "UY",
+        "geonamesId": 3440714,
+        "coordinates": [
+          -57.95983,
+          -31.38811
+        ],
+        "key": "city-uy-b73999eafb",
+        "source": "https://www.geonames.org/3440714/"
+      },
+      {
+        "name": "Concordia",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3435261,
+        "coordinates": [
+          -58.01706,
+          -31.39195
+        ],
+        "key": "city-ar-f15e51a39f",
+        "source": "https://www.geonames.org/3435261/"
+      },
+      {
+        "name": "Uruguaiana",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 3445679,
+        "coordinates": [
+          -57.08833,
+          -29.75472
+        ],
+        "key": "city-br-043f9a3ad1",
+        "source": "https://www.geonames.org/3445679/"
+      },
+      {
+        "name": "Paso de los Libres",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3430104,
+        "coordinates": [
+          -57.08771,
+          -29.71251
+        ],
+        "key": "city-ar-87b95428d9",
+        "source": "https://www.geonames.org/3430104/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-38",
+    "number": 38,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Santa Cruz de la Sierra",
+        "country": "Bolivia",
+        "countryCode": "BO",
+        "geonamesId": 3904906,
+        "coordinates": [
+          -63.18117,
+          -17.78629
+        ],
+        "key": "city-bo-78cacef946",
+        "source": "https://www.geonames.org/3904906/"
+      },
+      {
+        "name": "Puerto Quijarro",
+        "country": "Bolivia",
+        "countryCode": "BO",
+        "geonamesId": 3444201,
+        "coordinates": [
+          -57.76667,
+          -17.78333
+        ],
+        "key": "city-bo-c791befbb9",
+        "source": "https://www.geonames.org/3444201/"
+      },
+      {
+        "name": "Corumbá",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 3465342,
+        "coordinates": [
+          -57.65333,
+          -19.00917
+        ],
+        "key": "city-br-c2842373f7",
+        "source": "https://www.geonames.org/3465342/"
+      },
+      {
+        "name": "Ponta Porã",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 3453150,
+        "coordinates": [
+          -55.72556,
+          -22.53611
+        ],
+        "key": "city-br-6e6e3741a9",
+        "source": "https://www.geonames.org/3453150/"
+      },
+      {
+        "name": "Pedro Juan Caballero",
+        "country": "Paraguay",
+        "countryCode": "PY",
+        "geonamesId": 3437547,
+        "coordinates": [
+          -55.7387,
+          -22.54925
+        ],
+        "key": "city-py-23d37916e6",
+        "source": "https://www.geonames.org/3437547/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-39",
+    "number": 39,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Mendoza",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3844421,
+        "coordinates": [
+          -68.84582,
+          -32.88946
+        ],
+        "key": "city-ar-053c871451",
+        "source": "https://www.geonames.org/3844421/"
+      },
+      {
+        "name": "Uspallata",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "coordinates": [
+          -69.34796,
+          -32.59093
+        ],
+        "geonamesId": 3833358,
+        "source": "https://www.openstreetmap.org/node/198432129",
+        "key": "city-ar-f3632357d8"
+      },
+      {
+        "name": "Los Andes",
+        "country": "Chile",
+        "countryCode": "CL",
+        "geonamesId": 3882434,
+        "coordinates": [
+          -70.59827,
+          -32.83369
+        ],
+        "key": "city-cl-2c26e74ac2",
+        "source": "https://www.geonames.org/3882434/"
+      },
+      {
+        "name": "Santiago",
+        "country": "Chile",
+        "countryCode": "CL",
+        "geonamesId": 3871336,
+        "coordinates": [
+          -70.64827,
+          -33.45694
+        ],
+        "key": "city-cl-3036230609",
+        "source": "https://www.geonames.org/3871336/"
+      },
+      {
+        "name": "San Juan",
+        "country": "Argentina",
+        "countryCode": "AR",
+        "geonamesId": 3837213,
+        "coordinates": [
+          -68.52568,
+          -31.53726
+        ],
+        "key": "city-ar-0c754c2713",
+        "source": "https://www.geonames.org/3837213/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-40",
+    "number": 40,
+    "region": "South America",
+    "cities": [
+      {
+        "name": "Georgetown",
+        "country": "Guyana",
+        "countryCode": "GY",
+        "geonamesId": 3378644,
+        "coordinates": [
+          -58.15527,
+          6.80448
+        ],
+        "key": "city-gy-1fb1de7e27",
+        "source": "https://www.geonames.org/3378644/"
+      },
+      {
+        "name": "Lethem",
+        "country": "Guyana",
+        "countryCode": "GY",
+        "geonamesId": 3377425,
+        "coordinates": [
+          -59.79967,
+          3.3726
+        ],
+        "key": "city-gy-654163eb2f",
+        "source": "https://www.geonames.org/3377425/"
+      },
+      {
+        "name": "Bonfim",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 6316619,
+        "coordinates": [
+          -59.83333,
+          3.35972
+        ],
+        "key": "city-br-7b362b8e89",
+        "source": "https://www.geonames.org/6316619/"
+      },
+      {
+        "name": "Boa Vista",
+        "country": "Brazil",
+        "countryCode": "BR",
+        "geonamesId": 3664980,
+        "coordinates": [
+          -60.67333,
+          2.81972
+        ],
+        "key": "city-br-f6513f9c36",
+        "source": "https://www.geonames.org/3664980/"
+      },
+      {
+        "name": "Santa Elena de Uairén",
+        "country": "Venezuela",
+        "countryCode": "VE",
+        "geonamesId": 3627382,
+        "coordinates": [
+          -61.11025,
+          4.60226
+        ],
+        "key": "city-ve-f6d02216c1",
+        "source": "https://www.geonames.org/3627382/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-41",
+    "number": 41,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Johannesburg",
+        "country": "South Africa",
+        "countryCode": "ZA",
+        "geonamesId": 993800,
+        "coordinates": [
+          28.04363,
+          -26.20227
+        ],
+        "key": "city-za-0fdd1d4f11",
+        "source": "https://www.geonames.org/993800/"
+      },
+      {
+        "name": "Gaborone",
+        "country": "Botswana",
+        "countryCode": "BW",
+        "geonamesId": 933773,
+        "coordinates": [
+          25.90859,
+          -24.65451
+        ],
+        "key": "city-bw-078e8c64f9",
+        "source": "https://www.geonames.org/933773/"
+      },
+      {
+        "name": "Francistown",
+        "country": "Botswana",
+        "countryCode": "BW",
+        "geonamesId": 933778,
+        "coordinates": [
+          27.50778,
+          -21.17
+        ],
+        "key": "city-bw-d54236cd32",
+        "source": "https://www.geonames.org/933778/"
+      },
+      {
+        "name": "Victoria Falls",
+        "country": "Zimbabwe",
+        "countryCode": "ZW",
+        "geonamesId": 879431,
+        "coordinates": [
+          25.83066,
+          -17.93285
+        ],
+        "key": "city-zw-0ad1edce8c",
+        "source": "https://www.geonames.org/879431/"
+      },
+      {
+        "name": "Livingstone",
+        "country": "Zambia",
+        "countryCode": "ZM",
+        "geonamesId": 910111,
+        "coordinates": [
+          25.85425,
+          -17.84194
+        ],
+        "key": "city-zm-cb2c49a363",
+        "source": "https://www.geonames.org/910111/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-42",
+    "number": 42,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Livingstone",
+        "country": "Zambia",
+        "countryCode": "ZM",
+        "geonamesId": 910111,
+        "coordinates": [
+          25.85425,
+          -17.84194
+        ],
+        "key": "city-zm-cb2c49a363",
+        "source": "https://www.geonames.org/910111/"
+      },
+      {
+        "name": "Katima Mulilo",
+        "country": "Namibia",
+        "countryCode": "NA",
+        "geonamesId": 877178,
+        "coordinates": [
+          24.27574,
+          -17.50467
+        ],
+        "key": "city-na-42cf7efb3f",
+        "source": "https://www.geonames.org/877178/"
+      },
+      {
+        "name": "Kasane",
+        "country": "Botswana",
+        "countryCode": "BW",
+        "geonamesId": 933677,
+        "coordinates": [
+          25.16024,
+          -17.80165
+        ],
+        "key": "city-bw-2805ae0645",
+        "source": "https://www.geonames.org/933677/"
+      },
+      {
+        "name": "Kazungula",
+        "country": "Botswana/Zambia",
+        "countryCode": "ZM",
+        "coordinates": [
+          25.26201,
+          -17.79356
+        ],
+        "source": "https://au-pida.org/events/wp-content/uploads/2024/11/One-Stop-Border-Post-OSBP-Status-Report.pdf",
+        "key": "city-zm-786e967926"
+      },
+      {
+        "name": "Victoria Falls",
+        "country": "Zimbabwe",
+        "countryCode": "ZW",
+        "geonamesId": 879431,
+        "coordinates": [
+          25.83066,
+          -17.93285
+        ],
+        "key": "city-zw-0ad1edce8c",
+        "source": "https://www.geonames.org/879431/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-43",
+    "number": 43,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Nairobi",
+        "country": "Kenya",
+        "countryCode": "KE",
+        "geonamesId": 184745,
+        "coordinates": [
+          36.81667,
+          -1.28333
+        ],
+        "key": "city-ke-5bfc2e5513",
+        "source": "https://www.geonames.org/184745/"
+      },
+      {
+        "name": "Kisumu",
+        "country": "Kenya",
+        "countryCode": "KE",
+        "geonamesId": 191245,
+        "coordinates": [
+          34.76171,
+          -0.10221
+        ],
+        "key": "city-ke-9ba8ed253e",
+        "source": "https://www.geonames.org/191245/"
+      },
+      {
+        "name": "Tororo",
+        "country": "Uganda",
+        "countryCode": "UG",
+        "geonamesId": 226110,
+        "coordinates": [
+          34.18085,
+          0.69299
+        ],
+        "key": "city-ug-20e410620c",
+        "source": "https://www.geonames.org/226110/"
+      },
+      {
+        "name": "Jinja",
+        "country": "Uganda",
+        "countryCode": "UG",
+        "geonamesId": 233114,
+        "coordinates": [
+          33.20317,
+          0.43902
+        ],
+        "key": "city-ug-7c43eabfc7",
+        "source": "https://www.geonames.org/233114/"
+      },
+      {
+        "name": "Musoma",
+        "country": "Tanzania",
+        "countryCode": "TZ",
+        "geonamesId": 152451,
+        "coordinates": [
+          33.8,
+          -1.5
+        ],
+        "key": "city-tz-d4a239325f",
+        "source": "https://www.geonames.org/152451/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-44",
+    "number": 44,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Kampala",
+        "country": "Uganda",
+        "countryCode": "UG",
+        "geonamesId": 232422,
+        "coordinates": [
+          32.58219,
+          0.31628
+        ],
+        "key": "city-ug-630db61468",
+        "source": "https://www.geonames.org/232422/"
+      },
+      {
+        "name": "Mbarara",
+        "country": "Uganda",
+        "countryCode": "UG",
+        "geonamesId": 229268,
+        "coordinates": [
+          30.64851,
+          -0.60467
+        ],
+        "key": "city-ug-b02dfaedc6",
+        "source": "https://www.geonames.org/229268/"
+      },
+      {
+        "name": "Kigali",
+        "country": "Rwanda",
+        "countryCode": "RW",
+        "geonamesId": 202061,
+        "coordinates": [
+          30.05885,
+          -1.94995
+        ],
+        "key": "city-rw-33b57c197d",
+        "source": "https://www.geonames.org/202061/"
+      },
+      {
+        "name": "Goma",
+        "country": "DR Congo",
+        "countryCode": "CD",
+        "geonamesId": 216281,
+        "coordinates": [
+          29.22845,
+          -1.67409
+        ],
+        "key": "city-cd-36a237584e",
+        "source": "https://www.geonames.org/216281/"
+      },
+      {
+        "name": "Bukavu",
+        "country": "DR Congo",
+        "countryCode": "CD",
+        "geonamesId": 217831,
+        "coordinates": [
+          28.84281,
+          -2.49077
+        ],
+        "key": "city-cd-fbb0675f3d",
+        "source": "https://www.geonames.org/217831/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-45",
+    "number": 45,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Bujumbura",
+        "country": "Burundi",
+        "countryCode": "BI",
+        "geonamesId": 425378,
+        "coordinates": [
+          29.36142,
+          -3.38193
+        ],
+        "key": "city-bi-913205f34b",
+        "source": "https://www.geonames.org/425378/"
+      },
+      {
+        "name": "Uvira",
+        "country": "DR Congo",
+        "countryCode": "CD",
+        "geonamesId": 204405,
+        "coordinates": [
+          29.13779,
+          -3.39534
+        ],
+        "key": "city-cd-b7e888ff66",
+        "source": "https://www.geonames.org/204405/"
+      },
+      {
+        "name": "Kigoma",
+        "country": "Tanzania",
+        "countryCode": "TZ",
+        "geonamesId": 157738,
+        "coordinates": [
+          29.62667,
+          -4.87694
+        ],
+        "key": "city-tz-9b85dbd80d",
+        "source": "https://www.geonames.org/157738/"
+      },
+      {
+        "name": "Kasulu",
+        "country": "Tanzania",
+        "countryCode": "TZ",
+        "geonamesId": 158214,
+        "coordinates": [
+          30.1025,
+          -4.57667
+        ],
+        "key": "city-tz-84b067def6",
+        "source": "https://www.geonames.org/158214/"
+      },
+      {
+        "name": "Kanyaru",
+        "country": "Rwanda",
+        "countryCode": "RW",
+        "coordinates": [
+          30.01958,
+          -2.07528
+        ],
+        "source": "https://au-pida.org/events/wp-content/uploads/2024/11/One-Stop-Border-Post-OSBP-Status-Report.pdf",
+        "key": "city-rw-9799756fd8"
+      }
+    ]
+  },
+  {
+    "id": "atlas-46",
+    "number": 46,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Maputo",
+        "country": "Mozambique",
+        "countryCode": "MZ",
+        "geonamesId": 1040652,
+        "coordinates": [
+          32.58322,
+          -25.96553
+        ],
+        "key": "city-mz-921b1f12d6",
+        "source": "https://www.geonames.org/1040652/"
+      },
+      {
+        "name": "Namaacha",
+        "country": "Mozambique",
+        "countryCode": "MZ",
+        "geonamesId": 1034421,
+        "coordinates": [
+          32.01897,
+          -25.97502
+        ],
+        "key": "city-mz-5a891262d3",
+        "source": "https://www.geonames.org/1034421/"
+      },
+      {
+        "name": "Mbabane",
+        "country": "Eswatini",
+        "countryCode": "SZ",
+        "geonamesId": 934985,
+        "coordinates": [
+          31.13333,
+          -26.31667
+        ],
+        "key": "city-sz-c6a3180bfe",
+        "source": "https://www.geonames.org/934985/"
+      },
+      {
+        "name": "Manzini",
+        "country": "Eswatini",
+        "countryCode": "SZ",
+        "geonamesId": 934995,
+        "coordinates": [
+          31.38004,
+          -26.49884
+        ],
+        "key": "city-sz-8a2ba17f55",
+        "source": "https://www.geonames.org/934995/"
+      },
+      {
+        "name": "Nelspruit",
+        "country": "South Africa",
+        "countryCode": "ZA",
+        "geonamesId": 971534,
+        "coordinates": [
+          30.96935,
+          -25.47512
+        ],
+        "key": "city-za-b250c24c80",
+        "source": "https://www.geonames.org/971534/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-47",
+    "number": 47,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Dakar",
+        "country": "Senegal",
+        "countryCode": "SN",
+        "geonamesId": 2253354,
+        "coordinates": [
+          -17.44406,
+          14.6937
+        ],
+        "key": "city-sn-906c1986d9",
+        "source": "https://www.geonames.org/2253354/"
+      },
+      {
+        "name": "Banjul",
+        "country": "Gambia",
+        "countryCode": "GM",
+        "geonamesId": 2413876,
+        "coordinates": [
+          -16.57803,
+          13.45274
+        ],
+        "key": "city-gm-c3bbb86b74",
+        "source": "https://www.geonames.org/2413876/"
+      },
+      {
+        "name": "Soma",
+        "country": "Gambia",
+        "countryCode": "GM",
+        "geonamesId": 2411905,
+        "coordinates": [
+          -15.53333,
+          13.43333
+        ],
+        "key": "city-gm-ba18a3bd10",
+        "source": "https://www.geonames.org/2411905/"
+      },
+      {
+        "name": "Ziguinchor",
+        "country": "Senegal",
+        "countryCode": "SN",
+        "geonamesId": 2243940,
+        "coordinates": [
+          -16.27326,
+          12.56801
+        ],
+        "key": "city-sn-aef131f79a",
+        "source": "https://www.geonames.org/2243940/"
+      },
+      {
+        "name": "Bissau",
+        "country": "Guinea-Bissau",
+        "countryCode": "GW",
+        "geonamesId": 2374775,
+        "coordinates": [
+          -15.59767,
+          11.86357
+        ],
+        "key": "city-gw-652f9d2d98",
+        "source": "https://www.geonames.org/2374775/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-48",
+    "number": 48,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Accra",
+        "country": "Ghana",
+        "countryCode": "GH",
+        "geonamesId": 2306104,
+        "coordinates": [
+          -0.1969,
+          5.55602
+        ],
+        "key": "city-gh-96609fd8f3",
+        "source": "https://www.geonames.org/2306104/"
+      },
+      {
+        "name": "Aflao",
+        "country": "Ghana",
+        "countryCode": "GH",
+        "geonamesId": 2305677,
+        "coordinates": [
+          1.19012,
+          6.11982
+        ],
+        "key": "city-gh-21fa10a98f",
+        "source": "https://www.geonames.org/2305677/"
+      },
+      {
+        "name": "Lomé",
+        "country": "Togo",
+        "countryCode": "TG",
+        "geonamesId": 2365267,
+        "coordinates": [
+          1.22154,
+          6.12874
+        ],
+        "key": "city-tg-2e307b36b6",
+        "source": "https://www.geonames.org/2365267/"
+      },
+      {
+        "name": "Cotonou",
+        "country": "Benin",
+        "countryCode": "BJ",
+        "geonamesId": 2394819,
+        "coordinates": [
+          2.41833,
+          6.36536
+        ],
+        "key": "city-bj-935954ccbb",
+        "source": "https://www.geonames.org/2394819/"
+      },
+      {
+        "name": "Porto-Novo",
+        "country": "Benin",
+        "countryCode": "BJ",
+        "geonamesId": 2392087,
+        "coordinates": [
+          2.60359,
+          6.49646
+        ],
+        "key": "city-bj-0e55994367",
+        "source": "https://www.geonames.org/2392087/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-49",
+    "number": 49,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Lagos",
+        "country": "Nigeria",
+        "countryCode": "NG",
+        "geonamesId": 2332459,
+        "coordinates": [
+          3.39467,
+          6.45407
+        ],
+        "key": "city-ng-b384863fa1",
+        "source": "https://www.geonames.org/2332459/"
+      },
+      {
+        "name": "Badagry",
+        "country": "Nigeria",
+        "countryCode": "NG",
+        "geonamesId": 2348395,
+        "coordinates": [
+          2.88132,
+          6.41502
+        ],
+        "key": "city-ng-29c2f47adc",
+        "source": "https://www.geonames.org/2348395/"
+      },
+      {
+        "name": "Sèmè-Kpodji",
+        "country": "Benin",
+        "countryCode": "BJ",
+        "coordinates": [
+          2.616667,
+          6.366667
+        ],
+        "source": "https://islam.zmo.de/s/afrique_ouest/item/14218",
+        "key": "city-bj-e4f268cdec"
+      },
+      {
+        "name": "Cotonou",
+        "country": "Benin",
+        "countryCode": "BJ",
+        "geonamesId": 2394819,
+        "coordinates": [
+          2.41833,
+          6.36536
+        ],
+        "key": "city-bj-935954ccbb",
+        "source": "https://www.geonames.org/2394819/"
+      },
+      {
+        "name": "Lomé",
+        "country": "Togo",
+        "countryCode": "TG",
+        "geonamesId": 2365267,
+        "coordinates": [
+          1.22154,
+          6.12874
+        ],
+        "key": "city-tg-2e307b36b6",
+        "source": "https://www.geonames.org/2365267/"
+      }
+    ]
+  },
+  {
+    "id": "atlas-50",
+    "number": 50,
+    "region": "Africa",
+    "cities": [
+      {
+        "name": "Tangier",
+        "country": "Morocco",
+        "countryCode": "MA",
+        "geonamesId": 2530335,
+        "coordinates": [
+          -5.79975,
+          35.76727
+        ],
+        "key": "city-ma-739a88716e",
+        "source": "https://www.geonames.org/2530335/"
+      },
+      {
+        "name": "Ceuta",
+        "country": "Spain/North Africa",
+        "countryCode": "ES",
+        "geonamesId": 6362987,
+        "coordinates": [
+          -5.32042,
+          35.88919
+        ],
+        "key": "city-es-194507b898",
+        "source": "https://www.geonames.org/6362987/"
+      },
+      {
+        "name": "Algeciras",
+        "country": "Spain",
+        "countryCode": "ES",
+        "geonamesId": 2522013,
+        "coordinates": [
+          -5.45051,
+          36.13326
+        ],
+        "key": "city-es-8187387799",
+        "source": "https://www.geonames.org/2522013/"
+      },
+      {
+        "name": "Gibraltar",
+        "country": "UK Territory",
+        "countryCode": "GI",
+        "geonamesId": 2411585,
+        "coordinates": [
+          -5.35257,
+          36.14474
+        ],
+        "key": "city-gi-097ced582f",
+        "source": "https://www.geonames.org/2411585/"
+      },
+      {
+        "name": "Málaga",
+        "country": "Spain",
+        "countryCode": "ES",
+        "geonamesId": 2514256,
+        "coordinates": [
+          -4.42034,
+          36.72016
+        ],
+        "key": "city-es-38c2e92ebc",
+        "source": "https://www.geonames.org/2514256/"
+      }
+    ]
+  }
+]

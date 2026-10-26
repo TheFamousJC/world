@@ -1,0 +1,8 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {distance} from '../src/geo.js';
+const routes=JSON.parse(fs.readFileSync(new URL('../scripts/expedition-routes.json',import.meta.url)));
+test('requested catalogue retains fifty five-city routes and ten routes per region',()=>{assert.equal(routes.length,50);assert.equal(new Set(routes.map(r=>r.id)).size,50);assert.deepEqual(Object.values(Object.groupBy(routes,r=>r.region)).map(a=>a.length),[10,10,10,10,10]);for(const r of routes){assert.equal(r.cities.length,5);for(const c of r.cities){assert(c.name&&c.country&&c.source.startsWith('https://'));assert.match(c.countryCode,/^[A-Z]{2}$/);assert(c.coordinates.every(Number.isFinite));assert(Math.abs(c.coordinates[0])<=180&&Math.abs(c.coordinates[1])<85);}}});
+test('ambiguous border towns stay on their intended regional corridors',()=>{const at=name=>routes.flatMap(r=>r.cities).find(c=>c.name===name);assert(distance(at('Rason').coordinates,at('Khasan').coordinates)<50);assert(distance(at('Lethem').coordinates,at('Bonfim').coordinates)<10);assert(distance(at('Boten').coordinates,at('Mohan').coordinates)<10);assert.notEqual(at('Khasan').geonamesId,551487);assert.equal(at('Bonfim').geonamesId,6316619);});
+test('exact supplied city order is not forced into an invented three-country rule',()=>{assert.deepEqual(routes[0].cities.map(c=>c.name),['Munich','Innsbruck','Brenner Pass','Bolzano','Verona']);assert.deepEqual(routes[49].cities.map(c=>c.name),['Tangier','Ceuta','Algeciras','Gibraltar','Málaga']);assert.equal(routes[35].cities[2].name,'Santa Rosa de Yavarí');});

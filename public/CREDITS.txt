@@ -61,3 +61,12 @@ Original procedural audio (0.21): ambient score and sound-effect synthesis autho
 Authored pursuit corridors (src/pursuit-roads.js) are derived from the same bundled OpenStreetMap road graph; © OpenStreetMap contributors, ODbL 1.0. Pursuer, services, searches, reports and hiding places are game fiction.
 
 Japan pursuit corridors (src/pursuit-japan-roads.js) derive from the bundled Osaka/Tokyo OpenStreetMap packs; © OpenStreetMap contributors, ODbL 1.0. Airport transfers and their preparation time are authored game fiction.
+
+Forthcoming expedition catalogue (development groundwork, not enabled in this release)
+GeoNames place references: CC BY 4.0; https://www.geonames.org/export/
+OurAirports airfield source references: public domain; https://ourairports.com/data/
+Natural Earth generalized reference geography: public domain;
+https://www.naturalearthdata.com/about/terms-of-use/
+Individual reviewed location sources are recorded in scripts/expedition-routes.json
+and scripts/expedition-city-overrides.json. Fictional cases and narratives are authored
+for Escape Atlas. See docs/expedition-expansion.txt for preparation and release status.

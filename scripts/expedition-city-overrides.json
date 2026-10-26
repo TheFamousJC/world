@@ -1,0 +1,106 @@
+{
+  "Brenner Pass": {
+    "coordinates": [
+      11.5067,
+      47.0074
+    ],
+    "geonamesId": 2781423,
+    "source": "https://www.geonames.org/2781423/"
+  },
+  "Moc Bai": {
+    "coordinates": [
+      106.17509,
+      11.07669
+    ],
+    "source": "https://www.openstreetmap.org/node/5038930791"
+  },
+  "Changrabandha": {
+    "coordinates": [
+      88.9193,
+      26.4131
+    ],
+    "source": "https://en.wikipedia.org/wiki/Changrabandha"
+  },
+  "Wadi Rum": {
+    "coordinates": [
+      35.42177,
+      29.57595
+    ],
+    "source": "https://www.openstreetmap.org/way/133897691"
+  },
+  "Norduz": {
+    "coordinates": [
+      46.20371,
+      38.84874
+    ],
+    "source": "https://www.openstreetmap.org/way/338005814"
+  },
+  "Khafji": {
+    "coordinates": [
+      48.49132,
+      28.43905
+    ],
+    "geonamesId": 109380,
+    "source": "https://www.geonames.org/109380/"
+  },
+  "Santa Rosa de Yavarí": {
+    "coordinates": [
+      -69.96043,
+      -4.22257
+    ],
+    "geonamesId": 3827653,
+    "source": "https://www.geonames.org/3827653/santa-rosa-de-yaravi.html"
+  },
+  "Uspallata": {
+    "coordinates": [
+      -69.34796,
+      -32.59093
+    ],
+    "geonamesId": 3833358,
+    "source": "https://www.openstreetmap.org/node/198432129"
+  },
+  "Kazungula": {
+    "coordinates": [
+      25.26201,
+      -17.79356
+    ],
+    "countryCode": "ZM",
+    "source": "https://au-pida.org/events/wp-content/uploads/2024/11/One-Stop-Border-Post-OSBP-Status-Report.pdf"
+  },
+  "Kanyaru": {
+    "coordinates": [
+      30.01958,
+      -2.07528
+    ],
+    "source": "https://au-pida.org/events/wp-content/uploads/2024/11/One-Stop-Border-Post-OSBP-Status-Report.pdf"
+  },
+  "Sèmè-Kpodji": {
+    "coordinates": [
+      2.616667,
+      6.366667
+    ],
+    "source": "https://islam.zmo.de/s/afrique_ouest/item/14218"
+  },
+  "Khasan": {
+    "coordinates": [
+      130.6516,
+      42.4239
+    ],
+    "source": "https://www.getty.edu/vow/TGNFullDisplay?english=Y&subjectid=8784141"
+  },
+  "Bonfim": {
+    "coordinates": [
+      -59.83333,
+      3.35972
+    ],
+    "geonamesId": 6316619,
+    "source": "https://www.geonames.org/6316619/"
+  },
+  "Mohan": {
+    "coordinates": [
+      101.68247,
+      21.18558
+    ],
+    "source": "https://commons.wikimedia.org/wiki/Category:Mohan_checkpoint"
+  }
+}

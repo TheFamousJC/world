@@ -1,0 +1,71 @@
+EXPEDITION EXPANSION: VERIFIED FOUNDATION / NOT YET IN THE LIVE STORY LIBRARY
+Updated: 26 October 2026
+
+Accepted design
+- Preserve the exact 50 supplied city sequences, including the original country labels.
+- Five operations: prepare in city 1, then travel through cities 2, 3, 4 and 5.
+- Three sequential code missions per operation; the last city is extraction.
+- One shared route-appropriate deadline, cash balance, energy and pursuer state.
+- Planning and analysis consume live time. Travel advances quoted game minutes from
+  mapped distances, transport, service duration, waits, transfers and border delays.
+  Animation length must never change the charged journey duration. Pausing freezes it.
+- Regional modes must use suitable terminals and physical connections. No invented
+  driving or walking line over water. All contacts and service availability are fiction.
+
+Verified and committed
+- scripts/expedition-routes.json: all 50 exact five-stop sequences, with attributed
+  coordinate references. Ten stories per requested region.
+- src/expedition-narratives.js: 50 distinct authored premises and evidence artifacts.
+- src/expedition-cases.js: 750 distinct evidence sets and four-digit answers.
+  Each story has 15 different methodologies, drawn from 22 offline analytical tools.
+  This means 750 different cases, not 750 unrelated cryptographic algorithms.
+- src/expedition-tools.js: local analytical devices, including SHA-256 via Web Crypto.
+- src/expedition-clock.js: pure distance/service-based travel and shared-deadline rules.
+- Tests exercise every case, independent reference vectors, timing and known ambiguous
+  place names. The current published game and its saves are not migrated by this work.
+
+Not complete / release gate
+- The new catalogue is NOT enabled in src/scenarios.js and not offered to players yet.
+- 30 map datasets were prepared locally; 20 district downloads could not be obtained.
+  Existing source data for Khasan, Mohan and Bonfim was then found to resolve to the
+  wrong homonymous locations. Their curated coordinates are corrected, and affected
+  cached route responses have been quarantined for replacement.
+- Map source requests returned repeated HTTP 502 errors, HTTP 406 for read-only GET
+  checks, or read timeouts. Private.coffee and a second documented provider also timed
+  out. Download loops were stopped; no paid or runtime map dependency was substituted.
+- Local, unfinished integration is retained under ignored assets/expedition-wip.
+  It is outside the release. Some trial strategies still fail on energy or pursuit.
+- Complete a geographic audit, all 50 offline maps, suitable civilian airport references,
+  actual ferry/river connections, terminal access and animal-mode limits.
+- Integrate analytical devices into the workbench, new transport quoting, geographic
+  story UI, lazy marker rendering, save compatibility and offline service-worker assets.
+- For every story verify two full five-operation strategies, resource accounting,
+  sequential mission reveal, extraction gating, several losing cases, save/reload and
+  pursuit carry-over. Then perform desktop/mobile/offline browser checks and publish.
+
+Source preparation (development only; never called by the game or CI)
+- Raw downloads remain in ignored assets/route-source, never in Git.
+- prepare-expedition-cities.py accepts --source with the supplied route text, treating
+  its contents as data. It requires GeoNames cities500.txt and countryInfo.txt locally.
+- Primary place names outrank alternate names; reviewed overrides resolve ambiguity.
+  Coordinates still require geographic review before map preparation is considered done.
+- fetch-expedition-sources.py reads the committed curated route list and an airport-codes
+  CSV in the ignored cache, enriches airfields and requests bounded districts and routes.
+  Air bases, highway strips and explicitly military names are excluded from new selection;
+  remaining airfield choices still need civilian suitability review.
+- fetch-expedition-airports.py prepares routed approaches from that enriched output.
+- retry-expedition-districts.py supports smaller per-city requests. Do not run repeated
+  loops during provider outages. Keep throttling and inspect every missing connection.
+- build-expedition-puzzles.mjs regenerates the 750 cases and validation inputs locally.
+  Node alone runs the puzzle tests. No API key, network call or AI service is needed.
+
+Attribution
+GeoNames: CC BY 4.0, https://www.geonames.org/export/ and
+https://download.geonames.org/export/dump/readme.txt
+OSM: Open Database Licence 1.0, https://www.openstreetmap.org/copyright
+OurAirports: public-domain airport references, https://ourairports.com/data/
+Natural Earth: public domain, https://www.naturalearthdata.com/about/terms-of-use/
+OSRM: driving reference geometry derived from OSM; no live routing is required.
+Reviewed special locations carry their individual source URL in the route/override JSON.
+Narrative contacts, intelligence evidence, timetables and mission events are authored game
+fiction and must not be presented as current border, flight or travel advice.
