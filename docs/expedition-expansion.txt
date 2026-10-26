@@ -61,3 +61,14 @@ Data fidelity and attribution
 - OurAirports: public domain, https://ourairports.com/data/
 - Natural Earth: public domain, https://www.naturalearthdata.com/about/terms-of-use/
 - Individual reviewed location sources remain in the curated route/override JSON.
+
+Verified release results
+- npm test: 620 passed, zero failures. All fifty stories passed fast and frugal
+  complete runs (100 escapes / all 750 code cases), plus per-operation loss guards.
+- Production browser: atlas-02, atlas-36 and atlas-50 completed all five operations
+  and fifteen cases, with shared resources, pursuit, optional contacts and extraction.
+- Mobile/tablet: 390 / 360 / 1024 px without horizontal overflow; cached regional
+  reload, analytical device, purchased clue and decoding succeeded offline.
+- Regional mobile modes: tuk-tuk, camel, horse and cart offered valid quotes and Go.
+- The Alpine pilot charter/camera regression was verified in v0.28.0; current rules
+  remain covered by the automated regression suite.

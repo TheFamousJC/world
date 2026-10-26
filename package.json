@@ -17,6 +17,7 @@
     "validate:world": "node scripts/validate-expeditions.mjs",
     "validate:alpine": "node scripts/validate-alpine.mjs",
     "test:world-browser": "node scripts/world-browser-check.cjs",
+    "test:regional-modes-browser": "node scripts/regional-modes-browser-check.cjs",
     "test:world-mobile-browser": "node scripts/world-mobile-browser-check.cjs",
     "test:alpine-browser": "node scripts/alpine-browser-check.cjs",
     "test:nightfall-browser": "node scripts/nightfall-browser-check.cjs",
