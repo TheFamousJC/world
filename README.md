@@ -4,15 +4,19 @@
 
 A route-survival game: plan a journey, manage time, money and energy, and adapt when a crossing or service is unavailable.
 
-The collection contains **50 civilian stories, 250 operation routes and 750 compulsory code missions**. Each story has five increasingly demanding operations over one shared 24-hour clock. Each route has two ordered required missions, one optional cash contact and one optional recovery contact. The ten original practice challenges and original eight-section Nightfall saves remain available. No military or historical modes.
+The main collection contains **50 worldwide stories, 250 operations and 750 sequential code missions**. Each story follows its exact five-city route, with three coded packets per operation and a route-appropriate shared deadline. Time, money, energy, evidence and pursuit carry across all five operations. The last city is extraction. Earlier stories and saves remain in the archive.
 
-Ten stories use the detailed offline Brest–Biała Podlaska road/rail pack. Forty world expeditions use eight two-city corridors across Asia, Africa, North and South America, and Oceania. All forty world stories now use detailed offline OpenStreetMap city-to-airport packs, including actual landside airport locations; flights only connect designated terminals. Each world story includes one airport transfer. The 250 route-scenarios share these nine geographic regions.
+Every main story has a bounded offline regional map, with mapped road access and authored rail, coach, flight or water connections. Selected cities also offer tuk-tuks, camels, horses and carts. Source resolution and licences are recorded in the packs and credits. Services, contacts and restrictions are game fiction.
+
+**Permanent share link:** https://thefamousjc.github.io/world/ . No version query is needed. Updates use that same address and preserve local saves and downloaded regions. Internal release numbers remain for update detection and troubleshooting. The opening uses the 3Sci Labs studio name. Music is opt-in and now slightly faster.
+
+**[Watch the 30-second gameplay trailer](public/media/escape-atlas-trailer.mp4)** — accelerated actual play with an original dramatic stereo soundtrack. The captioned walkthrough remains available from the gameplay guide.
 
 First-time players see a five-slide introductory wizard. **Stories** opens the searchable illustrated library and five-operation briefing. The clock starts on launch. **Help** opens the gameplay page, with a linked FAQ; both are cached offline. Each story can be resumed separately on this device. Missions → Help & settings → How to play replays the introduction.
 
 Later operations raise journey duration, effort, mission collection time and control delays; some later stages cancel cycling. The world uses game credits shown as £, not real local prices. All services and restrictions remain fiction.
 
-Validation: `npm test` covers the complete catalogue, resource accounting, ordered missions, one-time bonuses, failure guards, flight terminals and saved journeys. `npm run validate` simulates two complete winning strategies per story through all five operations, in addition to the original ten practice scenarios. `npm run test:stories-browser` walks all 50 illustrated briefings and a complete world escape through the UI, including flight, optional supplies, pause, reload, help and FAQ.
+Validation: `npm test` covers the main and archived catalogues, resource accounting, mission order, failure guards and saves. `npm run validate:world` simulates two complete physical-network winning strategies per main story. `npm run validate` preserves the archive/practice checks. `node scripts/release-browser-check.cjs` verifies the studio opening, permanent URLs, opt-in music/pause, update/save/map-cache preservation and trailer playback in a production build.
 
 
 ## Nightfall reference experience (0.15.0)

@@ -38,7 +38,7 @@ export class GameAudio{
   c.resume().catch(()=>{});
   if(!this.preferences.effects)this.stop(this.effectNodes);
   if(!this.preferences.music){this.stopMusic();return;}
-  if(!this.timer){this.next=c.currentTime+.04;this.step=0;const tick=()=>{if(!this.active)return;const beat=this.pressure?.65:.85;while(this.next<c.currentTime+.25){scheduleMusicPulse(c,this.musicBus,this.step++,this.next,beat,this.track(this.musicNodes));this.next+=beat;}};tick();this.timer=setInterval(tick,150);}
+  if(!this.timer){this.next=c.currentTime+.04;this.step=0;const tick=()=>{if(!this.active)return;const beat=this.pressure?.58:.75;while(this.next<c.currentTime+.25){scheduleMusicPulse(c,this.musicBus,this.step++,this.next,beat,this.track(this.musicNodes));this.next+=beat;}};tick();this.timer=setInterval(tick,150);}
  }
  cue(name,options={}){try{return this.playCue(name,options);}catch{return false;}}
  playCue(name,{force=false}={}){if(!NOTES[name])return false;const c=this.context;if(!c||!this.unlocked||this.preferences.muted||!this.preferences.effects||this.hidden||(!this.active&&!force))return false;

@@ -294,5 +294,6 @@ if('serviceWorker'in navigator&&document.querySelector('meta[name="escape-build"
  }).catch(()=>$('offline-status').textContent='Online preview · offline cache unavailable');
 }
 if(new URLSearchParams(location.search).has('test'))window.escapeTest={atlas,audio,getSession:()=>structuredClone(session),network,scenarios:ALL_SCENARIOS,stories:STORIES};}
+const permanentAddress=new URL(location.href);if(permanentAddress.searchParams.has('v')){permanentAddress.searchParams.delete('v');history.replaceState(history.state,'',permanentAddress.pathname+permanentAddress.search+permanentAddress.hash);}
 setupMobileLayout();
-start().catch(error=>{$('loading').innerHTML='<div class="loading-mark">EA</div><h1>The atlas could not open.</h1><p></p>';$('loading').querySelector('p').textContent=error.message+'. Start the local server with npm run dev, then reload.';console.error(error);});
+start().catch(error=>{$('loading').innerHTML='<div class="loading-mark studio-wordmark">3Sci Labs</div><h1>The atlas could not open.</h1><p></p>';$('loading').querySelector('p').textContent=error.message+'. Start the local server with npm run dev, then reload.';console.error(error);});

@@ -94,3 +94,7 @@ Short dry road-access links are approximate and limited to 80 m. The Strait of
 Gibraltar ferry is an authored geographic game corridor with approximate port
 approaches. River landings and services are fictional, on generalized river geometry.
 No runtime map API or AI service is needed for the downloaded game packs.
+
+Gameplay trailer: actual captured Escape Atlas gameplay, editorially accelerated.
+Original procedural stereo soundtrack synthesized for this trailer; no third-party
+recordings, samples or licensed commercial music. Source: scripts/build-trailer.py.
