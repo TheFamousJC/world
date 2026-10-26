@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {STORIES,ALL_SCENARIOS,placeById} from '../src/scenarios.js';
+import {ARCHIVED_STORIES as STORIES,ALL_SCENARIOS,placeById} from '../src/scenarios.js';
 import {newGame,quoteJourney,journeyCost,depart,arrive,advanceClock,advanceStage,makeSave,readSave} from '../src/engine.js';
 import {pilotAction,reportView,documentCleared,timetable,pilotCost,observeReport} from '../src/pilot.js';
 import {journeyFrame} from '../src/journey.js';

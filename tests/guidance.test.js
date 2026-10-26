@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {nextStep} from '../src/guidance.js';
-import {STORIES,PLACES,placeById} from '../src/scenarios.js';
+import {ARCHIVED_STORIES as STORIES,PLACES,placeById} from '../src/scenarios.js';
 import {newGame} from '../src/engine.js';
 const c=STORIES[0].operations[0],s=newGame(c,'guidance');
 test('guidance starts with a mission and becomes an explicit collection action on arrival',()=>{

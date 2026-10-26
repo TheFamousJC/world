@@ -8,7 +8,7 @@ export function buildPursuitRoad(network,fromId,toId){
   const direction=to.cityIndex>from.cityIndex?1:-1;parts=[];let current=from;
   for(let city=from.cityIndex;city!==to.cityIndex;city+=direction){
    const departures=PLACES.filter(p=>p.hub===from.hub&&p.cityIndex===city&&p.serviceType),arrivals=PLACES.filter(p=>p.hub===from.hub&&p.cityIndex===city+direction&&p.serviceType);let best=null;
-   for(const a of departures)for(const b of arrivals)for(const mode of ['coach','train','flight']){const r=network.route(a,b,mode);if(!r)continue;const first=ground(current,a);if(!first)continue;const candidate=[first,{coordinates:r.coordinates,km:r.km,minutes:(r.serviceMinutes||Math.ceil(r.km/40*60))+60}];const minutes=candidate.reduce((n,p)=>n+p.minutes,0);if(!best||minutes<best.minutes)best={parts:candidate,minutes,to:b};}
+   for(const a of departures)for(const b of arrivals)for(const mode of ['coach','train','flight','boat','ferry','walk']){const r=network.route(a,b,mode);if(!r||mode==='walk'&&r.km>30)continue;const first=ground(current,a),arrival=city+direction===to.cityIndex?to:PLACES.find(p=>p.id===from.hub+'-c'+(city+direction)+'-p0'),last=arrival&&ground(b,arrival);if(!first||!last)continue;const candidate=[first,{coordinates:r.coordinates,km:r.km,minutes:(r.serviceMinutes||Math.ceil(r.km/(mode==='walk'?4.5:40)*60))+60},last];const minutes=candidate.reduce((n,p)=>n+p.minutes,0);if(!best||minutes<best.minutes)best={parts:candidate,minutes,to:arrival};}
    if(!best)return null;parts.push(...best.parts);current=best.to;
   }
   parts.push(ground(current,to));

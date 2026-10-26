@@ -1,6 +1,7 @@
+import {EXPEDITION_DATA} from './expedition-data.js';
 // A registry of independently packaged regions. New corridors can use the same
 // offline loader without replacing the globe, story engine or routing code.
-export const MAP_PACKS=Object.freeze([
+export const MAP_PACKS=Object.freeze([...EXPEDITION_DATA.map(r=>({id:r.id,hub:r.id,corridor:r.id,name:r.cities.map(c=>c.name).join(' → '),file:r.id+'.geojson'})),
  {id:'atlas-01',hub:'atlas-01',corridor:'atlas-01',name:'Munich → Innsbruck → Brenner → Bolzano → Verona',file:'atlas-01.geojson'},
  {id:'osaka',hub:'world-0-0',corridor:'world-0',name:'Osaka / Itami',file:'osaka.geojson'},
  {id:'tokyo',hub:'world-0-1',corridor:'world-0',name:'Tokyo / Haneda',file:'tokyo.geojson'},

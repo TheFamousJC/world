@@ -4,7 +4,7 @@ import {OfflineValidationNetwork} from '../scripts/offline-network.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {STORIES,ALL_SCENARIOS,PLACES,placeById} from '../src/scenarios.js';
+import {ARCHIVED_STORIES as STORIES,ALL_SCENARIOS,PLACES,placeById} from '../src/scenarios.js';
 import {Network} from '../src/network.js';
 import {WorldNetwork} from '../src/world-network.js';
 import {simulateStory} from '../src/story-validation.js';

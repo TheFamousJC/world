@@ -27,7 +27,7 @@ export class WorldNetwork{
   for(const [hub,network] of this.regions){
    const b=network.bounds;if(coordinates[0]<b[0]||coordinates[0]>b[2]||coordinates[1]<b[1]||coordinates[1]>b[3])continue;
    const district=network.expedition?.cities.map((city,index)=>({city,index,km:distance(city.coordinates,coordinates)})).sort((a,b)=>a.km-b.km)[0];
-   return {...network.mapPoint(coordinates,id,name),hub,corridor:mapPackFor(hub).corridor,mapPack:mapPackFor(hub).id,...(district?{expedition:true,cityIndex:district.index,countryCode:district.city.countryCode}: {})};
+   return {...network.mapPoint(coordinates,id,name),hub,corridor:mapPackFor(hub).corridor,mapPack:mapPackFor(hub).id,...(district?{expedition:true,cityIndex:district.index,countryCode:district.city.countryCode,localModes:district.city.localModes||[]}: {})};
   }
   return this.local.mapPoint(coordinates,id,name);
  }

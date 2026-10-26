@@ -1,6 +1,7 @@
+import {EXPEDITION_PLACES} from './expedition-data.js';
 import {ALPINE_PLACES} from './alpine-data.js';
 import {WORLD_PLACES} from './world-places.js';
-export const PLACES=Object.freeze([...WORLD_PLACES,...ALPINE_PLACES,
+export const PLACES=Object.freeze([...WORLD_PLACES,...ALPINE_PLACES,...EXPEDITION_PLACES,
 {"id":"neple","name":"Neple signal post","coordinates":[23.5450303,52.1166732],"kind":"supply","fictional":true,"note":"Fictional story contact anchored to a mapped public road."},
 {"id":"horbow","name":"Horbów courier stop","coordinates":[23.3015206,52.0392259],"kind":"supply","fictional":true,"note":"Fictional story contact anchored to a mapped public road."},
 {"id":"west-cache","name":"Western orchard shelter","coordinates":[23.2062314,52.0234608],"kind":"supply","fictional":true,"note":"Fictional story contact anchored to a mapped public road."},
@@ -26,4 +27,5 @@ export const PLACES=Object.freeze([...WORLD_PLACES,...ALPINE_PLACES,
   {id:'pickup',name:'Northern pickup',coordinates:[23.677,52.127],kind:'pickup',fictional:true,note:'Fictional pickup point.'}
 ]);
 
-export const placeById=id=>PLACES.find(p=>p.id===id);
+const placeIndex=new Map(PLACES.map(p=>[p.id,p]));
+export const placeById=id=>placeIndex.get(id);

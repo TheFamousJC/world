@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {Network} from '../src/network.js';
 import {WorldNetwork} from '../src/world-network.js';
-import {PLACES,STORIES,ALL_SCENARIOS,placeById} from '../src/scenarios.js';
+import {PLACES,ARCHIVED_STORIES as STORIES,ALL_SCENARIOS,placeById} from '../src/scenarios.js';
 import {journeyFrame} from '../src/journey.js';
 import {distance,pointInArea} from '../src/geo.js';
 import {newGame,quoteJourney,depart,arrive,makeSave,readSave} from '../src/engine.js';

@@ -2,7 +2,7 @@
 import {Network} from './network.js';
 import {distance,lineLength} from './geo.js';
 export class ExpeditionNetwork extends Network {
- constructor(data){super(data);this.expedition=data.metadata.expedition;}
+ constructor(data){super(data);this.expedition=data.metadata.expedition;this.referenceAnchors=new Map();for(const f of data.features)if(f.properties.kind==='road'&&f.properties.id?.startsWith('osrm:'))for(let i=0;i<f.geometry.coordinates.length;i++)this.referenceAnchors.set(f.geometry.coordinates[i].join(','),'s:'+f.properties.nodes[i]);this.mountAvoid=data.features.filter(f=>f.properties.kind==='road'&&(f.properties.horse==='no'||['motorway','motorway_link','trunk','trunk_link','steps','footway','pedestrian','cycleway','corridor'].includes(f.properties.class)||f.properties.motorroad==='yes')).map(f=>f.properties.id);}
  route(from,to,mode,avoid=[]){
   if(!from||!to||from.id===to.id||from.unreachableReason||to.unreachableReason)return null;
   const a=from.cityIndex,b=to.cityIndex,same=Number.isInteger(a)&&a===b,crossing=from.countryCode!==to.countryCode;
@@ -13,15 +13,21 @@ export class ExpeditionNetwork extends Network {
   }
   if(['train','boat','ferry'].includes(mode)){
    const service=this.expedition.services.find(s=>s.mode===mode&&(s.from===from.id&&s.to===to.id||s.to===from.id&&s.from===to.id));if(!service)return null;
-   return {...service,coordinates:service.from===from.id?service.coordinates:[...service.coordinates].reverse(),crossing,access:0,serviceMinutes:service.minutes,serviceInterval:mode==='train'?120:180,boardingMinutes:mode==='train'?15:25};
+   return {...service,coordinates:service.from===from.id?service.coordinates:[...service.coordinates].reverse(),crossing,access:service.access||0,serviceMinutes:service.minutes,serviceInterval:service.interval||(mode==='train'?120:180),boardingMinutes:service.boarding||(mode==='train'?15:25)};
   }
   if(mode==='coach'){
    if(from.serviceType!=='coach'||to.serviceType!=='coach'||Math.abs(a-b)!==1)return null;
    const index=Math.min(a,b),leg=this.expedition.roadLegs[index];if(!leg)return null;
-   const first={id:'road-start-'+index,coordinates:leg.coordinates[0]},last={id:'road-end-'+index,coordinates:leg.coordinates.at(-1)};
+   const first={id:'road-start-'+index,coordinates:leg.coordinates[0],anchorNode:this.referenceAnchors.get(leg.coordinates[0].join(','))},last={id:'road-end-'+index,coordinates:leg.coordinates.at(-1),anchorNode:this.referenceAnchors.get(leg.coordinates.at(-1).join(','))};
    const transfer=(x,y)=>{const drive=this.ground(x,y,'taxi',avoid);if(drive)return drive;const walk=this.ground(x,y,'walk',avoid);return walk?{...walk,access:walk.km}:null;};
    const depart=a<b?first:last,arrive=a<b?last:first,p=transfer(from,depart),q=transfer(arrive,to);if(!p||!q)return null;
    return {coordinates:[...p.coordinates,...(a<b?leg.coordinates:[...leg.coordinates].reverse()).slice(1),...q.coordinates.slice(1)],km:p.km+leg.km+q.km,access:(p.access||0)+(q.access||0),crossing,serviceMinutes:Math.ceil(leg.minutes*1.22+(p.km+q.km-(p.access||0)-(q.access||0))/25*60),serviceInterval:90,boardingMinutes:12,transfers:leg.ferryMinutes>0?'Coach + ferry transfer included':null,source:leg.source};
+  }
+  if(['horse','camel','cart','tuktuk'].includes(mode)){
+   if(!same||!from.localModes?.includes(mode)||!to.localModes?.includes(mode))return null;
+   const road=mode==='cart'||mode==='tuktuk'?'taxi':'walk',r=this.ground(from,to,road,[...avoid,...this.mountAvoid]);
+   if(!r||r.km>(mode==='tuktuk'?25:mode==='cart'?8:12))return null;
+   return {...r,source:'Authored local '+mode+' connection on mapped streets',crossing:false};
   }
   // Local shuttles do not become an unlimited intercity express service.
   if(mode==='bus'&&!same)return null;

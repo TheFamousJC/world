@@ -1,7 +1,7 @@
 import {missionRevealed,cipherEntry} from './ciphers.js';
 import {distance} from './geo.js';
 
-export const STOP_SYMBOLS={airport:'✈',station:'▥',crossing:'⇄',shelter:'+',supply:'⚙',pickup:'⚑',waypoint:'·'};
+export const STOP_SYMBOLS={port:'⚓',airport:'✈',station:'▥',crossing:'⇄',shelter:'+',supply:'⚙',pickup:'⚑',waypoint:'·'};
 
 export function pickupState(state,task,find){
  const done=!!state.completedTasks?.includes(task.id);

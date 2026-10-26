@@ -62,7 +62,7 @@ Authored pursuit corridors (src/pursuit-roads.js) are derived from the same bund
 
 Japan pursuit corridors (src/pursuit-japan-roads.js) derive from the bundled Osaka/Tokyo OpenStreetMap packs; © OpenStreetMap contributors, ODbL 1.0. Airport transfers and their preparation time are authored game fiction.
 
-Expedition catalogue (The Alpine Ledger enabled; other new routes in preparation)
+Worldwide expedition catalogue (50 routes enabled)
 GeoNames place references: CC BY 4.0; https://www.geonames.org/export/
 OurAirports airfield source references: public domain; https://ourairports.com/data/
 Natural Earth generalized reference geography: public domain;
@@ -79,3 +79,18 @@ Airfield references derive from OurAirports (public domain); endpoints are route
 landside approaches. Oberpfaffenhofen is used as a fictional charter departure, not
 a scheduled Munich international airline terminal. All missions, charter/coach/rail
 services, schedules, searches and border rules are authored game fiction.
+
+Worldwide packs atlas-02 through atlas-50 combine derived OpenStreetMap districts
+and OSRM driving geometry with optional generalized Natural Earth rail/river data.
+Missing district extracts were prepared from OpenFreeMap's permitted bounded offline
+downloads, using the OpenMapTiles schema. Attribution: OpenFreeMap, OpenMapTiles,
+and OpenStreetMap contributors. OSM-derived data is ODbL 1.0; OpenMapTiles data/schema
+attribution is CC BY 4.0 (https://openmaptiles.org/). OpenFreeMap terms:
+https://openfreemap.org/tos/ . Each logical pack stayed below 3,000 tiles / 50 MB
+with two concurrent requests and an identifying User-Agent. Source versions and
+resolution are recorded in each map's metadata. Generalized same-grade street
+junctions were normalized within 1 m; source access and grade restrictions retained.
+Short dry road-access links are approximate and limited to 80 m. The Strait of
+Gibraltar ferry is an authored geographic game corridor with approximate port
+approaches. River landings and services are fictional, on generalized river geometry.
+No runtime map API or AI service is needed for the downloaded game packs.

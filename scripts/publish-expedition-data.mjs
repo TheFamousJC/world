@@ -1,0 +1,6 @@
+import fs from 'node:fs';
+const folder='assets/prepared-worlds',routes=JSON.parse(fs.readFileSync(folder+'/connected-catalogue.json','utf8')),problems=JSON.parse(fs.readFileSync(folder+'/connection-problems.json','utf8'));
+if(routes.length!==49||problems.length||routes.some(r=>r.connections.length!==4||r.connections.some(c=>!c)))throw Error('Every route must pass the connection gate before publishing.');
+for(const r of routes){const d=JSON.parse(fs.readFileSync(folder+'/'+r.id+'.geojson','utf8'));if(!d.metadata.attribution||!d.features.length)throw Error('Unattributed or empty map '+r.id);if(d.metadata.generalized){for(const f of d.features)if(f.properties.id?.startsWith('osm:'))f.properties.id='vector:'+f.properties.id.slice(4);for(const station of d.stations||[])station.source='https://openfreemap.org/';}fs.writeFileSync('public/data/'+r.id+'.geojson',JSON.stringify(d));}
+fs.writeFileSync('src/expedition-data.js','// Prepared from attributed OSM/OpenFreeMap, GeoNames, OurAirports and Natural Earth references.\nexport const EXPEDITION_DATA='+JSON.stringify(routes)+';\nexport const EXPEDITION_PLACES=EXPEDITION_DATA.flatMap(r=>r.places);\n');
+console.log('Published 49 reviewed datasets to the source tree.');

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import {STORIES,THRILLER_STORY,ALL_SCENARIOS} from '../src/scenarios.js';
+import {ARCHIVED_STORIES as STORIES,THRILLER_STORY,ALL_SCENARIOS} from '../src/scenarios.js';
 import {Network} from '../src/network.js';
 import {WorldNetwork} from '../src/world-network.js';
 import {newGame,completeDetour,cipherAction,quoteJourney,readSave,makeSave,advanceClock} from '../src/engine.js';

@@ -3,10 +3,10 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import {MAP_PACKS} from '../src/map-packs.js';
 import {Network} from '../src/network.js';
-import {STORIES,PLACES,placeById} from '../src/scenarios.js';
+import {ARCHIVED_STORIES as STORIES,PLACES,placeById} from '../src/scenarios.js';
 import {distance} from '../src/geo.js';
 
-const legacyPacks=MAP_PACKS.filter(p=>p.id!=='atlas-01');
+const legacyPacks=MAP_PACKS.filter(p=>p.hub.startsWith('world-'));
 test('every worldwide operation declares a bounded OSM pack; flight handoffs never send players back downtown',()=>{
  assert.equal(legacyPacks.length,16);assert.equal(new Set(legacyPacks.map(p=>p.hub)).size,16);
  for(const story of STORIES.filter(s=>s.global)){

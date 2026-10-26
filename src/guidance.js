@@ -20,8 +20,8 @@ export function nextStep(state,scenario,find,{running=true,plan=[],blocked=false
  let target=task?.place||scenario.goal,label=task?'mission '+(tasks.indexOf(task)+1):'destination',travelDetail='';
  const from=find(state.position),destination=find(target);
  if(scenario.expedition&&from?.expedition&&destination?.expedition&&from.cityIndex!==destination.cityIndex){
-  const departure=find(scenario.corridor+'-c'+from.cityIndex+'-p1'),arrival=find(scenario.corridor+'-c'+destination.cityIndex+'-p0');
-  if(departure&&arrival){target=state.position===departure.id?arrival.id:departure.id;label=target===arrival.id?'arrival interchange':'departure interchange';travelDetail='Reach '+departure.name+', choose an intercity coach or explore another marked terminal, then continue from '+arrival.name+' to your contact. Boarding and border processing use the shared clock.';}
+  const departure=find(scenario.connection?.from||scenario.corridor+'-c'+from.cityIndex+'-p1'),arrival=find(scenario.connection?.to||scenario.corridor+'-c'+destination.cityIndex+'-p0');
+  if(departure&&arrival){target=state.position===departure.id?arrival.id:departure.id;label=target===arrival.id?'arrival interchange':'departure interchange';travelDetail='Reach '+departure.name+', choose '+(scenario.connection?.mode||'an intercity coach')+' or explore another connected terminal, then continue from '+arrival.name+' to your contact. Boarding and border processing use the shared clock.';}
  }
  if(from?.hub&&destination?.hub&&from.hub!==destination.hub){
   const departure=airports.find(p=>p.hub===from.hub),arrival=airports.find(p=>p.hub===destination.hub);

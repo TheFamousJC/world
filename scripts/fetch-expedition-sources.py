@@ -10,7 +10,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parent.parent
 CACHE=ROOT/'assets/route-source'
 UA='EscapeAtlas-OfflinePreparation/0.28 (https://github.com/TheFamousJC/world)'
-parser=argparse.ArgumentParser();parser.add_argument('--region');parser.add_argument('--roads-only',action='store_true');args=parser.parse_args()
+parser=argparse.ArgumentParser();parser.add_argument('--region');parser.add_argument('--roads-only',action='store_true');parser.add_argument('--catalogue-only',action='store_true');args=parser.parse_args()
 routes=json.loads((ROOT/'scripts/expedition-routes.json').read_text(encoding='utf8'))
 def distance(a,b):
     x=math.radians(b[0]-a[0])*math.cos(math.radians((a[1]+b[1])/2));y=math.radians(b[1]-a[1]);return 6371*math.hypot(x,y)
@@ -28,6 +28,7 @@ for route in routes:
         candidates=sorted([a for a in airports if a['countryCode']==city['countryCode'] and distance(a['coordinates'],city['coordinates'])<200],key=lambda a:(a['type']=='small_airport',distance(a['coordinates'],city['coordinates'])))
         if candidates:city['airport']=candidates[0]
 (CACHE/'enriched-routes.json').write_text(json.dumps(routes,ensure_ascii=False,indent=2),encoding='utf8')
+if args.catalogue_only:raise SystemExit(0)
 def fetch(url,payload=None):
     request=urllib.request.Request(url,data=payload,headers={'User-Agent':UA,'Referer':'https://github.com/TheFamousJC/world'})
     with urllib.request.urlopen(request,timeout=150) as response:return json.loads(response.read())

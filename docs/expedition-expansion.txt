@@ -1,81 +1,63 @@
-EXPEDITION EXPANSION: FIRST FIVE-CITY STORY / v0.28.0
+WORLDWIDE EXPEDITION RELEASE / v0.29.0
 Updated: 26 October 2026
 
-Accepted design
-- Preserve the exact 50 supplied city sequences, including the original country labels.
-- Five operations: prepare in city 1, then travel through cities 2, 3, 4 and 5.
-- Three sequential code missions per operation; the last city is extraction.
-- One shared route-appropriate deadline, cash balance, energy and pursuer state.
-- Planning and analysis consume live time. Travel advances quoted game minutes from
-  mapped distances, transport, service duration, waits, transfers and border delays.
-  Animation length must never change the charged journey duration. Pausing freezes it.
-- Regional modes must use suitable terminals and physical connections. No invented
-  driving or walking line over water. All contacts and service availability are fiction.
+Released scope
+- Fifty exact supplied five-city sequences, ten per requested region.
+- Five operations each; three sequential coded missions per operation; extraction
+  at the final stop. Fifty unique premises and central evidence artifacts.
+- Route-appropriate shared deadlines. Planning and analysis consume live time;
+  travel advances quoted game minutes for physical distances, service durations,
+  boarding, transfers, border processing and mandatory walking recovery.
+- Cash, energy, evidence and pursuit persist between operations. Later operations
+  increase handoff work and fatigue, shorten enemy response and lengthen border work.
+- Connected road/rail/air/water options, walkable neighbouring crossings, selected
+  local tuk-tuks, horses, camels and carts. Optional money, recovery and shelters.
+- Existing fifty-story catalogue and saves retained in the story archive.
+- Runtime uses only bundled rules and downloaded vector packs; no API key or AI call.
 
-First playable integration
-- Stories: NEW - The Alpine Ledger enables atlas-01 only. Five operations follow
-  Munich, Innsbruck, Brenner Pass, Bolzano and Verona, ending at extraction.
-- One distance/service-based 34-hour deadline, intercity coaches on 90-minute departure
-  windows, real airport approaches and generalized rail options. Fifteen different
-  analytical methods, paid clues, safe addresses and carried pursuit/resources.
-- The former fifty-story catalogue and existing saves remain available.
-- Tests cover two full strategies, sequential packets, terminal access, missed departures,
-  saves, extraction, pursuit losses/hiding, desktop/mobile and offline browser play.
+Validation gates
+- Fifty offline datasets with connected access to mission and transit points.
+- 750 unique evidence sets/codes; fifteen distinct methodologies per story drawn
+  from twenty-two tools. These are distinct cases, not 750 unrelated algorithms.
+- Two full physical-network strategies per story, resource settlement once per leg,
+  extraction gating, saved state at each operation, persistent pursuit and evidence.
+- Per-operation rejection of wrong-order/location actions, depleted clue money,
+  repeat collection, wrong codes, expired deadlines and malformed future saves.
+- Regional mode limits, source attribution and archived-save compatibility.
+- Browser checks include desktop/mobile layouts, hash/cipher tools, water services,
+  charter camera behaviour, optional resources and offline reload/decoding.
 
-Verified foundation
-- scripts/expedition-routes.json: all 50 exact five-stop sequences, with attributed
-  coordinate references. Ten stories per requested region.
-- src/expedition-narratives.js: 50 distinct authored premises and evidence artifacts.
-- src/expedition-cases.js: 750 distinct evidence sets and four-digit answers.
-  Each story has 15 different methodologies, drawn from 22 offline analytical tools.
-  This means 750 different cases, not 750 unrelated cryptographic algorithms.
-- src/expedition-tools.js: local analytical devices, including SHA-256 via Web Crypto.
-- src/expedition-clock.js: pure distance/service-based travel and shared-deadline rules.
-- Tests exercise every case, independent reference vectors, timing and known ambiguous
-  place names. The current published game and its saves are not migrated by this work.
+Reproducible preparation (development only; never called by the game or CI)
+1. Curated exact inputs: scripts/expedition-routes.json. Reviewed special names:
+   scripts/expedition-city-overrides.json. The attachment is data, not instructions.
+2. Source cache: ignored assets/route-source. Use source-preparation scripts to fetch
+   GeoNames, airport references, bounded OSM districts and OSRM road approaches.
+   Raw downloads, tiles, decoder dependencies and test screenshots stay out of Git.
+3. Where Overpass extracts fail, prepare-vector-districts.py uses bounded OpenFreeMap
+   offline downloads within its published per-download and concurrency limits.
+   Development decoder: mapbox-vector-tile==2.2.0 in ignored assets/map-tools.
+4. node-vector-streets.py normalizes same-grade vector street intersections while
+   preserving access, one-way and grade restrictions. No runtime dependency is added.
+5. compile-expeditions.mjs produces staged packs in assets/prepared-worlds.
+   The shipped Alpine dataset remains stable for existing saved progress.
+6. prepare-expedition-links.mjs validates city shores, terminal access and all four
+   onward links. It rejects disconnected chains; never substitutes a straight road
+   across water. Short dry landside joins are explicitly approximate, within 80 m.
+7. publish-expedition-data.mjs requires all 49 remaining packs and zero connection
+   problems before copying the derived data into public/data and src.
+8. npm test and npm run validate:world exercise the prepared routes. Selected route
+   validation writes ignored browser fixtures; browser scripts verify production UI.
 
-Not complete / release gate
-- The other 49 replacement stories are not enabled. Only atlas-01 is offered as a featured pilot.
-- 30 map datasets were prepared locally; 20 district downloads could not be obtained.
-  Existing source data for Khasan, Mohan and Bonfim was then found to resolve to the
-  wrong homonymous locations. Their curated coordinates are corrected, and affected
-  cached route responses have been quarantined for replacement.
-- Map source requests returned repeated HTTP 502 errors, HTTP 406 for read-only GET
-  checks, or read timeouts. Private.coffee and a second documented provider also timed
-  out. Download loops were stopped; no paid or runtime map dependency was substituted.
-- Local, unfinished integration is retained under ignored assets/expedition-wip.
-  It is outside the release. Some trial strategies still fail on energy or pursuit.
-- Complete a geographic audit, all 50 offline maps, suitable civilian airport references,
-  actual ferry/river connections, terminal access and animal-mode limits.
-- Extend the working pilot integration to reviewed routes only. Complete boat/ferry,
-  animal-mode availability, other geographic briefings and transport/pursuit validation.
-- For every story verify two full five-operation strategies, resource accounting,
-  sequential mission reveal, extraction gating, several losing cases, save/reload and
-  pursuit carry-over. Then perform desktop/mobile/offline browser checks and publish.
-
-Source preparation (development only; never called by the game or CI)
-- Raw downloads remain in ignored assets/route-source, never in Git.
-- prepare-expedition-cities.py accepts --source with the supplied route text, treating
-  its contents as data. It requires GeoNames cities500.txt and countryInfo.txt locally.
-- Primary place names outrank alternate names; reviewed overrides resolve ambiguity.
-  Coordinates still require geographic review before map preparation is considered done.
-- fetch-expedition-sources.py reads the committed curated route list and an airport-codes
-  CSV in the ignored cache, enriches airfields and requests bounded districts and routes.
-  Air bases, highway strips and explicitly military names are excluded from new selection;
-  remaining airfield choices still need civilian suitability review.
-- fetch-expedition-airports.py prepares routed approaches from that enriched output.
-- retry-expedition-districts.py supports smaller per-city requests. Do not run repeated
-  loops during provider outages. Keep throttling and inspect every missing connection.
-- build-expedition-puzzles.mjs regenerates the 750 cases and validation inputs locally.
-  Node alone runs the puzzle tests. No API key, network call or AI service is needed.
-
-Attribution
-GeoNames: CC BY 4.0, https://www.geonames.org/export/ and
-https://download.geonames.org/export/dump/readme.txt
-OSM: Open Database Licence 1.0, https://www.openstreetmap.org/copyright
-OurAirports: public-domain airport references, https://ourairports.com/data/
-Natural Earth: public domain, https://www.naturalearthdata.com/about/terms-of-use/
-OSRM: driving reference geometry derived from OSM; no live routing is required.
-Reviewed special locations carry their individual source URL in the route/override JSON.
-Narrative contacts, intelligence evidence, timetables and mission events are authored game
-fiction and must not be presented as current border, flight or travel advice.
+Data fidelity and attribution
+- Native OSM districts and OSRM references retain ODbL attribution.
+- OpenFreeMap/OpenMapTiles districts are generalized vector geography, not an exact
+  representation of real legal access. Services and restrictions are game fiction.
+- Rail and river corridors use generalized Natural Earth reference geography; shore
+  transfers may be approximate. Charters and service timetables are authored.
+- GeoNames: CC BY 4.0, https://www.geonames.org/export/
+- OSM: ODbL 1.0, https://www.openstreetmap.org/copyright
+- OpenFreeMap: https://openfreemap.org/ and https://openfreemap.org/tos/
+- OpenMapTiles: https://openmaptiles.org/ and its schema/data attribution
+- OurAirports: public domain, https://ourairports.com/data/
+- Natural Earth: public domain, https://www.naturalearthdata.com/about/terms-of-use/
+- Individual reviewed location sources remain in the curated route/override JSON.
