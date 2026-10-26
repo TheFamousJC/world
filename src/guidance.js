@@ -10,6 +10,7 @@ export function nextStep(state,scenario,find,{running=true,plan=[],blocked=false
  if(state.phase==='travelling')return {kind:'travel',label:'Journey in progress',detail:'Your committed journey is travelling to the next stop.'};
  if(state.phase==='checkpoint')return {kind:'continue',label:'Continue to operation '+(scenario.stage+2),detail:'Your time, cash, energy and items carry forward.'};
  const complete=detoursComplete(state,scenario),tasks=scenario.detours||[];
+ if(scenario.evidencePilot&&complete&&(!state.evidence?.decisions[scenario.id]||scenario.stage===2&&!state.evidence.decoys.some(d=>d.id===scenario.id)))return {kind:'evidence',label:'Review the evidence board',detail:'Link the decoded sources to verify your interpretation'+(scenario.stage===2?' and send the false booking.':'.')};
  if(scenario.pilot&&!documentCleared(state,scenario)&&(complete||scenario.stage===2&&state.completedTasks?.includes(tasks[0]?.id)))return {kind:'document',label:'Check travel documents',detail:'Open the Field desk and match the evidence from your collected items.'};
  const task=complete?null:tasks.find(t=>!state.completedTasks?.includes(t.id));
  if(task?.cipher&&cipherEntry(state,task.id)?.solvedAt===null)return {kind:'decode',task:task.id,label:'Decode collected packet',detail:'Use the OSINT workbench to extract its code. The next mission stays concealed.'};
