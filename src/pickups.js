@@ -25,6 +25,6 @@ export function stopInfo(place,state,scenario){
 }
 
 // Essential mission stops remain visible in regional and globe views.
-export function stopMarkerVisible({enabled,relevant,zoom,mission=false,airport=false,global=false}){
- return !!enabled&&!!relevant&&(mission||zoom>=9||!!global&&airport);
+export function stopMarkerVisible({enabled,relevant,zoom,mission=false,airport=false,interchange=false,global=false}){
+ return !!enabled&&!!relevant&&(mission||zoom>=9||!!global&&(airport||interchange));
 }

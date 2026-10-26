@@ -1,4 +1,4 @@
-EXPEDITION EXPANSION: VERIFIED FOUNDATION / NOT YET IN THE LIVE STORY LIBRARY
+EXPEDITION EXPANSION: FIRST FIVE-CITY STORY / v0.28.0
 Updated: 26 October 2026
 
 Accepted design
@@ -12,7 +12,17 @@ Accepted design
 - Regional modes must use suitable terminals and physical connections. No invented
   driving or walking line over water. All contacts and service availability are fiction.
 
-Verified and committed
+First playable integration
+- Stories: NEW - The Alpine Ledger enables atlas-01 only. Five operations follow
+  Munich, Innsbruck, Brenner Pass, Bolzano and Verona, ending at extraction.
+- One distance/service-based 34-hour deadline, intercity coaches on 90-minute departure
+  windows, real airport approaches and generalized rail options. Fifteen different
+  analytical methods, paid clues, safe addresses and carried pursuit/resources.
+- The former fifty-story catalogue and existing saves remain available.
+- Tests cover two full strategies, sequential packets, terminal access, missed departures,
+  saves, extraction, pursuit losses/hiding, desktop/mobile and offline browser play.
+
+Verified foundation
 - scripts/expedition-routes.json: all 50 exact five-stop sequences, with attributed
   coordinate references. Ten stories per requested region.
 - src/expedition-narratives.js: 50 distinct authored premises and evidence artifacts.
@@ -25,7 +35,7 @@ Verified and committed
   place names. The current published game and its saves are not migrated by this work.
 
 Not complete / release gate
-- The new catalogue is NOT enabled in src/scenarios.js and not offered to players yet.
+- The other 49 replacement stories are not enabled. Only atlas-01 is offered as a featured pilot.
 - 30 map datasets were prepared locally; 20 district downloads could not be obtained.
   Existing source data for Khasan, Mohan and Bonfim was then found to resolve to the
   wrong homonymous locations. Their curated coordinates are corrected, and affected
@@ -37,8 +47,8 @@ Not complete / release gate
   It is outside the release. Some trial strategies still fail on energy or pursuit.
 - Complete a geographic audit, all 50 offline maps, suitable civilian airport references,
   actual ferry/river connections, terminal access and animal-mode limits.
-- Integrate analytical devices into the workbench, new transport quoting, geographic
-  story UI, lazy marker rendering, save compatibility and offline service-worker assets.
+- Extend the working pilot integration to reviewed routes only. Complete boat/ferry,
+  animal-mode availability, other geographic briefings and transport/pursuit validation.
 - For every story verify two full five-operation strategies, resource accounting,
   sequential mission reveal, extraction gating, several losing cases, save/reload and
   pursuit carry-over. Then perform desktop/mobile/offline browser checks and publish.

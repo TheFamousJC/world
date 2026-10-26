@@ -62,7 +62,7 @@ Authored pursuit corridors (src/pursuit-roads.js) are derived from the same bund
 
 Japan pursuit corridors (src/pursuit-japan-roads.js) derive from the bundled Osaka/Tokyo OpenStreetMap packs; © OpenStreetMap contributors, ODbL 1.0. Airport transfers and their preparation time are authored game fiction.
 
-Forthcoming expedition catalogue (development groundwork, not enabled in this release)
+Expedition catalogue (The Alpine Ledger enabled; other new routes in preparation)
 GeoNames place references: CC BY 4.0; https://www.geonames.org/export/
 OurAirports airfield source references: public domain; https://ourairports.com/data/
 Natural Earth generalized reference geography: public domain;
@@ -70,3 +70,12 @@ https://www.naturalearthdata.com/about/terms-of-use/
 Individual reviewed location sources are recorded in scripts/expedition-routes.json
 and scripts/expedition-city-overrides.json. Fictional cases and narratives are authored
 for Escape Atlas. See docs/expedition-expansion.txt for preparation and release status.
+
+Alpine pilot: public/data/atlas-01.geojson contains bounded OpenStreetMap districts
+and OSRM driving reference geometry, © OpenStreetMap contributors, ODbL 1.0.
+Street access connectors are approximate. Generalized rail corridors derive from
+Natural Earth 1:10m railroads (public domain). GeoNames city coordinates are CC BY 4.0.
+Airfield references derive from OurAirports (public domain); endpoints are routed
+landside approaches. Oberpfaffenhofen is used as a fictional charter departure, not
+a scheduled Munich international airline terminal. All missions, charter/coach/rail
+services, schedules, searches and border rules are authored game fiction.

@@ -1,6 +1,7 @@
 // A registry of independently packaged regions. New corridors can use the same
 // offline loader without replacing the globe, story engine or routing code.
 export const MAP_PACKS=Object.freeze([
+ {id:'atlas-01',hub:'atlas-01',corridor:'atlas-01',name:'Munich → Innsbruck → Brenner → Bolzano → Verona',file:'atlas-01.geojson'},
  {id:'osaka',hub:'world-0-0',corridor:'world-0',name:'Osaka / Itami',file:'osaka.geojson'},
  {id:'tokyo',hub:'world-0-1',corridor:'world-0',name:'Tokyo / Haneda',file:'tokyo.geojson'},
 {"id":"johannesburg","hub":"world-1-0","corridor":"world-1","name":"Johannesburg","file":"johannesburg.geojson"},

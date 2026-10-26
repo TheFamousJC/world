@@ -6,8 +6,9 @@ import {Network} from '../src/network.js';
 import {STORIES,PLACES,placeById} from '../src/scenarios.js';
 import {distance} from '../src/geo.js';
 
+const legacyPacks=MAP_PACKS.filter(p=>p.id!=='atlas-01');
 test('every worldwide operation declares a bounded OSM pack; flight handoffs never send players back downtown',()=>{
- assert.equal(MAP_PACKS.length,16);assert.equal(new Set(MAP_PACKS.map(p=>p.hub)).size,16);
+ assert.equal(legacyPacks.length,16);assert.equal(new Set(legacyPacks.map(p=>p.hub)).size,16);
  for(const story of STORIES.filter(s=>s.global)){
   assert.ok(story.detailed);
   for(const c of story.operations)for(const id of [c.start,c.goal,...c.detours.map(t=>t.place),...c.bonuses.map(t=>t.place)])assert.ok(MAP_PACKS.some(p=>p.hub===placeById(id).hub));
@@ -18,7 +19,7 @@ test('every worldwide operation declares a bounded OSM pack; flight handoffs nev
  }
 });
 
-for(const pack of MAP_PACKS)test(`${pack.name}: attributed offline geometry and connected real airport road routes`,()=>{
+for(const pack of legacyPacks)test(`${pack.name}: attributed offline geometry and connected real airport road routes`,()=>{
  const data=JSON.parse(fs.readFileSync(new URL('../public/data/'+pack.file,import.meta.url)));
  assert.equal(data.metadata.licence,'ODbL 1.0');assert.ok(data.metadata.snapshot);assert.match(data.metadata.attribution,/OpenStreetMap/);
  assert.ok(data.features.filter(f=>f.properties.kind==='road').length>1000);

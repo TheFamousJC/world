@@ -1,5 +1,6 @@
+import {ALPINE_PLACES} from './alpine-data.js';
 import {WORLD_PLACES} from './world-places.js';
-export const PLACES=Object.freeze([...WORLD_PLACES,
+export const PLACES=Object.freeze([...WORLD_PLACES,...ALPINE_PLACES,
 {"id":"neple","name":"Neple signal post","coordinates":[23.5450303,52.1166732],"kind":"supply","fictional":true,"note":"Fictional story contact anchored to a mapped public road."},
 {"id":"horbow","name":"Horbów courier stop","coordinates":[23.3015206,52.0392259],"kind":"supply","fictional":true,"note":"Fictional story contact anchored to a mapped public road."},
 {"id":"west-cache","name":"Western orchard shelter","coordinates":[23.2062314,52.0234608],"kind":"supply","fictional":true,"note":"Fictional story contact anchored to a mapped public road."},

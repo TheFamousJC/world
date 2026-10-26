@@ -418,3 +418,6 @@
 @media(max-width:700px){.osint-dialog{padding:14px;width:96vw;max-height:96dvh}.osint-grid{grid-template-columns:1fr}.osint-live{gap:8px;padding:8px}.osint-live>strong{font-size:20px}.osint-live #osint-status{flex-basis:100%;order:3}.osint-live>button{font-size:11px;padding:6px}.osint-heading h2{font-size:22px}.evidence-panel,.analysis-panel{padding:12px}.cipher-submit{grid-template-columns:1fr}.cipher-submit small{grid-column:auto}}
 
 .osint-return{margin-top:12px;min-height:48px}
+
+/* Alpine pilot uses the same compact shell and mode colours. */
+.route-leg.mode-coach{border-left:3px solid #5ed5ff}.route-leg.mode-train{border-left:3px solid #c5a6ff}.route-legend-modes .coach{color:#5ed5ff}.alpine-feature{display:block;width:100%;margin:12px 0 18px;padding:18px;text-align:left;border-color:#a1e5d1;background:linear-gradient(110deg,#17483f,#12313f)}.alpine-feature small{display:block;margin-top:7px;color:#d7eee7;line-height:1.6;white-space:normal}

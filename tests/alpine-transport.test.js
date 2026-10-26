@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import {ALPINE_STORY as story,placeById} from '../src/scenarios.js';
+import {Network} from '../src/network.js';
+import {WorldNetwork} from '../src/world-network.js';
+import {newGame,quoteJourney,journeyCost} from '../src/engine.js';
+const n=new WorldNetwork(new Network(JSON.parse(fs.readFileSync(new URL('../public/data/region.geojson',import.meta.url)))));n.installRegion(story.id,JSON.parse(fs.readFileSync(new URL('../public/data/atlas-01.geojson',import.meta.url))));
+test('Alpine trains follow the referenced stations; charter flights require distinct real airfields and include boarding',()=>{const p=s=>placeById('atlas-01-'+s),c=story.operations[1],rail=n.route(p('c0-rail'),p('c1-rail'),'train');assert(rail&&rail.km>100);assert.match(rail.source,/Natural Earth/);assert.equal(n.route(p('c0-p1'),p('c1-p0'),'train'),null);const air=n.route(p('c0-air'),p('c1-air'),'flight');assert(air&&air.km>80);assert.equal(p('c2-air'),undefined,'Brenner must not duplicate the Innsbruck airport');assert.equal(story.places.filter(p=>p.kind==='airport').length,4);assert.equal(n.route(p('c0-air'),p('c3-air'),'flight'),null,'No skipping cities by charter');assert.equal(n.route(p('c0-p1'),p('c1-p0'),'flight'),null);const s={...newGame(c),position:p('c0-air').id};const q=quoteJourney(s,c,n,p('c1-air').id,'flight');assert(q.ok);assert(q.waitMinutes>=60);assert.equal(q.borderDelay,c.crossingDelay);assert(q.route.coordinates.length>50);assert(q.minutes>=q.waitMinutes+q.borderDelay);});
+test('chosen street points retain their district/country identity and can be walked to without a direct-line fallback',()=>{const start=placeById('atlas-01-c0-p0'),target=placeById('atlas-01-c0-p2'),point=n.mapPoint(target.coordinates,'waypoint-1','Chosen street');assert.equal(point.hub,'atlas-01');assert.equal(point.cityIndex,0);assert.equal(point.countryCode,'DE');const r=n.route(start,point,'walk');assert(r&&r.coordinates.length>2);assert.match(r.source,/OSM/);const cost=journeyCost(r,'walk',story.operations[0]);assert(cost.minutes>0);assert.equal(cost.cash,0);assert.equal(n.route(start,{...point,coordinates:[-70,-40],id:'waypoint-2'},'walk'),null);});
+
