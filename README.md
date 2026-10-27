@@ -239,3 +239,7 @@ The world clock and pursuit continue while the workbench is open. The existing P
 Collected evidence, hints, attempts and solved cases survive saves and backups. Existing progress migrates paused, crediting completed work and past-operation extraction packets without taking resources or replaying traces. The workbench is available again under Missions once a packet has been collected.
 
 Validation: tests/ciphers.test.js checks all 765 packets, six analysis tools, sequential reveals, accounting, wrong answers, pursuit/deadlines, migration, invalid saves and backups. Development validation solves packets explicitly via src/cipher-validation.js; this harness is not imported or cached by the application. npm run test:cipher-browser exercises six devices, two consecutive operations, desktop/mobile layouts, live time, hints, incorrect/correct submissions and release-build offline reloads.
+
+### Help and quick start (v0.31.1)
+
+The always-visible Help tab opens a short in-game guide with the route, packet, extraction, supplies and pursuit rules. Start quick-start wizard replays five short slides. Opening either pauses play, including during a journey; close it and press Resume game when ready. The full gameplay guide and FAQ remain available from Help.

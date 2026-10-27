@@ -17,7 +17,7 @@ export function setupMobileLayout() {
  section('Planned route',[document.querySelector('#route-legs'),document.querySelector('#travel-scope'),document.querySelector('#route-estimate')]);
  section('Supplies & recovery',[document.querySelector('#bonus-panel'),document.querySelector('#rest-button'),document.querySelector('#inventory')]);
  section('Briefing & journey',[document.querySelector('#mission-title'),document.querySelector('#mission-subtitle'),document.querySelector('#briefing-button'),document.querySelector('#restart-button'),document.querySelector('#journal-button')]);
- section('Help & settings',[document.querySelector('.help-link'),document.querySelector('#tutorial-button'),document.querySelector('#settings-button'),document.querySelector('#challenges-button')]);
+ section('Help & settings',[document.querySelector('#tutorial-button'),document.querySelector('#settings-button'),document.querySelector('#challenges-button')]);
  stack.append(document.querySelector('.mission-panel'),document.querySelector('.resources'),missions,document.querySelector('.route-panel'));
  const view=document.createElement('button');
  view.id='map-view-button';view.className='button secondary';view.textContent='Map view';

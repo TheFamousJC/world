@@ -306,7 +306,7 @@
 .map-legend{height:auto;max-height:none;overflow:visible}
 
 /* Minimal play surface: clock, missions menu, and contextual Go. */
-.app-header .edition,.header-actions>*:not(#operation-button):not(#map-view-button):not(#audio-toggle):not(#hq-inbox-button),.map-heading,.app-footer,.maplibregl-ctrl-group{display:none!important}
+.app-header .edition,.header-actions>*:not(#help-button):not(#operation-button):not(#map-view-button):not(#audio-toggle):not(#hq-inbox-button),.map-heading,.app-footer,.maplibregl-ctrl-group{display:none!important}
 .app-header{gap:10px}.header-actions{gap:6px}
 .left-console-stack{width:230px;bottom:auto;max-height:calc(100dvh - 105px);overflow:visible;gap:8px}
 .left-console-stack>.mission-panel{order:0}
@@ -429,3 +429,6 @@
 .evidence-dialog{width:min(1100px,94vw);max-width:1100px}.evidence-live{display:flex;gap:14px;align-items:center;flex-wrap:wrap;background:#17343e;padding:12px;border:1px solid #477277;border-radius:8px;margin-bottom:18px}.evidence-live strong{font:600 22px ui-monospace,monospace;color:#96f0d6}.evidence-live>span{font-size:12px}.evidence-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0}.evidence-card{display:flex;flex-direction:column;gap:10px;border:1px solid #51707b;background:#132f3b;padding:18px;border-radius:10px;min-width:0}.evidence-card p{flex:1;color:#cee1e4;line-height:1.7}.evidence-card.locked{opacity:.55}.evidence-card.linked{border-color:#f2c57d;box-shadow:0 0 0 2px #f2c57d44}.evidence-card h3{font-size:19px}.evidence-verdict{padding:14px;border-left:3px solid #7be5bd;background:#183b3c;margin:14px 0}.evidence-verdict p{margin:8px 0}.evidence-dialog select{display:block;width:100%;background:#102c38;color:#d9eeee;border:1px solid #52717d;padding:12px;margin:8px 0 14px}.evidence-dialog details{margin:16px 0}.evidence-dialog summary{cursor:pointer;color:#b1d7d8}.evidence-dialog input[type=checkbox]{accent-color:#f2c57d;width:20px;height:20px;vertical-align:middle}@media(max-width:680px){.evidence-cards{grid-template-columns:1fr}.evidence-dialog{padding:18px}.evidence-dialog h2{font-size:25px}.evidence-live{gap:9px}}
 
 .evidence-live{position:sticky;top:0;z-index:2}
+
+/* Keep learning controls visible at every screen size. */
+.header-actions #help-button{display:inline-flex;align-items:center;justify-content:center;min-height:40px}.help-dialog{width:min(720px,94vw);max-height:88dvh;overflow:auto}.help-dialog p,.quick-start{color:#bdd4dd;line-height:1.7}.quick-start{padding-left:24px}.quick-start li{padding:6px 0}.quick-start strong{color:#8aecd2}.mission-tools #tutorial-button:after{content:"Quick-start wizard"}

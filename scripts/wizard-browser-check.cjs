@@ -24,6 +24,17 @@ const {chromium}=require(process.env.PLAYWRIGHT_NODE_PATH||'C:/Users/jdcar/.cach
    await p.click('#tutorial-next');await p.click('#tutorial-back');
    assert.match(await p.locator('#tutorial-step').innerText(),/1 OF 5/);
    await p.click('#tutorial-skip');assert.equal(await p.locator('#story-library').isVisible(),true);
+   await p.locator('.story-library [data-close]').click();
+   await p.click('#clock-button');
+   assert.equal(await p.evaluate(()=>window.escapeTest.getSession().clockRunning),true);
+   await p.click('#help-button');
+   assert.equal(await p.locator('#help-dialog').isVisible(),true);
+   assert.equal(await p.evaluate(()=>window.escapeTest.getSession().clockRunning),false);
+   assert.ok(await p.locator('#help-dialog').evaluate(e=>e.scrollWidth<=e.clientWidth),'Help fits phone width');
+   await p.click('#help-wizard');
+   assert.match(await p.locator('#tutorial-step').innerText(),/1 OF 5/);
+   assert.equal(await p.evaluate(()=>window.escapeTest.getSession().clockRunning),false);
+   await p.click('#tutorial-skip');
    assert.deepEqual(errors,[]);await context.close();
   }
   console.log('PASS: all five wizard slides, paused first-time clock, back/next/skip/replay, library and saved completion at 320/390/1526px.');
